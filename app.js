@@ -7,11 +7,15 @@
 
 "use strict";
 
-// Access token for your app
-// (copy token from DevX getting started page
-// and save it as environment variable into the .env file)
-const token = process.env.WHATSAPP_TOKEN;
+
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
 const path= require('path');
+//const app = express();
+const server = http.createServer(app);
+const token = process.env.WHATSAPP_TOKEN;
+//const path= require('path');
 // Imports dependencies and set up http server
 const request = require("request"),
   express = require("express"),
@@ -20,7 +24,10 @@ const request = require("request"),
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
+io.on('connection', function(socket)  {
+  socket.emit("getprods","bienvenidos")
 
+});
 app.set('views', path.join(__dirname, './src/views'));
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
 
@@ -47,7 +54,7 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      res.send('<script>alert("verifique sus datos por favor"); </script>');
+      
      
       //let msg_body ="San Juan Electronics ";
       axios({

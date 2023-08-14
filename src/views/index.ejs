@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://apiwhatsap-lh1x-dev.fl0.io/socket.io/socket.io.js"></script>
 </head>
 <body>
     <h1>holaprr</h1>
+
+    <script>
+        const socket = io();
+    
+        socket.on('getprods', (message) => {
+          console.log(message);
+        });
+    
+       
+      </script>
 </body>
 </html>
