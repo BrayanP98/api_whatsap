@@ -24,6 +24,7 @@ const request = require("request"),
   //const app = express();
   const app = express().use(body_parser.json());
   const server = http.createServer(app);
+  const io = socketIo(server);
 // Sets server port and logs message on success
 io.on('connection', function(socket)  {
   socket.emit("getprods","bienvenidos")
