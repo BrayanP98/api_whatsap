@@ -13,7 +13,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path= require('path');
 //const app = express();
-app = express().use(body_parser.json());
+const app = express().use(body_parser.json());
 const server = http.createServer(app);
 const token = process.env.WHATSAPP_TOKEN;
 //const path= require('path');
@@ -21,8 +21,8 @@ const token = process.env.WHATSAPP_TOKEN;
 const request = require("request"),
   express = require("express"),
   body_parser = require("body-parser"),
-  axios = require("axios").default,
- ; // creates express http server
+  axios = require("axios").default
+  // creates express http server
 
 // Sets server port and logs message on success
 io.on('connection', function(socket)  {
