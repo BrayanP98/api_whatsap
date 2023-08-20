@@ -1,47 +1,43 @@
-/*
- * Starter Project for WhatsApp Echo Bot Tutorial
- *
- * Remix this as the starting point for following the WhatsApp Echo Bot tutorial
- *
- */
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
+const path= require('path');
 
-"use strict";
+const app = express();
 
-
-//const express = require('express');
+const server = http.createServer(app);
 
 const token = process.env.WHATSAPP_TOKEN;
 //const path= require('path');
 // Imports dependencies and set up http server
 const request = require("request"),
-  express = require("express"),
+  //express = require("express"),
   body_parser = require("body-parser"),
   axios = require("axios").default
-  // creates express http server
-  const http = require('http');
-  const socketIo = require('socket.io');
-  const path= require('path');
-  const apps = express();
-  const app = express().use(body_parser.json());
-  const server = http.createServer(apps);
-  const io = socketIo(server);
-// Sets server port and logs message on success
+const io = socketIo(server);
+const appw = express().use(body_parser.json());
+const PORT = process.env.PORT || 3000;
+appw.listen(process.env.PORT || 4000, () => console.log("webhook is listening"));
+app.set('views', path.join(__dirname, './src/views'));
+app.get('/', (req, res) => {
+  res.render("index.ejs")
+});
+
 io.on('connection', function(socket)  {
-  socket.emit("getprods","bienvenidos")
+    socket.emit("getprods","bienvenidos todos")
 
 });
-app.set('views', path.join(__dirname, './src/views'));
-app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
 
-// Accepts POST requests at /webhook endpoint
-app.post("/webhook", (req, res) => {
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
+appw.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
   // Check the Incoming webhook message
-  
-  let data=JSON.stringify(req.body);
-  
+  console.log(JSON.stringify(req.body, null, 2));
 
   // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
   if (req.body.object) {
@@ -55,10 +51,9 @@ app.post("/webhook", (req, res) => {
       let phone_number_id =
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-      let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      
-     
-      //let msg_body ="San Juan Electronics ";
+    //  let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+    
+    let msg_body ="San Juan Electronics ";
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
@@ -83,12 +78,14 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/", (req, res) => {
-
   res.render("index.ejs")
+
+ 
 })
+
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
-app.get("/webhook", (req, res) => {
+appw.get("/webhook", (req, res) => {
   
   const verify_token = process.env.VERIFY_TOKEN;
 
@@ -103,10 +100,11 @@ app.get("/webhook", (req, res) => {
     if (mode === "subscribe" && token === verify_token) {
       // Respond with 200 OK and challenge token from the request
       console.log("WEBHOOK_VERIFIED");
-         res.status(200).send(challenge);
+      res.status(200).send(challenge);
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);
     }
   }
 });
+
