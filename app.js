@@ -28,9 +28,7 @@ io.on('connection', function(socket)  {
 
 });
 
-server.listen(PORT, () => {
-  console.log('Server listening on port ');
-});
+
 
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
