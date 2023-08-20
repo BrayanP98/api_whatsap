@@ -23,10 +23,7 @@ app.get('/', (req, res) => {
   res.render("index.ejs")
 });
 
-io.on('connection', function(socket)  {
-    socket.emit("getprods","bienvenidos todos")
 
-});
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
@@ -52,7 +49,10 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
     //  let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-    
+    io.on('connection', function(socket)  {
+      socket.emit("getprods","bienvenidos todos")
+  
+  });
     let msg_body ="San Juan Electronics ";
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
