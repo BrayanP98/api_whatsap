@@ -15,7 +15,7 @@ const request = require("request"),
   body_parser = require("body-parser"),
   axios = require("axios").default
 const io = socketIo(server);
-const data=app.use(body_parser.json());
+//const data=app.use(body_parser.json());
 //app.listen(process.env.PORT || 3000, () => console.log("port"));
 app.listen(process.env.PORT || 4000, () => console.log("webhook is listening"));
 app.set('views', path.join(__dirname, './src/views'));
