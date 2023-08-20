@@ -16,8 +16,8 @@ const request = require("request"),
   axios = require("axios").default
 const io = socketIo(server);
 const appw = express().use(body_parser.json());
-const PORT = process.env.PORT || 3000;
-//appw.listen(process.env.PORT || 8080, () => console.log("webhook is listening"));
+app.listen(process.env.PORT || 3000, () => console.log("port"));
+appw.listen(process.env.PORT || 8080, () => console.log("webhook is listening"));
 app.set('views', path.join(__dirname, './src/views'));
 app.get('/', (req, res) => {
   res.render("index.ejs")
@@ -29,7 +29,7 @@ io.on('connection', function(socket)  {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log('Server listening on port ');
 });
 
 app.post("/webhook", (req, res) => {
