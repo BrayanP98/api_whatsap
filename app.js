@@ -21,9 +21,9 @@ const request = require("request"),
   const http = require('http');
   const socketIo = require('socket.io');
   const path= require('path');
-  const app = express();
- // const app = express().use(body_parser.json());
-  const server = http.createServer(app);
+  const apps = express();
+  const app = express().use(body_parser.json());
+  const server = http.createServer(apps);
   const io = socketIo(server);
 // Sets server port and logs message on success
 io.on('connection', function(socket)  {
