@@ -18,8 +18,9 @@
         socket.on('getprods', (message) => {
           console.log(message);
         });
-        socket.on('getprods1', (message) => {
-          console.log(message);
+        socket.on('whatsapp_notification', (data) => {
+            console.log('Notificación de WhatsApp:', data);
+            // Aquí puedes manejar los datos recibidos en tiempo real
         });
     
        
