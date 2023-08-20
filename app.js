@@ -17,7 +17,7 @@ const request = require("request"),
 const io = socketIo(server);
 
 const PORT = process.env.PORT || 3000;
-appw.listen(process.env.PORT || 4000, () => console.log("webhook is listening"));
+
 app.set('views', path.join(__dirname, './src/views'));
 app.get('/', (req, res) => {
   res.render("index.ejs")
