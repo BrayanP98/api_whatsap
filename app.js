@@ -35,7 +35,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
-  io.emit('whatsapp_notification', body);
+  
 
   // Check the Incoming webhook message
   //console.log(JSON.stringify(req.body, null, 2));
@@ -53,8 +53,8 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-     socket.emit("getprods1","bienvenidos todosdd")
-    
+     
+     io.emit('whatsapp_notification', msg_body1);
      let msg_body ="San Juan Electronics ";
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -88,7 +88,7 @@ app.get("/", (req, res) => {
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
 app.get("/webhook", (req, res) => {
-  socket.emit("getprods1","bienvenidos todos2")
+  
   const verify_token = process.env.VERIFY_TOKEN;
 
   // Parse params from the webhook verification request
