@@ -16,8 +16,8 @@ const request = require("request"),
   axios = require("axios").default
 const io = socketIo(server);
 const appw = express().use(body_parser.json());
-app.listen(process.env.PORT || 3000, () => console.log("port"));
-appw.listen(process.env.PORT || 8080, () => console.log("webhook is listening"));
+//app.listen(process.env.PORT || 3000, () => console.log("port"));
+appw.listen(process.env.PORT || 4000, () => console.log("webhook is listening"));
 app.set('views', path.join(__dirname, './src/views'));
 app.get('/', (req, res) => {
   res.render("index.ejs")
@@ -30,7 +30,7 @@ io.on('connection', function(socket)  {
 
 
 
-app.post("/webhook", (req, res) => {
+appw.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
@@ -75,7 +75,7 @@ app.post("/webhook", (req, res) => {
 });
 
 
-app.get("/", (req, res) => {
+appw.get("/", (req, res) => {
   res.render("index.ejs")
 
  
