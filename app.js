@@ -4,7 +4,7 @@ const socketIo = require('socket.io');
 const path= require('path');
 const body_parser = require("body-parser");
 const app = express();
-app.use(bodyParser.json());
+app.use(body_parser.json());
 const server = http.createServer(app);
 
 const token = process.env.WHATSAPP_TOKEN;
