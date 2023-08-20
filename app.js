@@ -26,10 +26,7 @@ const request = require("request"),
   const server = http.createServer(app);
   const io = socketIo(server);
 // Sets server port and logs message on success
-io.on('connection', function(socket)  {
-  socket.emit("getprods","bienvenidos")
 
-});
 app.set('views', path.join(__dirname, './src/views'));
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
 
