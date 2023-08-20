@@ -17,7 +17,7 @@ const request = require("request"),
 const io = socketIo(server);
 const appw = express().use(body_parser.json());
 const PORT = process.env.PORT || 3000;
-appw.listen(process.env.PORT || 4000, () => console.log("webhook is listening"));
+//appw.listen(process.env.PORT || 8080, () => console.log("webhook is listening"));
 app.set('views', path.join(__dirname, './src/views'));
 app.get('/', (req, res) => {
   res.render("index.ejs")
@@ -32,7 +32,7 @@ server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-appw.post("/webhook", (req, res) => {
+app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
@@ -85,7 +85,7 @@ app.get("/", (req, res) => {
 
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
-appw.get("/webhook", (req, res) => {
+app.get("/webhook", (req, res) => {
   
   const verify_token = process.env.VERIFY_TOKEN;
 
