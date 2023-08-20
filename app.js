@@ -30,7 +30,7 @@ io.on('connection', function(socket)  {
 
 
 
-app.post("/webhook", (req, res) => {
+data.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
 
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
-app.get("/webhook", (req, res) => {
+data.get("/webhook", (req, res) => {
   
   const verify_token = process.env.VERIFY_TOKEN;
 
