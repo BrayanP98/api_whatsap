@@ -31,7 +31,7 @@ server.listen(PORT, () => {
 io.on('connection', function(socket)  {
   socket.emit("getprods","bienvenidos todos")
 
-});
+
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
@@ -78,7 +78,7 @@ app.post("/webhook", (req, res) => {
   }
 });
 
-
+});
 app.get("/", (req, res) => {
   res.render("index.ejs")
 
