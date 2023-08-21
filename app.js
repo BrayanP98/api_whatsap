@@ -89,8 +89,8 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-     // let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+      let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
       console.log(msg_body1)
       function sendOP(opction){
         axios({
@@ -105,6 +105,79 @@ app.post("/webhook", (req, res) => {
             to: from,
             text: { body:  opction},
           },
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+      function sendInteractive(){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+              data:{
+              messaging_product: "whatsapp",
+              recipient_type: "individual",
+              to : from,
+              type: "interactive" ,
+              interactive:{
+                type: "list",
+                header: {  
+                type: "text",
+                text: "San Juan"},
+                body: {text: "Elije tus Opciones"},
+                footer: {},
+                action: {
+                  button: "Responde",
+                  sections:[
+                    {
+                      title:"Opcion 1",
+                      rows: [
+                        {
+                          id:"1",
+                          title: "Cotizar GPS",
+                          description: "Cotizar GPS",           
+                        }
+                      ]
+                    },
+                    {
+                      title:"Opcion2",
+                      rows: [
+                        {
+                          id:"2",
+                          title: "Servicio Tecnico Gps",
+                          description: "Servicio Tecnico Gps",           
+                        }
+                      ]
+                    },
+                    {
+                      title:"Opcion3",
+                      rows: [
+                        {
+                          id:"3",
+                          title: "Renovacion plataforma",
+                          description: "Renovacion plataforma",  
+                               
+                        }
+                      ]
+                    },{
+                      title:"Opcion4",
+                      rows: [
+                        {
+                          id:"4",
+                          title: "Renovacion plataforma",
+                          description: "Renovacion plataforma",  
+                               
+                        }
+                      ]
+                    }
+                    
+                  ]
+                }
+              }
+                  }
+         ,
           headers: { "Content-Type": "application/json" },
         });
       }
@@ -140,8 +213,7 @@ app.post("/webhook", (req, res) => {
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
-            let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.Cotizar" 
-            sendOP(msg_bodyrta)
+           sendInteractive()
           }if(msg_body1==="2"){
             let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
             sendOP(msg_bodyrta1)
