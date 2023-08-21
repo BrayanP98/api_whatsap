@@ -57,7 +57,14 @@ app.post("/webhook", (req, res) => {
      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       if(optinos.includes(msg_body1)){
         if(msg_body1==="1"){
-          let msg_bodyrta="1. Solicitar servicio tecnico"+"2.cotizar" 
+          let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.cotizar" 
+          sendOP(msg_bodyrta)
+        }if(msg_body1==="2"){
+          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2.cotizar"+"\n3.Renovar Plataforma" 
+          sendOP(msg_bodyrta1)
+        }
+
+        function sendOP(opction){
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
@@ -68,7 +75,7 @@ app.post("/webhook", (req, res) => {
             data: {
               messaging_product: "whatsapp",
               to: from,
-              text: { body:  msg_bodyrta },
+              text: { body:  opction},
             },
             headers: { "Content-Type": "application/json" },
           });
