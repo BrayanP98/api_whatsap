@@ -71,9 +71,9 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      var hasKey = (options[msg_body1] !== undefined);
+      var hasKey = (rtaopt[msg_body1] !== undefined);
       if(hasKey=true){
-        sendOP(options[msg_body1])
+        sendOP(rtaopt[msg_body1])
       }
       
       
