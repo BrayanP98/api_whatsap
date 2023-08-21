@@ -53,13 +53,6 @@ app.post("/webhook", (req, res) => {
        "op3":"Beneficios",
        "op4":"otros"
      },
-     acceso:{
-      "op1":"Cotizar",
-      "op2":"Servicio tecnico",
-      "op3":"Beneficios",
-      "op4":"otros"
-    }
-    ,
      alarma:{
       "op1":"Cotizar",
       "op2":"Servicio tecnico alarmas recidenciales",
@@ -67,6 +60,14 @@ app.post("/webhook", (req, res) => {
       "op4":"otros"
 
     },
+     acceso:{
+      "op1":"Cotizar",
+      "op2":"Servicio tecnico",
+      "op3":"Beneficios",
+      "op4":"otros"
+    },
+    
+    
     asesor:{
 
 
@@ -111,7 +112,7 @@ app.post("/webhook", (req, res) => {
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
       let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-      let titleServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+      let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
       if(msg_interctive){
 
         sendOP("Dejanos tu numero ")
@@ -155,7 +156,7 @@ app.post("/webhook", (req, res) => {
                       title:"Opcion 1",
                       rows: [
                         {
-                          id:"1",
+                          id:service,
                           title: opt.op1,
                           description: opt.op1,           
                         }
@@ -165,7 +166,7 @@ app.post("/webhook", (req, res) => {
                       title:"Opcion2",
                       rows: [
                         {
-                          id:"2",
+                          id:service,
                           title: opt.op2,
                           description:  opt.op2,           
                         }
@@ -175,7 +176,7 @@ app.post("/webhook", (req, res) => {
                       title:"Opcion3",
                       rows: [
                         {
-                          id:"3",
+                          id:service,
                           title: opt.op3,
                           description: opt.op3,  
                                
@@ -238,11 +239,11 @@ app.post("/webhook", (req, res) => {
           }if(msg_body1==="2"){
             sendInteractive(rtaopt["gps"],"*gps*")
           }if(msg_body1==="3"){
-            sendInteractive(rtaopt["alarma"],"*Alarma*")
+           sendInteractive(rtaopt["alarma"],"*alarma*")
           }
-        if(msg_body1==="4"){
-          sendInteractive(rtaopt["acceso"],"*Controll Acceso*")
-        }
+          if(msg_body1==="4"){
+          sendInteractive(rtaopt["acceso"],"*Control Acceso*")
+            }
   
          
   
