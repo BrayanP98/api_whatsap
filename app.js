@@ -42,14 +42,29 @@ app.post("/webhook", (req, res) => {
   var rtaopt=
   {
      gps:{
-       "op1":"cotizar",
-       "op2":"servicio tecnico gpswc"
+       "op1":"Cotizar",
+       "op2":"Servicio tecnico GPS",
+       "op3":"Renovar Plataforma",
+       "op4":"Beneficios"
      },
      cctv:{
-       "op1":"cotizar",
-       "op2":"servicio tecnico"
+       "op1":"Cotizar",
+       "op2":"Servicio tecnico CCtv",
+       "op3":"Beneficios"
 
-     }
+     },
+     acceso:{
+      "op1":"Cotizar",
+      "op2":"Servicio tecnico",
+      "op3":"Beneficios"
+    }
+    ,
+     alarma:{
+      "op1":"Cotizar",
+      "op2":"Servicio tecnico alarmas recidenciales",
+      "op3":"Beneficios"
+
+    }
     
 
    }
@@ -88,9 +103,10 @@ app.post("/webhook", (req, res) => {
           headers: { "Content-Type": "application/json" },
         });
       }
+      var lower=msg_body1.toLowerCase();
       var hasKey = (rtaopt[msg_body1] !== undefined);
-      if(hasKey==true){
-        let text="*GPS*"+"\n"+"1."+" "+ rtaopt[msg_body1].op1+ "\n"+"2."+" "+rtaopt[msg_body1].op2
+      if(rtaopt[lower]){
+        let text=lower.toUperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2
 
         sendOP(text)
       }else{
