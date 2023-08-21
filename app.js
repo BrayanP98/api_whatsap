@@ -90,7 +90,7 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+      let msg_interctive = req.body.entry[0].changes[0].value.messages[0]
       console.log(msg_body1)
       function sendOP(opction){
         axios({
