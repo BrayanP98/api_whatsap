@@ -232,13 +232,11 @@ app.post("/webhook", (req, res) => {
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
             
-           sendInteractive(rtaopt["gps"],"*gps*")
+           sendInteractive(rtaopt["cctv"],"*cctv*")
           }if(msg_body1==="2"){
-            let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
-            sendOP(msg_bodyrta1)
+            sendInteractive(rtaopt["gps"],"*gps*")
           }if(msg_body1==="3"){
-            let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar" ;
-            sendOP(msg_bodyrta1)
+            sendInteractive(rtaopt["alarma"],"*Alarma*")
           }
   
          
