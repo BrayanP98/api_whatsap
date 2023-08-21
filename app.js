@@ -71,7 +71,7 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-      var hasKey = (rtaopt[msg_body1] !== undefined);
+  
       function sendOP(opction){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -91,62 +91,64 @@ app.post("/webhook", (req, res) => {
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(hasKey=true){
         sendOP(rtaopt[msg_body1])
-      }
-      
-      
-      if(optinos.includes(msg_body1)){
-        if(msg_body1==="1"){
-          let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.Cotizar" 
-          sendOP(msg_bodyrta)
-        }if(msg_body1==="2"){
-          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
-          sendOP(msg_bodyrta1)
-        }if(msg_body1==="3"){
-          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar" ;
-          sendOP(msg_bodyrta1)
-        }
-
-       
-
-      }else if(saludos.includes(msg_body1.toLowerCase())){
-        let mesagge='de'+':'+ from +' '+msg_body1;
-        io.emit('whatsapp_notification', mesagge);
-        let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n¿Como podemos ayudarte?"+"\n\n1.Informacion CCTV"+
-        "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\nTu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
-         axios({
-           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-           url:
-             "https://graph.facebook.com/v12.0/" +
-             phone_number_id +
-             "/messages?access_token=" +
-             token,
-           data: {
-             messaging_product: "whatsapp",
-             to: from,
-             text: { body:  msg_body },
-           },
-           headers: { "Content-Type": "application/json" },
-         });
       }else{
-        let mesagge='de'+':'+ from +' '+msg_body1;
-        io.emit('whatsapp_notification', mesagge);
-        let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
-        "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
-         axios({
-           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-           url:
-             "https://graph.facebook.com/v12.0/" +
-             phone_number_id +
-             "/messages?access_token=" +
-             token,
-           data: {
-             messaging_product: "whatsapp",
-             to: from,
-             text: { body:  msg_body },
-           },
-           headers: { "Content-Type": "application/json" },
-         });
+        if(optinos.includes(msg_body1)){
+          if(msg_body1==="1"){
+            let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.Cotizar" 
+            sendOP(msg_bodyrta)
+          }if(msg_body1==="2"){
+            let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
+            sendOP(msg_bodyrta1)
+          }if(msg_body1==="3"){
+            let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar" ;
+            sendOP(msg_bodyrta1)
+          }
+  
+         
+  
+        }else if(saludos.includes(msg_body1.toLowerCase())){
+          let mesagge='de'+':'+ from +' '+msg_body1;
+          io.emit('whatsapp_notification', mesagge);
+          let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n¿Como podemos ayudarte?"+"\n\n1.Informacion CCTV"+
+          "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\nTu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
+           axios({
+             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+             url:
+               "https://graph.facebook.com/v12.0/" +
+               phone_number_id +
+               "/messages?access_token=" +
+               token,
+             data: {
+               messaging_product: "whatsapp",
+               to: from,
+               text: { body:  msg_body },
+             },
+             headers: { "Content-Type": "application/json" },
+           });
+        }else{
+          let mesagge='de'+':'+ from +' '+msg_body1;
+          io.emit('whatsapp_notification', mesagge);
+          let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
+          "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
+           axios({
+             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+             url:
+               "https://graph.facebook.com/v12.0/" +
+               phone_number_id +
+               "/messages?access_token=" +
+               token,
+             data: {
+               messaging_product: "whatsapp",
+               to: from,
+               text: { body:  msg_body },
+             },
+             headers: { "Content-Type": "application/json" },
+           });
+        }
       }
+      
+      
+     
      
 
      
