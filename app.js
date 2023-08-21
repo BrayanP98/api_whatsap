@@ -106,7 +106,7 @@ app.post("/webhook", (req, res) => {
       var lower=msg_body1.toLowerCase();
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
-        let text=lower.toUperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2
+        let text=lower.toUpperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2
 
         sendOP(text)
       }else{
