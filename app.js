@@ -126,7 +126,7 @@ app.post("/webhook", (req, res) => {
      
       console.log(msg_body1)
     
-      function sendInteractive(opt){
+      function sendInteractive(opt, service){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
@@ -144,7 +144,7 @@ app.post("/webhook", (req, res) => {
                 header: {  
                 type: "text",
                 text: "San Juan"},
-                body: {text: "Elije tus Opciones"},
+                body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
                 footer: {},
                 action: {
                   button: "Responde",
@@ -155,7 +155,7 @@ app.post("/webhook", (req, res) => {
                         {
                           id:"1",
                           title: opt.op1,
-                          description: "Cotizar GPS",           
+                          description: opt.op1,           
                         }
                       ]
                     },
@@ -165,17 +165,17 @@ app.post("/webhook", (req, res) => {
                         {
                           id:"2",
                           title: opt.op2,
-                          description: "Servicio Tecnico Gps",           
+                          description:  opt.op2,           
                         }
                       ]
                     },
                     {
-                      title:opt.op3,
+                      title:"Opcion3",
                       rows: [
                         {
                           id:"3",
-                          title: "Renovacion plataforma",
-                          description: "Renovacion plataforma",  
+                          title: opt.op3,
+                          description: opt.op3,  
                                
                         }
                       ]
@@ -184,8 +184,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"4",
-                          title: "Renovacion plataforma",
-                          description: "Renovacion plataforma",  
+                          title: opt.op4,
+                          description:opt.op4 ,  
                                
                         }
                       ]
@@ -232,7 +232,7 @@ app.post("/webhook", (req, res) => {
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
             
-           sendInteractive(rtaopt["gps"])
+           sendInteractive(rtaopt["gps"],"*gps*")
           }if(msg_body1==="2"){
             let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
             sendOP(msg_bodyrta1)
