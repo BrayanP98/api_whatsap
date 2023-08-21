@@ -86,10 +86,10 @@ app.post("/webhook", (req, res) => {
           });
         }
 
-      }else if(saludos.includes(msg_body1)){
+      }else if(saludos.includes(msg_body1.toLoweCase())){
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
-        let msg_body ="Bienvenido "+name+""+"a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
+        let msg_body ="Bienvenido "+name+" "+" a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
         "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
