@@ -111,8 +111,8 @@ app.post("/webhook", (req, res) => {
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
       let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-       
-      if(msg_interctive=="Servicio Tecnico Gps"){
+      let titleServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+      if(msg_interctive){
 
         sendOP("Dejanos tu numero ")
 
@@ -240,6 +240,9 @@ app.post("/webhook", (req, res) => {
           }if(msg_body1==="3"){
             sendInteractive(rtaopt["alarma"],"*Alarma*")
           }
+        if(msg_body1==="4"){
+          sendInteractive(rtaopt["acceso"],"*Controll Acceso*")
+        }
   
          
   
@@ -247,7 +250,7 @@ app.post("/webhook", (req, res) => {
           let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', mesagge);
           let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n Soy SecuriBot🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV"+
-          "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
+          "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n4. Control de acceso"+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
           "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEb https://sanjuanelectronics.online/";          
           
           axios({
