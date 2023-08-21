@@ -92,7 +92,7 @@ app.post("/webhook", (req, res) => {
     
       // extract the message text from the webhook payload
      
-     if( req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description){
+     if( req.body.entry[0].changes[0].value.messages[0].interactive){
       let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
        
       if(msg_interctive=="Servicio Tecnico Gps"){
