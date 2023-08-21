@@ -39,6 +39,20 @@ app.post("/webhook", (req, res) => {
 
   var optinos=["1","2","3","4"]
   var saludos=["buen dia","hola","buenos dias","ole","buenas"]
+  var rtaopt=
+  {
+     gps:{
+       "1":"cotizar",
+       "2":"servicio tecnico gpswc"
+     },
+     cctv:{
+       "1":"cotizar",
+       "2":"servicio tecnico"
+
+     }
+    
+
+   }
 
   // Check the Incoming webhook message
   //console.log(JSON.stringify(req.body, null, 2));
@@ -57,6 +71,12 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+      var hasKey = (options[msg_body1] !== undefined);
+      if(hasKey=true){
+        sendOP(options[msg_body1])
+      }
+      
+      
       if(optinos.includes(msg_body1)){
         if(msg_body1==="1"){
           let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.Cotizar" 
@@ -90,7 +110,7 @@ app.post("/webhook", (req, res) => {
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
         let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n¿Como podemos ayudarte?"+"\n\n1.Informacion CCTV"+
-        "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"Tu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
+        "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\nTu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
@@ -108,7 +128,8 @@ app.post("/webhook", (req, res) => {
       }else{
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
-        let msg_body ="No entiendo lo que quieres decirme";
+        let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
+        "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
