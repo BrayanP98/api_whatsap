@@ -113,6 +113,22 @@ app.post("/webhook", (req, res) => {
         var text=""
         if(lower=="asesor"){
            text=("En minutos uno de nuestros asesores se pondra en contacto con usted.")
+           let contactClient= "Por favor ponerse en contacto con:"+
+           name+" "+"al numero"+from;
+           axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/" +
+              phone_number_id +
+              "/messages?access_token=" +
+              token,
+            data: {
+              messaging_product: "whatsapp",
+              to: "573026055289",
+              text: { body:  contactClient},
+            },
+            headers: { "Content-Type": "application/json" },
+          });
         }else{
           text=lower.toUpperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2+
           "\n"+"*3.*"+" "+rtaopt[lower].op3+ "\n"+"*4.*"+" "+rtaopt[lower].op4;
