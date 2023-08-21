@@ -89,8 +89,8 @@ app.post("/webhook", (req, res) => {
         });
       }
       var hasKey = (rtaopt[msg_body1] !== undefined);
-      if(hasKey=true){
-        sendOP("rtaopt[msg_body1]")
+      if(hasKey==true){
+        sendOP(JSON.stringify(rtaopt[msg_body1]))
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
