@@ -42,12 +42,12 @@ app.post("/webhook", (req, res) => {
   var rtaopt=
   {
      gps:{
-       "1":"cotizar",
-       "2":"servicio tecnico gpswc"
+       "op1":"cotizar",
+       "op2":"servicio tecnico gpswc"
      },
      cctv:{
-       "1":"cotizar",
-       "2":"servicio tecnico"
+       "op1":"cotizar",
+       "op2":"servicio tecnico"
 
      }
     
@@ -90,7 +90,9 @@ app.post("/webhook", (req, res) => {
       }
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(hasKey==true){
-        sendOP(JSON.stringify(rtaopt[msg_body1]))
+        let text="GPS"+"\n"+ rtaopt[msg_body1].op1+ "\n"+rtaopt[msg_body1].op2
+
+        sendOP(text)
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
