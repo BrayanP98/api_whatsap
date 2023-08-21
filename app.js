@@ -55,7 +55,10 @@ app.post("/webhook", (req, res) => {
      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
      let mesagge='de'+':'+ from +' '+msg_body1
      io.emit('whatsapp_notification', mesagge);
-     let msg_body =" ";
+     let msg_body ="bienvenido a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
+     "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
+
+
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
