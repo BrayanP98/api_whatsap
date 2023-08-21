@@ -89,8 +89,8 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-  
+     // let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].interactive.description;
       function sendOP(opction){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -113,8 +113,8 @@ app.post("/webhook", (req, res) => {
         var text=""
         if(lower=="asesor"){
            text=("En minutos uno de nuestros asesores se pondra en contacto con usted.")
-           let contactClient= "Por favor ponerse en contacto con:"+
-           name+" "+"al numero"+from;
+           let contactClient= "Por favor ponerse en contacto con:"+" \n"+
+           name+" "+"\n al numero:"+""+from;
            axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
