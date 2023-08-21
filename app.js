@@ -88,7 +88,7 @@ app.post("/webhook", (req, res) => {
           headers: { "Content-Type": "application/json" },
         });
       }
-     
+      var hasKey = (rtaopt[msg_body1] !== undefined);
       if(hasKey=true){
         sendOP(rtaopt[msg_body1])
       }
