@@ -89,7 +89,22 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-    
+     function sendOP(opction){
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: from,
+          text: { body:  opction},
+        },
+        headers: { "Content-Type": "application/json" },
+      });
+    }
       // extract the message text from the webhook payload
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
@@ -110,22 +125,7 @@ app.post("/webhook", (req, res) => {
     
      
       console.log(msg_body1)
-      function sendOP(opction){
-        axios({
-          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-          url:
-            "https://graph.facebook.com/v12.0/" +
-            phone_number_id +
-            "/messages?access_token=" +
-            token,
-          data: {
-            messaging_product: "whatsapp",
-            to: from,
-            text: { body:  opction},
-          },
-          headers: { "Content-Type": "application/json" },
-        });
-      }
+    
       function sendInteractive(){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
