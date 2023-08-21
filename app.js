@@ -86,7 +86,7 @@ app.post("/webhook", (req, res) => {
           });
         }
 
-      }else if(saludos.includes(msg_body1.toLoweCase())){
+      }else if(saludos.includes(msg_body1.toLowerCase())){
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
         let msg_body ="Bienvenido "+name+" "+" a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
