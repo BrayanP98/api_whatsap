@@ -53,9 +53,9 @@ app.post("/webhook", (req, res) => {
        "op3":"Beneficios",
        "op4":"otros"
      },
-     alarma:{
+     alarmas:{
       "op1":"Cotizar",
-      "op2":"Servicio tecnico alarmas recidenciales",
+      "op2":"Servicio tecnico CCtv",
       "op3":"Beneficios",
       "op4":"otros"
 
@@ -115,7 +115,7 @@ app.post("/webhook", (req, res) => {
       let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
       if(msg_interctive){
 
-        sendOP("Dejanos tu numero ")
+       console.log(msg_interctive+""+idServ)
 
 
       }
@@ -239,7 +239,8 @@ app.post("/webhook", (req, res) => {
           }if(msg_body1==="2"){
             sendInteractive(rtaopt["gps"],"*gps*")
           }if(msg_body1==="3"){
-           sendInteractive(rtaopt["alarma"],"*alarma*")
+
+           sendInteractive(rtaopt["alarmas"],"*alarmas*")
           }
           if(msg_body1==="4"){
           sendInteractive(rtaopt["acceso"],"*Control Acceso*")
