@@ -90,7 +90,7 @@ app.post("/webhook", (req, res) => {
       }
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(hasKey==true){
-        let text="GPS"+"\n"+ rtaopt[msg_body1].op1+ "\n"+rtaopt[msg_body1].op2
+        let text="*GPS*"+"\n"+"1."+" "+ rtaopt[msg_body1].op1+ "\n"+"2."+" "+rtaopt[msg_body1].op2
 
         sendOP(text)
       }else{
