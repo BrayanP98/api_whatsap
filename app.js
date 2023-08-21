@@ -72,6 +72,23 @@ app.post("/webhook", (req, res) => {
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       var hasKey = (rtaopt[msg_body1] !== undefined);
+      function sendOP(opction){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            to: from,
+            text: { body:  opction},
+          },
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+     
       if(hasKey=true){
         sendOP(rtaopt[msg_body1])
       }
@@ -89,22 +106,7 @@ app.post("/webhook", (req, res) => {
           sendOP(msg_bodyrta1)
         }
 
-        function sendOP(opction){
-          axios({
-            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-            url:
-              "https://graph.facebook.com/v12.0/" +
-              phone_number_id +
-              "/messages?access_token=" +
-              token,
-            data: {
-              messaging_product: "whatsapp",
-              to: from,
-              text: { body:  opction},
-            },
-            headers: { "Content-Type": "application/json" },
-          });
-        }
+       
 
       }else if(saludos.includes(msg_body1.toLowerCase())){
         let mesagge='de'+':'+ from +' '+msg_body1;
