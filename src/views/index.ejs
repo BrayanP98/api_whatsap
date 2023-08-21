@@ -9,15 +9,16 @@
    
 </head>
 <body>
-    <h1>holaprr</h1>
+  <div>
+    <h2>mensajes</h2>
+    <a href=""></a>
+  </div>
 
     <script>
       const socket = io.connect("https://api1whatsap-3l6m-dev.fl0.io");
         
     
-        socket.on('getprods', (message) => {
-          console.log(message);
-        });
+       
         socket.on('whatsapp_notification', (data) => {
             console.log('Notificación de WhatsApp:', data);
             // Aquí puedes manejar los datos recibidos en tiempo real
