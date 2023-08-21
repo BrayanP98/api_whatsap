@@ -89,8 +89,8 @@ app.post("/webhook", (req, res) => {
       }else if(saludos.includes(msg_body1.toLowerCase())){
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
-        let msg_body ="Bienvenido "+name+" "+" a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
-        "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
+        let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n¿Como podemos ayudarte?"+"\n\n1.Informacion CCTV"+
+        "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"Tu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
