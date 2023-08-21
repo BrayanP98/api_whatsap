@@ -57,8 +57,6 @@ app.post("/webhook", (req, res) => {
      io.emit('whatsapp_notification', mesagge);
      let msg_body ="bienvenido a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
      "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
-
-
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
@@ -73,6 +71,24 @@ app.post("/webhook", (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       });
+
+      if(msg_body1==="1"){
+        let msg_bodyrta="1. Solicitar servicio tecnico"+"2.cotizar" 
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            to: from,
+            text: { body:  msg_bodyrta },
+          },
+          headers: { "Content-Type": "application/json" },
+        });
+      }
     }
     res.sendStatus(200);
   } else {
