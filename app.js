@@ -50,19 +50,21 @@ app.post("/webhook", (req, res) => {
      cctv:{
        "op1":"Cotizar",
        "op2":"Servicio tecnico CCtv",
-       "op3":"Beneficios"
-
+       "op3":"Beneficios",
+       "op4":"otros"
      },
      acceso:{
       "op1":"Cotizar",
       "op2":"Servicio tecnico",
-      "op3":"Beneficios"
+      "op3":"Beneficios",
+      "op4":"otros"
     }
     ,
      alarma:{
       "op1":"Cotizar",
       "op2":"Servicio tecnico alarmas recidenciales",
-      "op3":"Beneficios"
+      "op3":"Beneficios",
+      "op4":"otros"
 
     },
     asesor:{
