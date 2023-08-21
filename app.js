@@ -112,7 +112,7 @@ app.post("/webhook", (req, res) => {
        
       if(msg_interctive=="Servicio Tecnico Gps"){
 
-        sendOP("dejanos tu numero ")
+        sendOP("Dejanos tu numero ")
 
 
       }
@@ -126,7 +126,7 @@ app.post("/webhook", (req, res) => {
      
       console.log(msg_body1)
     
-      function sendInteractive(){
+      function sendInteractive(opt){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
@@ -154,7 +154,7 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"1",
-                          title: "Cotizar GPS",
+                          title: opt.op1,
                           description: "Cotizar GPS",           
                         }
                       ]
@@ -164,13 +164,13 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"2",
-                          title: "Servicio Tecnico Gps",
+                          title: opt.op2,
                           description: "Servicio Tecnico Gps",           
                         }
                       ]
                     },
                     {
-                      title:"Opcion3",
+                      title:opt.op3,
                       rows: [
                         {
                           id:"3",
@@ -231,7 +231,8 @@ app.post("/webhook", (req, res) => {
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
-           sendInteractive()
+            
+           sendInteractive(rtaopt["gps"])
           }if(msg_body1==="2"){
             let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
             sendOP(msg_bodyrta1)
