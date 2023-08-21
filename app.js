@@ -106,7 +106,8 @@ app.post("/webhook", (req, res) => {
       var lower=msg_body1.toLowerCase();
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
-        let text=lower.toUpperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2
+        let text=lower.toUpperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2+
+         "\n"+"*3.*"+" "+rtaopt[lower].op3+ "\n"+"*4.*"+" "+rtaopt[lower].op4;
 
         sendOP(text)
       }else{
@@ -128,8 +129,10 @@ app.post("/webhook", (req, res) => {
           let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', mesagge);
           let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n¿Como podemos ayudarte?"+"\n\n1.Informacion CCTV"+
-          "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\nTu seguridad es nuestra prioridad!. \nEstamos ubicados en la transversal 9#57n-202 via al bosque";
-           axios({
+          "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
+          "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEb https://sanjuanelectronics.online/";          
+          
+          axios({
              method: "POST", // Required, HTTP method, a string, e.g. POST, GET
              url:
                "https://graph.facebook.com/v12.0/" +
