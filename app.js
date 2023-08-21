@@ -35,7 +35,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
-  console.log(body)
+  console.log(JSON.stringify(req.body, null, 2));
 
   var optinos=["1","2","4"]
 
@@ -60,7 +60,7 @@ app.post("/webhook", (req, res) => {
           let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.cotizar" 
           sendOP(msg_bodyrta)
         }if(msg_body1==="2"){
-          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2.cotizar"+"\n3.Renovar Plataforma" 
+          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. cotizar"+"\n3. Renovar Plataforma" 
           sendOP(msg_bodyrta1)
         }
 
@@ -84,7 +84,7 @@ app.post("/webhook", (req, res) => {
       }else{
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
-        let msg_body ="bienvenido a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
+        let msg_body ="Bienvenido a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
         "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
