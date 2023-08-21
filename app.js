@@ -54,14 +54,18 @@ app.post("/webhook", (req, res) => {
       let phone_number_id =
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-     let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+     var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
+      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       if(optinos.includes(msg_body1)){
         if(msg_body1==="1"){
-          let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.cotizar" 
+          let msg_bodyrta="1. Solicitar servicio tecnico"+"\n2.Cotizar" 
           sendOP(msg_bodyrta)
         }if(msg_body1==="2"){
-          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. cotizar"+"\n3. Renovar Plataforma" 
+          let msg_bodyrta1="1. Solicitar servicio tecnico"+"\n2. Cotizar"+"\n3. Renovar Plataforma" ;
           sendOP(msg_bodyrta1)
+        }if(msg_body1==="3"){
+          let msg_bodyrta2="1. Solicitar servicio tecnico"+"\n2. Cotizar"; 
+          sendOP(msg_bodyrta2);
         }
 
         function sendOP(opction){
@@ -84,7 +88,7 @@ app.post("/webhook", (req, res) => {
       }else{
         let mesagge='de'+':'+ from +' '+msg_body1;
         io.emit('whatsapp_notification', mesagge);
-        let msg_body ="Bienvenido a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
+        let msg_body ="Bienvenido "+name+"a San Juan Electronics "+"\n¿como podemos ayudarte?"+"\n1.Informacion CCTV"+
         "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales";
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
