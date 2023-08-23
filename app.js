@@ -47,14 +47,14 @@ app.post("/webhook", (req, res) => {
           "mesagge":"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000*"+
           "\n Adicional San Juan te ofrece un plan de datos con claro  especial para GPS con un costo anual de *$95.000*"+
           "adquiriendo este plan se libera el usuario de estarealzando cada mes una regarga de datos al GPS"+
-          "\n Esto sumaria un total de *$475.000* ",
+          "\n Esto sumaria un total de *$475.000*. ",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"Para servicio tecnico escribe ASESOR o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
        ],
@@ -80,14 +80,14 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
        ],
@@ -106,17 +106,65 @@ app.post("/webhook", (req, res) => {
        ]
      },
      alarmas:{
-      "op1":"Cotizar",
-      "op2":"Servicio tecnico CCtv",
-      "op3":"Beneficios",
-      "op4":"otros"
+      "cotizar":[
+        {
+          "mesagge":"\n El Costo de una *Alarma de seguridad * varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
+          
+        }
+       ], 
+       "servicio tecnico":[
+        {
+          "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
+          
+        }
+       ],
+      
+       "beneficios":[
+        {
+          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          
+        }
+       ], 
+       "otros":[
+        {
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
+          " \n \n Escribe *info* para reiniciar el chat."
+        }
+       ]
 
     },
      acceso:{
-      "op1":"Cotizar",
-      "op2":"Servicio tecnico",
-      "op3":"Beneficios",
-      "op4":"otros"
+      "cotizar":[
+        {
+          "mesagge":"\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
+          
+        }
+       ], 
+       "servicio tecnico":[
+        {
+          "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*",
+          
+        }
+       ],
+      
+       "beneficios":[
+        {
+          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          
+        }
+       ], 
+       "otros":[
+        {
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
+          " \n \n Escribe *info* para reiniciar el chat."
+        }
+       ]
     },
     
     
