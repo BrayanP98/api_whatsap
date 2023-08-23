@@ -108,7 +108,7 @@ app.post("/webhook", (req, res) => {
      alarmas:{
       "cotizar":[
         {
-          "mesagge":"\n El Costo de una *Alarma de seguridad * varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -124,7 +124,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":" Un *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
@@ -155,7 +155,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":" Un *sistema de control de acceso* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
@@ -202,6 +202,7 @@ app.post("/webhook", (req, res) => {
           token,
         data: {
           messaging_product: "whatsapp",
+          status: "read",
           to: from,
           text: { body:  opction},
           footer: {
