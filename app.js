@@ -181,7 +181,8 @@ app.post("/webhook", (req, res) => {
                 type: "text",
                 text: "San Juan"},
                 body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
-                footer: {type: "text",
+                footer: {
+                  
                 text: "scaliwoodSoft"},
                 action: {
                   button: "Responde",
