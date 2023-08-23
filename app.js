@@ -94,7 +94,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
@@ -310,9 +310,9 @@ app.post("/webhook", (req, res) => {
         }else if(saludos.includes(msg_body1.toLowerCase())){
           let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', mesagge);
-          let msg_body ="Bienvenido  a San Juan Electronics "+" "+name+"."+"\n Soy SecuriBot🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV"+
+          let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics "+"\n Soy SecuriBot🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV"+
           "\n2. Informacion GPS"+"\n3. Informacion Alarmas residenciales"+"\n4. Control de acceso"+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
-          "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEb https://sanjuanelectronics.online/";          
+          "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
           
           axios({
              method: "POST", // Required, HTTP method, a string, e.g. POST, GET
