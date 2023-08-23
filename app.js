@@ -38,7 +38,7 @@ app.post("/webhook", (req, res) => {
   console.log(JSON.stringify(req.body, null, 2));
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas"]
+  var saludos=["buen dia","hola","buenos dias","ole","buenas","info","ayuda","informacion"]
   var rtaopt=
   {
      gps:{
@@ -79,7 +79,7 @@ app.post("/webhook", (req, res) => {
       "cotizar":[
         {
           "mesagge":"\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
-          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el rpoceso de eleccion de que sistema se adecua mejor a sus necesidades*"+
+          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros",
           
         }
@@ -285,10 +285,8 @@ app.post("/webhook", (req, res) => {
             },
             headers: { "Content-Type": "application/json" },
           });
-        }else{
-          text=lower.toUpperCase()+"\n"+"*1.*"+" "+ rtaopt[lower].op1+ "\n"+"*2.*"+" "+rtaopt[lower].op2+
-          "\n"+"*3.*"+" "+rtaopt[lower].op3+ "\n"+"*4.*"+" "+rtaopt[lower].op4;
         }
+         sendInteractive(rtaopt[lower], lower)
        
 
         sendOP(text)
