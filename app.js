@@ -67,7 +67,7 @@ app.post("/webhook", (req, res) => {
        ],
        "beneficios":[
         {
-          "mesagge":" Los sistemas de GPS vehiculares ofrecen una amplia gama de benefi",
+          "mesagge":" Los sistemas de GPS vehiculares ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
           
         }
        ],
