@@ -211,7 +211,7 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"4",
-                          title: opt.kys[3],
+                          title: kys[3],
                           description:kys[3] ,  
                                
                         }
