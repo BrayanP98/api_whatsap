@@ -42,10 +42,32 @@ app.post("/webhook", (req, res) => {
   var rtaopt=
   {
      gps:{
-       "op1":"Cotizar",
-       "op2":"Servicio tecnico GPS",
-       "op3":"Renovar Plataforma",
-       "op4":"Beneficios"
+      "cotizar":[
+        {
+          "mesagge":"el valor del gps esta en 2000",
+          
+        }
+       ], 
+       "servicio tecnico":[
+        {
+          "mesagge":"el valor del gps esta en 2000",
+          
+        }
+       ],
+       
+       "renovacion":[
+        {
+          "mesagge":"el valor del gps esta en 2000",
+          
+        }
+       ],
+       "beneficios":[
+        {
+          "mesagge":"el valor del gps esta en 2000",
+          
+        }
+       ],
+    
      },
      cctv:{
        "op1":"Cotizar",
@@ -130,6 +152,8 @@ app.post("/webhook", (req, res) => {
       console.log(msg_body1)
     
       function sendInteractive(opt, service){
+
+       let keys= Object.keys(opt[0]);
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
@@ -157,8 +181,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: opt.op1,
-                          description: opt.op1,           
+                          title: keys[0],
+                          description: keys[0],           
                         }
                       ]
                     },
@@ -167,8 +191,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: opt.op2,
-                          description:  opt.op2,           
+                          title: keys[1],
+                          description:  keys[1],           
                         }
                       ]
                     },
@@ -177,8 +201,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: opt.op3,
-                          description: opt.op3,  
+                          title: keys[2],
+                          description: keys[2],  
                                
                         }
                       ]
@@ -187,8 +211,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"4",
-                          title: opt.op4,
-                          description:opt.op4 ,  
+                          title: opt.keys[3],
+                          description:keys[3] ,  
                                
                         }
                       ]
