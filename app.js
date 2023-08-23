@@ -153,7 +153,7 @@ app.post("/webhook", (req, res) => {
     
       function sendInteractive(opt, service){
 
-       let keys= Object.keys(opt[0]);
+       var kys= Object.keys(opt);
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
@@ -181,8 +181,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: keys[0],
-                          description: keys[0],           
+                          title: kys[0],
+                          description: kys[0],           
                         }
                       ]
                     },
@@ -191,8 +191,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: keys[1],
-                          description:  keys[1],           
+                          title: kys[1],
+                          description:  kys[1],           
                         }
                       ]
                     },
@@ -201,8 +201,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:service,
-                          title: keys[2],
-                          description: keys[2],  
+                          title: kys[2],
+                          description: kys[2],  
                                
                         }
                       ]
@@ -211,8 +211,8 @@ app.post("/webhook", (req, res) => {
                       rows: [
                         {
                           id:"4",
-                          title: opt.keys[3],
-                          description:keys[3] ,  
+                          title: opt.kys[3],
+                          description:kys[3] ,  
                                
                         }
                       ]
