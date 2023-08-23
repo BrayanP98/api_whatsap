@@ -132,6 +132,8 @@ app.post("/webhook", (req, res) => {
           messaging_product: "whatsapp",
           to: from,
           text: { body:  opction},
+          footer: {
+            text: "scaliwoodSoft"}
         },
         headers: { "Content-Type": "application/json" },
       });
