@@ -138,7 +138,7 @@ app.post("/webhook", (req, res) => {
       if(msg_interctive){
 
        let servicio= rtaopt[idServ];
-
+       console.log(servicio)
        let sub=servicio[msg_interctive];
        
        sendOP(sub[0].mesagge)
