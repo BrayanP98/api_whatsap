@@ -136,8 +136,8 @@ app.post("/webhook", (req, res) => {
       let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
       let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
       if(msg_interctive){
-
-       let servicio= rtaopt[idServ];
+        console.log(idServ)
+       let servicio= rtaopt["gps"]
        console.log(servicio)
        let sub=servicio[msg_interctive];
        
