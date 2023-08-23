@@ -44,26 +44,30 @@ app.post("/webhook", (req, res) => {
      gps:{
       "cotizar":[
         {
-          "mesagge":"el valor del gps esta en 2000",
+          "mesagge":"El Costo del dispositivo GPS mas su instalacion esta en $380.000"+
+          "Adicional San Juan te ofrece un plan de datos con claro  especial para GPS con un costo anualde $95.000"+
+          "adquiriendo este plan se libera el usuario de estarealzando cada mes una regarga de datos al GPS",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"el valor del gps esta en 20001",
+          "mesagge":"Para servicio tecnico escribe ASESOR o comunicate a los numeros 3026055289-3006549863",
           
         }
        ],
        
        "renovacion":[
         {
-          "mesagge":"el valor del gps esta en 20002",
+          "mesagge":"Para renovar plataforma primero debes consignarnos el valor de renovacion anual que esta en $80.000"+
+          "posteriormente debe hacernos llegar el comprobante al whatsap 3026055289 para proceder a renovar su cuenta."+
+          "O puede hacercarse a nuestra oficina llevar el valor de la renovacion y uno de nuestros tecnicos lo ayudara con al proceso.",
           
         }
        ],
        "beneficios":[
         {
-          "mesagge":"el valor del gps esta en 20003",
+          "mesagge":" Los sistemas de GPS vehiculares ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
           
         }
        ],
