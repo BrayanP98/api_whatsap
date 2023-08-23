@@ -50,20 +50,20 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"el valor del gps esta en 2000",
+          "mesagge":"el valor del gps esta en 20001",
           
         }
        ],
        
        "renovacion":[
         {
-          "mesagge":"el valor del gps esta en 2000",
+          "mesagge":"el valor del gps esta en 20002",
           
         }
        ],
        "beneficios":[
         {
-          "mesagge":"el valor del gps esta en 2000",
+          "mesagge":"el valor del gps esta en 20003",
           
         }
        ],
@@ -137,7 +137,7 @@ app.post("/webhook", (req, res) => {
       let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
       if(msg_interctive){
         console.log(idServ)
-       let servicio= rtaopt["gps"]
+       let servicio= rtaopt[idServ]
        console.log(servicio)
        let sub=servicio[msg_interctive];
        
@@ -262,15 +262,15 @@ app.post("/webhook", (req, res) => {
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
             
-           sendInteractive(rtaopt["cctv"],"*cctv*")
+           sendInteractive(rtaopt["cctv"],"cctv")
           }if(msg_body1==="2"){
-            sendInteractive(rtaopt["gps"],"*gps*")
+            sendInteractive(rtaopt["gps"],"gps")
           }if(msg_body1==="3"){
 
-           sendInteractive(rtaopt["alarmas"],"*alarmas*")
+           sendInteractive(rtaopt["alarmas"],"alarmas")
           }
           if(msg_body1==="4"){
-          sendInteractive(rtaopt["acceso"],"*Control Acceso*")
+          sendInteractive(rtaopt["acceso"],"Control Acceso")
             }
   
          
