@@ -155,7 +155,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *sistema de control de acceso* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":" Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
           
         }
        ], 
@@ -351,7 +351,7 @@ app.post("/webhook", (req, res) => {
            sendInteractive(rtaopt["alarmas"],"alarmas")
           }
           if(msg_body1==="4"){
-          sendInteractive(rtaopt["acceso"],"Control_Acceso")
+          sendInteractive(rtaopt["Control_Acceso"],"Control_Acceso")
             }
   
          
