@@ -9,16 +9,98 @@
    
 </head>
 <body>
-  <div>
-    <h2>mensajes</h2>
-    <a href=""></a>
-  </div>
+  <div class="container">
 
+    <div>
+      <input id="number_to_send" type="text" placeholder="ingrese numero">
+
+      <button id="send_message">enviar mensaje</button>
+      
+    <script>
+
+        var button_send= document.querySelector("#send_message");
+        var input_number= document.querySelector("#number_to_send");
+        button_send.onclick=function(){
+
+          let numbre= input_number.value;
+         
+        send_whatsapp(numbre)
+        }
+          function send_whatsapp(phoneNbr){
+  var botId = '122100131648008841';
+// var phoneNbr = '573026055289';
+  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
+  
+  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+
+ var  data= {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  to: "57"+phoneNbr,
+  "type": "template",
+  "template": {
+    "name": "vencimiento",
+    "language": {
+      "code": "es_MX"},
+      "components": [
+        {
+          "type": "body",
+          "parameters": [
+            {
+              "type": "text",
+              "text": "text-string"
+            },
+            {
+              "type": "text",
+              "text": "text-string"
+            },
+          
+          ]
+        }
+      ]
+}
+}
+      
+  var postReq = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + bearerToken,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+    json: true
+  };
+  
+  fetch(url, postReq)
+    .then(data => {
+      return data.json()
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(error => console.log(error));
+  }
+        
+    </script>
+
+    </div>
+
+</div>
+</div>
+<style>
+    #viewMessages{
+
+        width: 50%;
+        height: 290px;
+        background: rgba(0, 200, 255, 0.518);
+    }
+
+</style>
     <script>
       const socket = io.connect("https://api1whatsap-3l6m-dev.fl0.io");
         
     
-            
+
         socket.on('whatsapp_notification', (data) => {
             console.log('Notificación de WhatsApp:', data);
             // Aquí puedes manejar los datos recibidos en tiempo real
