@@ -103,7 +103,7 @@
     <script>
       const socket = io.connect("https://api1whatsap-3l6m-dev.fl0.io");
         
-     var mensaje=querySelector("#message");
+     var mensaje=document.querySelector("#message");
 
         socket.on('whatsapp_notification', (data) => {
 
