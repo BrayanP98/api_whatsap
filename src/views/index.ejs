@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./socket.io/socket.io.js"></script>
-    <script src="https://api1whatsap-3l6m-dev.fl0.io/socket.io/socket.io.js"></script>
+    <script src="https://apiwhatsap2-33uh-dev.fl0.io/socket.io/socket.io.js"></script>
    
 </head>
 <body>
@@ -101,13 +101,12 @@
 </div>
 
     <script>
-      const socket = io.connect("https://api1whatsap-3l6m-dev.fl0.io");
+      const socket = io();
         
-     var mensaje=document.querySelector("#message");
+    
 
         socket.on('whatsapp_notification', (data) => {
-
-          mensaje.innerHTML=data
+         
             console.log('Notificación de WhatsApp:', data);
             // Aquí puedes manejar los datos recibidos en tiempo real
         });
