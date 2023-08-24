@@ -136,7 +136,7 @@ app.post("/webhook", (req, res) => {
        ]
 
     },
-     acceso:{
+    Control_Acceso:{
       "cotizar":[
         {
           "mesagge":"\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
@@ -351,7 +351,7 @@ app.post("/webhook", (req, res) => {
            sendInteractive(rtaopt["alarmas"],"alarmas")
           }
           if(msg_body1==="4"){
-          sendInteractive(rtaopt["acceso"],"Control Acceso")
+          sendInteractive(rtaopt["acceso"],"Control_Acceso")
             }
   
          
