@@ -83,25 +83,31 @@
         
     </script>
 
+        <div  id="viewMessages">
+            <p id="message"></p>
+
+        </div>
+        <style>
+            #viewMessages{
+
+                width: 50%;
+                height: 290px;
+                background: rgba(0, 200, 255, 0.518);
+            }
+
+        </style>
     </div>
 
 </div>
-</div>
-<style>
-    #viewMessages{
 
-        width: 50%;
-        height: 290px;
-        background: rgba(0, 200, 255, 0.518);
-    }
-
-</style>
     <script>
       const socket = io.connect("https://api1whatsap-3l6m-dev.fl0.io");
         
-    
+     var mensaje=querySelector("#message");
 
         socket.on('whatsapp_notification', (data) => {
+
+          mensaje.innerHTML=data
             console.log('Notificación de WhatsApp:', data);
             // Aquí puedes manejar los datos recibidos en tiempo real
         });
