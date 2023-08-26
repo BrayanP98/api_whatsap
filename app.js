@@ -220,7 +220,7 @@ app.post("/webhook", (req, res) => {
       let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
     
 
-      if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description){
+      if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
         let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
