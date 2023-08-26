@@ -59,10 +59,19 @@
       "type": "interactive",
       "interactive": {
         "type": "button",
+        "header": {  
+          "type": "text",
+          "text": "San Juan"},
         "body": {
-          "text": "SecuriBot🤖 dice :  \n Haz click en el boton, para continuar con el proceso de renovacion."+
-          " \n \n "
+          "text": "SecuriBot🤖 dice :  \nBuen dia .San Juan Electronics le informa que su plataforma GPS se encuentra vencida, lo invitamos a hacer la renovacion para que pueda continuar con normalidad en su servicio"+
+          " \n \n Nuestros medios de pago son:"+
+          "Ahorro a la mano:"+cta_ahorro+
+          "NEQUI: "+nequi
+
+          
         },
+        " footer": {
+          "text:" "scaliwood Soft"},
         "action": {
           "buttons": [
             {
@@ -78,10 +87,8 @@
       }
     
   }
-        send_whatsapp(data1)
-        setTimeout(function(){
-          send_whatsapp(data)
-      }, 6000);
+        
+        send_whatsapp(data)
        
         }
           function send_whatsapp(data){
