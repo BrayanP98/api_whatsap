@@ -94,10 +94,11 @@
                 height: 290px;
                 background: rgba(0, 200, 255, 0.518);
             }
-            #mesaggeUser{
+            .mesaggeUser{
               width: 50%;
               height: 200px;
               background: yellow;
+              overflow: hidden;
             }
 
         </style>
@@ -113,6 +114,7 @@
         socket.on('whatsapp_notification', (from, message) => {
            let mesagesUser=document.createElement('div');
             let mesagesview=document.createElement('p');
+            mesagesUser.className="mesaggeUser"
             mesagesUser.id="mesaggeUser"+from
             mesagesview.id=from
 
@@ -122,7 +124,7 @@
             mesagesUser.appendChild(mesagesview)
             mensajeview.appendChild(mesagesUser)
          
-            console.log('Notificación de WhatsApp:', data);
+           // console.log('Notificación de WhatsApp:', data);
            
         });
     
