@@ -23,10 +23,12 @@
         button_send.onclick=function(){
 
           let number= input_number.value;
+          var nequi="3006549863";
+           var cta_ahorro= "03157527681"
           var  data1= {
   "messaging_product": "whatsapp",
   "recipient_type": "individual",
-  to: "57"+phoneNbr,
+  to: "57"+number,
   "type": "template",
   "template": {
     "name": "vencimiento",
@@ -53,7 +55,7 @@
           var  data= {
       "messaging_product": "whatsapp",
       "recipient_type": "individual",
-      "to": phoneNbr,
+      "to": number,
       "type": "interactive",
       "interactive": {
         "type": "button",
@@ -76,13 +78,12 @@
       }
     
   }
-        send_whatsapp(number,data1)
-        send_whatsapp(number,data)
+        send_whatsapp(data1)
+        send_whatsapp(data)
         }
           function send_whatsapp(phoneNbr,data){
 
-            var nequi="3006549863";
-            var cta_ahorro= "03157527681"
+          
   var botId = '122100131648008841';
 // var phoneNbr = '573026055289';
   var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
