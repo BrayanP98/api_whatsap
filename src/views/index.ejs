@@ -114,12 +114,12 @@
            let mesagesUser=document.createElement('div');
             let mesagesview=document.createElement('p');
             mesagesUser.id="mesaggeUser"+from
-            mesagesview.className=from
+            mesagesview.id=from
 
             mesagesview.innerHTML="Mensaje de:"+from+" "+"dice:"+" "+message;
             
 
-            mesagesUser.appendChild(mensajeview)
+            mesagesUser.appendChild(mesagesview)
             mensajeview.appendChild(mesagesUser)
          
             console.log('Notificación de WhatsApp:', data);

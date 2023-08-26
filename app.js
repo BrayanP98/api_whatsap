@@ -363,6 +363,9 @@ app.post("/webhook", (req, res) => {
           if(msg_body1==="4"){
           sendInteractive(rtaopt["Control_Acceso"],"Control_Acceso")
             }
+            if(msg_body1==="5"){
+              sendInteractive(rtaopt["catalogo"],"catalogo")
+                }
   
          
   
@@ -370,7 +373,7 @@ app.post("/webhook", (req, res) => {
           //let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', from,msg_body1);
           let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\n Soy SecuriBot🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV."+
-          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Control de acceso."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
+          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Control de acceso."+"\n 5. Catalogo."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
           "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
           
           axios({
