@@ -232,7 +232,7 @@ app.post("/webhook", (req, res) => {
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
-         sendOP(rtaopt[butonRepli].mesagge)
+          console.log(rtaopt[butonRepli])
 
       }
 
