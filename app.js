@@ -168,7 +168,7 @@ app.post("/webhook", (req, res) => {
     },
     
     
-    renovar_plataformar:{
+    renovar_plataforma:{
 
         "mesagge":"SecuriBot🤖 dice :"+"\n\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
@@ -232,7 +232,7 @@ app.post("/webhook", (req, res) => {
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
-          console.log(rtaopt[butonRepli])
+          console.log(butonRepli)
 
       }
 
