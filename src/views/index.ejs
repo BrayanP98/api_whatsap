@@ -79,7 +79,10 @@
     
   }
         send_whatsapp(data1)
-        send_whatsapp(data)
+        setTimeout(function(){
+          send_whatsapp(data)
+      }, 6000);
+       
         }
           function send_whatsapp(data){
 
