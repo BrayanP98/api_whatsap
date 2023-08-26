@@ -168,10 +168,11 @@ app.post("/webhook", (req, res) => {
     },
     
     
-    renovar:{
+    renovar_plataformar:{
 
-        "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat renovar."
+        "mesagge":"SecuriBot🤖 dice :"+"\n\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "  \n Nuestros medios de pago son:"+
+          " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"
 
     }
     
@@ -229,9 +230,9 @@ app.post("/webhook", (req, res) => {
        sendOP(sub[0].mesagge)
 
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
-        let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
-        let lowertra=butonRepli.toLowerCase()
-          console.log(rtaopt[lowertra])
+        let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
+        
+         sendOP(rtaopt[butonRepli].mesagge)
 
       }
 
