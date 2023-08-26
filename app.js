@@ -175,6 +175,9 @@ app.post("/webhook", (req, res) => {
           " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"+
           "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion, estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
+    },
+    asesor:{
+
     }
     
 
