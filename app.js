@@ -216,11 +216,14 @@ app.post("/webhook", (req, res) => {
       // extract the message text from the webhook payload
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
-      let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+    
       let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
-      let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-      if(msg_interctive){
-       
+    
+
+      if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description){
+        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+
+        let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
        let servicio= rtaopt[idServ]
        
        let sub=servicio[msg_interctive];
