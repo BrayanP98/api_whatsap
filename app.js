@@ -171,7 +171,7 @@ app.post("/webhook", (req, res) => {
     renovar:{
 
         "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."
+          " \n \n Escribe *info* para reiniciar el chat renovar."
 
     }
     
@@ -217,8 +217,6 @@ app.post("/webhook", (req, res) => {
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
     
-      let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
-    
 
       if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
         let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
@@ -230,8 +228,10 @@ app.post("/webhook", (req, res) => {
        
        sendOP(sub[0].mesagge)
 
-      }else if(butonRepli){
-          console.log(butonRepli);
+      }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
+        let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
+        let lowertra=butonRepli.toLowerCase()
+          console.log(rtaopt[lowertra])
 
       }
 

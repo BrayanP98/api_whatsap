@@ -103,12 +103,18 @@
     <script>
       const socket = io();
         
-    var mensajeview=document.querySelector("#message")
+    var mensajeview=document.querySelector("#viewMessages")
 
         socket.on('whatsapp_notification', (data) => {
-          mensajeview.innerHTML=data
+
+            let mesagesview=document.createElement('p');
+            mesagesview.id='message'
+
+            mesagesview.innerHTML=data
+            mensajeview.appendChild(mesagesview)
+         
             console.log('Notificación de WhatsApp:', data);
-            // Aquí puedes manejar los datos recibidos en tiempo real
+           
         });
     
        
