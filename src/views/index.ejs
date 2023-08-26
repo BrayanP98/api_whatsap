@@ -112,19 +112,26 @@
     var mensajeview=document.querySelector("#viewMessages")
 
         socket.on('whatsapp_notification', (from, message) => {
+          var mensajeview=document.querySelector("#viewMessages")
+
            let mesagesUser=document.createElement('div');
             let mesagesview=document.createElement('p');
             mesagesUser.className="mesaggeUser"
-            mesagesUser.id="mesaggeUser"+from
+            mesagesUser.id="mesaggeUser"+from;
+           
             mesagesview.id=from
-
             mesagesview.innerHTML="Mensaje de:"+from+" "+"dice:"+" "+message;
-            
+            let divUser=document.querySelector("#mesaggeUser"+from)
+            if(divUser){
 
-            mesagesUser.appendChild(mesagesview)
-            mensajeview.appendChild(mesagesUser)
-         
-           // console.log('Notificación de WhatsApp:', data);
+
+              divUser.appendChild(mesagesview)
+              
+            }else{
+              mesagesUser.appendChild(mesagesview)
+              mensajeview.appendChild(mesagesUser)
+            }
+             
            
         });
     
