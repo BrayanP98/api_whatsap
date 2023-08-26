@@ -38,7 +38,7 @@ app.post("/webhook", (req, res) => {
   console.log(JSON.stringify(req.body, null, 2));
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas","info","ayuda","informacion"]
+  var saludos=["buen dia","hola","buenos dias","ole","buenas","info","ayuda","informacion","buen día"]
   var rtaopt=
   {
      gps:{
@@ -172,7 +172,8 @@ app.post("/webhook", (req, res) => {
 
         "mesagge":"SecuriBot🤖 dice :"+"\n\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
-          " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"
+          " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"+
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion, estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
     }
     
@@ -391,8 +392,8 @@ app.post("/webhook", (req, res) => {
              headers: { "Content-Type": "application/json" },
            });
         }else{
-          let mesagge='de'+':'+ from +' '+msg_body1;
-          io.emit('whatsapp_notification', mesagge);
+          
+          io.emit('whatsapp_notification', from,msg_body1);
           let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
           "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
            axios({
