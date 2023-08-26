@@ -22,18 +22,8 @@
         var input_number= document.querySelector("#number_to_send");
         button_send.onclick=function(){
 
-          let numbre= input_number.value;
-         
-        send_whatsapp(numbre)
-        }
-          function send_whatsapp(phoneNbr){
-  var botId = '122100131648008841';
-// var phoneNbr = '573026055289';
-  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
-  
-  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
-
- var  data= {
+          let number= input_number.value;
+          var  data1= {
   "messaging_product": "whatsapp",
   "recipient_type": "individual",
   to: "57"+phoneNbr,
@@ -48,11 +38,11 @@
           "parameters": [
             {
               "type": "text",
-              "text": "text-string"
+              "text": cta_ahorro
             },
             {
               "type": "text",
-              "text": "text-string"
+              "text": nequi
             },
           
           ]
@@ -60,6 +50,46 @@
       ]
 }
 }
+          var  data= {
+      "messaging_product": "whatsapp",
+      "recipient_type": "individual",
+      "to": phoneNbr,
+      "type": "interactive",
+      "interactive": {
+        "type": "button",
+        "body": {
+          "text": "SecuriBot🤖 dice :  \n Haz click en el boton, para continuar con el proceso de renovacion."+
+          " \n \n "
+        },
+        "action": {
+          "buttons": [
+            {
+              "type": "reply",
+              "reply": {
+                "id": "renovar_plataforma",
+                "title": "RENOVAR PLATAFORMA"
+              }
+            },
+           
+          ]
+        }
+      }
+    
+  }
+        send_whatsapp(number,data1)
+        send_whatsapp(number,data)
+        }
+          function send_whatsapp(phoneNbr,data){
+
+            var nequi="3006549863";
+            var cta_ahorro= "03157527681"
+  var botId = '122100131648008841';
+// var phoneNbr = '573026055289';
+  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
+  
+  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+
+
       
   var postReq = {
     method: 'POST',
@@ -96,9 +126,14 @@
             }
             .mesaggeUser{
               width: 50%;
-              height: 200px;
+              height: 100px;
               background: yellow;
               overflow: hidden;
+            }
+            .mesaggeUser:hover{
+              height: 150px;
+              transition: .5s ease-in-out;
+
             }
 
         </style>
