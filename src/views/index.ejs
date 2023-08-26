@@ -105,12 +105,12 @@
         
     var mensajeview=document.querySelector("#viewMessages")
 
-        socket.on('whatsapp_notification', (data) => {
+        socket.on('whatsapp_notification', (from, message) => {
 
             let mesagesview=document.createElement('p');
-            mesagesview.id='message'
+            mesagesview.id=from
 
-            mesagesview.innerHTML=data
+            mesagesview.innerHTML="Mensaje de:"+from+" "+"dice:"+" "+message;
             mensajeview.appendChild(mesagesview)
          
             console.log('Notificación de WhatsApp:', data);
