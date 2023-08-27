@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chats SanJuan Electronics</title>
     <script src="./socket.io/socket.io.js"></script>
     <script src="https://apiwhatsap2-33uh-dev.fl0.io/socket.io/socket.io.js"></script>
    
 </head>
 <body>
+  <h1>Chats SanJuan Electronics</h1>
   <div class="container">
 
     <div>
@@ -137,13 +138,13 @@
 
 </div>
         <style>
-           #viewMessages{
-      position: relative;
-        width: 50%;
+      #viewMessages{
+       position: relative;
+        width: 70%;
         height: 290px;
         display: flex;
         flex-direction: row;
-        background: rgb(0, 225, 255);
+        background: rgba(0, 225, 255, 0.353);
     }
     #lateral_view{
       width: 30%;
@@ -156,16 +157,19 @@
     }
     .mesaggeUser{
       width: 99%;
-      height: 60px;
+      height: 40px;
       background: rgb(255, 242, 0);
       overflow: hidden;
       border-radius: 5px;
+      text-align: center;
+      padding-bottom: 8px;
     }
     #viewchat{
       position: relative;
       width: 70%;
       height: 100%;
-      background: rgba(0, 255, 72, 0.592);
+      background-image: url("https://randomeo.com/descargas/wp-content/uploads/2020/12/descargar-whatsapp-wallpaper.jpg");
+      background-size: 100%;
       
      
     }
@@ -183,10 +187,11 @@
       text-align: center;
       vertical-align: middle;
       top: 10px;
-      height: 30px;
+      height: fit-content;
+      padding-bottom: 5px;
       background: rgba(144, 250, 144, 0.827);
       float: right;
-     
+     right: 10px;
       border-radius: 15px 0px 15px 15px;
     }
         </style>
