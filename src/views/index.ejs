@@ -125,29 +125,70 @@
         
     </script>
 
-        <div  id="viewMessages">
-            <p id="message"></p>
+<div  id="viewMessages">
+  <div id="lateral_view"></div>
+  
 
-        </div>
+  <div id="viewchat">
+    <div id="chatUser">
+
+    </div>
+  </div>
+
+</div>
         <style>
-            #viewMessages{
-
-                width: 50%;
-                height: 290px;
-                background: rgba(0, 200, 255, 0.518);
-            }
-            .mesaggeUser{
-              width: 50%;
-              height: 100px;
-              background: yellow;
-              overflow: hidden;
-            }
-            .mesaggeUser:hover{
-              height: 150px;
-              transition: .5s ease-in-out;
-
-            }
-
+           #viewMessages{
+      position: relative;
+        width: 50%;
+        height: 290px;
+        display: flex;
+        flex-direction: row;
+        background: rgb(0, 225, 255);
+    }
+    #lateral_view{
+      width: 30%;
+      height: 100%;
+      
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .mesaggeUser{
+      width: 99%;
+      height: 60px;
+      background: rgb(255, 242, 0);
+      overflow: hidden;
+      border-radius: 5px;
+    }
+    #viewchat{
+      position: relative;
+      width: 70%;
+      height: 100%;
+      background: rgba(0, 255, 72, 0.592);
+      
+     
+    }
+    #chatUser{
+      width: 100px;
+      height: 100%;
+      float: right;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat{
+      position: relative;
+      width: 100px;
+      text-align: center;
+      vertical-align: middle;
+      top: 10px;
+      height: 30px;
+      background: rgba(144, 250, 144, 0.827);
+      float: right;
+     
+      border-radius: 15px 0px 15px 15px;
+    }
         </style>
     </div>
 
@@ -159,15 +200,16 @@
     var mensajeview=document.querySelector("#viewMessages")
     var arrayMessages=[ ]
         socket.on('whatsapp_notification', (from, message) => {
+          var numerouser=from;
 
-
-          let usermsn={
+      let usermsn={
         id:from,
 
         mesagges:[
           message
         ]
       }
+      
        if (arrayMessages.length === 0) {
         console.log("vacio")
         arrayMessages.push(usermsn)
@@ -194,28 +236,67 @@
 
       }
       console.log(arrayMessages)
-          var mensajeview=document.querySelector("#viewMessages")
+
+      
+
+      var mensajeview=document.querySelector("#lateral_view")
 
            let mesagesUser=document.createElement('div');
             let mesagesview=document.createElement('p');
             mesagesUser.className="mesaggeUser"
-            mesagesUser.id="mesaggeUser"+from;
+            mesagesUser.id=from;
            
             mesagesview.id=from
-            mesagesview.innerHTML="Mensaje de:"+from+" "+"dice:"+" "+message;
-            let divUser=document.querySelector("#mesaggeUser"+from)
+            mesagesview.innerHTML="Mensaje de:"+" "+from;
+            let divUser=document.getElementById(from)
             if(divUser){
-
+              mesagesview.innerHTML="";
 
               divUser.appendChild(mesagesview)
               
             }else{
+
               mesagesUser.appendChild(mesagesview)
               mensajeview.appendChild(mesagesUser)
             }
-             
+            refresh()
+
            
         });
+        function refresh(){
+      for(i=0;i<arrayMessages.length;i++){
+
+        let id=arrayMessages[i].id;
+        let divUser=document.getElementById(id);
+
+        divUser.onclick=function(){
+          let viewchat=document.getElementById("chatUser");
+          viewchat.innerHTML=""
+          for(i=0;i<arrayMessages.length;i++){
+            var mensajes=arrayMessages[i].mesagges
+            if(divUser.id==arrayMessages[i].id){
+            
+           
+             for(o=0;o<mensajes.length;o++){
+            
+
+              var chat=document.createElement("p");
+              chat.className="chat"
+
+              chat.innerHTML=mensajes[o];
+              viewchat.appendChild(chat)
+
+             }
+            }else{
+              
+            }
+           
+
+          }
+          
+        }
+      }
+    }
     
        
       </script>
