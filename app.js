@@ -178,7 +178,15 @@ app.post("/webhook", (req, res) => {
     },
     asesor:{
 
-    }
+    },  
+    catalogo:{
+
+      "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+      "  \n https://sanjuanelectronics.online/"+
+        " \n \n "+
+        "\n "
+
+  }
     
 
    }
@@ -376,7 +384,10 @@ app.post("/webhook", (req, res) => {
         }else if(saludos.includes(msg_body1.toLowerCase())){
           //let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', from,msg_body1);
-         
+          let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\n Soy *SecuriBot*🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV."+
+          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Control de acceso."+"\n5. Catalogo."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
+          "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
+          
           axios({
              method: "POST", // Required, HTTP method, a string, e.g. POST, GET
              url:
@@ -385,29 +396,9 @@ app.post("/webhook", (req, res) => {
                "/messages?access_token=" +
                token,
              data: {
-              "messaging_product": "whatsapp",
-              "recipient_type": "individual",
-              "to": from,
-              "type": "template",
-              "template": {
-                "name": "bienvenida",
-                "language": {
-                  "code": "es_MX"
-                },
-                "components": [
-                  
-                  {
-                    "type": "body",
-                    "parameters": [
-                      {
-                        "type": "text",
-                        "text": name
-                      },
-                     
-                    ]
-                  }
-                ]
-              }
+               messaging_product: "whatsapp",
+               to: from,
+               text: { body:  msg_body },
              },
              headers: { "Content-Type": "application/json" },
            });

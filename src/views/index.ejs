@@ -157,8 +157,43 @@
       const socket = io();
         
     var mensajeview=document.querySelector("#viewMessages")
-
+    var arrayMessages=[ ]
         socket.on('whatsapp_notification', (from, message) => {
+
+
+          let usermsn={
+        id:from,
+
+        mesagges:[
+          message
+        ]
+      }
+       if (arrayMessages.length === 0) {
+        console.log("vacio")
+        arrayMessages.push(usermsn)
+       }else{
+        let exist=""
+        for(i=0;i<arrayMessages.length;i++){
+        console.log(" no vacio")
+        if(arrayMessages[i].id==from){
+        arrayMessages[i].mesagges.push(message)
+        console.log("ya existe")
+        exist="si"
+        break;
+        
+       }else{
+        console.log(" no  existe")
+        
+        exist="no"
+       }
+       }
+       
+      if(exist=="no"){
+        arrayMessages.push(usermsn)
+      }
+
+      }
+      console.log(arrayMessages)
           var mensajeview=document.querySelector("#viewMessages")
 
            let mesagesUser=document.createElement('div');
