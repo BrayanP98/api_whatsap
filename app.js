@@ -470,3 +470,7 @@ app.get("/webhook", (req, res) => {
 });
 
 
+app.post("/v1/account/verify", (req, res) => {
+
+console.log(req,res)
+})

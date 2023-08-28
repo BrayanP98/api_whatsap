@@ -18,7 +18,7 @@
       <button id="send_message">enviar mensaje</button>
       
     <script>
-
+      const title ="Chat San Juan"
         var button_send= document.querySelector("#send_message");
         var input_number= document.querySelector("#number_to_send");
         button_send.onclick=function(){
@@ -163,6 +163,7 @@
       border-radius: 5px;
       text-align: center;
       padding-bottom: 8px;
+      cursor: pointer;
     }
     #viewchat{
       position: relative;
@@ -269,6 +270,9 @@
            
         });
         function refresh(){
+          let numbernotif=arrayMessages.length
+       console.log(arrayMessages.length)
+       document.title='('+numbernotif+')'+title
       for(i=0;i<arrayMessages.length;i++){
 
         let id=arrayMessages[i].id;
