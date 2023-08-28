@@ -288,6 +288,8 @@
             var rta=input_rta.value;
             let from=divUser.id;
             socket.emit("send_rta", from,rta)
+
+            input_rta.value=""
            
 
           }
