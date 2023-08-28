@@ -57,7 +57,7 @@ app.post("/webhook", (req, res) => {
   console.log(JSON.stringify(req.body, null, 2));
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas","info","ayuda","informacion","buen día"]
+  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día"]
   var rtaopt=
   {
      gps:{
