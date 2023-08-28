@@ -362,11 +362,12 @@ app.post("/webhook", (req, res) => {
       var lower=msg_body1.toLowerCase();
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
-        var text=""
+        let text= "Por favor ponerse en contacto con:"+" \n"+
+        name+" "+"\n al numero:"+""+from+""+"para asesoria en"+" "+lower;
         if(lower=="asesor"){
            text=("En minutos uno de nuestros asesores se pondra en contacto con usted.")
            let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-           name+" "+"\n al numero:"+""+from;
+           name+" "+"\n al numero:"+""+from+"" +"para asesoria";
            axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
