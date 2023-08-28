@@ -175,6 +175,7 @@ app.post("/webhook", (req, res) => {
           " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"+
           "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion, estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
+          
     },
     asesor:{
 
@@ -207,7 +208,7 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-     function sendOP(opction){
+     function sendOP(opction,para){
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
@@ -218,7 +219,7 @@ app.post("/webhook", (req, res) => {
         data: {
           messaging_product: "whatsapp",
           status: "read",
-          to: from,
+          to: para,
           text: { body:  opction},
           footer: {
             text: "scaliwoodSoft"}
@@ -239,12 +240,17 @@ app.post("/webhook", (req, res) => {
        
        let sub=servicio[msg_interctive];
        
-       sendOP(sub[0].mesagge)
+       sendOP(sub[0].mesagge,from)
 
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
-         sendOP(rtaopt[butonRepli].mesagge)
+        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
+        name+" "+"\n al numero:"+""+from;
+        let asesrNumber="573026055289"
+        sendOP(contactClient,asesrNumber)
+         sendOP(rtaopt[butonRepli].mesagge,from);
+         
 
       }
 
@@ -360,7 +366,7 @@ app.post("/webhook", (req, res) => {
          sendInteractive(rtaopt[lower], lower)
        
 
-        sendOP(text)
+        sendOP(text,from)
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
@@ -388,39 +394,13 @@ app.post("/webhook", (req, res) => {
           "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Control de acceso."+"\n5. Catalogo."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
           "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
           
-          axios({
-             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-             url:
-               "https://graph.facebook.com/v12.0/" +
-               phone_number_id +
-               "/messages?access_token=" +
-               token,
-             data: {
-               messaging_product: "whatsapp",
-               to: from,
-               text: { body:  msg_body },
-             },
-             headers: { "Content-Type": "application/json" },
-           });
+          sendOP(msg_body,from)
         }else{
           
           io.emit('whatsapp_notification', from,msg_body1);
           let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
           "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
-           axios({
-             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-             url:
-               "https://graph.facebook.com/v12.0/" +
-               phone_number_id +
-               "/messages?access_token=" +
-               token,
-             data: {
-               messaging_product: "whatsapp",
-               to: from,
-               text: { body:  msg_body },
-             },
-             headers: { "Content-Type": "application/json" },
-           });
+           sendOP(msg_body, from)
         }
       }
       
