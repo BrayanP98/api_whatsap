@@ -29,7 +29,26 @@ server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 io.on('connection', function(socket)  {
-  socket.emit("getprods","bienvenidos todos")
+  socket.on("send_rta", function (to, message) {
+    var botId = '122100131648008841';
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+       botId+
+        "/messages?access_token=" +
+        token,
+      data: {
+        messaging_product: "whatsapp",
+        status: "read",
+        to: to,
+        text: { body:  message},
+        footer: {
+          text: "scaliwoodSoft"}
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+  })
 });
 
 app.post("/webhook", (req, res) => {

@@ -13,9 +13,7 @@
   <div class="container">
 
     <div>
-      <input id="number_to_send" type="text" placeholder="ingrese numero">
-
-      <button id="send_message">enviar mensaje</button>
+      
       
     <script>
       const title ="Chat San Juan"
@@ -26,33 +24,7 @@
           let number= input_number.value;
           var nequi="3006549863";
            var cta_ahorro= "03157527681"
-          var  data1= {
-  "messaging_product": "whatsapp",
-  "recipient_type": "individual",
-  to: "57"+number,
-  "type": "template",
-  "template": {
-    "name": "vencimiento",
-    "language": {
-      "code": "es_MX"},
-      "components": [
-        {
-          "type": "body",
-          "parameters": [
-            {
-              "type": "text",
-              "text": cta_ahorro
-            },
-            {
-              "type": "text",
-              "text": nequi
-            },
-          
-          ]
-        }
-      ]
-}
-}
+         
           var  data= {
       "messaging_product": "whatsapp",
       "recipient_type": "individual",
@@ -132,16 +104,24 @@
 
   <div id="viewchat">
     <div id="chatUser">
-
+      
+    </div>
+    <div id="responder">
+      <input type="text" id="input_rta">
+      <button id="send_rta">Enviar</button>
     </div>
   </div>
 
 </div>
         <style>
-      #viewMessages{
-       position: relative;
-        width: 70%;
-        height: 290px;
+      .container{
+    width: 100%;
+    height: 500px;
+  }
+    #viewMessages{
+      position: relative;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
         background: rgba(0, 225, 255, 0.353);
@@ -171,30 +151,51 @@
       height: 100%;
       background-image: url("https://randomeo.com/descargas/wp-content/uploads/2020/12/descargar-whatsapp-wallpaper.jpg");
       background-size: 100%;
-      
+     
      
     }
-    #chatUser{
-      width: 100px;
+    #responder{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      height: 30px;
+      background: white;
+    }
+    #responder input{
+      width: 80%;
       height: 100%;
+
+    }
+    #responder button{
+      width: 10%;
+      height: 100%;
+
+    }
+    #chatUser{
+      width: 30%;
+      height: 99%;
       float: right;
       right: 15px;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
+      overflow-y: scroll;
+    
+      position: relative;
     }
     .chat{
       position: relative;
-      width: 100px;
+      width: 80%;
       text-align: center;
       vertical-align: middle;
       top: 10px;
       height: fit-content;
       padding-bottom: 5px;
       background: rgba(144, 250, 144, 0.827);
-      float: right;
-     right: 10px;
+      left: 25px;
       border-radius: 15px 0px 15px 15px;
     }
+
         </style>
     </div>
 
@@ -279,7 +280,17 @@
         let divUser=document.getElementById(id);
 
         divUser.onclick=function(){
+
           let viewchat=document.getElementById("chatUser");
+          var btn_send=document.getElementById("send_rta");
+          var input_rta=document.getElementById("input_rta");
+          btn_send.onclick=function(){
+            var rta=input_rta.value;
+            let from=divUser.id;
+            socket.emit("send_rta", from,rta)
+           
+
+          }
           viewchat.innerHTML=""
           for(i=0;i<arrayMessages.length;i++){
             var mensajes=arrayMessages[i].mesagges
@@ -309,5 +320,8 @@
     
        
       </script>
+      <input id="number_to_send" type="text" placeholder="ingrese numero">
+
+      <button id="send_message">enviar mensaje</button>
 </body>
 </html>
