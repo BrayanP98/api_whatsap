@@ -363,8 +363,8 @@ app.post("/webhook", (req, res) => {
             headers: { "Content-Type": "application/json" },
           });
         }
-         sendInteractive(rtaopt[lower], lower)
-       
+         
+       sendInteractive(rtaopt[lower], lower)
 
         sendOP(text,from)
       }else{
