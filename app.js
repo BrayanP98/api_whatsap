@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 
 server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+ // console.log(`Server listening on port ${PORT}`);
 });
 io.on('connection', function(socket)  {
   socket.on("send_rta", function (to, message) {
@@ -229,8 +229,8 @@ app.post("/webhook", (req, res) => {
       let phone_number_id =
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-      var estado= req.body.entry[0].changes[0].value.statuses[0].status
-     console.log(estado)
+     
+     console.log(req.body.entry[0].changes[0])
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
      function sendOP(opction,para){
       axios({
