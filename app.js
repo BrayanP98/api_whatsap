@@ -63,7 +63,7 @@ app.post("/webhook", (req, res) => {
   
 
 
- }
+ }else{
   
 
   var optinos=["1","2","3","4"]
@@ -465,6 +465,8 @@ app.post("/webhook", (req, res) => {
     // Return a '404 Not Found' if event is not from a WhatsApp API
     res.sendStatus(404);
   }
+
+}
 });
 
 
