@@ -268,7 +268,7 @@ app.post("/webhook", (req, res) => {
         
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
-        let asesrNumber="573026055289"+
+        let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber)
          sendOP(rtaopt[butonRepli].mesagge,from);
          
