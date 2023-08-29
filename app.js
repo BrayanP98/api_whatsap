@@ -56,7 +56,7 @@ app.post("/webhook", (req, res) => {
   let body = req.body;
  //console.log(JSON.stringify(req.body, null, 2));
 
- if(body.entry[0].changes[0].value.statuses[0]){
+ if(body.entry[0].changes[0].value){
   let status=body.entry[0].changes[0].value.statuses[0]
 
   io.emit("estado",status)
