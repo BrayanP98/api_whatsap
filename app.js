@@ -429,7 +429,7 @@ app.post("/webhook", (req, res) => {
           
           io.emit('whatsapp_notification', from,msg_body1);
           let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
-          "\n *Informacion, buen dia, hola, GPS, CCTV, Cotizacion*"  ;
+          "\n *Informacion, buen dia, hola, GPS, CCTV, alarmas, asesor, catalogo *"  ;
            sendOP(msg_body, from)
         }
       }
