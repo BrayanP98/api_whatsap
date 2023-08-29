@@ -54,7 +54,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- console.log(JSON.stringify(req.body.entry.changes[0].value.statuses[0].status, null, 2));
+ console.log(JSON.stringify(req.body.entry.changes[0], null, 2));
   
 
   var optinos=["1","2","3","4"]
