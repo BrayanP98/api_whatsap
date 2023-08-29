@@ -211,6 +211,13 @@
     var mensajeview=document.querySelector("#viewMessages")
     var arrayMessages=[ ]
         socket.on('whatsapp_notification', (from, message) => {
+
+          Notification.requestPermission(function (permission) {
+    // Si el usuario nos lo concede, creamos la notificación
+    if (permission === "granted") {
+      var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
+    }
+  });
           var numerouser=from;
 
       let usermsn={
