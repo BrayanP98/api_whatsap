@@ -14,6 +14,8 @@
 
     <input id="number_to_send" type="text" placeholder="ingrese numero">
 
+    <textarea name="" id="mensajegps" cols="30" rows="10" placeholder="mensajes"></textarea>
+
     <button id="send_message">enviar mensaje</button>
       
       
@@ -21,8 +23,9 @@
       const title ="Chat San Juan"
         var button_send= document.querySelector("#send_message");
         var input_number= document.querySelector("#number_to_send");
+        var textarea=document.querySelector("#mensajegps");
         button_send.onclick=function(){
-
+          let mensaje= textarea.value;
           let number= input_number.value;
           var nequi="3006549863";
            var cta_ahorro= "03157527681"
@@ -38,7 +41,7 @@
           "type": "text",
           "text": "San Juan"},
         "body": {
-          "text": "SecuriBot🤖 dice :  \nHola!.   San Juan Electronics le informa que su plan de GPS se encuentra pronto a vencer, lo invitamos a hacer la renovacion para que pueda continuar con normalidad en su servicio"+
+          "text": "SecuriBot🤖 dice :  \n"+mensaje+
           " \n \n Nuestros medios de pago son:"+
           "\nAhorro a la mano:"+cta_ahorro +"✅"+
           "\nNEQUI: "+nequi+"✅"+
