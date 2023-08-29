@@ -14,7 +14,7 @@
 
     <input id="number_to_send" type="text" placeholder="ingrese numero">
 
-    <textarea name="" id="mensajegps" cols="30" rows="10" placeholder="mensajes"></textarea>
+    
 
     <button id="send_message">enviar mensaje</button>
       
@@ -23,49 +23,41 @@
       const title ="Chat San Juan"
         var button_send= document.querySelector("#send_message");
         var input_number= document.querySelector("#number_to_send");
-        var textarea=document.querySelector("#mensajegps");
+       // var textarea=document.querySelector("#mensajegps");
         button_send.onclick=function(){
-          let mensaje= textarea.value;
+         // let mensaje= textarea.value;
           let number= input_number.value;
           var nequi="3006549863";
            var cta_ahorro= "03157527681"
          
           var  data= {
-      "messaging_product": "whatsapp",
-      "recipient_type": "individual",
-      "to": number,
-      "type": "interactive",
-      "interactive": {
-        "type": "button",
-        "header": {  
-          "type": "text",
-          "text": "San Juan"},
-        "body": {
-          "text": "SecuriBot🤖 dice :  \n"+mensaje+
-          " \n \n Nuestros medios de pago son:"+
-          "\nAhorro a la mano:"+cta_ahorro +"✅"+
-          "\nNEQUI: "+nequi+"✅"+
-"\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion, estamos ubicados en la transversal 9 #57n-202 via al bosque."          
-
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": number,
+  "type": "template",
+  "template": {
+    "name": "vencimiento",
+    "language": {
+      "code": "es_MX"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": cta_ahorro
+          },
+          {
+            "type": "text",
+            "text": nequi
+          },
           
-        },
-        footer: {
-          text: "scaliwoodSoft"},
-        "action": {
-          "buttons": [
-            {
-              "type": "reply",
-              "reply": {
-                "id": "renovar_plataforma",
-                "title": "RENOVAR PLATAFORMA"
-              }
-            },
-           
-          ]
-        }
+        ]
       }
-    
+    ]
   }
+}
         
         send_whatsapp(data)
 
