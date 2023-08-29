@@ -228,7 +228,7 @@ app.post("/webhook", (req, res) => {
       let phone_number_id =
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-     var estado= req.body.entry[0].changes[0].statuses;
+     var estado= req.body.entry[0].changes[0].value.statuses[0.].status;
      console.log(estado)
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
      function sendOP(opction,para){
