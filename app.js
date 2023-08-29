@@ -54,7 +54,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- console.log(JSON.stringify(req.body.entry.changes, null, 2));
+ console.log(JSON.stringify(req.body.entry, null, 2));
   
 
   var optinos=["1","2","3","4"]
@@ -209,7 +209,15 @@ app.post("/webhook", (req, res) => {
         " \n \n "+
         "\n "
 
-  }
+  },
+  cotizar:{
+
+    "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+    "  \n https://sanjuanelectronics.online/"+
+      " \n \n "+
+      "\n "
+
+}
     
 
    }
