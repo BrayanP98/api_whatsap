@@ -228,7 +228,8 @@ app.post("/webhook", (req, res) => {
       let phone_number_id =
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-     var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
+     var estado= req.body.entry[0].changes[0].statuses[0].status;
+      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
      function sendOP(opction,para){
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -269,7 +270,7 @@ app.post("/webhook", (req, res) => {
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
         let asesrNumber="573026055289"
-        sendOP(contactClient,asesrNumber)
+      //  sendOP(contactClient,asesrNumber)
          sendOP(rtaopt[butonRepli].mesagge,from);
          
 
