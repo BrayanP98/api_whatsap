@@ -205,6 +205,8 @@
         
     var mensajeview=document.querySelector("#viewMessages")
     var arrayMessages=[ ]
+
+
         socket.on('whatsapp_notification', (from, message) => {
 
           Notification.requestPermission(function (permission) {
@@ -325,7 +327,13 @@
         }
       }
     }
-    
+   
+    socket.on('estado', (status) => {
+
+      console.log(status)
+    })
+
+
        
       </script>
       
