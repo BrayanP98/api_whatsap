@@ -58,6 +58,8 @@ app.post("/webhook", (req, res) => {
 
   var optinos=["1","2","3","4"]
   var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día"]
+  
+  var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
   {
      gps:{
@@ -266,7 +268,7 @@ app.post("/webhook", (req, res) => {
         
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from;
-        let asesrNumber="573026055289"
+        let asesrNumber="573026055289"+", para"+" "+butonRepli
         sendOP(contactClient,asesrNumber)
          sendOP(rtaopt[butonRepli].mesagge,from);
          
@@ -415,6 +417,14 @@ app.post("/webhook", (req, res) => {
           "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
           
           sendOP(msg_body,from)
+        }else if(agradecimiento.includes(msg_body1.toLowerCase())){
+
+          io.emit('whatsapp_notification', from,msg_body1);
+          let msg_body ="Es un gusto para *San Juan Electronics* poder servirle.😊"+
+          "\n Feliz dia!";          
+          
+          sendOP(msg_body,from)
+          
         }else{
           
           io.emit('whatsapp_notification', from,msg_body1);
