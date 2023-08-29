@@ -56,7 +56,7 @@ app.post("/webhook", (req, res) => {
   let body = req.body;
  //console.log(JSON.stringify(req.body, null, 2));
 
- console.log(body.entry[0].changes[0])
+ console.log(body.entry[0].changes[0].value.statuses[0]);
   
 
   var optinos=["1","2","3","4"]
