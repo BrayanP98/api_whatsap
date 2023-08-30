@@ -118,26 +118,29 @@
 </div>
         <style>
           
- @keyframes pass{
+          @keyframes pass{
   from{
     height:  0px;
   }to{
     height:100px;
   }}
-#div_notific{
-    width: 180px;
-    height: 0px;
+   #div_notific{
+     width: 180px;
+    height:0px;
     position: fixed;
     top: 0;
     right: 15px;
-    background: red;
-    visibility: hidden;
-   
-  
-}
-#div_notific.active{
-animation: pass 0.2 ease-in-out ;
-}
+     background: red;
+           
+      overflow: hidden;
+            
+        }
+    #div_notific.active{
+      height:100px;
+    animation: pass 1s ease-in ;
+            
+
+        }
 #div_notific p{
     justify-content: center;
     position: relative;
@@ -368,8 +371,8 @@ animation: pass 0.2 ease-in-out ;
 let div_notific=document.querySelector("#div_notific");
 let txt_div_notific=document.querySelector("#txt_div_notific")
      var cont_pet=0
-     if(status===" delivered"){
-      cont_pet+1
+     if(status==" delivered"){
+      
       txt_div_notific.innerHTML=status
       div_notific.classList.toggle("active")
      }
