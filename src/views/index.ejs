@@ -118,10 +118,15 @@
 </div>
         <style>
           
-
+ @keyframes pass{
+  from{
+    height:  0px;
+  }to{
+    height:100px;
+  }}
 #div_notific{
     width: 180px;
-    height: 100px;
+    height: 0px;
     position: fixed;
     top: 0;
     right: 15px;
@@ -129,6 +134,9 @@
     visibility: hidden;
    
   
+}
+#div_notific.active{
+animation: pass 0.2 ease-in-out ;
 }
 #div_notific p{
     justify-content: center;
@@ -359,8 +367,12 @@
 
 let div_notific=document.querySelector("#div_notific");
 let txt_div_notific=document.querySelector("#txt_div_notific")
-     txt_div_notific.innerHTML=status
-     div_notific.style=("visibility: visible;")
+     var cont_pet=0
+     if(status===" delivered"){
+      cont_pet+1
+      txt_div_notific.innerHTML=status
+      div_notific.classList.toggle("active")
+     }
       console.log(status)
     })
 
