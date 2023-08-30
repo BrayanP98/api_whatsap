@@ -11,7 +11,7 @@
 <body>
   <div id="div_notific">
 
-    <p>mensaje enviado</p>
+    <p id="txt_div_notific">mensaje enviado</p>
 </div>
   <h1>Chats SanJuan Electronics</h1>
   <div class="container">
@@ -126,8 +126,9 @@
     top: 0;
     right: 15px;
     background: red;
+    visibility: hidden;
    
-    
+  
 }
 #div_notific p{
     justify-content: center;
@@ -357,8 +358,10 @@
 
 
 let div_notific=document.querySelector("#div_notific");
-     div_notific.innerHTML=status
-      //console.log(status)
+let txt_div_notific=document.querySelector("#txt_div_notific")
+     txt_div_notific.innerHTML=status
+     div_notific.style=("visibility: visible;")
+      console.log(status)
     })
 
 
