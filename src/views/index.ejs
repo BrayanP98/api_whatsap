@@ -386,8 +386,14 @@ let txt_div_notific=document.querySelector("#txt_div_notific")
       console.log("status")
       txt_div_notific.innerHTML="Mensaje entregado"
       div_notific.classList.toggle("active")
+     }else if(status=="read"){
+      txt_div_notific.innerHTML="Mensaje leido"
+      div_notific.classList.toggle("active")
+     }else if(status=="failed"){
+      txt_div_notific.innerHTML="Numero incorrecto"
+      div_notific.classList.toggle("active")
      }
-      console.log(status)
+    
     })
 
 
