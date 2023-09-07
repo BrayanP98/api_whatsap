@@ -298,11 +298,12 @@ app.post("/webhook", (req, res) => {
 
 
      }else{
-
+      let msg_body11 = req.body.entry[0].changes[0].value.messages[0]
+      console.log(msg_body11)
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
     
      
-      console.log(msg_body1)
+      
     
       function sendInteractive(opt, service){
 
