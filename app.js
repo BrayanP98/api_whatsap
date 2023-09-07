@@ -297,9 +297,15 @@ app.post("/webhook", (req, res) => {
 
 
 
+     }else if(req.body.entry[0].changes[0].value.messages[0].button){
+      let butonrta = req.body.entry[0].changes[0].value.messages[0].button.text;
+      if(butonrta==="Renovar Plataforma"){
+        butonrta="renovar_plataforma"
+        sendOP(rtaopt[butonrta].mesagge,from); 
+      }
+      
      }else{
-      let msg_body11 = req.body.entry[0].changes[0].value.messages[0].button.text
-      console.log(msg_body11)
+      
       let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
     
      
