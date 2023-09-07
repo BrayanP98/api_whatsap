@@ -35,32 +35,32 @@
            var cta_ahorro= "03157527681"
          
           var  data= {
-  "messaging_product": "whatsapp",
+            "messaging_product": "whatsapp",
   "recipient_type": "individual",
   "to": number,
   "type": "template",
   "template": {
-    "name": "vencimiento",
+    "name": "plataforma",
     "language": {
       "code": "es_MX"
     },
     "components": [
       {
-        "type": "body",
+        "type": "button",
+        "sub_type" : "url",
+        "index": "2",
         "parameters": [
-          {
-            "type": "text",
-            "text": cta_ahorro
-          },
-          {
-            "type": "text",
-            "text": nequi
-          },
-          
+            {                    
+                "type": "text",
+               
+                "text": "https://sanjuanelectronics.online/"
+            }
         ]
       }
     ]
-  }
+  
+      }
+ 
 }
         
         send_whatsapp(data)
