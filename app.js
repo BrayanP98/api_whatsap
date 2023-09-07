@@ -469,7 +469,7 @@ app.post("/webhook", (req, res) => {
         }else if(optinoSpecial.includes(msg_body1.toLowerCase())){
           let dato=msg_body1.toLowerCase();
           console.log(dato)
-          sendOP(rtaopt[dato].mesagge,from)
+          
         }else{
           
           io.emit('whatsapp_notification', from,msg_body1);
