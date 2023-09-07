@@ -75,27 +75,30 @@ app.post("/webhook", (req, res) => {
      gps:{
       "cotizar":[
         {
-          "mesagge":"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000*"+
-          "\n Adicional San Juan te ofrece un plan de datos con claro  especial para GPS con un costo anual de *$95.000*"+
-          "adquiriendo este plan se libera el usuario de estarealzando cada mes una regarga de datos al GPS"+
-          "\n Esto sumaria un total de *$475.000*. ",
+          "mesagge":"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
+          "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000*"+
+          "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
+          "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan. "+
+          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permites la coorecta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo.",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Para servicio tecnico escribe ASESOR o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
+          "mesagge":"Para servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
        ],
        
        "renovacion":[
         {
-          "mesagge":"Para renovar plataforma primero debes consignarnos el valor de renovacion anual que esta en *$80.000*"+
-          "posteriormente debe hacernos llegar el comprobante al whatsap 3026055289 para proceder a renovar su cuenta."+
-          "\n O puede hacercarse a nuestra oficina llevar el valor de la renovacion y uno de nuestros tecnicos lo ayudara con al proceso.",
-          
+          "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+
+          "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "  \n Nuestros medios de pago son:"+
+          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+
         }
        ],
        "beneficios":[
@@ -201,7 +204,7 @@ app.post("/webhook", (req, res) => {
     
     renovar_plataforma:{
 
-        "mesagge":"SecuriBot🤖 dice :"+"\n\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+"En un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
           "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
