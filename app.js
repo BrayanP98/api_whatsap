@@ -201,10 +201,10 @@ app.post("/webhook", (req, res) => {
     
     renovar_plataforma:{
 
-        "mesagge":"SecuriBot🤖 dice :"+"\n\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "mesagge":"SecuriBot🤖 dice :"+"\n\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+"En un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
-          " \n \n Ahorro a la mano:  03157527681 ✅"+"\n NEQUI: 3006549863✅"+
-          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion, estamos ubicados en la transversal 9 #57n-202 via al bosque."
+          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
           
     },
@@ -302,6 +302,10 @@ app.post("/webhook", (req, res) => {
       if(butonrta==="Renovar Plataforma"){
         butonrta="renovar_plataforma"
         sendOP(rtaopt[butonrta].mesagge,from); 
+        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
+        name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
+        let asesrNumber="573026055289"
+        sendOP(contactClient,asesrNumber); 
       }
       
      }else{
