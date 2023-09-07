@@ -68,24 +68,24 @@ app.post("/webhook", (req, res) => {
 
   var optinos=["1","2","3","4"]
   var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día"]
-  
+  var optinoSpecial=["nosotros","cotizar","catalogo"]
   var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
   {
      gps:{
       "cotizar":[
         {
-          "mesagge":"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
-          "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
+          "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
           "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
-          "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan. "+
-          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permites la coorecta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo.",
+          "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
+          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo.",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Para servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
@@ -93,7 +93,7 @@ app.post("/webhook", (req, res) => {
        
        "renovacion":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+
+          "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+
           "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
@@ -112,7 +112,7 @@ app.post("/webhook", (req, res) => {
      cctv:{
       "cotizar":[
         {
-          "mesagge":"\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -120,7 +120,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
@@ -142,7 +142,7 @@ app.post("/webhook", (req, res) => {
      alarmas:{
       "cotizar":[
         {
-          "mesagge":"\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -204,7 +204,7 @@ app.post("/webhook", (req, res) => {
     
     renovar_plataforma:{
 
-        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de $80.000"+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
           "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
@@ -214,6 +214,13 @@ app.post("/webhook", (req, res) => {
     asesor:{
 
     },  
+    nosotros:{
+      "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+      "  \n https://sanjuanelectronics.online/"+
+        " \n \n "+
+        "\n "
+
+    }, 
     catalogo:{
 
       "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
@@ -459,6 +466,8 @@ app.post("/webhook", (req, res) => {
           
           sendOP(msg_body,from)
           
+        }else if(optinoSpecial.includes(msg_body1.toLowerCase())){
+          sendOP(rtaopt[msg_body1.toLowerCase()].mesagge,from)
         }else{
           
           io.emit('whatsapp_notification', from,msg_body1);
