@@ -206,9 +206,9 @@ app.post("/webhook", (req, res) => {
     renovar_plataforma:{
 
         "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
-        "  \n Nuestros medios de pago son:"+
+        "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+          "\n\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
           
     },
@@ -220,7 +220,7 @@ app.post("/webhook", (req, res) => {
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-        "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+        "\n\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
         
   },
@@ -330,7 +330,7 @@ app.post("/webhook", (req, res) => {
         let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="Renovar Plan"){
-        butonrta="renovar_platn"
+        butonrta="renovar_plan"
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta

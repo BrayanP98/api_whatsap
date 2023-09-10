@@ -127,22 +127,24 @@
       #sms_user{
 
         width: 100%;
-        height: fit-content;
-        background: rgba(0, 149, 255, 0.858);
+        height: 250px;
+        background: rgba(0, 149, 255, 0.486);
         position: relative;
         top: 10px;
         display: flex;
         flex-direction: row;
         gap: 15px;
         justify-content: center;
+        
     }
     #sms_input{
+        position: relative;
         width: fit-content;
         height: fit-content;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
-
+        top: 25px;
     }
     #number_to_send{
         width: 200px;
@@ -150,9 +152,25 @@
     }
     #sms_buttons{
 
-        width: fit-content;
-        height: fit-content;
+        width: 200px;
+        height: 200px;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        position: relative;
+       top: 25px;
+    }
+    #sms_buttons button{
+
+        background-color: green;
+        border: 0;
+        color: white;
+        height: 30px;
+
+    }
+    #sms_buttons button:hover{
+
+        background-color: rgb(4, 111, 4);
+       color: aqua;
+
     }

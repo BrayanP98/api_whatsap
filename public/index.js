@@ -6,6 +6,8 @@ var button_sendPaV= document.querySelector("#send_messagePaV");
 var button_sendPv= document.querySelector("#send_messagePv");
 var button_sendPlV= document.querySelector("#send_messagePlV");
 var input_number= document.querySelector("#number_to_send");
+var date_to_end= document.querySelector("#date_to_end");
+
 var text_sms= document.querySelector("#text_sms");
 // var textarea=document.querySelector("#mensajegps");
 var nequi="3006549863";
@@ -96,7 +98,8 @@ button_sendPlV.onclick=function(){
     // let mensaje= textarea.value;
          let number= input_number.value;
          let text= text_sms.value;
-       
+         let date= date_to_end.value;
+         
          var  data= {
             "messaging_product": "whatsapp",
         "recipient_type": "individual",
@@ -119,7 +122,7 @@ button_sendPlV.onclick=function(){
                   },
                   {
                     "type": "text",
-                    "text": "TEXT-STRING"
+                    "text": date
                   },
                   {
                     "type": "text",
@@ -152,7 +155,6 @@ button_sendPlV.onclick=function(){
    send_whatsapp(data)
    
    input_number.value="";
-   text_sms.value="";
    
    }
 
