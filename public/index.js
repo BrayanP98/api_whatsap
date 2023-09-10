@@ -2,9 +2,9 @@
 
 
 const title ="Chat San Juan"
-var button_sendPaV= document.querySelector("#button_sendPaV");
-var button_sendPv= document.querySelector("#button_sendPv");
-var button_sendPlV= document.querySelector("#button_sendPlV");
+var button_sendPaV= document.querySelector("#send_messagePaV");
+var button_sendPv= document.querySelector("#send_messagePv");
+var button_sendPlV= document.querySelector("#send_messagePlV");
 var input_number= document.querySelector("#number_to_send");
 var text_sms= document.querySelector("#text_sms");
 // var textarea=document.querySelector("#mensajegps");
