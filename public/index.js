@@ -56,7 +56,7 @@ button_sendPv.onclick=function(){
          var  data= {
             "messaging_product": "whatsapp",
         "recipient_type": "individual",
-        "to": phoneNbr,
+        "to": number,
         "type": "template",
         "template": {
           "name": "vencido",
