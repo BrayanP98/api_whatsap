@@ -23,93 +23,7 @@
 
     <button id="send_message">enviar mensaje</button>
       
-      
-    <script>
-      const title ="Chat San Juan"
-        var button_send= document.querySelector("#send_message");
-        var input_number= document.querySelector("#number_to_send");
-       // var textarea=document.querySelector("#mensajegps");
-        button_send.onclick=function(){
-         // let mensaje= textarea.value;
-              let number= input_number.value;
-              var nequi="3006549863";
-              var cta_ahorro= "03157527681"
-            
-              var  data= {
-                "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "template",
-            "template": {
-              "name": "plataforma",
-              "language": {
-                "code": "es_MX"
-              },
-              "components": [
-                {
-                  "type": "button",
-                  "sub_type" : "url",
-                  "index": "2",
-                  "parameters": [
-                      {                    
-                          "type": "text",
-                    
-                      "text": "https://sanjuanelectronics.online/"
-            }
-        ]
-      }
-    ]
-  
-      }
- 
-}
-        
-        send_whatsapp(data)
-
-        input_number.value="";
-       
-        }
-          function send_whatsapp(data){
-
-          
-  var botId = '122100131648008841';
-// var phoneNbr = '573026055289';
-  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
-  
-  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
-
-
-      
-  var postReq = {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + bearerToken,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-    json: true
-  };
-  
-  fetch(url, postReq)
-    .then(data => {
-      return data.json()
-    })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(error => alert(error));
-  }
-        
     
-    
-    
-    
-    
-    
-    
-    
-    </script>
-
 <div  id="viewMessages">
   <div id="lateral_view"></div>
   
@@ -125,10 +39,7 @@
   </div>
 
 </div>
-        <style>
-          
-
-        </style>
+        
     </div>
 
 
