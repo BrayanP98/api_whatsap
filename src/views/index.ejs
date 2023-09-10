@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styless/styless.css">
     <title>Chats SanJuan Electronics</title>
     <script src="./socket.io/socket.io.js"></script>
     <script src="https://apiwhatsap2-33uh-dev.fl0.io/socket.io/socket.io.js"></script>
@@ -30,30 +31,30 @@
        // var textarea=document.querySelector("#mensajegps");
         button_send.onclick=function(){
          // let mensaje= textarea.value;
-          let number= input_number.value;
-          var nequi="3006549863";
-           var cta_ahorro= "03157527681"
-         
-          var  data= {
-            "messaging_product": "whatsapp",
-  "recipient_type": "individual",
-  "to": number,
-  "type": "template",
-  "template": {
-    "name": "plataforma",
-    "language": {
-      "code": "es_MX"
-    },
-    "components": [
-      {
-        "type": "button",
-        "sub_type" : "url",
-        "index": "2",
-        "parameters": [
-            {                    
-                "type": "text",
-               
-                "text": "https://sanjuanelectronics.online/"
+              let number= input_number.value;
+              var nequi="3006549863";
+              var cta_ahorro= "03157527681"
+            
+              var  data= {
+                "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "template",
+            "template": {
+              "name": "plataforma",
+              "language": {
+                "code": "es_MX"
+              },
+              "components": [
+                {
+                  "type": "button",
+                  "sub_type" : "url",
+                  "index": "2",
+                  "parameters": [
+                      {                    
+                          "type": "text",
+                    
+                      "text": "https://sanjuanelectronics.online/"
             }
         ]
       }
@@ -99,6 +100,14 @@
     .catch(error => alert(error));
   }
         
+    
+    
+    
+    
+    
+    
+    
+    
     </script>
 
 <div  id="viewMessages">
@@ -118,287 +127,13 @@
 </div>
         <style>
           
- @keyframes pass{
-  from {
-        opacity:.50;
-    }
-    25%, 45% {
-        opacity: .75;
-    }
-    75%, 75% {
-        opacity: .85;
-    }
-    100%, 75% {
-        opacity: 10;
-    }
-    to {
-    opacity: .5;
-    }
-    }
-   #div_notific{
-    opacity: 0;
-  position: fixed;
-  width: 170PX;
-  height: 80PX;
-  background: rgba(12, 227, 12, 0.558);
-  right: 50PX;
-  top: 0;
-  border-radius: 5px;
-  text-align: center ;
-            
-        }
-    #div_notific.active{
-      animation: pass 5s ease-in;
-            
-
-        }
-#div_notific p{
-    justify-content: center;
-    position: relative;
-    display: flex;
-    vertical-align: middle;
-    top: 40px;
-    width: 100%;
-}
-
-      .container{
-    width: 100%;
-    height: 500px;
-  }
-    #viewMessages{
-      position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        background: rgba(0, 225, 255, 0.353);
-    }
-    #lateral_view{
-      width: 30%;
-      height: 100%;
-      
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      
-    }
-    .mesaggeUser{
-      width: 99%;
-      height: 40px;
-      background: rgba(255, 242, 0, 0.555);
-      overflow: hidden;
-      border-radius: 5px;
-      text-align: center;
-      padding-bottom: 8px;
-      cursor: pointer;
-    }
-    #viewchat{
-      position: relative;
-      width: 70%;
-      height: 100%;
-      background-image: url("https://randomeo.com/descargas/wp-content/uploads/2020/12/descargar-whatsapp-wallpaper.jpg");
-      background-size: 100%;
-     
-     
-    }
-    #responder{
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      height: 30px;
-      background: white;
-    }
-    #responder input{
-      width: 80%;
-      height: 100%;
-
-    }
-    #responder button{
-      width: 10%;
-      height: 100%;
-
-    }
-    #chatUser{
-      width: 30%;
-      height: 99%;
-      float: right;
-     
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      overflow-y: scroll;
-    
-      position: relative;
-    }
-    .chat{
-      position: relative;
-      width: 80%;
-      text-align: center;
-      vertical-align: middle;
-      top: 10px;
-      height: fit-content;
-      padding-bottom: 5px;
-      background: rgba(144, 250, 144, 0.827);
-      left: 25px;
-      border-radius: 15px 0px 15px 15px;
-    }
 
         </style>
     </div>
 
 
 
-    <script>
-      const socket = io();
-        
-    var mensajeview=document.querySelector("#viewMessages")
-    var arrayMessages=[ ]
-
-
-        socket.on('whatsapp_notification', (from, message) => {
-
-          Notification.requestPermission(function (permission) {
-    // Si el usuario nos lo concede, creamos la notificación
-    if (permission === "granted") {
-      var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
-    }
-  });
-          var numerouser=from;
-
-      let usermsn={
-        id:from,
-
-        mesagges:[
-          message
-        ]
-      }
-      
-       if (arrayMessages.length === 0) {
-        console.log("vacio")
-        arrayMessages.push(usermsn)
-       }else{
-        let exist=""
-        for(i=0;i<arrayMessages.length;i++){
-        console.log(" no vacio")
-        if(arrayMessages[i].id==from){
-        arrayMessages[i].mesagges.push(message)
-        console.log("ya existe")
-        exist="si"
-        break;
-        
-       }else{
-        console.log(" no  existe")
-        
-        exist="no"
-       }
-       }
-       
-      if(exist=="no"){
-        arrayMessages.push(usermsn)
-      }
-
-      }
-      console.log(arrayMessages)
-
-      
-
-      var mensajeview=document.querySelector("#lateral_view")
-
-           let mesagesUser=document.createElement('div');
-            let mesagesview=document.createElement('p');
-            mesagesUser.className="mesaggeUser"
-            mesagesUser.id=from;
-           
-            mesagesview.id=from
-            mesagesview.innerHTML="Mensaje de:"+" "+from;
-            let divUser=document.getElementById(from)
-            if(divUser){
-              mesagesview.innerHTML="";
-
-              divUser.appendChild(mesagesview)
-              
-            }else{
-
-              mesagesUser.appendChild(mesagesview)
-              mensajeview.appendChild(mesagesUser)
-            }
-            refresh()
-
-           
-        });
-        function refresh(){
-          let numbernotif=arrayMessages.length
-       console.log(arrayMessages.length)
-       document.title='('+numbernotif+')'+title
-      for(i=0;i<arrayMessages.length;i++){
-
-        let id=arrayMessages[i].id;
-        let divUser=document.getElementById(id);
-
-        divUser.onclick=function(){
-
-          let viewchat=document.getElementById("chatUser");
-          var btn_send=document.getElementById("send_rta");
-          var input_rta=document.getElementById("input_rta");
-          btn_send.onclick=function(){
-            var rta=input_rta.value;
-            let from=divUser.id;
-            socket.emit("send_rta", from,rta)
-
-            input_rta.value=""
-           
-
-          }
-          viewchat.innerHTML=""
-          for(i=0;i<arrayMessages.length;i++){
-            var mensajes=arrayMessages[i].mesagges
-            if(divUser.id==arrayMessages[i].id){
-            
-           
-             for(o=0;o<mensajes.length;o++){
-            
-
-              var chat=document.createElement("p");
-              chat.className="chat"
-
-              chat.innerHTML=mensajes[o];
-              viewchat.appendChild(chat)
-
-             }
-            }else{
-              
-            }
-           
-
-          }
-          
-        }
-      }
-    }
    
-    socket.on('estado', (status) => {
-
-
-let div_notific=document.querySelector("#div_notific");
-let txt_div_notific=document.querySelector("#txt_div_notific")
-     var cont_pet=0
-     if(status=="delivered"){
-      console.log("status")
-      txt_div_notific.innerHTML="Mensaje entregado"
-      div_notific.classList.toggle("active")
-     }else if(status=="read"){
-      txt_div_notific.innerHTML="Mensaje leido"
-      div_notific.classList.toggle("active")
-     }else if(status=="failed"){
-      txt_div_notific.innerHTML="Numero incorrecto"
-      div_notific.classList.toggle("active")
-     }
-    
-    })
-
-
-       
-      </script>
-      
+      <script src="index.js"></script>
 </body>
 </html>
