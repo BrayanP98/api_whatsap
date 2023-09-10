@@ -123,3 +123,36 @@
         border-radius: 15px 0px 15px 15px;
       }
   
+
+      #sms_user{
+
+        width: 100%;
+        height: fit-content;
+        background: rgba(0, 149, 255, 0.858);
+        position: relative;
+        top: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+    }
+    #sms_input{
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+    }
+    #number_to_send{
+        width: 200px;
+        height:30px;
+    }
+    #sms_buttons{
+
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }

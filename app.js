@@ -212,6 +212,18 @@ app.post("/webhook", (req, res) => {
 
           
     },
+    renovar_plan:{
+
+      "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$120.000* ."+
+      "\n*El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
+      "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+       
+      "\n\nNuestros medios de pago son:"+
+        " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+        "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+
+        
+  },
     asesor:{
 
     },  
@@ -312,6 +324,13 @@ app.post("/webhook", (req, res) => {
       let butonrta = req.body.entry[0].changes[0].value.messages[0].button.text;
       if(butonrta==="Renovar Plataforma"){
         butonrta="renovar_plataforma"
+        sendOP(rtaopt[butonrta].mesagge,from); 
+        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
+        name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
+        let asesrNumber="573026055289"
+        sendOP(contactClient,asesrNumber); 
+      }else if(butonrta==="Renovar Plan"){
+        butonrta="renovar_platn"
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta

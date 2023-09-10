@@ -2,14 +2,18 @@
 
 
 const title ="Chat San Juan"
-var button_send= document.querySelector("#send_message");
+var button_sendPaV= document.querySelector("#button_sendPaV");
+var button_sendPv= document.querySelector("#button_sendPv");
+var button_sendPlV= document.querySelector("#button_sendPlV");
 var input_number= document.querySelector("#number_to_send");
+var text_sms= document.querySelector("#text_sms");
 // var textarea=document.querySelector("#mensajegps");
-button_send.onclick=function(){
+var nequi="3006549863";
+var cta_ahorro= "03157527681"
+
+button_sendPaV.onclick=function(){
  // let mensaje= textarea.value;
       let number= input_number.value;
-      var nequi="3006549863";
-      var cta_ahorro= "03157527681"
     
       var  data= {
         "messaging_product": "whatsapp",
@@ -45,7 +49,114 @@ send_whatsapp(data)
 input_number.value="";
 
 }
-  function send_whatsapp(data){
+button_sendPv.onclick=function(){
+    // let mensaje= textarea.value;
+         let number= input_number.value;
+       
+         var  data= {
+            "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": phoneNbr,
+        "type": "template",
+        "template": {
+          "name": "vencido",
+          "language": {
+            "code": "es_MX"
+          },
+          "components": [
+      
+            
+              {
+                "type": "body",
+                "parameters": [
+                  {
+                    "type": "text",
+                    "text": cta_ahorro
+                  },
+                  {
+                    "type": "text",
+                    "text": nequi
+                  },
+                 
+                
+                ]},
+            
+          ]
+        
+            }
+          
+        }
+   
+   send_whatsapp(data)
+   
+   input_number.value="";
+   
+   }
+button_sendPlV.onclick=function(){
+    // let mensaje= textarea.value;
+         let number= input_number.value;
+         let text= text_sms.value;
+       
+         var  data= {
+            "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": number,
+        "type": "template",
+        "template": {
+          "name": "expiracion1",
+          "language": {
+            "code": "es_MX"
+          },
+          "components": [
+      
+            
+              {
+                "type": "body",
+                "parameters": [
+                  {
+                    "type": "text",
+                    "text": text
+                  },
+                  {
+                    "type": "text",
+                    "text": "TEXT-STRING"
+                  },
+                  {
+                    "type": "text",
+                    "text": cta_ahorro
+                  },
+                  {
+                    "type": "text",
+                    "text": nequi
+                  },
+                
+                ]},
+             { "type": "button",
+              "sub_type" : "url",
+              "index": "2",
+              "parameters": [
+                
+                  {                    
+                      "type": "text",
+                     
+                      "text": "https://sanjuanelectronics.online/"
+                  }
+              ]
+            }
+          ]
+        
+            }
+          
+        }
+   
+   send_whatsapp(data)
+   
+   input_number.value="";
+   text_sms.value="";
+   
+   }
+
+ function send_whatsapp(data){
 
   
 var botId = '122100131648008841';
