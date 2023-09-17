@@ -76,7 +76,7 @@ app.post("/webhook", (req, res) => {
      gps:{
       "cotizar":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
           "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
           "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
           "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
@@ -86,7 +86,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
@@ -104,7 +104,7 @@ app.post("/webhook", (req, res) => {
        ],
        "beneficios":[
         {
-          "mesagge":" Los sistemas de *GPS vehiculares* ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n Los sistemas de *GPS vehiculares* ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
           
         }
        ],
@@ -113,7 +113,7 @@ app.post("/webhook", (req, res) => {
      cctv:{
       "cotizar":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -121,7 +121,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
@@ -129,7 +129,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
@@ -143,7 +143,7 @@ app.post("/webhook", (req, res) => {
      alarmas:{
       "cotizar":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -151,7 +151,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
           
         }
@@ -159,7 +159,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":"SecuriBot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
@@ -174,7 +174,7 @@ app.post("/webhook", (req, res) => {
     Control_Acceso:{
       "cotizar":[
         {
-          "mesagge":"\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -182,7 +182,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*",
           
         }
@@ -190,7 +190,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":" Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
+          "mesagge":"SecuriBot🤖 dice :"+" \n \n Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
           
         }
        ], 
@@ -214,9 +214,9 @@ app.post("/webhook", (req, res) => {
     },
     renovar_plan:{
 
-      "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$120.000* ."+
-      "\n*El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
-      "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+      "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
+      "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
+      "\n\n nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
@@ -228,10 +228,9 @@ app.post("/webhook", (req, res) => {
 
     },  
     nosotros:{
-      "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-      "  \n https://sanjuanelectronics.online/"+
-        " \n \n "+
-        "\n "
+      "mesagge":"SecuriBot🤖 dice :"+"\nSomos una empresa de seguridad electrónica con sede en Popayán, fundada en el año 2008. Desde entonces, nos hemos dedicado a ofrecer soluciones integrales y eficientes para la protección de personas y bienes, tanto en el sector público como privado."
+      +"Contamos con un equipo de profesionales altamente calificados y certificados, que brindan un servicio de calidad, confianza y responsabilidad."
+       
 
     }, 
     catalogo:{
@@ -445,11 +444,14 @@ app.post("/webhook", (req, res) => {
             },
             headers: { "Content-Type": "application/json" },
           });
+          sendOP(text,from)
+        }else if(lower=="cotizar"){
+          sendOP(rtaopt[lower].mesagge,from)
         }
          
        sendInteractive(rtaopt[lower], lower)
 
-        sendOP(text,from)
+        
       }else{
         if(optinos.includes(msg_body1)){
           if(msg_body1==="1"){
@@ -464,8 +466,10 @@ app.post("/webhook", (req, res) => {
           if(msg_body1==="4"){
           sendInteractive(rtaopt["Control_Acceso"],"Control_Acceso")
             }
-            if(msg_body1==="5"){
-              sendInteractive(rtaopt["catalogo"],"catalogo")
+          if(msg_body1==="5"){
+              sendOP(rtaopt["catalogo"].mesagge,from)
+            }if(msg_body1===""){
+              sendOP(rtaopt["nosotros"].mesagge,from)
                 }
   
          
@@ -474,8 +478,8 @@ app.post("/webhook", (req, res) => {
           //let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', from,msg_body1);
           let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\n Soy *SecuriBot*🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV."+
-          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Control de acceso."+"\n5. Catalogo."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la transversal 9#57n-202 via al bosque."+
-          "\n\n Siguenos en Facebook como San Juan Electronics."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
+          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Informacion Control de acceso."+"\n5. Catalogo."+"\n6. Nosotros."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
+          "\n\n Siguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
           
           sendOP(msg_body,from)
         }else if(agradecimiento.includes(msg_body1.toLowerCase())){
