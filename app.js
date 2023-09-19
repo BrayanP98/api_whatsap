@@ -504,8 +504,7 @@ app.post("/webhook", (req, res) => {
                   type: "text",
                   text: "San Juan"},
                   body: {text: "Hola *brayan*"+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
-                 +"\n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
-                 "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+                 +"\n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
                   footer: {
                   text: "scaliwoodSoft"},
                   action: {
