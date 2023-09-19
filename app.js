@@ -496,7 +496,7 @@ app.post("/webhook", (req, res) => {
               data: {
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
-                to : phoneNbr,
+                to : from,
                 type: "interactive" ,
                 interactive:{
                   type: "list",
