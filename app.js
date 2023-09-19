@@ -68,9 +68,9 @@ app.post("/webhook", (req, res) => {
   
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día"]
+  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día","buena tarde","buenas tardes"]
   var optinoSpecial=["nosotros","cotizar","catalogo"]
-  var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
+  var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey","bn", "dale"]
   var rtaopt=
   {
      gps:{
@@ -299,11 +299,19 @@ app.post("/webhook", (req, res) => {
         let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-       let servicio= rtaopt[idServ]
+
+        if(rtaopt[idServ]){
+          
+          sendInteractive(rtaopt[idServ],idServ)
+
+        }else{
+          let servicio= rtaopt[idServ]
        
-       let sub=servicio[msg_interctive];
+          let sub=servicio[msg_interctive];
+          
+          sendOP(sub[0].mesagge,from)
+        }
        
-       sendOP(sub[0].mesagge,from)
 
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
@@ -427,9 +435,9 @@ app.post("/webhook", (req, res) => {
         let text= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+""+"para asesoria en"+" "+lower;
         if(lower=="asesor"){
-           text=("En minutos uno de nuestros asesores se pondra en contacto con usted.")
+           text=("SecuriBot🤖 dice :"+"\n\nEn minutos uno de nuestros asesores se pondra en contacto con usted.")
            let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-           name+" "+"\n al numero:"+""+from+"" +"para asesoria";
+           name+" "+"\n al numero:"+""+from+"" +" "+"para asesoria";
            axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
@@ -477,9 +485,10 @@ app.post("/webhook", (req, res) => {
         }else if(saludos.includes(msg_body1.toLowerCase())){
           //let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', from,msg_body1);
-          let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\n Soy *SecuriBot*🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV."+
-          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Informacion Control de acceso."+"\n5. Catalogo."+"\n6. Nosotros."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
-          "\n\n Siguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
+          let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\nSoy *SecuriBot*🤖  ¿Como puedo ayudarte?"+
+          "\n\n1.Informacion CCTV."+"\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Informacion Control de acceso."+"\n5. Catalogo."+"\n6. Nosotros."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
+          "\n\n Siguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+
+          "\n\n#Tu seguridad es nuestra prioridad!.";          
           
           sendOP(msg_body,from)
         }else if(agradecimiento.includes(msg_body1.toLowerCase())){
