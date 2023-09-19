@@ -402,10 +402,11 @@ app.post("/webhook", (req, res) => {
        
       
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
+        let tileServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.title;
        let servicio= rtaopt[idServ]
-       if(rtaopt[idServ]){
+       if(rtaopt[tileServ]){
           
-        sendInteractive(rtaopt[idServ],idServ)
+        sendInteractive(rtaopt[tileServ],tileServ)
     
       }else{
         var sub=servicio[msg_interctive];
@@ -537,20 +538,20 @@ app.post("/webhook", (req, res) => {
                     sections:[
                      
                       {
-                        title:"Opcion 1",
+                        title:"gps",
                         rows: [
                           {
-                            id:"gps",
+                            id:"1",
                             title: "GPS",
                             description: "GPS",           
                           }
                         ]
                       },
                       {
-                        title:"Opcion 2",
+                        title:"cctv",
                         rows: [
                           {
-                            id:"cctv",
+                            id:"2",
                             title: "CCTV(camaras seguridad)",
                             description: "CCTV",           
                           }
@@ -560,27 +561,27 @@ app.post("/webhook", (req, res) => {
                         title:"alarmas",
                         rows: [
                           {
-                            id:"alarmas",
+                            id:"3",
                             title: "Alarmas Recidenciales",
                             description: "Alarmas Recidenciales",  
                                  
                           }
                         ]
                       },{
-                        title:"Opcion 4",
+                        title:"Control_Acceso",
                         rows: [
                           {
-                            id:"Control_Acceso",
+                            id:"4",
                             title: "Control de Acceso",
                             description: "Control de Acceso",  
                                  
                           }
                         ]
                       },{
-                        title:"Opcion 5",
+                        title:"nosotros",
                         rows: [
                           {
-                            id:"nosotros",
+                            id:"5",
                             title: "Nosotros",
                             description: "nosotros ",  
                                  
