@@ -297,7 +297,7 @@ app.post("/webhook", (req, res) => {
                    
                  text: "scaliwoodSoft"},
                  action: {
-                   button: "Responde",
+                   button: "Menu de Opciones",
                    sections:[
                      {
                        title:"Opcion 1",
@@ -436,7 +436,7 @@ app.post("/webhook", (req, res) => {
         let text= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+""+"para asesoria en"+" "+lower;
         if(lower=="asesor"){
-           text=("En minutos uno de nuestros asesores se pondra en contacto con usted.")
+           text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted.")
            let contactClient= "Por favor ponerse en contacto con:"+" \n"+
            name+" "+"\n al numero:"+""+from+"" +"para asesoria";
            axios({
@@ -486,11 +486,91 @@ app.post("/webhook", (req, res) => {
         }else if(saludos.includes(msg_body1.toLowerCase())){
           //let mesagge='de'+':'+ from +' '+msg_body1;
           io.emit('whatsapp_notification', from,msg_body1);
-          let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\n Soy *SecuriBot*🤖  ¿Como puedo ayudarte?"+"\n\n1.Informacion CCTV."+
-          "\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Informacion Control de acceso."+"\n5. Catalogo."+"\n6. Nosotros."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nTu seguridad es nuestra prioridad!. \n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
-          "\n\n Siguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/";          
-          
-          sendOP(msg_body,from)
+          axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/" +
+              phone_number_id +
+              "/messages?access_token=" +
+              token,
+              data= {
+                messaging_product: "whatsapp",
+                recipient_type: "individual",
+                to : from,
+                type: "interactive" ,
+                interactive:{
+                  type: "list",
+                  header: {  
+                  type: "text",
+                  text: "San Juan"},
+                  body: {text: "Hola *brayan*"+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+                 +"\n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
+                 "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+                  footer: {
+                  text: "scaliwoodSoft"},
+                  action: {
+                    button: "Nuestros Servicios",
+                    sections:[
+                     
+                      {
+                        title:"Opcion 1",
+                        rows: [
+                          {
+                            id:"gps",
+                            title: "GPS",
+                            description: "GPS",           
+                          }
+                        ]
+                      },
+                      {
+                        title:"Opcion 2",
+                        rows: [
+                          {
+                            id:"cctv",
+                            title: "CCTV(camaras seguridad)",
+                            description: "CCTV",           
+                          }
+                        ]
+                      },
+                      {
+                        title:"alarmas",
+                        rows: [
+                          {
+                            id:"alarmas",
+                            title: "Alarmas Recidenciales",
+                            description: "Alarmas Recidenciales",  
+                                 
+                          }
+                        ]
+                      },{
+                        title:"Opcion 4",
+                        rows: [
+                          {
+                            id:"Control_Acceso",
+                            title: "Control de Acceso",
+                            description: "Control de Acceso",  
+                                 
+                          }
+                        ]
+                      },{
+                        title:"Opcion 5",
+                        rows: [
+                          {
+                            id:"nosotros",
+                            title: "Nosotros",
+                            description: "nosotros dsfsdffsdfsd ffgdgdf gfdsghgd sgghfsdgfd gfgg",  
+                                 
+                          }
+                        ]
+                      }
+                      
+                    ]
+                  }
+                }
+                    },
+            headers: { "Content-Type": "application/json" },
+          });
+         
         }else if(agradecimiento.includes(msg_body1.toLowerCase())){
 
           io.emit('whatsapp_notification', from,msg_body1);
