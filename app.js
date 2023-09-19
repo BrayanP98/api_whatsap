@@ -55,7 +55,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- console.log(JSON.stringify(req.body, null, 2));
+ //console.log(JSON.stringify(req.body, null, 2));
 
  if(body.entry[0].changes[0].value.statuses){
   let status=body.entry[0].changes[0].value.statuses[0]["status"]
@@ -269,7 +269,7 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      
-     console.log()
+     //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
      function sendOP(opction,para){
       axios({
@@ -296,19 +296,14 @@ app.post("/webhook", (req, res) => {
     
 
       if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
-       
+        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-         console.log(idServ)
+       let servicio= rtaopt[idServ]
        
-          let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-          let servicio= rtaopt[idServ]
+       let sub=servicio[msg_interctive];
        
-          let sub=servicio[msg_interctive];
-          
-          sendOP(sub[0].mesagge,from)
-        
-       
+       sendOP(sub[0].mesagge,from)
 
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
@@ -485,7 +480,7 @@ app.post("/webhook", (req, res) => {
           let msg_body ="Hola "+"" +name+", "+"bienvenido a San Juan Electronics. "+"\nSoy *SecuriBot*🤖  ¿Como puedo ayudarte?"+
           "\n\n1.Informacion CCTV."+"\n2. Informacion GPS."+"\n3. Informacion Alarmas residenciales."+"\n4. Informacion Control de acceso."+"\n5. Catalogo."+"\n6. Nosotros."+"\n\n Escribe *ASESOR* si quieres comunicarte con uno de nuestros asesores"+"\n\nEstamos ubicados en la *Transversal 9#57n-202 via al bosque.*"+
           "\n\n Siguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+
-          "\n\n#Tu seguridad es nuestra prioridad!.";          
+          "\n\nTu seguridad es nuestra prioridad!.";          
           
           sendOP(msg_body,from)
         }else if(agradecimiento.includes(msg_body1.toLowerCase())){
