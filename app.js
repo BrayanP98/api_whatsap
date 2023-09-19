@@ -271,6 +271,84 @@ app.post("/webhook", (req, res) => {
      
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
+       
+      function sendInteractive(opt, service){
+
+        var kys= Object.keys(opt);
+         axios({
+           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+           url:
+             "https://graph.facebook.com/v12.0/" +
+             phone_number_id +
+             "/messages?access_token=" +
+             token,
+               data:{
+               messaging_product: "whatsapp",
+               recipient_type: "individual",
+               to : from,
+               type: "interactive" ,
+               interactive:{
+                 type: "list",
+                 header: {  
+                 type: "text",
+                 text: "San Juan"},
+                 body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
+                 footer: {
+                   
+                 text: "scaliwoodSoft"},
+                 action: {
+                   button: "Responde",
+                   sections:[
+                     {
+                       title:"Opcion 1",
+                       rows: [
+                         {
+                           id:service,
+                           title: kys[0],
+                           description: kys[0],           
+                         }
+                       ]
+                     },
+                     {
+                       title:"Opcion2",
+                       rows: [
+                         {
+                           id:service,
+                           title: kys[1],
+                           description:  kys[1],           
+                         }
+                       ]
+                     },
+                     {
+                       title:"Opcion3",
+                       rows: [
+                         {
+                           id:service,
+                           title: kys[2],
+                           description: kys[2],  
+                                
+                         }
+                       ]
+                     },{
+                       title:"Opcion4",
+                       rows: [
+                         {
+                           id:service,
+                           title: kys[3],
+                           description:kys[3] ,  
+                                
+                         }
+                       ]
+                     }
+                     
+                   ]
+                 }
+               }
+                   }
+          ,
+           headers: { "Content-Type": "application/json" },
+         });
+       }
      function sendOP(opction,para){
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -297,7 +375,7 @@ app.post("/webhook", (req, res) => {
 
       if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
        
-
+      
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
        let servicio= rtaopt[idServ]
        if(rtaopt[idServ]){
@@ -305,11 +383,14 @@ app.post("/webhook", (req, res) => {
         sendInteractive(rtaopt[idServ],idServ)
     
       }else{
-      let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-       let sub=servicio[msg_interctive];
-       
-       sendOP(sub[0].mesagge,from)
+        var sub=servicio[msg_interctive];
+        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+         
+         
+         sendOP(sub[0].mesagge,from)
       }
+       
+      
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
@@ -348,84 +429,7 @@ app.post("/webhook", (req, res) => {
     
      
       
-    
-      function sendInteractive(opt, service){
-
-       var kys= Object.keys(opt);
-        axios({
-          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-          url:
-            "https://graph.facebook.com/v12.0/" +
-            phone_number_id +
-            "/messages?access_token=" +
-            token,
-              data:{
-              messaging_product: "whatsapp",
-              recipient_type: "individual",
-              to : from,
-              type: "interactive" ,
-              interactive:{
-                type: "list",
-                header: {  
-                type: "text",
-                text: "San Juan"},
-                body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
-                footer: {
-                  
-                text: "scaliwoodSoft"},
-                action: {
-                  button: "Responde",
-                  sections:[
-                    {
-                      title:"Opcion 1",
-                      rows: [
-                        {
-                          id:service,
-                          title: kys[0],
-                          description: kys[0],           
-                        }
-                      ]
-                    },
-                    {
-                      title:"Opcion2",
-                      rows: [
-                        {
-                          id:service,
-                          title: kys[1],
-                          description:  kys[1],           
-                        }
-                      ]
-                    },
-                    {
-                      title:"Opcion3",
-                      rows: [
-                        {
-                          id:service,
-                          title: kys[2],
-                          description: kys[2],  
-                               
-                        }
-                      ]
-                    },{
-                      title:"Opcion4",
-                      rows: [
-                        {
-                          id:service,
-                          title: kys[3],
-                          description:kys[3] ,  
-                               
-                        }
-                      ]
-                    }
-                    
-                  ]
-                }
-              }
-                  }
-         ,
-          headers: { "Content-Type": "application/json" },
-        });
-      }
+   
       var lower=msg_body1.toLowerCase();
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
