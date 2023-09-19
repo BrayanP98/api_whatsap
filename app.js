@@ -299,7 +299,7 @@ app.post("/webhook", (req, res) => {
         let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-
+         console.log(idServ)
         if(rtaopt[idServ]){
           
           sendInteractive(rtaopt[idServ],idServ)
