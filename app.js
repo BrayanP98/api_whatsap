@@ -296,15 +296,20 @@ app.post("/webhook", (req, res) => {
     
 
       if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
-        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+       
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
        let servicio= rtaopt[idServ]
-       
+       if(rtaopt[idServ]){
+          
+        sendInteractive(rtaopt[idServ],idServ)
+    
+      }else{
+      let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
        let sub=servicio[msg_interctive];
        
        sendOP(sub[0].mesagge,from)
-
+      }
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
