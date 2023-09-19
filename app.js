@@ -55,7 +55,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- //console.log(JSON.stringify(req.body, null, 2));
+ console.log(JSON.stringify(req.body, null, 2));
 
  if(body.entry[0].changes[0].value.statuses){
   let status=body.entry[0].changes[0].value.statuses[0]["status"]
@@ -269,7 +269,7 @@ app.post("/webhook", (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      
-     //console.log()
+     console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
      function sendOP(opction,para){
       axios({
@@ -296,7 +296,7 @@ app.post("/webhook", (req, res) => {
     
 
       if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
-        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
+       
 
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
          console.log(idServ)
@@ -305,6 +305,7 @@ app.post("/webhook", (req, res) => {
           sendInteractive(rtaopt[idServ],idServ)
 
         }else{
+          let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
           let servicio= rtaopt[idServ]
        
           let sub=servicio[msg_interctive];
