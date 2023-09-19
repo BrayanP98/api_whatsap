@@ -228,9 +228,34 @@ app.post("/webhook", (req, res) => {
 
     },  
     nosotros:{
-      "mesagge":"SecuriBot🤖 dice :"+"\nSomos una empresa de seguridad electrónica con sede en Popayán, fundada en el año 2008. Desde entonces, nos hemos dedicado a ofrecer soluciones integrales y eficientes para la protección de personas y bienes, tanto en el sector público como privado."
-      +"Contamos con un equipo de profesionales altamente calificados y certificados, que brindan un servicio de calidad, confianza y responsabilidad."
-       
+      "Mision":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\nSomos una empresa de seguridad electrónica con sede en Popayán, fundada en el año 2008. Desde entonces, nos hemos dedicado a ofrecer soluciones integrales y eficientes para la protección de personas y bienes, tanto en el sector público como privado."
+          +"Contamos con un equipo de profesionales altamente calificados y certificados, que brindan un servicio de calidad, confianza y responsabilidad."
+           
+        }
+       ], 
+       "Visiion":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*",
+          
+        }
+       ],
+      
+       "Ubicacion":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+" \n \n Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
+          
+        }
+       ], 
+       "PQRS":[
+        {
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
+          " \n \n Escribe *info* para reiniciar el chat."
+        }
+       ]
+      
 
     }, 
     catalogo:{
@@ -557,7 +582,7 @@ app.post("/webhook", (req, res) => {
                           {
                             id:"nosotros",
                             title: "Nosotros",
-                            description: "nosotros dsfsdffsdfsd ffgdgdf gfdsghgd sgghfsdgfd gfgg",  
+                            description: "nosotros ",  
                                  
                           }
                         ]
