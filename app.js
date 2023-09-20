@@ -190,7 +190,7 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+" \n \n Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
+          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
           
         }
        ], 
@@ -208,7 +208,7 @@ app.post("/webhook", (req, res) => {
         "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
           
     },
@@ -220,7 +220,7 @@ app.post("/webhook", (req, res) => {
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-        "\n\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
         
   },
@@ -268,7 +268,7 @@ app.post("/webhook", (req, res) => {
   },
   cotizar:{
 
-    "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+    "mesagge":"SecuriBot🤖 dice :"+"\n\nA continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
     "  \n https://sanjuanelectronics.online/"+
       " \n \n "+
       "\n "
@@ -587,7 +587,7 @@ app.post("/webhook", (req, res) => {
                           {
                             id:"5",
                             title: "Nosotros",
-                            description: "nosotros ",  
+                            description: "nosotros",  
                                  
                           }
                         ]
@@ -615,7 +615,7 @@ app.post("/webhook", (req, res) => {
         }else{
           
           io.emit('whatsapp_notification', from,msg_body1);
-          let msg_body ="No entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras:"+
+          let msg_body ="*SecuriBot*🤖 dice :"+"\n\nNo entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras clave:"+
           "\n *Informacion, buen dia, hola, GPS, CCTV, alarmas, asesor, catalogo *"  ;
            sendOP(msg_body, from)
         }
