@@ -230,29 +230,33 @@ app.post("/webhook", (req, res) => {
     nosotros:{
       "Mision":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n\0\0\0\0 *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n\0\0\0\0 *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
           "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
+          +"\n\n#TuSeguridadEsNuestraPrioridad"
         }
        ], 
        "Vision":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n \0\0\0\0   *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n \0\0\0\0   *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
           " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
+          +"\n\n#TuSeguridadEsNuestraPrioridad"
+        
         }
        ],
       
        "Ubicacion":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n\n*Somos San Juan Electronics* \n💛Su seguridad es nuestra prioridad!"+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n\nSomos *San Juan Electronics* \n💛Su seguridad es nuestra prioridad!"+
           "\n\nEstamos ubicados en la transversal 9#57n-202 via al bosque a 2 minutos de cafe la palma."+
-          "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"
+          "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"+"\n\nPuedes contactarnos a los numeros:"+
+          "\n3026052089--3006549863"+"\n\n#TuSeguridadEsNuestraPrioridad"
         
         }
 
        ], 
        "PQRS":[
         {
-          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
+          "mesagge":"*SecuriBot🤖 dice* :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
