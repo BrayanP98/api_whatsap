@@ -219,7 +219,7 @@ app.post("/webhook", (req, res) => {
       "\n\n nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
-        " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+        " \n \n *Ahorro a la mano:*  03157527681 ✅"+"Proveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética. *NEQUI:* 3006549863✅"+
         "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
 
         
@@ -230,24 +230,25 @@ app.post("/webhook", (req, res) => {
     nosotros:{
       "Mision":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\nSomos una empresa de seguridad electrónica con sede en Popayán, fundada en el año 2008. Desde entonces, nos hemos dedicado a ofrecer soluciones integrales y eficientes para la protección de personas y bienes, tanto en el sector público como privado."
-          +"Contamos con un equipo de profesionales altamente calificados y certificados, que brindan un servicio de calidad, confianza y responsabilidad."
-           
+          "mesagge":"SecuriBot🤖 dice :"+"\n\0\0\0\0 *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
+          "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
         }
        ], 
-       "Visiion":[
+       "Vision":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*",
-          
+          "mesagge":"SecuriBot🤖 dice :"+"\n \0\0\0\0   *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
+          " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
         }
        ],
       
        "Ubicacion":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+" \n \n Un *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
-          
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n*Somos San Juan Electronics* \n💛Su seguridad es nuestra prioridad!"+
+          "\n\nEstamos ubicados en la transversal 9#57n-202 via al bosque a 2 minutos de cafe la palma."+
+          "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"
+        
         }
+
        ], 
        "PQRS":[
         {
