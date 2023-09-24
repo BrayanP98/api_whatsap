@@ -321,7 +321,7 @@ app.post("/webhook", (req, res) => {
             ]
           }
         
-          sectcons.push(optn)
+          seccions.push(optn)
         
         
         }
