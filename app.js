@@ -400,7 +400,7 @@ app.post("/webhook", (req, res) => {
          if(msg_interctive==="renovar"){
 
           var option=["Renovar Plataforma","Renovar Plan CLARO"]
-          sendInteractive(optinos,msg_interctive)
+          sendInteractive(option,msg_interctive)
 
          }
          
