@@ -305,6 +305,26 @@ app.post("/webhook", (req, res) => {
       function sendInteractive(opt, service){
 
         var kys= Object.keys(opt);
+        var seccions=[  
+        ]
+
+       
+        for(var i=0;i<kys.length;i++){
+          let optn={
+            title:"Opcion"+(i+1),
+            rows: [
+              {
+                id:service,
+                title: kys[i],
+                description: kys[i]           
+              }
+            ]
+          }
+        
+          sectcons.push(optn)
+        
+        
+        }
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
@@ -328,50 +348,7 @@ app.post("/webhook", (req, res) => {
                  text: "scaliwoodSoft"},
                  action: {
                    button: "Menu de Opciones",
-                   sections:[
-                     {
-                       title:"Opcion 1",
-                       rows: [
-                         {
-                           id:service,
-                           title: kys[0],
-                           description: kys[0],           
-                         }
-                       ]
-                     },
-                     {
-                       title:"Opcion2",
-                       rows: [
-                         {
-                           id:service,
-                           title: kys[1],
-                           description:  kys[1],           
-                         }
-                       ]
-                     },
-                     {
-                       title:"Opcion3",
-                       rows: [
-                         {
-                           id:service,
-                           title: kys[2],
-                           description: kys[2],  
-                                
-                         }
-                       ]
-                     },{
-                       title:"Opcion4",
-                       rows: [
-                         {
-                           id:service,
-                           title: kys[3],
-                           description:kys[3] ,  
-                                
-                         }
-                       ]
-                     }
-                     
-                   ]
+                   sections:seccions
                  }
                }
                    }
