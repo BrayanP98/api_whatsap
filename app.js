@@ -400,11 +400,57 @@ app.post("/webhook", (req, res) => {
          if(msg_interctive==="renovacion"){
 
           var option=["Renovar Plataforma","Renovar Plan CLARO"]
-          sendInteractive(option,msg_interctive)
+          axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/" +
+              phone_number_id +
+              "/messages?access_token=" +
+              token,
+                data:{
+                messaging_product: "whatsapp",
+                recipient_type: "individual",
+                to : from,
+                type: "interactive" ,
+                interactive:{
+                  type: "button",
+                  header: {  
+                  type: "text",
+                  text: "San Juan"},
+                  body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
+                  footer: {
+                    
+                  text: "scaliwoodSoft"},
+                  action: {
+                    "buttons": [
+                      {
+                        "type": "reply",
+                        "reply": {
+                          "id": "Renovar_Plataforma",
+                          "title": "Renovar Plataforma"
+                        }
+                      },
+                      {
+                        "type": "reply",
+                        "reply": {
+                          "id": "Renovar Plan",
+                          "title": "Renovar Plan"
+                        }
+                      }
+                    ]
+                  }
+                }
+                    }
+           ,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
 
+         }else{
+          sendOP(sub[0].mesagge,from)
          }
          
-         sendOP(sub[0].mesagge,from)
+  
       
        
       
