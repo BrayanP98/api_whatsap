@@ -426,14 +426,14 @@ app.post("/webhook", (req, res) => {
                         "type": "reply",
                         "reply": {
                           "id": "renovar_plataforma",
-                          "title": "Renovar Plataforma GPS"
+                          "title": "Renovar Plataforma"
                         }
                       },
                       {
                         "type": "reply",
                         "reply": {
                           "id": "renovar_plan",
-                          "title": "Renovar Plan GPS"
+                          "title": "Renovar Plan"
                         }
                       }
                     ]
