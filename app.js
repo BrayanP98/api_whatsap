@@ -553,22 +553,125 @@ app.post("/webhook", (req, res) => {
      }else{
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
-    
+      io.emit('whatsapp_notification', from,msg_body1);
      var arrayMaessage=msg_body1.split(" ");
+
      for(var i=0;i<arrayMaessage.length;i++){
   
       if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-        io.emit('whatsapp_notification', from,msg_body1);
+        
         let msg_body ="Es un gusto para *San Juan Electronics* poder servirle.😊"+
         "\n Feliz dia!"+
         "No olvides seguirnos en las redes sociales como *San Juan electronics*";          
         
         sendOP(msg_body,from)
+        break;
+      }else if(saludos.includes(arrayMaessage[i].toLocaleLowerCase())){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+            data: {
+              messaging_product: "whatsapp",
+              recipient_type: "individual",
+              to : from,
+              type: "interactive" ,
+              interactive:{
+                type: "list",
+                header: {  
+                type: "text",
+                text: "San Juan"},
+                body: {text: "Hola *brayan*"+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+                "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+                footer: {
+                text: "scaliwoodSoft"},
+                action: {
+                  button: "Nuestros Servicios",
+                  sections:[
+                   
+                    {
+                      title:"opcion 1",
+                      rows: [
+                        {
+                          id:"1",
+                          title: "GPS",
+                          description: "gps",           
+                        }
+                      ]
+                    },
+                    {
+                      title:"Opcion 2",
+                      rows: [
+                        {
+                          id:"2",
+                          title: "CCTV(camaras seguridad)",
+                          description: "cctv",           
+                        }
+                      ]
+                    },
+                    {
+                      title:"Opcion 3",
+                      rows: [
+                        {
+                          id:"3",
+                          title: "Alarmas Recidenciales",
+                          description: "alarmas",  
+                               
+                        }
+                      ]
+                    },{
+                      title:"Opcion 4",
+                      rows: [
+                        {
+                          id:"4",
+                          title: "Control de Acceso",
+                          description: "Control_Acceso",  
+                               
+                        }
+                      ]
+                    },
+                    {
+                      title:"Opcion 5",
+                      rows: [
+                        {
+                          id:"5",
+                          title: "PROMOCIONES",
+                          description: "promociones",  
+                               
+                        }
+                      ]
+                    },{
+                      title:"Opcion 6",
+                      rows: [
+                        {
+                          id:"5",
+                          title: "Nosotros",
+                          description: "nosotros",  
+                               
+                        }
+                      ]
+                    }
+                    
+                  ]
+                }
+              }
+                  },
+          headers: { "Content-Type": "application/json" },
+        });
+        break;
+      }else{
+          
+        io.emit('whatsapp_notification', from,msg_body1);
+        let msg_body ="*SecuriBot*🤖 dice :"+"\n\nNo entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras clave:"+
+        "\n *Informacion, buen dia, hola, GPS, CCTV, alarmas, asesor, catalogo *"  ;
+         sendOP(msg_body, from)
       }
     }
       var lower=msg_body1.toLowerCase();
 
-      lower.spl
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
         let text= "Por favor ponerse en contacto con:"+" \n"+
@@ -621,114 +724,10 @@ app.post("/webhook", (req, res) => {
   
          
   
-        }else if(saludos.includes(msg_body1.toLowerCase())){
-          //let mesagge='de'+':'+ from +' '+msg_body1;
-          io.emit('whatsapp_notification', from,msg_body1);
-          axios({
-            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-            url:
-              "https://graph.facebook.com/v12.0/" +
-              phone_number_id +
-              "/messages?access_token=" +
-              token,
-              data: {
-                messaging_product: "whatsapp",
-                recipient_type: "individual",
-                to : from,
-                type: "interactive" ,
-                interactive:{
-                  type: "list",
-                  header: {  
-                  type: "text",
-                  text: "San Juan"},
-                  body: {text: "Hola *brayan*"+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
-                  "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
-                  footer: {
-                  text: "scaliwoodSoft"},
-                  action: {
-                    button: "Nuestros Servicios",
-                    sections:[
-                     
-                      {
-                        title:"opcion 1",
-                        rows: [
-                          {
-                            id:"1",
-                            title: "GPS",
-                            description: "gps",           
-                          }
-                        ]
-                      },
-                      {
-                        title:"Opcion 2",
-                        rows: [
-                          {
-                            id:"2",
-                            title: "CCTV(camaras seguridad)",
-                            description: "cctv",           
-                          }
-                        ]
-                      },
-                      {
-                        title:"Opcion 3",
-                        rows: [
-                          {
-                            id:"3",
-                            title: "Alarmas Recidenciales",
-                            description: "alarmas",  
-                                 
-                          }
-                        ]
-                      },{
-                        title:"Opcion 4",
-                        rows: [
-                          {
-                            id:"4",
-                            title: "Control de Acceso",
-                            description: "Control_Acceso",  
-                                 
-                          }
-                        ]
-                      },
-                      {
-                        title:"Opcion 5",
-                        rows: [
-                          {
-                            id:"5",
-                            title: "PROMOCIONES",
-                            description: "promociones",  
-                                 
-                          }
-                        ]
-                      },{
-                        title:"Opcion 6",
-                        rows: [
-                          {
-                            id:"5",
-                            title: "Nosotros",
-                            description: "nosotros",  
-                                 
-                          }
-                        ]
-                      }
-                      
-                    ]
-                  }
-                }
-                    },
-            headers: { "Content-Type": "application/json" },
-          });
-         
         }else if(optinoSpecial.includes(msg_body1.toLowerCase())){
           let dato=msg_body1.toLowerCase();
           
           
-        }else{
-          
-          io.emit('whatsapp_notification', from,msg_body1);
-          let msg_body ="*SecuriBot*🤖 dice :"+"\n\nNo entiendo lo que quieres decirme"+"\nIntenta una de las siguientes palabras clave:"+
-          "\n *Informacion, buen dia, hola, GPS, CCTV, alarmas, asesor, catalogo *"  ;
-           sendOP(msg_body, from)
         }
       }
       
