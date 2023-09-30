@@ -519,6 +519,8 @@ app.post("/webhook", (req, res) => {
       }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
         let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
         
+
+
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
         let asesrNumber="573026055289"
@@ -550,12 +552,23 @@ app.post("/webhook", (req, res) => {
       
      }else{
       
-      let msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
+      var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
     
-     
-      
-   
+     var arrayMaessage=msg_body1.split(" ");
+     for(var i=0;i<arrayMaessage.length;i++){
+  
+      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
+        io.emit('whatsapp_notification', from,msg_body1);
+        let msg_body ="Es un gusto para *San Juan Electronics* poder servirle.😊"+
+        "\n Feliz dia!"+
+        "No olvides seguirnos en las redes sociales como *San Juan electronics*";          
+        
+        sendOP(msg_body,from)
+      }
+    }
       var lower=msg_body1.toLowerCase();
+
+      lower.spl
       var hasKey = (rtaopt[msg_body1] !== undefined);
       if(rtaopt[lower]){
         let text= "Por favor ponerse en contacto con:"+" \n"+
@@ -706,17 +719,9 @@ app.post("/webhook", (req, res) => {
             headers: { "Content-Type": "application/json" },
           });
          
-        }else if(agradecimiento.includes(msg_body1.toLowerCase())){
-
-          io.emit('whatsapp_notification', from,msg_body1);
-          let msg_body ="Es un gusto para *San Juan Electronics* poder servirle.😊"+
-          "\n Feliz dia!";          
-          
-          sendOP(msg_body,from)
-          
         }else if(optinoSpecial.includes(msg_body1.toLowerCase())){
           let dato=msg_body1.toLowerCase();
-          console.log(dato)
+          
           
         }else{
           
