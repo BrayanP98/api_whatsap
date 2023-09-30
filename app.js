@@ -663,13 +663,11 @@ app.post("/webhook", (req, res) => {
         headers: { "Content-Type": "application/json" },
       });
       break;
-    }else{
-        
+    }else if(rtaopt[arrayMaessage[i].toLocaleLowerCase()]){
+      sendInteractive(rtaopt[arrayMaessage[i].toLocaleLowerCase()], arrayMaessage[i].toLocaleLowerCase())
      
-      let msg_body ="\nSHola soy *SecuriBot*🤖 bot de San Juan Electronics, estoy aqui para brindarte sobre nuestros productos y servicios, y ser una herramienta de comuncacion entre San Juanel Ectronics y sus clientes"
-      +"\n\nNo entiendo lo que quieres decirme"+"\nIntenta con una de las siguientes palabras clave:"+
-      "\n *Informacion, menu, hola, GPS, CCTV, alarmas, asesor, catalogo, nosotros *"+"\n\n_#TuSeguridadEsNuestraPrioridad:" ;
-       sendOP(msg_body, from)
+      
+       break
     }
      
   }
@@ -702,7 +700,7 @@ app.post("/webhook", (req, res) => {
           sendOP(rtaopt[lower].mesagge,from)
         }
          
-       sendInteractive(rtaopt[lower], lower)
+       
 
         
       }else{
