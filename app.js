@@ -283,11 +283,19 @@ app.post("/webhook", (req, res) => {
    var utilities=
   {
     promociones:{
+      prom1:{
+        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E",
+        "message":"Promo inperdible"
 
+
+      },
+      prom2:{
+        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E",
+        "message":"GRAN PROMOCION"
+      }
       
-      "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E"
-
-
+      
+      
 },
   }
 
@@ -450,8 +458,11 @@ app.post("/webhook", (req, res) => {
 
          }else if(msg_interctive==="promociones"){
 
+
+
           var promodata=utilities["promociones"];
-          
+          var kys= Object.values(utilities.promociones);
+          for(var i=0;i<kys.length;i++){
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
@@ -466,10 +477,10 @@ app.post("/webhook", (req, res) => {
                   header: {  
                     type:"image",
                     "image": {
-                      "link" :"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E"
+                      "link" : kys[i].img
                         }, 
                       },
-                  body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
+                  body: {text:  kys[i].message},
                   footer: {
                     
                   text: "scaliwoodSoft"},
@@ -490,7 +501,7 @@ app.post("/webhook", (req, res) => {
            ,
             headers: { "Content-Type": "application/json" },
           });
-          
+        }
             }
 
 
