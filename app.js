@@ -401,9 +401,7 @@ app.post("/webhook", (req, res) => {
       }
         let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
         let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-        let servicio= rtaopt[idServ]
        
-        var sub=servicio[msg_interctive];
        
          if(msg_interctive==="renovacion"){
 
@@ -497,6 +495,9 @@ app.post("/webhook", (req, res) => {
 
 
          else{
+          let servicio= rtaopt[idServ]
+       
+          var sub=servicio[msg_interctive];
           sendOP(sub[0].mesagge,from)
          }
         
