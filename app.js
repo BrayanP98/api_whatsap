@@ -275,17 +275,21 @@ app.post("/webhook", (req, res) => {
         " \n \n "+
         "\n "
   },
-  promociones:{
+  
+  
+    
+
+   }
+   var utilities=
+  {
+    promociones:{
 
       
       "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E"
 
 
 },
-  
-    
-
-   }
+  }
 
   // Check the Incoming webhook message
   //console.log(JSON.stringify(req.body, null, 2));
@@ -448,7 +452,7 @@ app.post("/webhook", (req, res) => {
 
          }else if(msg_interctive==="promociones"){
 
-          var promodata=rtaopt["promociones"];
+          var promodata=utilities["promociones"];
           
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
