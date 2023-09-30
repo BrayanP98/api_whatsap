@@ -224,9 +224,7 @@ app.post("/webhook", (req, res) => {
 
         
   },
-    asesor:{
-
-    },  
+    
     nosotros:{
       "Mision":[
         {
@@ -271,14 +269,7 @@ app.post("/webhook", (req, res) => {
         "\n "
 
   },
-  cotizar:{
-
-    "mesagge":"SecuriBot🤖 dice :"+"\n\nA continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-    "  \n https://sanjuanelectronics.online/"+
-      " \n \n "+
-      "\n "
-
-}
+  
     
 
    }
@@ -402,10 +393,7 @@ app.post("/webhook", (req, res) => {
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
-              "https://graph.facebook.com/v12.0/" +
-              phone_number_id +
-              "/messages?access_token=" +
-              token,
+              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
                 data:{
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
