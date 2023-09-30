@@ -464,7 +464,7 @@ app.post("/webhook", (req, res) => {
                   header: {  
                     type:"image",
                     "image": {
-                      "link" :promodata.image
+                      "link" :promodata.img
                         }, 
                       },
                   body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
