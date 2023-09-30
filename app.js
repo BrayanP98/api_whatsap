@@ -450,7 +450,6 @@ app.post("/webhook", (req, res) => {
 
           var promodata=rtaopt[msg_interctive];
           
-
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
@@ -465,7 +464,7 @@ app.post("/webhook", (req, res) => {
                   header: {  
                     type:"image",
                     "image": {
-                      "link" :promodata.img
+                      "link" :promodata.image
                         }, 
                       },
                   body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
@@ -489,13 +488,14 @@ app.post("/webhook", (req, res) => {
            ,
             headers: { "Content-Type": "application/json" },
           });
+          
             }
 
 
-         }else{}
+         else{
           sendOP(sub[0].mesagge,from)
          }
-         
+        
   
       
        
