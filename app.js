@@ -55,7 +55,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- //console.log(JSON.stringify(req.body, null, 2));
+ console.log(JSON.stringify(req.body, null, 2));
 
  if(body.entry[0].changes[0].value.statuses){
   let status=body.entry[0].changes[0].value.statuses[0]["status"]
@@ -80,14 +80,16 @@ app.post("/webhook", (req, res) => {
           "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
           "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
           "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
-          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo.",
+          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo."+
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*.",
+          "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*."+
+          "\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ],
@@ -98,7 +100,7 @@ app.post("/webhook", (req, res) => {
           "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
 
         }
        ],
@@ -122,14 +124,17 @@ app.post("/webhook", (req, res) => {
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*."+
+          +
+          "\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
@@ -145,14 +150,15 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."+
+          "\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*.",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ],
@@ -176,28 +182,29 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."
+          +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información.",
+          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
        "otros":[
         {
           "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."
+          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
         }
        ]
     },
@@ -208,7 +215,7 @@ app.post("/webhook", (req, res) => {
         "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
 
           
     },
@@ -220,7 +227,7 @@ app.post("/webhook", (req, res) => {
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅"+"Proveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética. *NEQUI:* 3006549863✅"+
-        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."
+        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
 
         
   },
@@ -228,14 +235,14 @@ app.post("/webhook", (req, res) => {
     nosotros:{
       "Mision":[
         {
-          "mesagge":"*SecuriBot🤖 dice* :"+"\n\0\0\0\0 *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
           "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
           +"\n\n_#TuSeguridadEsNuestraPrioridad_"
         }
        ], 
        "Vision":[
         {
-          "mesagge":"*SecuriBot🤖 dice* :"+"\n \0\0\0\0   *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
           " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
           +"\n\n_#TuSeguridadEsNuestraPrioridad_"
         
@@ -267,8 +274,14 @@ app.post("/webhook", (req, res) => {
       "  \n https://sanjuanelectronics.online/"+
         " \n \n "+
         "\n "
-
   },
+  promociones:{
+
+      
+      "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E"
+
+
+},
   
     
 
@@ -306,8 +319,8 @@ app.post("/webhook", (req, res) => {
             rows: [
               {
                 id:service,
-                title: kys[i],
-                description: kys[i]           
+                title:kys[i],
+                description:kys[i]           
               }
             ]
           }
@@ -433,7 +446,53 @@ app.post("/webhook", (req, res) => {
           });
          
 
-         }else{
+         }else if(msg_interctive==="promociones"){
+
+          var promodata=rtaopt[msg_interctive];
+          
+
+          axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
+                data:{
+                messaging_product: "whatsapp",
+                recipient_type: "individual",
+                to : from,
+                type: "interactive" ,
+                interactive:{
+                  type: "button",
+                  header: {  
+                    type:"image",
+                    "image": {
+                      "link" :promodata.img
+                        }, 
+                      },
+                  body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
+                  footer: {
+                    
+                  text: "scaliwoodSoft"},
+                  action: {
+                    "buttons": [
+                    
+                      {
+                        "type": "reply",
+                        "reply": {
+                          "id": "Acceder",
+                          "title": "Acceder"
+                        }
+                      }
+                    ]
+                  }
+                }
+                    }
+           ,
+            headers: { "Content-Type": "application/json" },
+          });
+            }
+
+
+         }else{}
           sendOP(sub[0].mesagge,from)
          }
          
@@ -601,8 +660,19 @@ app.post("/webhook", (req, res) => {
                                  
                           }
                         ]
-                      },{
+                      },
+                      {
                         title:"Opcion 5",
+                        rows: [
+                          {
+                            id:"5",
+                            title: "PROMOCIONES",
+                            description: "promociones",  
+                                 
+                          }
+                        ]
+                      },{
+                        title:"Opcion 6",
                         rows: [
                           {
                             id:"5",
