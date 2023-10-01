@@ -68,7 +68,7 @@ app.post("/webhook", (req, res) => {
   
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","ayuda","informacion","buen día"]
+  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
   var optinoSpecial=["nosotros","cotizar","catalogo"]
   var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
@@ -212,7 +212,7 @@ app.post("/webhook", (req, res) => {
     
     renovar_plataforma:{
 
-        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
           "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
@@ -223,7 +223,7 @@ app.post("/webhook", (req, res) => {
 
       "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
       "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
-      "\n\n nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+      "\n\n nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅"+"Proveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética. *NEQUI:* 3006549863✅"+
@@ -558,11 +558,11 @@ app.post("/webhook", (req, res) => {
 
      for(var i=0;i<arrayMaessage.length;i++){
      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="SecuriBot🤖 dice :"+"\nEs un gusto para *San Juan Electronics* poder servirle.😊"+
-      "\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
+      let msg_body ="SecuriBot🤖 dice :"+" "+name+" "+", "+"\nes un gusto para *San Juan Electronics* poder servirle.😊"+
+      "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
       +
-      "\n\nNo olvides seguirnos en las redes sociales como *San Juan electronics* y visitarnos en nuestra pagina web http://sanjuanelectronics.online/"+
-     "\n Feliz dia!"+
+      "\n\nNo olvides seguirnos en las redes sociales como *San Juan Electronics* y visitarnos en nuestra pagina web http://sanjuanelectronics.online/"+
+     "\n\nFeliz dia!"+
       "\n\n_#TuSeguridadEsNuestraPrioridad:";          
       
       sendOP(msg_body,from)
@@ -585,7 +585,7 @@ app.post("/webhook", (req, res) => {
               header: {  
               type: "text",
               text: "San Juan"},
-              body: {text: "Hola *brayan*"+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+              body: {text: "Hola"+" "+name+" "+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
               "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
@@ -670,7 +670,7 @@ app.post("/webhook", (req, res) => {
        break
     }
     else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted.")
+      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#TuSeguridadEsNuestraPrioridad:")
       let contactClient= "Por favor ponerse en contacto con:"+" \n"+
       name+" "+"\n al numero:"+""+from+"" +"para asesoria";
 
