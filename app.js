@@ -669,68 +669,18 @@ app.post("/webhook", (req, res) => {
       
        break
     }
+    else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
+      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted.")
+      let contactClient= "Por favor ponerse en contacto con:"+" \n"+
+      name+" "+"\n al numero:"+""+from+"" +"para asesoria";
+
+      let to= "573026055289"
+      sendOP(text,from)
+      sendOP(contactClient, to)
+    }
      
   }
-      var lower=msg_body1.toLowerCase();
-
-      var hasKey = (rtaopt[msg_body1] !== undefined);
-      if(rtaopt[lower]){
-        let text= "Por favor ponerse en contacto con:"+" \n"+
-        name+" "+"\n al numero:"+""+from+""+"para asesoria en"+" "+lower;
-        if(lower=="asesor"){
-           text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted.")
-           let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-           name+" "+"\n al numero:"+""+from+"" +"para asesoria";
-           axios({
-            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-            url:
-              "https://graph.facebook.com/v12.0/" +
-              phone_number_id +
-              "/messages?access_token=" +
-              token,
-            data: {
-              messaging_product: "whatsapp",
-              to: "573026055289",
-              text: { body:  contactClient},
-            },
-            headers: { "Content-Type": "application/json" },
-          });
-          sendOP(text,from)
-        }else if(lower=="cotizar"){
-          sendOP(rtaopt[lower].mesagge,from)
-        }
-         
-       
-
-        
-      }else{
-        if(optinos.includes(msg_body1)){
-          if(msg_body1==="1"){
-            
-           sendInteractive(rtaopt["cctv"],"cctv")
-          }if(msg_body1==="2"){
-            sendInteractive(rtaopt["gps"],"gps")
-          }if(msg_body1==="3"){
-
-           sendInteractive(rtaopt["alarmas"],"alarmas")
-          }
-          if(msg_body1==="4"){
-          sendInteractive(rtaopt["Control_Acceso"],"Control_Acceso")
-            }
-          if(msg_body1==="5"){
-              sendOP(rtaopt["catalogo"].mesagge,from)
-            }if(msg_body1===""){
-              sendOP(rtaopt["nosotros"].mesagge,from)
-                }
-  
-         
-  
-        }else if(optinoSpecial.includes(msg_body1.toLowerCase())){
-          let dato=msg_body1.toLowerCase();
-          
-          
-        }
-      }
+     
       
       
      
