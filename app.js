@@ -284,13 +284,13 @@ app.post("/webhook", (req, res) => {
   {
     promociones:{
       prom1:{
-        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365837403_690754163067662_5910337303261343004_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeF1_hrx7qqlIeMDMMEw2Jc6YIcaqC9Hh2JghxqoL0eHYrMwqTZV4T_kb-PvJ5eQD07Nj6C6ZIbqlHQ6YcRlI42t&_nc_ohc=tFQVHfqcmeIAX9hc4JP&_nc_ht=scontent-bog1-1.xx&oh=00_AfDVvVg-s4-HGoiFF1T8G0HFx4Ww7PUP-DUOeo9bNEMy1g&oe=651CF2C3",
+        "img":"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_ohc=aRKr6K3Mh84AX-NrA-r&_nc_ht=scontent.fbog10-1.fna&oh=00_AfAIbqcPFQj0F0GD3nRGrIz-XmNvVzyCTMFCCvuG_Hr5Fg&oe=6523585E",
         "message":"Promo inperdible"
 
 
       },
       prom2:{
-        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHmJb4n20w8wXaVcCs-IVLxjsgvIKBsmjuOyC8goGyaO_mlcB_aMjlpkvpjgVKZBrGrCQTYswLua3wka2vqvYbM&_nc_ohc=LlKxl93IAMIAX-GgRZZ&_nc_ht=scontent-bog1-1.xx&oh=00_AfDpe8zfsKJny3DjNqr2mxRk-N2_Y8WB4GbyBUHCKAR9vg&oe=651D699E",
+        "img":"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/285154494_1602286500149529_7441128750440907695_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_ohc=oDcHlu7OgOwAX89DpAp&_nc_ht=scontent.fbog10-1.fna&oh=00_AfCmf4tzIIkOrKIRw1lwuvDBNLqJJwNZB3uwN1791USslA&oe=6523042E",
         "message":"GRAN PROMOCION"
       }
       
