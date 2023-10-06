@@ -68,7 +68,7 @@ app.post("/webhook", (req, res) => {
   
 
   var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos dias","ole","buenas","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
+  var saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
   var optinoSpecial=["nosotros","cotizar","catalogo"]
   var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
@@ -226,11 +226,17 @@ app.post("/webhook", (req, res) => {
       "\n\n nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
-        " \n \n *Ahorro a la mano:*  03157527681 ✅"+"Proveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética. *NEQUI:* 3006549863✅"+
+        " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*NEQUI:* 3006549863✅"+
         "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
 
         
   },
+  acceder_promo:{
+
+    "mesagge":"SecuriBot🤖 dice :"+" ya se comunicar  para darte mas informacion"
+      
+      
+},
     
     nosotros:{
       "Mision":[
@@ -490,7 +496,7 @@ app.post("/webhook", (req, res) => {
                       {
                         "type": "reply",
                         "reply": {
-                          "id": "Acceder",
+                          "id": "acceder_promo",
                           "title": "Acceder"
                         }
                       }
