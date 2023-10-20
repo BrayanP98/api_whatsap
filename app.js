@@ -296,7 +296,7 @@ app.post("/webhook", (req, res) => {
 
       },
       prom2:{
-        "img":"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/285154494_1602286500149529_7441128750440907695_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_ohc=oDcHlu7OgOwAX89DpAp&_nc_ht=scontent.fbog10-1.fna&oh=00_AfCmf4tzIIkOrKIRw1lwuvDBNLqJJwNZB3uwN1791USslA&oe=6523042E",
+        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/274943224_1537743729937140_1507675077666243572_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WhEq6nO29PUAX9cTX4A&_nc_oc=AQlDj-jf3ykxw1jc-LfUOYX48leTFOHu1P5MqLQC8NqP0Ekxi9ujBB__S8XjrtKC43k&_nc_ht=scontent-bog1-1.xx&oh=00_AfCFoYKFvZmYtQ4Otu1bgmjudkwhspSEoZahpUbM80ebdA&oe=6538A896",
         "message":"GRAN PROMOCION"
       }
       
