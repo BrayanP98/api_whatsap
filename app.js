@@ -290,7 +290,7 @@ app.post("/webhook", (req, res) => {
   {
     promociones:{
       prom1:{
-        "img":"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/365461591_687156643427414_5032061227280861270_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_ohc=aRKr6K3Mh84AX-NrA-r&_nc_ht=scontent.fbog10-1.fna&oh=00_AfAIbqcPFQj0F0GD3nRGrIz-XmNvVzyCTMFCCvuG_Hr5Fg&oe=6523585E",
+        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/387042543_724012399741838_5498460068571543279_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Kxe5ErCfYJ4AX_47BXU&_nc_ht=scontent-bog1-1.xx&oh=00_AfCbskmDEkajNzrRidSwXiBzgkE3hWX2k1tJccmQ8CbDEA&oe=6537D8FB",
         "message":"Promo inperdible"
 
 
