@@ -233,7 +233,7 @@ app.post("/webhook", (req, res) => {
   },
   acceder_promo:{
 
-    "mesagge":"SecuriBot🤖 dice :"+" ya se comunicar  para darte mas informacion"
+    "mesagge":"SecuriBot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darte mas informacion sobre este articulo"
       
       
 },
@@ -364,7 +364,8 @@ app.post("/webhook", (req, res) => {
                  header: {  
                  type: "text",
                  text: "San Juan"},
-                 body: {text: service.toUpperCase()+" \n Elije tus Opciones"+"👇"},
+                 body: {text:"SecuriBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"💛Tu seguridad es nuestra prioridad"
+                 +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
                    
                  text: "scaliwoodSoft"},
