@@ -158,7 +158,7 @@ button_sendPlV.onclick=function(){
    
    }
 
- function send_whatsapp(data){
+ function send_whatsapp(data){ 
 
   
 var botId = '122100131648008841';
@@ -343,4 +343,100 @@ div_notific.classList.toggle("active")
 })
 
 
+var numberPromo=document.querySelector("#number_promo");
+var urlImgPromo=document.querySelector("#url_img_promo");
+var textoPromo=document.querySelector("#texto_promo");
+var sendPromo=document.querySelector("#send_promo");
+
+
+
+sendPromo.onclick=function(){
+
+var valueNumberPromo=numberPromo.value
+var arrayMaessage=valueNumberPromo.split(" ");
+var img=urlImgPromo.value;
+var descript= textoPromo.value
+
+for(var i=0;i<arrayMaessage.length;i++){
+
+  send_whatsapp(arrayMaessage[i], img, descript);
+function send_whatsapp(number, img,  text){
+  var botId = '122100131648008841';
+  var phoneNbr = '573026055289';
+  var bearerToken = 'EABpkYoLqZBZCYBOxobhn1EwbivIl4Uu1ecsawuwsDQgtJv8n7SVaqPsiBLJusnZBOM7SKdvAt4ZCJtxZCcrAS5n5dMbP3dhb0mzfM3nlSRV3KZBLBY07uq6HDuz6TJkyfTCwRwBJZCjvvOxuQ37M1LwuHZA2ge57k5cDTa2eVo1LPvROqctQPOIPJzdWlBjZCtykLqxdmTDzgTwRITK9T';
+  
+  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+
+
+
+
+var  data= {
+"messaging_product": "whatsapp",
+"recipient_type": "individual",
+"to": number,
+"type": "template",
+"template": {
+"name": "publicidad",
+"language": {
+"code": "es"
+},
+"components": [
+{
+  "type": "header",
+  "parameters": [
+    
+    {
+      "type":"image",
+    "image": {
+      "link" : img
+        }, 
+    
+    }
+  
+  ]},
+
+  {
+    "type": "body",
+    "parameters": [
+      {
+        "type": "text",
+        "text": text
+      },
+      
+    
+    ]},
+
+]
+
+}
+
+}
+
+      
+  var postReq = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + bearerToken,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+    json: true
+  };
+  
+  fetch(url, postReq)
+    .then(data => {
+      return data.json()
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(error => console.log(error));
+
+  }
+
+
+
+
+}
+}
  

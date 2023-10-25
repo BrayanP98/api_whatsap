@@ -174,3 +174,14 @@
        color: aqua;
 
     }
+
+    #send_promos{
+      width: 50%;
+      height: fit-contents;
+
+     
+    }
+    #send_promos button{
+      width: 60px;
+      height: 25px;
+    }
