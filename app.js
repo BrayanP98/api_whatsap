@@ -562,7 +562,21 @@ app.post("/webhook", (req, res) => {
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
         let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
-      }
+      }else if(butonrta==="NO MOLESTE"){
+        let mesagge="Entendido"
+         sendOP(mesagge,from); 
+         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
+         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
+         let asesrNumber="573026055289"
+         sendOP(contactClient,asesrNumber); 
+       }else if(butonrta==="RECLAMAR REGALO"){
+        let mesagge="Entendido"
+         sendOP(mesagge,from); 
+         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
+         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
+         let asesrNumber="573026055289"
+         sendOP(contactClient,asesrNumber); 
+       }
       
      }else{
       
