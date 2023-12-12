@@ -563,15 +563,18 @@ app.post("/webhook", (req, res) => {
         let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="Entendido."+"\nSan Juan Electronics le desea un feliz dia!.💛"
+        let mesagge="SecuriBot🤖 dice :"+"\n\nEntendido."+"\nSan Juan Electronics le desea un feliz dia!.💛"+
+          "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
+          "\n_#TuSeguridadEsNuestraPrioridad_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
          let asesrNumber="573026055289"
          sendOP(contactClient,asesrNumber); 
        }else if(butonrta==="RECLAMAR REGALO"){
-        let mesagge="Pronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
-          "\n\nNuestros numeros de contacto son: 3026055289-3006549863"
+        let mesagge="SecuriBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
+          "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
+           "\n_#TuSeguridadEsNuestraPrioridad_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
