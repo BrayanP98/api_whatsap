@@ -3,6 +3,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path= require('path');
 const body_parser = require("body-parser");
+const Image=require('./src/models/IMAGE')
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
@@ -752,7 +753,7 @@ app.get("/info", async(req, res) => {
 app.get("/info1", async(req, res) => {
   const prods= await Image.find().lean();
  // io.emit("getprods1","00s1","como amaneces, estas bien")
-
+ res.render("hola")
 console.log(prods)
 
 
