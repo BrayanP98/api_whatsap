@@ -6,6 +6,7 @@ const body_parser = require("body-parser");
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
+require("./database")
 
 const token = process.env.WHATSAPP_TOKEN;
 //const path= require('path');
@@ -731,10 +732,32 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/", (req, res) => {
+
   res.render("index.ejs")
 
  
+});
+app.get("/info", async(req, res) => {
+  try{
+    const img= new Image();
+ img.cantidad="445";
+ img.categoria="perr3o";
+ 
+    await img.save();   
+}catch{
+    res.send('<script>window.history.go(-1)</script>');
+}
+
+});
+app.get("/info1", async(req, res) => {
+  const prods= await Image.find().lean();
+ // io.emit("getprods1","00s1","como amaneces, estas bien")
+
+console.log(prods)
+
+
 })
+
 
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
