@@ -745,8 +745,8 @@ app.get("/info", async(req, res) => {
  img.categoria="perr3o";
  
     await img.save();   
-}catch{
-    res.send('<script>alert("hola")</script>');
+}catch(error){
+    console.log(error)
 }
 
 });
