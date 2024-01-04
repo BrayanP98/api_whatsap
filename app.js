@@ -3,7 +3,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path= require('path');
 const body_parser = require("body-parser");
-const Image=require('./src/models/IMAGE')
+const Image=require('./src/models/IMAGE.js')
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
