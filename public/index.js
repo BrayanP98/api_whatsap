@@ -201,6 +201,9 @@ var mensajeview=document.querySelector("#viewMessages")
 var arrayMessages=[ ]
 
 
+socket.on('data_user', (data) => {
+
+})
   socket.on('whatsapp_notification', (from, message) => {
 
     Notification.requestPermission(function (permission) {

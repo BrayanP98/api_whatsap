@@ -751,11 +751,11 @@ app.get("/info", async(req, res) => {
 
 });
 app.get("/info1", async(req, res) => {
-  res.send('<script>alert("hola")</script>');
-  const prods= await Image.find().lean();
- //io.emit("getprods1","00s1",prods)
  
-console.log(prods)
+  const prods= await Image.find().lean();
+  io.emit('data_user', prods);
+ 
+  res.render("index.ejs")
 
 
 })
