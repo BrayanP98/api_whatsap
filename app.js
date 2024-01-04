@@ -735,8 +735,11 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/", (req, res) => {
-
+  const prods= await Image.find().lean();
+  io.emit('data_user', prods);
+ 
   res.render("index.ejs")
+
 
  
 });
