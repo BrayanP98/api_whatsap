@@ -202,6 +202,7 @@ var arrayMessages=[ ]
 
 
 socket.on('data_user', (data) => {
+  console.log(data)
 
 })
   socket.on('whatsapp_notification', (from, message) => {
