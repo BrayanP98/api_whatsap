@@ -746,13 +746,13 @@ app.get("/info", async(req, res) => {
  
     await img.save();   
 }catch{
-    res.send('<script>window.history.go(-1)</script>');
+    res.send('<script>alert("hola")</script>');
 }
 
 });
 app.get("/info1", async(req, res) => {
   const prods= await Image.find().lean();
- // io.emit("getprods1","00s1","como amaneces, estas bien")
+ io.emit("getprods1","00s1",prods)
  res.render("hola")
 console.log(prods)
 
