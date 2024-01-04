@@ -751,6 +751,7 @@ app.get("/info", async(req, res) => {
 
 });
 app.get("/info1", async(req, res) => {
+  res.send('<script>alert("hola")</script>');
   const prods= await Image.find().lean();
  io.emit("getprods1","00s1",prods)
  res.render("hola")
