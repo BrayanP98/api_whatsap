@@ -3,7 +3,8 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path= require('path');
 const body_parser = require("body-parser");
-const Image=require('./src/models/IMAGE.js')
+const Image=require('./src/models/IMAGE.js');
+const bodyParser = require('body-parser');
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.get('/', (req, res) => {
   res.render("index.ejs")
 });
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
@@ -738,26 +740,25 @@ app.get("/", (req, res) => {
 
  
 });
-app.get("/info", async(req, res) => {
+app.get("/add_user", (req, res) => {
+  res.render("addUser.ejs")
+})
+
+app.post('/add_user/:id',async(req, res)=>{
+
+  
   try{
     const img= new Image();
- img.cantidad="445";
- img.categoria="perr3o";
- 
-    await img.save();   
-}catch(error){
-    console.log(error)
+  
+    
+    img.cantidad=req.body.name_user;
+    img.categoria=req.body.dateToend;
+    
+       await img.save();   
+       res.render("addUser.ejs")
+}catch(err){
+   console.log(err)
 }
-
-});
-app.get("/info1", async(req, res) => {
- 
-  const prods= await Image.find().lean();
-  io.emit('data_user', prods);
- 
-  res.render("index.ejs")
-
-
 })
 
 
