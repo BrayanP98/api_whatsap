@@ -746,7 +746,7 @@ app.get("/", async(req, res) => {
 });
 
 
-cron.schedule("* * * * * *", () => {
+cron.schedule("33 14 * * *", () => {
 	console.log("Cada minuto")
 	
 }, {
