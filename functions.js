@@ -13,7 +13,7 @@ class Main{
     if(dateToday.getTime()===dateToend.getTime()){
       console.log("vence")
     }else{
-      console.log("no vence")
+      console.log("no vencer")
     }
   }
   }
