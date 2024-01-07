@@ -746,12 +746,7 @@ app.get("/", async(req, res) => {
 });
 
 
-cron.schedule("33 14 * * *", () => {
-	console.log("Cada minuto")
-	
-}, {
-		timezone: "America/Bogota"
-	})
+
 
 app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")

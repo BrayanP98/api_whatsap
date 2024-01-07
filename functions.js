@@ -19,7 +19,11 @@ class Main{
   }
 }
 
-cron.schedule('01 2 * * *', ()=>{
-Main.getDate()
-})
+
+cron.schedule("38 14 * * *", () => {
+	Main.getDate()
+	
+}, {
+		timezone: "America/Bogota"
+	})
 
