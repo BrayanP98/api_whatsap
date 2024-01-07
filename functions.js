@@ -19,7 +19,7 @@ class Main{
   }
 }
 
-cron.schedule('09 13 * * *', ()=>{
-Main.getDate()
+cron.schedule('* * * * * *', ()=>{
+  console.log("no vencer")
 })
 

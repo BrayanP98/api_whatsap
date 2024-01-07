@@ -13,10 +13,10 @@ const { connect }=require('mongoose');
   
  //  const db =await connect("mongodb://localhost/usuarios");
 
-        console.log("db connected");
+       // console.log("");
 
      }catch(error){
-        console.error(error);
+       // console.error(error);
 
         
      }
