@@ -739,11 +739,18 @@ app.post("/webhook", (req, res) => {
 
 app.get("/", async(req, res) => {
   res.render("index.ejs")
- 
+
+
 
  
 });
 
+
+var task = cron.schedule('* * * * * *', function() {
+  console.log('immediately started');
+}, false);
+
+task.start();
 
 app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")
