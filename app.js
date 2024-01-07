@@ -744,7 +744,7 @@ app.get("/", async(req, res) => {
  
 });
 
-cron.schedule(' 40 12 * * *', ()=>{
+cron.schedule(' 45 12 * * *', ()=>{
   console.log("hola mundo")
   })
 app.get("/add_user", (req, res) => {
