@@ -5,11 +5,13 @@ const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const bodyParser = require('body-parser');
+const cron=require('node-cron')
+require('./functions');
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
 require("./database");
-require('./functions')
+
 
 const token = process.env.WHATSAPP_TOKEN;
 //const path= require('path');
@@ -741,6 +743,10 @@ app.get("/", async(req, res) => {
 
  
 });
+
+cron.schedule(' 15 12 * * *', ()=>{
+  console.log("hola mundo")
+  })
 app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")
 })
