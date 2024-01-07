@@ -746,11 +746,12 @@ app.get("/", async(req, res) => {
 });
 
 
-var task = cron.schedule('21 14  * * *', function() {
-  console.log('immediately started');
-}, false);
-
-task.start();
+cron.schedule("* * * * * *", () => {
+	console.log("Cada minuto")
+	
+}, {
+		timezone: "America/Bogota"
+	})
 
 app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")
