@@ -1,29 +1,85 @@
 const cron=require('node-cron')
 const Image=require('./src/models/IMAGE');
+const axios = require("axios")
+ axios.default
 class Main{
   static  async getDate(){
     const prods= await Image.find().lean();
   var date=new Date();
-  var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+"10"
+  var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+"0"+date.getDate()
   var dateToday= new Date(hoy);
+  
 
   for(var i=0;i<prods.length;i++){
-    var dateToend= new Date(prods[i].categoria);
+    var dateToend= new Date(prods[i].fecha);
    // console.log(dateToday+""+dateToend.getTime())
     if(dateToday.getTime()===dateToend.getTime()){
-      console.log("vence")
-    }else{
-      console.log("no vencer")
+      var number=prods[i].celular;
+      var  data= {
+        "messaging_product": "whatsapp",
+    "recipient_type": "individual",
+    "to": number,
+    "type": "template",
+    "template": {
+      "name": "plataforma",
+      "language": {
+        "code": "es_MX"
+      },
+      "components": [
+        {
+          "type": "button",
+          "sub_type" : "url",
+          "index": "2",
+          "parameters": [
+              {                    
+                  "type": "text",
+            
+              "text": "https://sanjuanelectronics.online/"
+    }
+]
+}
+]
+
+}
+
+}
+
+send_whatsapp(data)
+}else{
+  console.log("no vence")
     }
   }
   }
 }
 
 
-cron.schedule("38 14 * * *", () => {
+cron.schedule(" 50 16 * * *", () => {
 	Main.getDate()
 	
 }, {
 		timezone: "America/Bogota"
 	})
+
+
+
+   function send_whatsapp(data){ 
+
+  
+    var botId = '122100131648008841';
+    // var phoneNbr = '573026055289';
+    var token = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
+      
+
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        botId +
+        "/messages?access_token=" +
+        token,
+          data
+     ,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 

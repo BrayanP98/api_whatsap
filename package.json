@@ -4,12 +4,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
-    
   },
   "author": "brayan",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "^1.6.5",
     "axos": "^0.0.1",
     "body-parse": "^0.1.0",
     "body-parser": "^1.20.2",

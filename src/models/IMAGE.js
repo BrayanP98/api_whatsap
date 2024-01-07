@@ -1,13 +1,23 @@
 const {Schema, model} = require('mongoose');
 
 const imagSchema= new Schema({
-    cantidad:{
+    nombre:{
         type:String,
         required:true,
         unique:false,
         trim:true
            },
-    categoria:{
+    celular:{
+        type:String,
+        required:true,
+        unique:false,
+    },
+    fecha:{
+        type:String,
+        required:true,
+        unique:false,
+    },
+    placa:{
         type:String,
         required:true,
         unique:false,

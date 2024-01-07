@@ -158,36 +158,36 @@ button_sendPlV.onclick=function(){
    
    }
 
- function send_whatsapp(data){ 
+  function send_whatsapp(data){ 
 
-  
-var botId = '122100131648008841';
-// var phoneNbr = '573026055289';
-var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
+    
+  var botId = '122100131648008841';
+  // var phoneNbr = '573026055289';
+  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
 
-var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
 
 
 
-var postReq = {
-method: 'POST',
-headers: {
-'Authorization': 'Bearer ' + bearerToken,
-'Content-Type': 'application/json'
-},
-body: JSON.stringify(data),
-json: true
-};
+  var postReq = {
+  method: 'POST',
+  headers: {
+  'Authorization': 'Bearer ' + bearerToken,
+  'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data),
+  json: true
+  };
 
-fetch(url, postReq)
-.then(data => {
-return data.json()
-})
-.then(res => {
-console.log(res)
-})
-.catch(error => alert(error));
-}
+  fetch(url, postReq)
+  .then(data => {
+  return data.json()
+  })
+  .then(res => {
+  console.log(res)
+  })
+  .catch(error => alert(error));
+  }
 
 
 

@@ -6,11 +6,14 @@ const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
-require('./functions');
+require("./functions.js");
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
 require("./database");
+
+
+
 
 
 const token = process.env.WHATSAPP_TOKEN;
@@ -739,9 +742,6 @@ app.post("/webhook", (req, res) => {
 
 app.get("/", async(req, res) => {
   res.render("index.ejs")
-
-
-
  
 });
 
@@ -752,6 +752,14 @@ app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")
  
 })
+cron.schedule("49 15 * * *", () => {
+  
+  
+	main.getDate()
+	
+}, {
+		timezone: "America/Bogota"
+	})
 
 app.post('/add_user/:id',async(req, res)=>{
 
@@ -760,8 +768,10 @@ app.post('/add_user/:id',async(req, res)=>{
     const img= new Image();
   
     
-    img.cantidad=req.body.name_user;
-    img.categoria=req.body.dateToend;
+    img.nombre=req.body.name_user;
+    img.celular=req.body.number_user;
+    img.fecha=req.body.dateToend;
+    img.placa=req.body.placa;
     
        await img.save();   
        res.render("addUser.ejs")
