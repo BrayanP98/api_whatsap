@@ -19,7 +19,7 @@ class Main{
   }
 }
 
-cron.schedule('* * * * * *', ()=>{
+cron.schedule('21 13 * * *', ()=>{
   console.log("no vencer")
 })
 
