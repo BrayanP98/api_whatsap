@@ -746,7 +746,7 @@ app.get("/", async(req, res) => {
 });
 
 
-var task = cron.schedule('* * * * * *', function() {
+var task = cron.schedule('18 14  * * *', function() {
   console.log('immediately started');
 }, false);
 
