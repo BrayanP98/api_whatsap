@@ -5,7 +5,7 @@ const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const bodyParser = require('body-parser');
-const cron=require('node-cron')
+const cron=require('node-cron');
 require('./functions');
 const app = express();
 app.use(body_parser.json());
