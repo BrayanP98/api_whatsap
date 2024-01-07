@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
+    
   },
   "author": "brayan",
   "license": "ISC",

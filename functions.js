@@ -19,7 +19,7 @@ class Main{
   }
 }
 
-cron.schedule(' 24 12 * * *', ()=>{
+cron.schedule('09 13 * * *', ()=>{
 Main.getDate()
 })
 
