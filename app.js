@@ -738,13 +738,11 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/", async(req, res) => {
-  res.render("index.ejs")
- 
-
+  res.render("index.ejs");
  
 });
 
-cron.schedule('54 12 * * *', ()=>{
+cron.schedule('* * * * *', ()=>{
   console.log("hola mundo")
   })
 app.get("/add_user", (req, res) => {
