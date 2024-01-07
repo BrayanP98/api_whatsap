@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
-require("./database")
+require("./database");
+require('./functions')
 
 const token = process.env.WHATSAPP_TOKEN;
 //const path= require('path');
@@ -735,9 +736,6 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/", async(req, res) => {
-  const prods= await Image.find().lean();
-  io.emit('data_user', prods);
- console.log(prods);
   res.render("index.ejs")
 
 
