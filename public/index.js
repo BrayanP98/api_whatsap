@@ -196,7 +196,12 @@ button_sendPlV.onclick=function(){
 
 
 const socket = io();
+
+window.addEventListener("load", function(){
   
+  socket.emit("pagina_cargada","ok" )
+}
+)
 var mensajeview=document.querySelector("#viewMessages")
 var arrayMessages=[ ]
 

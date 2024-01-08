@@ -61,7 +61,25 @@ io.on('connection', function(socket)  {
       },
       headers: { "Content-Type": "application/json" },
     });
-  })
+  });
+  socket.on("pagina_cargada",async function (status) {
+
+    var chat= new chats();
+    const chatss= await chats.find().lean();
+  
+    for(var i=0;i<chatss.length;i++){
+  var celular =chatss[i].numero;
+      for(let a=0;a<chatss[i].chat.length;a++){
+         
+       io.emit('db_messages',celular ,chatss[i].chat[a].mensaje);
+        
+      }
+   
+      //io.emit('whatsapp_notification', chatss[i].numero,"msg_body1");
+  
+    }
+    
+   });
 });
 
 app.post("/webhook", (req, res) => {
@@ -745,29 +763,8 @@ app.post("/webhook", (req, res) => {
 });
 
 
-app.get("/chat", async(req, res) => {
 
-  var chat= new chats();
-  const chatss= await chats.find().lean();
-
-  for(var i=0;i<chatss.length;i++){
-var celular =chatss[i].numero;
-    for(let a=0;a<chatss[i].chat.length;a++){
-       
-     io.emit('db_messages',celular ,chatss[i].chat[a].mensaje);
-      
-    }
  
-    //io.emit('whatsapp_notification', chatss[i].numero,"msg_body1");
-
-  }
-
-
-
-
-  //
-  
- });
 
 app.get("/", async(req, res) => {
  
