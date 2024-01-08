@@ -335,7 +335,7 @@ app.post("/webhook", (req, res) => {
      
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-       var date=body.entry[0].changes[0].value.statuses[0].timestamp
+       var date=req.body.entry[0].changes[0].value.statuses[0].timestamp
       function sendInteractive(opt, service){
 
         var kys= Object.keys(opt);
