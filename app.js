@@ -747,7 +747,6 @@ app.post("/webhook", (req, res) => {
 
 app.get("/chat", async(req, res) => {
   
-  
  });
 
 app.get("/", async(req, res) => {
