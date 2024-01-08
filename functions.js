@@ -1,6 +1,7 @@
 const cron=require('node-cron')
 const Image=require('./src/models/IMAGE');
 const axios = require("axios")
+const chats=require('./src/models/chats.js');
  axios.default
 class Main{
   static  async getDate(){
@@ -82,4 +83,26 @@ cron.schedule(" 50 16 * * *", () => {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  async function saveChat(mensaje, numero){
+    var conv={
+      fecha:"25/25/23",
+      mensaje:mensaje
+     }
+    try {
+     
+      var chat= new chats();
+      const cht= await chats.find().lean();
+      chat.numero= numero;
+      chat.chat.push(conv); 
+
+      chat.save()
+    } catch (error) {
+      console.log(error)
+    }
+      
+  
+  }
+
+  module.exports = saveChat;
 

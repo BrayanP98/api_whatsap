@@ -4,15 +4,17 @@ const socketIo = require('socket.io');
 const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
+const chat=require('./src/models/chats.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
+const chats = require('./src/models/chats.js');
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
 require("./database");
 
-
+const save = require('./functions.js');
 
 
 
@@ -596,6 +598,8 @@ app.post("/webhook", (req, res) => {
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       io.emit('whatsapp_notification', from,msg_body1);
+      
+      save(msg_body1,from)
      var arrayMaessage=msg_body1.split(" ");
 
      for(var i=0;i<arrayMaessage.length;i++){
@@ -740,8 +744,15 @@ app.post("/webhook", (req, res) => {
 });
 
 
+app.get("/chat", async(req, res) => {
+ 
+  
+ });
+
 app.get("/", async(req, res) => {
+ 
   res.render("index.ejs")
+
  
 });
 
