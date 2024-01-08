@@ -84,9 +84,9 @@ cron.schedule(" 50 16 * * *", () => {
     });
   }
 
-  async function saveChat(mensaje, numero){
+  async function saveChat(mensaje, numero, fecha){
     var conv={
-      fecha:"25/25/28",
+      fecha:fecha,
       mensaje:mensaje
      }
     try {
