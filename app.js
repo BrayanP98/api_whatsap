@@ -335,7 +335,7 @@ app.post("/webhook", (req, res) => {
      
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-       var date=req.body.entry[0].changes[0].value.statuses[0].timestamp
+      
       function sendInteractive(opt, service){
 
         var kys= Object.keys(opt);
@@ -598,7 +598,8 @@ app.post("/webhook", (req, res) => {
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       io.emit('whatsapp_notification', from,msg_body1);
-      save(msg_body1,from, date)
+      console.log( req.body.entry[0].changes[0].value.messages[0])
+     // save(msg_body1,from, date)
      
      var arrayMaessage=msg_body1.split(" ");
 
