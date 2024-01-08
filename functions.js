@@ -12,9 +12,10 @@ class Main{
   
 
   for(var i=0;i<prods.length;i++){
-    var dateToend= new Date(prods[i].fecha);
+    var dateToendPlat= new Date(prods[i].fechaPlat );
+    var dateToendPlan= new Date(prods[i].fechaPlan );
    // console.log(dateToday+""+dateToend.getTime())
-    if(dateToday.getTime()===dateToend.getTime()){
+    if(dateToday.getTime()===dateToendPlat.getTime()){
       var number=prods[i].celular;
       var  data= {
         "messaging_product": "whatsapp",
@@ -46,15 +47,80 @@ class Main{
 }
 
 send_whatsapp(data)
-}else{
-  console.log("no vence")
-    }
-  }
-  }
+    }if(dateToday.getTime()===dateToendPlan.getTime()){
+  var number1=prods[i].celular;
+   let mensaje= "su plan *Claro* para *GPS* se encuentra pronto a vencer";
+           
+  var  data= {
+              "messaging_product": "whatsapp",
+          "recipient_type": "individual",
+          "to": number1,
+          "type": "template",
+          "template": {
+            "name": "expiracion1",
+            "language": {
+              "code": "es_MX"
+            },
+            "components": [
+        
+              
+                {
+                  "type": "body",
+                  "parameters": [
+                    {
+                      "type": "text",
+                      "text": mensaje
+                    },
+                    {
+                      "type": "text",
+                      "text": prods[i].fechaPlat
+                    },
+                    {
+                      "type": "text",
+                      "text": "03157527681"
+                    },
+                    {
+                      "type": "text",
+                      "text": "3006549863"
+                    },
+                  
+                  ]},
+               { "type": "button",
+                "sub_type" : "url",
+                "index": "2",
+                "parameters": [
+                  
+                    {                    
+                        "type": "text",
+                       
+                        "text": "https://sanjuanelectronics.online/"
+                    }
+                ]
+              }
+            ]
+          
+              }
+            
+          }
+     
+     send_whatsapp(data)
+     
+  
+     
+     }else{
+      console.log("no vence")
+     }
+
 }
 
 
-cron.schedule(" 50 16 * * *", () => {
+}
+  
+  }
+
+
+
+cron.schedule(" 36 17 * * *", () => {
 	Main.getDate()
 	
 }, {

@@ -12,7 +12,12 @@ const imagSchema= new Schema({
         required:true,
         unique:false,
     },
-    fecha:{
+    fechaPlat:{
+        type:String,
+        required:true,
+        unique:false,
+    },
+    fechaPlan:{
         type:String,
         required:true,
         unique:false,

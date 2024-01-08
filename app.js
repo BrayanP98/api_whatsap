@@ -253,7 +253,7 @@ app.post("/webhook", (req, res) => {
 
       "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
       "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
-      "\n\n nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
+      "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*NEQUI:* 3006549863✅"+
@@ -798,7 +798,8 @@ app.post('/add_user/:id',async(req, res)=>{
     
     img.nombre=req.body.name_user;
     img.celular=req.body.number_user;
-    img.fecha=req.body.dateToend;
+    img.fechaPlat=req.body.dateToendPlat;
+    img.fechaPlan=req.body.dateToendPlan;
     img.placa=req.body.placa;
     
        await img.save();   

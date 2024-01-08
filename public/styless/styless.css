@@ -107,7 +107,7 @@
         flex-direction: column;
         overflow: hidden;
         overflow-y: scroll;
-      
+      bottom: 25px;
         position: relative;
       }
       .chat{
