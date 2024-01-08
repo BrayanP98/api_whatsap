@@ -598,8 +598,8 @@ app.post("/webhook", (req, res) => {
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       io.emit('whatsapp_notification', from,msg_body1);
-      
       save(msg_body1,from)
+     
      var arrayMaessage=msg_body1.split(" ");
 
      for(var i=0;i<arrayMaessage.length;i++){
@@ -745,7 +745,7 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/chat", async(req, res) => {
- 
+  
   
  });
 

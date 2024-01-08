@@ -86,17 +86,28 @@ cron.schedule(" 50 16 * * *", () => {
 
   async function saveChat(mensaje, numero){
     var conv={
-      fecha:"25/25/23",
+      fecha:"25/25/28",
       mensaje:mensaje
      }
     try {
-     
       var chat= new chats();
-      const cht= await chats.find().lean();
-      chat.numero= numero;
+      await chats.updateOne(
+        { numero: numero },
+        { $push: { chat: conv } }
+      );
+      
+
+      /*for(var i=0;i<cht.length;i++){
+      if(cht[i].numero==numero){
+       await chat[i].updateOne({numero:numero})
+      
+    }else{
+      chat.numero=numero;
       chat.chat.push(conv); 
 
-      chat.save()
+     chat.save()
+    }
+  }*/
     } catch (error) {
       console.log(error)
     }
