@@ -597,9 +597,9 @@ app.post("/webhook", (req, res) => {
      }else{
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
+      var date= req.body.entry[0].changes[0].value.messages[0].timestamp
       io.emit('whatsapp_notification', from,msg_body1);
-      console.log( req.body.entry[0].changes[0].value.messages[0].timestamp)
-     // save(msg_body1,from, date)
+     save(msg_body1,from, date);
      
      var arrayMaessage=msg_body1.split(" ");
 
