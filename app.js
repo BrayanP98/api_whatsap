@@ -67,7 +67,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- console.log(JSON.stringify(req.body, null, 2));
+ //console.log(JSON.stringify(req.body, null, 2));
 
  if(body.entry[0].changes[0].value.statuses){
   let status=body.entry[0].changes[0].value.statuses[0]["status"]
@@ -598,7 +598,7 @@ app.post("/webhook", (req, res) => {
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       io.emit('whatsapp_notification', from,msg_body1);
-      console.log( req.body.entry[0].changes[0].value.messages[0])
+      console.log( req.body.entry[0].changes[0].value.messages[0].timestamp)
      // save(msg_body1,from, date)
      
      var arrayMaessage=msg_body1.split(" ");
