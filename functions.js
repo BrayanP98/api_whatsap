@@ -84,11 +84,11 @@ cron.schedule(" 50 16 * * *", () => {
     });
   }
 
-  async function saveChat(mensaje, numero, fecha){
-    var num_fecha=parseInt(fecha)
+  async function saveChat(mensaje, numero){
+    
     
 
-    var date=new Date(num_fecha * 1000)
+    var date=new Date()
     let fecha1= date.getDate() + '/' + (date.getMonth() + 1) + '/' +
     date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
     date.getSeconds();

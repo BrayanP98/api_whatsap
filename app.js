@@ -599,7 +599,7 @@ app.post("/webhook", (req, res) => {
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       var date= req.body.entry[0].changes[0].value.messages[0].timestamp
       io.emit('whatsapp_notification', from,msg_body1);
-     save(msg_body1,from, date);
+     save(msg_body1,from);
      
      var arrayMaessage=msg_body1.split(" ");
 
@@ -746,6 +746,26 @@ app.post("/webhook", (req, res) => {
 
 
 app.get("/chat", async(req, res) => {
+
+  var chat= new chats();
+  const chatss= await chats.find().lean();
+
+  for(var i=0;i<chatss.length;i++){
+var celular =chatss[i].numero;
+    for(let a=0;a<chatss[i].chat.length;a++){
+       
+     io.emit('db_messages',celular ,chatss[i].chat[a].mensaje);
+      
+    }
+ 
+    //io.emit('whatsapp_notification', chatss[i].numero,"msg_body1");
+
+  }
+
+
+
+
+  //
   
  });
 

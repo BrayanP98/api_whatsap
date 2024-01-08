@@ -205,77 +205,86 @@ socket.on('data_user', (data) => {
   console.log(data)
 
 })
-  socket.on('whatsapp_notification', (from, message) => {
-
-    Notification.requestPermission(function (permission) {
-// Si el usuario nos lo concede, creamos la notificación
-if (permission === "granted") {
-var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
-}
-});
-    var numerouser=from;
-
-let usermsn={
-  id:from,
-
-  mesagges:[
-    message
-  ]
-}
-
- if (arrayMessages.length === 0) {
-  console.log("vacio")
-  arrayMessages.push(usermsn)
- }else{
-  let exist=""
-  for(i=0;i<arrayMessages.length;i++){
-  console.log(" no vacio")
-  if(arrayMessages[i].id==from){
-  arrayMessages[i].mesagges.push(message)
-  console.log("ya existe")
-  exist="si"
-  break;
+function getMessages(from, message){
   
- }else{
-  console.log(" no  existe")
-  
-  exist="no"
- }
- }
- 
-if(exist=="no"){
-  arrayMessages.push(usermsn)
-}
-
-}
-console.log(arrayMessages)
-
-
-
-var mensajeview=document.querySelector("#lateral_view")
-
-     let mesagesUser=document.createElement('div');
-      let mesagesview=document.createElement('p');
-      mesagesUser.className="mesaggeUser"
-      mesagesUser.id=from;
+        var numerouser=from;
+    
+    let usermsn={
+      id:from,
+    
+      mesagges:[
+        message
+      ]
+    }
+    
+     if (arrayMessages.length === 0) {
+      console.log("vacio")
+      arrayMessages.push(usermsn)
+     }else{
+      let exist=""
+      for(i=0;i<arrayMessages.length;i++){
+      console.log(" no vacio")
+      if(arrayMessages[i].id==from){
+      arrayMessages[i].mesagges.push(message)
+      console.log("ya existe")
+      exist="si"
+      break;
+      
+     }else{
+      console.log(" no  existe")
+      
+      exist="no"
+     }
+     }
      
-      mesagesview.id=from
-      mesagesview.innerHTML="Mensaje de:"+" "+from;
-      let divUser=document.getElementById(from)
-      if(divUser){
-        mesagesview.innerHTML="";
-
-        divUser.appendChild(mesagesview)
-        
-      }else{
-
-        mesagesUser.appendChild(mesagesview)
-        mensajeview.appendChild(mesagesUser)
+    if(exist=="no"){
+      arrayMessages.push(usermsn)
+    }
+    
+    }
+    console.log(arrayMessages)
+    
+    
+    
+    var mensajeview=document.querySelector("#lateral_view")
+    
+         let mesagesUser=document.createElement('div');
+          let mesagesview=document.createElement('p');
+          mesagesUser.className="mesaggeUser"
+          mesagesUser.id=from;
+         
+          mesagesview.id=from
+          mesagesview.innerHTML="Mensaje de:"+" "+from;
+          let divUser=document.getElementById(from)
+          if(divUser){
+            mesagesview.innerHTML="";
+    
+            divUser.appendChild(mesagesview)
+            
+          }else{
+    
+            mesagesUser.appendChild(mesagesview)
+            mensajeview.appendChild(mesagesUser)
+          }
+          refresh()
+    
+}
+  socket.on('whatsapp_notification', (from, message) => {
+    Notification.requestPermission(function (permission) {
+      // Si el usuario nos lo concede, creamos la notificación
+      if (permission === "granted") {
+      var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
       }
-      refresh()
-
+      });
+    getMessages(from, message);
      
   });
+  socket.on('db_messages', (from, message) => {
+
+    getMessages(from, message)
+     
+  });
+  
   function refresh(){
     let numbernotif=arrayMessages.length
  console.log(arrayMessages.length)
