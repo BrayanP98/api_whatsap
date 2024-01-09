@@ -167,12 +167,22 @@ cron.schedule(" 20 8 * * *", () => {
       fecha:fecha1,
       mensaje:mensaje
      }
-    try {
+     try {
       var chat= new chats();
-      await chats.updateOne(
+      var set= await chats.findOneAndUpdate(
         { numero: numero },
         { $push: { chat: conv } }
       );
+      
+      if(!set){
+        
+       chat.numero=numero
+        chat.chat.push(conv)
+  
+        await chat.save()
+      }else{
+        console.log("archivado")
+      }
     } catch (error) {
       console.log(error)
     }

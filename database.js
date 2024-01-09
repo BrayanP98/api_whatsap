@@ -14,6 +14,8 @@ const { connect }=require('mongoose');
  //  const db =await connect("mongodb://localhost/usuarios");
 
        console.log("db conected");
+      
+       
 
      }catch(error){
        console.error(error);
