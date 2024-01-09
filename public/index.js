@@ -1,3 +1,4 @@
+//const { init } = require("../src/models/IMAGE");
 
 
 
@@ -208,6 +209,49 @@ var arrayMessages=[ ]
 
 socket.on('data_user', (data) => {
   console.log(data)
+
+})
+socket.on('prontos_vencer', (data) => {
+  var body_prods=document.querySelector("#body_dates");
+ 
+  var arreglo=[]
+  arreglo.push(data)
+  
+  
+  
+  for(let int=0; int< arreglo.length; int++){
+    var date=new Date()
+
+    let diaHoy=(date.getDate());
+    let diaEnd=new Date(arreglo[int].fechaPlat);
+    var dias=diaHoy-(diaEnd.getDate()+1)
+
+
+    console.log(arreglo[int].nombre)
+    var tr= document.createElement("tr");
+    var td_name=document.createElement("td");
+    var td_celular=document.createElement("td");
+    var td_placa=document.createElement("td");
+    var td_fechaPlat=document.createElement("td");
+    var td_fechaPlan=document.createElement("td");
+    var td_dias=document.createElement("td");
+   td_name.innerHTML=arreglo[int].nombre;
+   td_celular.innerHTML=arreglo[int].celular,
+    td_placa.innerHTML=arreglo[int].placa;
+    td_fechaPlat.innerHTML=arreglo[int].fechaPlat;
+    td_fechaPlan.innerHTML=arreglo[int].fechaPlan;
+    td_dias.innerHTML=dias;
+    tr.appendChild(td_name)
+    tr.appendChild(td_celular)
+    tr.appendChild(td_placa)
+    tr.appendChild(td_fechaPlat)
+    tr.appendChild(td_fechaPlan)
+    tr.appendChild(td_dias)
+    body_prods.appendChild(tr)
+
+   
+   
+}
 
 })
 function getMessages(from, message){

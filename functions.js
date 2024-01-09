@@ -9,13 +9,24 @@ class Main{
   var date=new Date();
   var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+"0"+date.getDate()
   var dateToday= new Date(hoy);
-  
+ 
 
   for(var i=0;i<prods.length;i++){
-    var dateToendPlat= new Date(prods[i].fechaPlat );
-    var dateToendPlan= new Date(prods[i].fechaPlan );
+    var dateToCutPlat= new Date(prods[i].fechaPlat);
+    var dateToCutPlan= new Date(prods[i].fechaPlan);
+
+    ////DIAS vencimiento plaATAFORMA
+    var mes=(dateToday.getMonth()+1)-(dateToCutPlat.getMonth()+1)
+    var dias=(dateToday.getDate()+1)-(dateToCutPlat.getDate()+1)
+    var agno=(dateToday.getFullYear()+1)-(dateToCutPlat.getFullYear()+1)
+////DIAS vencimiento plan
+    var mesPlan=(dateToday.getMonth()+1)-(dateToCutPlan.getMonth()+1)
+    var diasPlan=(dateToday.getDate()+1)-(dateToCutPlan.getDate()+1)
+    var agnoPlan=(dateToday.getFullYear()+1)-(dateToCutPlan.getFullYear()+1)
+    
+   
    // console.log(dateToday+""+dateToend.getTime())
-    if(dateToday.getTime()===dateToendPlat.getTime()){
+    if(mes>=0&dias==-7&agno>=0){
       var number=prods[i].celular;
       var  data= {
         "messaging_product": "whatsapp",
@@ -45,9 +56,8 @@ class Main{
 }
 
 }
-
 send_whatsapp(data)
-    }if(dateToday.getTime()===dateToendPlan.getTime()){
+    }if(mesPlan>=0&diasPlan==-7&agnoPlan>=0){
   var number1=prods[i].celular;
    let mensaje= "su plan *Claro* para *GPS* se encuentra pronto a vencer";
            
@@ -108,27 +118,24 @@ send_whatsapp(data)
   
      
      }else{
-      console.log("no vence")
+      console.log("vence en 7 dias")
      }
 
 }
 
-
 }
   
   }
-
-
-
-cron.schedule(" 36 17 * * *", () => {
+///////MENSAJE PROGRAMADO//////////////////////////////////////////////////////////////
+cron.schedule(" 20 8 * * *", () => {
 	Main.getDate()
 	
 }, {
 		timezone: "America/Bogota"
 	})
 
-
-
+//////////////////////////////////////////////////////////////////////////////////////////
+////FUNCION PARA ENVIAR EL MENAJE DE WHATSAPP
    function send_whatsapp(data){ 
 
   
@@ -150,16 +157,12 @@ cron.schedule(" 36 17 * * *", () => {
     });
   }
 
+  ///FUNCION PRA GUARDAR UN MENSAJE CON LA FECHA EN LA BASE DE DATOS
   async function saveChat(mensaje, numero){
-    
-    
-
     var date=new Date()
     let fecha1= date.getDate() + '/' + (date.getMonth() + 1) + '/' +
     date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
     date.getSeconds();
-  
-    
     var conv={
       fecha:fecha1,
       mensaje:mensaje
@@ -170,25 +173,13 @@ cron.schedule(" 36 17 * * *", () => {
         { numero: numero },
         { $push: { chat: conv } }
       );
-      
-
-      /*for(var i=0;i<cht.length;i++){
-      if(cht[i].numero==numero){
-       await chat[i].updateOne({numero:numero})
-      
-    }else{
-      chat.numero=numero;
-      chat.chat.push(conv); 
-
-     chat.save()
-    }
-  }*/
     } catch (error) {
       console.log(error)
     }
       
   
   }
+  
 
-  module.exports = saveChat;
+  module.exports = {saveChat};
 

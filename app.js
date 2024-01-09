@@ -63,7 +63,6 @@ io.on('connection', function(socket)  {
     });
   });
   socket.on("pagina_cargada",async function (status) {
-
     var chat= new chats();
     const chatss= await chats.find().lean();
   
@@ -79,6 +78,8 @@ io.on('connection', function(socket)  {
   
     }
     
+    getDatesToEnd()
+   
    });
 });
 
@@ -762,10 +763,31 @@ app.post("/webhook", (req, res) => {
 }
 });
 
+async function getDatesToEnd(){
+  const VehicleTo7= await Image.find().lean();
+var date=new Date();
+var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+"0"+date.getDate()
+var dateToday= new Date(hoy);
+for(var i=0;i<VehicleTo7.length;i++){
+
+  var dateToCutPlat= new Date(VehicleTo7[i].fechaPlat);
+  var dateToCutPlan= new Date(VehicleTo7[i].fechaPlan);
 
 
+  var mes=(dateToday.getMonth()+1)-(dateToCutPlat.getMonth()+1)
+  var dias=(dateToday.getDate()+1)-(dateToCutPlat.getDate()+1)
+  var agno=(dateToday.getFullYear()+1)-(dateToCutPlat.getFullYear()+1)
+  if(mes>=0&dias>=-7&agno>=0){
+
+ io.emit('prontos_vencer',VehicleTo7[i])
+
+  }
+}
+}
+app.get("/chat", async(req, res) => {
  
-
+  
+});
 app.get("/", async(req, res) => {
  
   res.render("index.ejs")
@@ -780,22 +802,11 @@ app.get("/add_user", (req, res) => {
   res.render("addUser.ejs")
  
 })
-cron.schedule("49 15 * * *", () => {
-  
-  
-	main.getDate()
-	
-}, {
-		timezone: "America/Bogota"
-	})
 
 app.post('/add_user/:id',async(req, res)=>{
-
-  
+ 
   try{
     const img= new Image();
-  
-    
     img.nombre=req.body.name_user;
     img.celular=req.body.number_user;
     img.fechaPlat=req.body.dateToendPlat;
