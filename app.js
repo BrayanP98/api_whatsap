@@ -764,8 +764,9 @@ app.post("/webhook", (req, res) => {
 });
 
 async function getDatesToEnd(){
+ 
   const VehicleTo7= await Image.find().lean();
-var date=new Date();
+  var date=new Date();
 var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+"0"+date.getDate()
 var dateToday= new Date(hoy);
 for(var i=0;i<VehicleTo7.length;i++){
@@ -776,17 +777,25 @@ for(var i=0;i<VehicleTo7.length;i++){
 
   var mes=(dateToday.getMonth()+1)-(dateToCutPlat.getMonth()+1)
   var dias=(dateToday.getDate()+1)-(dateToCutPlat.getDate()+1)
-  var agno=(dateToday.getFullYear()+1)-(dateToCutPlat.getFullYear()+1)
-  if(mes>=0&dias>=-7&agno>=0){
+  var agno=(dateToday.getFullYear()+1)-(dateToCutPlat.getFullYear()+1);
 
- io.emit('prontos_vencer',VehicleTo7[i])
+  var mesPlan=(dateToday.getMonth()+1)-(dateToCutPlan.getMonth()+1)
+  var diasPlan=(dateToday.getDate()+1)-(dateToCutPlan.getDate()+1)
+  var agnoPlan=(dateToday.getFullYear()+1)-(dateToCutPlan.getFullYear()+1)
+  if((mes>=0&dias>=-7&agno>=0)||(mesPlan>=0&diasPlan>=-7&agnoPlan>=0)){
+     
+    io.emit('prontos_vencer',VehicleTo7[i])
 
   }
 }
+  
+
+
+  
+
 }
 app.get("/chat", async(req, res) => {
-  
-  
+ 
   
 });
 app.get("/", async(req, res) => {
