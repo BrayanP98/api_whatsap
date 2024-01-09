@@ -181,5 +181,5 @@ cron.schedule(" 20 8 * * *", () => {
   }
   
 
-  module.exports = {saveChat};
+  module.exports = saveChat;
 
