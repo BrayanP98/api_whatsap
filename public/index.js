@@ -224,7 +224,9 @@ socket.on('prontos_vencer', (data) => {
 
     let diaHoy=(date.getDate());
     let diaEnd=new Date(arreglo[int].fechaPlat);
+    let diaEndpln=new Date(arreglo[int].fechaPlan);
     var dias=diaHoy-(diaEnd.getDate()+1)
+    var diasPln=diaHoy-(diaEndpln.getDate()+1)
 
 
     console.log(arreglo[int].nombre)
@@ -234,19 +236,24 @@ socket.on('prontos_vencer', (data) => {
     var td_placa=document.createElement("td");
     var td_fechaPlat=document.createElement("td");
     var td_fechaPlan=document.createElement("td");
-    var td_dias=document.createElement("td");
+    var td_dias=document.createElement("td")
+    var td_diasPln=document.createElement("td")
+    td_diasPln.style.color="red"
+    td_dias.style.color="red"
    td_name.innerHTML=arreglo[int].nombre;
    td_celular.innerHTML=arreglo[int].celular,
     td_placa.innerHTML=arreglo[int].placa;
     td_fechaPlat.innerHTML=arreglo[int].fechaPlat;
     td_fechaPlan.innerHTML=arreglo[int].fechaPlan;
     td_dias.innerHTML=dias;
+    td_diasPln.innerHTML=diasPln;
     tr.appendChild(td_name)
     tr.appendChild(td_celular)
     tr.appendChild(td_placa)
     tr.appendChild(td_fechaPlat)
-    tr.appendChild(td_fechaPlan)
     tr.appendChild(td_dias)
+    tr.appendChild(td_fechaPlan)
+    tr.appendChild(td_diasPln)
     body_prods.appendChild(tr)
 
    
@@ -291,7 +298,7 @@ function getMessages(from, message){
     }
     
     }
-    console.log(arrayMessages)
+    console.log(arrayMessages.reverse())
     
     
     
@@ -300,6 +307,7 @@ function getMessages(from, message){
          let mesagesUser=document.createElement('div');
           let mesagesview=document.createElement('p');
           mesagesUser.className="mesaggeUser"
+          
           mesagesUser.id=from;
          
           mesagesview.id=from
@@ -325,6 +333,9 @@ function getMessages(from, message){
       var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
       }
       });
+
+     
+      
     getMessages(from, message);
      
   });
@@ -342,6 +353,8 @@ for(i=0;i<arrayMessages.length;i++){
 
   let id=arrayMessages[i].id;
   let divUser=document.getElementById(id);
+
+  
 
   divUser.onclick=function(){
 
