@@ -45,7 +45,7 @@ button_sendPaV.onclick=function(){
           "parameters": [
             {
               "type": "text",
-              "text": "cotizacoin de equipos"
+              "text": "cotizacoin de equiposss"
             },
            
             
