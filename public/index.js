@@ -1,4 +1,4 @@
-//const { init } = require("../src/models/IMAGE");
+//const { init } = require("");
 
 
 
@@ -17,8 +17,47 @@ var cta_ahorro= "03157527681"
 button_sendPaV.onclick=function(){
  // let mensaje= textarea.value;
       let number= input_number.value;
+      var data= {
+     
+        "messaging_product": "whatsapp",
+    "recipient_type": "individual",
+    "to": number,
+    "type": "template",
+    "template": {
+      "name": "envio_recibo",
+      "language": {
+        "code": "es_MX"
+      },
+      "components": [
+        {
+          "type": "header",
+          "parameters": [
+            {
+              "type": "document",
+              "document": {
+                "link": "public/pdf/COTIZACION.pdf"
+              }
+            }
+          ]
+        },
+        {
+          "type": "body",
+          "parameters": [
+            {
+              "type": "text",
+              "text": "cotizacoin de equipos"
+            },
+           
+            
+          ]
+        }
+      ]
+    }
+  
+       
     
-      var  data= {
+        }
+     /* var  data= {
         "messaging_product": "whatsapp",
     "recipient_type": "individual",
     "to": number,
@@ -45,7 +84,7 @@ button_sendPaV.onclick=function(){
 
 }
 
-}
+}*/
 
 send_whatsapp(data)
 
