@@ -35,7 +35,7 @@ button_sendPaV.onclick=function(){
             {
               "type": "document",
               "document": {
-                "link": "public/pdf/COTIZACION.pdf"
+                "link": "https://apiwhatsap-dev-nrcg.4.us-1.fl0.io/pdf/COTIZACION.pdf"
               }
             }
           ]
