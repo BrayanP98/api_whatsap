@@ -87,7 +87,7 @@ io.on('connection', function(socket)  {
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- //console.log(JSON.stringify(req.body, null, 2));
+ console.log(JSON.stringify(req.body, null, 2));
 
  if(body.entry[0].changes[0].value.statuses){
   let status=body.entry[0].changes[0].value.statuses[0]["status"]
