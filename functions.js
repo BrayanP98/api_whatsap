@@ -2,6 +2,7 @@ const cron=require('node-cron')
 const Image=require('./src/models/IMAGE');
 const axios = require("axios")
 const chats=require('./src/models/chats.js');
+
  axios.default
 class Main{
   static  async getDate(){

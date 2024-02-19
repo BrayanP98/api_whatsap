@@ -5,6 +5,7 @@ const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const chat=require('./src/models/chats.js');
+const cotizar=require('./src/models/cotizaciones.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
@@ -794,8 +795,39 @@ for(var i=0;i<VehicleTo7.length;i++){
   
 
 }
-app.get("/chat", async(req, res) => {
+const { jsPDF } = require("jspdf");
+const fs = require('fs');
+const { error } = require('console');
+app.post("/cotizar", async(req, res) => {
+  var date= new Date()
+  try{
+    var array=JSON.parse(req.body.jsonData);
+    const cotizacion= new cotizar();
+    cotizacion.numero=date.getTime();
+    cotizacion.fecha=date.getTime();
+    cotizacion.nombre=req.body.name_cot;
+    cotizacion.cedula=req.body.doc_user_cot;
+    cotizacion.telefono=req.body.cel_user_cot;
+    cotizacion.direccion=req.body.aderess_user_cot;
+   for(var i=0;i<array.length;i++){
+    cotizacion.products.push(array[i]);
+    //console.log(array[i])
+   }
 
+      await cotizacion.save();   
+       res.render("cotizar.ejs")
+}catch(err){
+  console.log(err.errors)
+}
+
+ 
+
+
+
+
+});
+app.get("/cotizar", async(req, res) => {
+  res.render("cotizar.ejs")
 });
 app.get("/", async(req, res) => {
  

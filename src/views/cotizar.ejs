@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styless/styless.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <h1 >cotizaciones</h1>
+
+    <form action="/cotizar" method="post" id="cotizar_form">
+       <div id="info_user">
+        <label for="">Nombre</label>
+        <input type="text" id="name_cot" name="name_cot" required>
+        <label for="">Cedula</label>
+        <input type="text" id="doc_user_cot" name="doc_user_cot" required>
+        <label for="">Telefono</label>
+        <input type="text" id="cel_user_cot" name="cel_user_cot" required>
+        <label for="">Direccion</label>
+        <input type="text" id="aderess_user_cot" name="aderess_user_cot" required>
+       </div>
+     
+
+<div class="buscador">
+    <input type="text" id="input_buscar" list="options1"> 
+  
+
+<ul id="box-search">
+
+ 
+ 
+  
+</ul>
+
+</div>
+<script>
+
+
+    var products=[{
+      
+      cod:"1234",
+      nombre:"MANO DE OBRA X PUNTO",
+      cantidad:"15",
+      valor:"40000"
+  },{
+      
+      cod:"5589",
+      nombre:"MATERIALES X PUNTO",
+      cantidad:"15",
+      valor:"50000"
+  },{
+      
+        cod:"25345",
+        nombre:"camara domo",
+        cantidad:"15",
+        valor:"150000"
+    },{
+        cod:"25346",
+        nombre:"XVR 4CH/3CH+1CH IP/GRABACION HASTA 1080N 1 HDMI 1 E/SRCA 1 SATA H264O",
+        cantidad:"15",
+        valor:"250000"
+    },
+    {
+        cod:"25346",
+        nombre:"xvr dahua de 16 canales",
+        cantidad:"15",
+        valor:"280000"
+    },
+    ]
+
+    pintarProd(products)
+
+    function pintarProd(prods){
+  var length= prods.length;
+ 
+  for(let i=0; i< length; i++){
+    var listop=document.getElementById("box-search")
+    var buscar_btn=document.getElementById("input_buscar")
+  var li_options1= document.createElement("li");
+  var a_options1= document.createElement("a");
+////llenando li de busqueda
+  a_options1.innerHTML=prods[i].nombre;
+  li_options1.appendChild(a_options1)
+  listop.appendChild(li_options1)
+
+ 
+    
+  }
+}
+    var buscarbtn=document.querySelector("#buscar_prod");
+  var inputfind=document.querySelector("#input_buscar");
+  var box_serach=document.querySelector("#box-search");
+
+  function buscador_interno(){
+  var filtro=inputfind.value.toUpperCase();
+  
+    var li= box_serach.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+      var a=li[i].getElementsByTagName("a")[0];
+      textvalue=a.textContent || a.innerText;
+      
+     if(textvalue.toUpperCase().indexOf(filtro)>-1){
+       li[i].style.display=""
+       a.onclick=function(){
+       
+        inputfind.value=li[i].innerText;
+        box_serach.style.display="none"
+        addList(i)
+        inputfind.value=""
+
+       }
+      box_serach.style.display="block"
+
+      if(filtro===""){
+        box_serach.style.display="none"
+      }
+     }else{
+      li[i].style.display="none"
+     }
+      
+    }
+  }
+
+  inputfind.addEventListener("keyup", buscador_interno) ;
+
+function addList(pos){
+    var body_prods=document.querySelector("#body_datesProd");
+    var tr= document.createElement("tr");
+
+    var  th_total=document.querySelector("#th_total");
+
+   
+        var td_item=document.createElement("td");
+    var td_name=document.createElement("td");
+    var td_cant=document.createElement("td");
+    td_cant.innerHTML="1"
+    td_cant.setAttribute("contenteditable",true)
+    var td_valorUnit=document.createElement("td");
+    var td_valorTot=document.createElement("td");
+    var td_opt=document.createElement("td");
+    var input_catn=document.createElement("input");
+    var delete_prod=document.createElement("a");
+    delete_prod.style="cursor:pointer; color:red;"
+    delete_prod.innerHTML="X"
+    td_item.innerHTML=products[pos].cod,
+    td_name.innerHTML=products[pos].nombre;
+    input_catn.setAttribute("type","number")
+    input_catn.value=1
+   // td_cant.appendChild(input_catn);
+
+    var total_cot=th_total.innerHTML;
+    if(total_cot==="NaN"){
+      th_total.innerHTML=products[pos].valor;
+    }else{
+      th_total.innerHTML=  parseInt(total_cot)+parseInt(products[pos].valor)
+    }
+   
+    td_cant.addEventListener("keyup", function(){
+
+      if(!this.innerHTML){
+        
+      }else{
+        var valor_act=td_valorTot.innerHTML;
+      
+      var total_cot=th_total.innerHTML;
+        var total=parseInt( this.innerHTML)*parseFloat(products[pos].valor);
+        td_valorTot.innerHTML=total
+       
+        th_total.innerHTML= (parseInt(total_cot)-parseInt(valor_act))+total
+      }
+      
+    })
+    delete_prod.onclick=function(event){
+      var total_cot=th_total.innerHTML;
+      event.preventDefault();
+      var valor_act=td_valorTot.innerHTML;
+      th_total.innerHTML= (parseInt(total_cot)-parseInt(valor_act))
+      
+      this.closest('tr').remove();
+
+    }
+
+   td_opt.appendChild(delete_prod)
+    td_valorUnit.innerHTML=products[pos].valor;
+    td_valorTot.innerHTML=products[pos].valor;
+
+    tr.appendChild(td_item);
+    tr.appendChild(td_name);
+    tr.appendChild(td_cant);
+    tr.appendChild(td_valorUnit);
+    tr.appendChild(td_valorTot);
+    tr.appendChild(td_opt);
+    body_prods.appendChild(tr)
+    
+    
+  
+  }
+
+
+
+
+
+</script>
+       <div id="item_prod">
+      
+
+        <table id="prod_cot" >
+            <thead>
+              <tr>
+                <th>Cod</th>
+                <th>Item</th>
+                <th>Cantidad</th>
+                <th>Valor_Unit</th>
+                <th>Valor_Total</th>
+                 
+                  
+              </tr>
+          </thead>
+          <tbody id="body_datesProd">
+                  
+               
+          </tbody>
+          <tfoot>
+           
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Total</th>
+            <th id="th_total">0</th>
+          </tfoot>
+        </table>
+       <button id="pdf" onclick="submitForm()">generare PDF</button>
+    </form>
+    <template class="template"><main class="main">
+      <div class="GFG">
+      <header class="clearfix">
+        <div id="logo">
+         
+        </div>
+        <h1>INVOICE 3-2-1</h1>
+        <div id="company" class="clearfix">
+          <div>Company Name</div>
+          <div>455 Foggy Heights,<br /> AZ 85004, US</div>
+          <div>(602) 519-0450</div>
+          <div><a href="mailto:company@example.com">company@example.com</a></div>
+        </div>
+        <div id="project">
+          <div><span>PROJECT</span> Website development</div>
+          <div><p id="client_name">prrr</p></div>
+          <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
+          <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
+          <div><span>DATE</span> August 17, 2015</div>
+          <div><span>DUE DATE</span> September 17, 2015</div>
+        </div>
+      </header>
+      <table id="prod_cot_print" >
+        <thead>
+          <tr>
+              <th>Cod</th>
+              <th>Item</th>
+              <th>Cantidad</th>
+              <th>Valor_Unit</th>
+              <th>Valor_Total</th>
+             
+              
+          </tr>
+      </thead>
+      <tbody id="body_datesProd_print">
+              
+           
+      </tbody>
+      <tfoot>
+       
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Total</th>
+        <th id="th_total">0</th>
+      </tfoot>
+    </table>
+  
+        
+        <div id="notices">
+          <div>NOTICE:</div>
+          <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        </div>
+      </main>
+      
+    </div>
+    </template>
+    <script>
+
+function submitForm() {
+    // Get table data and create an array of objects
+   var table = document.getElementById('prod_cot');
+    var data = [];
+    
+    for (var i = 1; i < table.rows.length; i++) {
+        var rowData = {
+            cod: table.rows[i].cells[0].innerText,
+            name: table.rows[i].cells[1].innerText,
+            cant: table.rows[i].cells[2].innerText,
+            val_unit: table.rows[i].cells[3].innerText,
+            val_tot:table.rows[i].cells[4].innerText,   
+        };
+        data.push(rowData);
+    }
+
+    // Convert data to JSON
+   /* var jsonData = JSON.stringify(data);
+
+    // Create a hidden input field to hold the JSON data
+    var hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'jsonData';
+    hiddenInput.value = jsonData;
+
+    // Append the hidden input to the form
+    document.getElementById('cotizar_form').appendChild(hiddenInput);
+
+    // Submit the form
+    document.getElementById('cotizar_form').submit();*/
+//////plantilla cotizacion
+var name_cot= document.querySelector("#name_cot")
+var doc_user_cot= document.querySelector("#doc_user_cot")
+var cel_user_cot= document.querySelector("#cel_user_cot")
+var address_user_cot= document.querySelector("#aderess_user_cot")
+var plantilla= document.createElement("div")
+var date= new Date();
+date.toLocaleString('default', { month: 'long' })
+var header= document.createElement("div")
+header.id="header_plantilla"
+plantilla.style=" width:100%;  "
+var info_empresa= document.createElement("div");
+info_empresa.id="div_info_empresa"
+var p_info_empresa= document.createElement("p")
+p_info_empresa.innerHTML="NIT.1144143439-7 REG. SIMP. <br>TRANSVERSAL 9 # 57N - 202 <br>VIA AL BOSQUE  <br>Tel.: 3022456227 - 3006549863 "
+var data_trans= document.createElement("div")
+data_trans.id="div_data_trans"
+var transaccion= document.createElement("p")
+var fecha_transac= document.createElement("p")
+var numero_transac= document.createElement("p")
+transaccion.innerHTML="COTIZACION"
+numero_transac.innerHTML="COT"+" "+date.getFullYear()+date.getDate()+(date.getMonth()+1)+date.getHours()+date.getMinutes()
+var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+date.getDate()
+fecha_transac.innerHTML=hoy
+
+data_trans.appendChild(transaccion);
+data_trans.appendChild(numero_transac)
+data_trans.appendChild(fecha_transac)
+info_empresa.appendChild(p_info_empresa)
+
+
+
+
+
+var logo=document.createElement("img")
+logo.style=" width:100px; height:100px;  position:relative; top:0;"
+logo.setAttribute("src","https://scontent.fppn1-1.fna.fbcdn.net/v/t1.6435-9/41968622_667886890256166_150642894120681472_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7a1959&_nc_eui2=AeG1cim8pRj1MF1z-L7IVjM_EKt5KXceoTkQq3kpdx6hOZNNJFktDrR2Jc8OY0aCqnSop2vaqKSPonXYQC2fr64s&_nc_ohc=i_704YDeD3IAX9Kh0F1&_nc_ht=scontent.fppn1-1.fna&oh=00_AfARM-dhXGa5UsAUO0ygeJp2cYQq2bylGQplcWA8JYDYgQ&oe=65FA3221")
+
+var infoUser= document.createElement("div");
+infoUser.id="infoUser_plant"
+var nameUser= document.createElement("p");
+nameUser.innerHTML="<b>Nombre:</b>"+" "+name_cot.value;
+var numberUser= document.createElement("p");
+numberUser.innerHTML="<b>Telefono:</b>"+"  " + cel_user_cot.value;
+var docUser= document.createElement("p");
+docUser.innerHTML="<b>Documento:</b>"+" "  +doc_user_cot.value
+var addressUser= document.createElement("p");
+addressUser.innerHTML="<b>Direccion:</b>"+"  "+ address_user_cot.value
+infoUser.appendChild(nameUser)
+infoUser.appendChild(docUser)
+infoUser.appendChild(numberUser)
+infoUser.appendChild(addressUser)
+
+
+
+var div_table= document.createElement("div");
+div_table.id="div_table_plant"
+var table= document.createElement("table");
+var thead= document.createElement("thead");
+
+
+var tr= document.createElement("tr");
+var th_cod= document.createElement("th");
+th_cod.innerHTML="Cod"
+var th_name= document.createElement("th");
+th_name.innerHTML="Item"
+var th_cant= document.createElement("th");
+th_cant.innerHTML="Cantidad"
+var th_vUnit= document.createElement("th");
+th_vUnit.innerHTML="Valor/Unit"
+var th_vTot= document.createElement("th");
+th_vTot.innerHTML="Valor/Tot"
+
+tr.appendChild(th_cod)
+tr.appendChild(th_name)
+tr.appendChild(th_cant)
+tr.appendChild(th_vUnit)
+tr.appendChild(th_vTot)
+thead.appendChild(tr)
+table.appendChild(thead)
+
+var tbody= document.createElement("tbody");
+var trBody= document.createElement("tr");
+
+   
+
+
+
+data.forEach(data => {
+
+
+  const $tr = document.createElement("tr");
+  let $tdCod = document.createElement("td");
+    $tdCod.textContent = data.cod; // el textContent del td es el nombre
+    $tr.appendChild($tdCod);
+
+  
+    let $tdNombre = document.createElement("td");
+    $tdNombre.textContent = data.name; // el textContent del td es el nombre
+    $tr.appendChild($tdNombre);
+
+    let $tdCant = document.createElement("td");
+    $tdCant.textContent = data.cant; // el textContent del td es el nombre
+    $tr.appendChild($tdCant);
+    let $tdValorUnit = document.createElement("td");
+    $tdValorUnit.textContent = data.val_unit; // el textContent del td es el nombre
+    $tr.appendChild($tdValorUnit);
+
+    let $tdValorTot = document.createElement("td");
+    $tdValorTot.textContent = data.val_tot; // el textContent del td es el nombre
+    $tr.appendChild($tdValorTot);
+
+    tbody.appendChild($tr)
+})
+    
+
+   
+   
+
+table.appendChild(tbody)
+div_table.appendChild(table)
+var nota=document.createElement("p")
+nota.innerHTML="<b>Nota:</b>"+"La duracion de la cotizacion es de 15 dias, despues de este tiempo el valor se ajusta a cambios de mercado."
+var footer=document.createElement("div")
+footer.id="footer_plant"
+var Pfooter=document.createElement("p")
+Pfooter.innerHTML="TRANSVERSAL 9 # 57N – 202 VIA EL BOSQUE <br>Tel: 3022456227 - 3006549863 <br> sanjuanelectronics@gmail.com <br> Popayán - Colombia"
+footer.appendChild(Pfooter)
+header.appendChild(logo)
+header.appendChild(info_empresa)
+header.appendChild(data_trans)
+plantilla.appendChild(header)
+plantilla.appendChild(infoUser)
+plantilla.appendChild(div_table)
+plantilla.appendChild(nota)
+plantilla.appendChild(footer)
+imprimirElemento(plantilla)
+}
+function imprimirElemento(elemento) {
+  var ventana = window.open('', 'PRINT', 'height=800,width=900');
+  ventana.document.write('<html><head><title>' + "COT"+"-"+name_cot.value + '</title>');
+  ventana.document.write('<link rel="stylesheet" href="/styless/styless.css">'); //Cargamos otra hoja, no la normal
+  ventana.document.write('</head><body >');
+  ventana.document.write(elemento.innerHTML);
+ 
+  ventana.document.close();
+  ventana.focus();
+  ventana.onload = function() {
+    ventana.print();
+    ventana.close();
+  };
+  return true;
+}
+    </script>
+
+    <style>
+
+        form button{
+            width: 90px;
+            position: relative;
+            float: right;
+           
+
+
+        }
+
+        
+       
+    </style>
+</div>
+
+
+  
+</object>
+</body>
+
+</html>

@@ -185,3 +185,173 @@
       width: 60px;
       height: 25px;
     }
+
+    #input_buscar{
+      border: 1px solid #3e91e3 ;
+      background: #d1deeb;
+     border-radius: 8px;
+      width: 60%;
+      height: 29px;
+      font-size: 20px;
+      font-family: 'Rubik', sans-serif;
+     }
+
+
+    .buscador{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 30px;
+      position: relative;
+      top: 25px;
+      
+     justify-content: center;
+    }
+
+    #item_prod{
+      position: relative;
+       top: 100px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+      align-items: center;
+     justify-content: center;
+    }
+    #box-search{
+  
+      width: 60%;
+      height: fit-content;
+      max-height: 200px;
+      overflow: hidden;
+      font-family: 'Rubik', sans-serif;
+      overflow: scroll;
+      overflow: hidden;
+      overflow: scroll;
+      max-height: 200px;
+      background: #1d65897f;
+     display: none;
+     z-index: 2;
+     font-size: 15px;
+     text-transform: lowercase;
+     position:   absolute;
+    top: 25px;
+      list-style: none;
+     
+     
+     }
+
+
+     table{
+
+      width: 60%;
+      height: fit-content;
+     
+      
+      
+      }
+     table   thead th{
+      
+      background-color: bisque;
+      border: 1px solid rgba(62, 60, 60, 0.749);
+      text-decoration: solid;
+      
+      }
+      table   tbody td{
+        border: 1px solid rgba(62, 60, 60, 0.749);
+     text-align: center;
+      padding: 8px 15px;
+      font-size: 13px;
+      text-transform: uppercase;
+      }
+
+      #header_plantilla{
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid black;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, Courier, monospace;
+      }
+      #header_plantilla div{
+        position: relative;
+        padding: 5px;
+       
+      }
+
+      #header_plantilla p{
+       
+        text-align: center;
+        
+        
+        
+      }
+      #div_info_empresa{
+        width: 50%; 
+      }
+      #div_data_trans{
+        width: 30%;        position: relative;
+        line-height: 0;
+       
+        display: flex;
+        flex-direction: column;
+        
+      }
+      #div_data_trans p{
+        text-align: center;
+        right: 0;
+      }
+      #infoUser_plant{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 95%;
+        height: fit-content;
+        border: 1px solid black;
+        margin-top: 15px;
+        padding: 8px;
+        
+      }
+      #infoUser_plant p{
+       width: 30%;
+       text-align: center;
+      }
+
+      #div_table_plant{
+        width: 90%;
+        min-height: 400px;
+        position: relative;
+        top: 50px;
+        
+      }
+      #div_table_plant table{
+
+        width: 100%;
+        height: fit-content;
+       
+        
+        
+        }
+        #div_table_plant table   thead th{
+      
+          background-color: bisque;
+          
+          text-decoration: solid;
+          
+          }
+        
+        #div_table_plant  table   tbody td{
+          border: 0px;
+          border-right: 1px solid gray;
+          text-align: center;
+          height: 30px;
+          margin: 0;
+         padding: 0;
+         text-transform: uppercase;
+         font-size: 13px;
+        }
+
+        #footer_plant{
+          top: 80px;
+          position: relative;
+          text-align: center;
+        }
