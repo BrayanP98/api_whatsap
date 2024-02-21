@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styless/styless.css">
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
+        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -232,67 +237,21 @@ function addList(pos){
             <th id="th_total">0</th>
           </tfoot>
         </table>
-       <button id="pdf" onclick="submitForm()">generare PDF</button>
+       <button id="imprimir">imprimir</button>
+       <button id="pdf">GENERAR pdf</button>
     </form>
-    <template class="template"><main class="main">
-      <div class="GFG">
-      <header class="clearfix">
-        <div id="logo">
-         
-        </div>
-        <h1>INVOICE 3-2-1</h1>
-        <div id="company" class="clearfix">
-          <div>Company Name</div>
-          <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-          <div>(602) 519-0450</div>
-          <div><a href="mailto:company@example.com">company@example.com</a></div>
-        </div>
-        <div id="project">
-          <div><span>PROJECT</span> Website development</div>
-          <div><p id="client_name">prrr</p></div>
-          <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-          <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
-          <div><span>DATE</span> August 17, 2015</div>
-          <div><span>DUE DATE</span> September 17, 2015</div>
-        </div>
-      </header>
-      <table id="prod_cot_print" >
-        <thead>
-          <tr>
-              <th>Cod</th>
-              <th>Item</th>
-              <th>Cantidad</th>
-              <th>Valor_Unit</th>
-              <th>Valor_Total</th>
-             
-              
-          </tr>
-      </thead>
-      <tbody id="body_datesProd_print">
-              
-           
-      </tbody>
-      <tfoot>
-       
-        <th></th>
-        <th></th>
-        <th></th>
-        <th>Total</th>
-        <th id="th_total">0</th>
-      </tfoot>
-    </table>
-  
-        
-        <div id="notices">
-          <div>NOTICE:</div>
-          <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-        </div>
-      </main>
-      
-    </div>
-    </template>
+    
     <script>
+var name_cot= document.querySelector("#name_cot")
+document. querySelector("#imprimir").onclick=function(){
 
+  imprimirElemento(submitForm(),name_cot.value)
+}
+
+document. querySelector("#pdf").onclick=function(){
+
+generarPFD(submitForm(),name_cot.value)
+}
 function submitForm() {
     // Get table data and create an array of objects
    var table = document.getElementById('prod_cot');
@@ -329,11 +288,12 @@ var doc_user_cot= document.querySelector("#doc_user_cot")
 var cel_user_cot= document.querySelector("#cel_user_cot")
 var address_user_cot= document.querySelector("#aderess_user_cot")
 var plantilla= document.createElement("div")
+
 var date= new Date();
 date.toLocaleString('default', { month: 'long' })
 var header= document.createElement("div")
 header.id="header_plantilla"
-plantilla.style=" width:100%;  "
+plantilla.style.width="50%;  "
 var info_empresa= document.createElement("div");
 info_empresa.id="div_info_empresa"
 var p_info_empresa= document.createElement("p")
@@ -352,8 +312,6 @@ data_trans.appendChild(transaccion);
 data_trans.appendChild(numero_transac)
 data_trans.appendChild(fecha_transac)
 info_empresa.appendChild(p_info_empresa)
-
-
 
 
 
@@ -459,10 +417,13 @@ plantilla.appendChild(infoUser)
 plantilla.appendChild(div_table)
 plantilla.appendChild(nota)
 plantilla.appendChild(footer)
-imprimirElemento(plantilla)
+
+
+return plantilla
 }
-function imprimirElemento(elemento) {
-  var ventana = window.open('', 'PRINT', 'height=800,width=900');
+function imprimirElemento(elemento, name_cot) {
+
+ /*var ventana = window.open('', 'PRINT', 'height=800,width=900');
   ventana.document.write('<html><head><title>' + "COT"+"-"+name_cot.value + '</title>');
   ventana.document.write('<link rel="stylesheet" href="/styless/styless.css">'); //Cargamos otra hoja, no la normal
   ventana.document.write('</head><body >');
@@ -474,7 +435,35 @@ function imprimirElemento(elemento) {
     ventana.print();
     ventana.close();
   };
-  return true;
+  return true;*/
+  var contenidoOriginal= document.body.innerHTML;
+  document.title="COT"+""+name_cot
+  document.body.innerHTML = elemento.innerHTML;
+  window.print();
+  document.title="transacciones"
+
+  document.body.innerHTML = contenidoOriginal;
+  location.reload()
+}
+
+function generarPFD(elemento, name_cot){
+  var contenidoOriginal= document.body.innerHTML;
+  document.body.style.width="725px"
+  document.body.style.height="600px"
+  document.body.innerHTML = elemento.innerHTML;
+
+
+html2canvas(document.body, {
+    allowTaint: false,
+    width: 1000, height: 1200 
+  }) // Llamar a html2canvas y pasarle el elemento
+    .then(canvas => {
+           
+      var img=canvas.toDataURL("image/png",1.0);
+   var doc = new jsPDF('p', 'in', [15, 11]);
+   doc.addImage(img,'JPEG',1,1);
+   doc.save('test.pdf');
+    });
 }
     </script>
 

@@ -263,6 +263,7 @@
       padding: 8px 15px;
       font-size: 13px;
       text-transform: uppercase;
+     
       }
 
       #header_plantilla{
@@ -274,6 +275,7 @@
       #header_plantilla div{
         position: relative;
         padding: 5px;
+      
        
       }
 
