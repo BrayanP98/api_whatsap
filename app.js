@@ -71,7 +71,7 @@ io.on('connection', function(socket)  {
   var celular =chatss[i].numero;
       for(let a=0;a<chatss[i].chat.length;a++){
          
-       io.emit('db_messages',celular ,chatss[i].chat[a].mensaje,"old");
+       io.emit('db_messages',celular ,chatss[i].chat[a].mensaje,"old",chatss.length);
         
       }
    
@@ -84,7 +84,9 @@ io.on('connection', function(socket)  {
    });
 });
 
-
+app.get("/mesagge", (req, res) => {
+  io.emit('whatsapp_notification', "573008565591","hola","new");
+})
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;

@@ -60,7 +60,7 @@
         gap: 2px;
         overflow: hidden;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
        
         overflow-y: scroll;
        
@@ -104,25 +104,26 @@
       }
       #chatUser{
         width: 30%;
-        height: 99%;
+        height: 90%;
         float: right;
-       
+     
         display: flex;
         flex-direction: column;
         overflow: hidden;
         overflow-y: scroll;
-      bottom: 25px;
+     
         position: relative;
       }
       .chat{
         position: relative;
-        width: 80%;
+        width: 90%;
         text-align: center;
         vertical-align: middle;
         top: 10px;
         height: fit-content;
         padding-bottom: 5px;
         background: rgba(144, 250, 144, 0.827);
+        
         left: 25px;
         border-radius: 15px 0px 15px 15px;
       }

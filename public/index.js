@@ -304,7 +304,7 @@ function getMessages(from, message,stat){
 
   pintar(from,stat)
   
-  var numerouser=from;
+ 
 
 let usermsn={
   status:stat,
@@ -320,6 +320,8 @@ if (arrayMessages.length === 0) {
 //console.log("vacio")
 arrayMessages.push(usermsn)
 }else{
+
+  console.log()
 let exist=""
 for(i=0;i<arrayMessages.length;i++){
 //console.log(" no vacio")
@@ -341,6 +343,7 @@ exist="no"
 if(exist=="no"){
   
 arrayMessages.push(usermsn)
+refresh()
 }
 
 }
@@ -389,6 +392,7 @@ function pintar(from,stat){
 
     }
 }
+var tamaño=1
   socket.on('whatsapp_notification', (from, message,stat) => {
 
     
@@ -400,20 +404,22 @@ function pintar(from,stat){
       var notification = new Notification("Nuevo mensaje ded:"+" "+from+"\n"+message +stat);
       }
       });
-
-  
+      document.title='('+(tamaño+1)+')'+title
+      
+      //console.log(arrayMessages.length)
+      
      
   });
-  socket.on('db_messages', (from, message,stat) => {
+  socket.on('db_messages', (from, message,stat,tamano) => {
+    tamaño=tamano
 
     getMessages(from, message,stat)
-     
+    document.title='('+tamaño+')'+title
+    
   });
   
   function refresh(){
-    let numbernotif=arrayMessages.length
- //console.log(arrayMessages.length)
- document.title='('+numbernotif+')'+title
+   
 for(i=0;i<arrayMessages.length;i++){
 
   let id=arrayMessages[i].id;
