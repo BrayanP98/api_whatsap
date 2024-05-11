@@ -300,93 +300,119 @@ socket.on('prontos_vencer', (data) => {
 }
 
 })
-function getMessages(from, message){
+function getMessages(from, message,stat){
+
+  pintar(from,stat)
   
-        var numerouser=from;
-    
-    let usermsn={
-      id:from,
-    
-      mesagges:[
-        message
-      ]
-    }
-    
-     if (arrayMessages.length === 0) {
-      console.log("vacio")
-      arrayMessages.push(usermsn)
-     }else{
-      let exist=""
-      for(i=0;i<arrayMessages.length;i++){
-      console.log(" no vacio")
-      if(arrayMessages[i].id==from){
-      arrayMessages[i].mesagges.push(message)
-      console.log("ya existe")
-      exist="si"
-      break;
-      
-     }else{
-      console.log(" no  existe")
-      
-      exist="no"
-     }
-     }
-     
-    if(exist=="no"){
-      arrayMessages.push(usermsn)
-    }
-    
-    }
-    console.log(arrayMessages.reverse())
-    
-    
-    
-    var mensajeview=document.querySelector("#lateral_view")
-    
-         let mesagesUser=document.createElement('div');
-          let mesagesview=document.createElement('p');
-          mesagesUser.className="mesaggeUser"
-          
-          mesagesUser.id=from;
-         
-          mesagesview.id=from
-          mesagesview.innerHTML="Mensaje de:"+" "+from;
-          let divUser=document.getElementById(from)
-          if(divUser){
-            mesagesview.innerHTML="";
-    
-            divUser.appendChild(mesagesview)
-            
-          }else{
-    
-            mesagesUser.appendChild(mesagesview)
-            mensajeview.appendChild(mesagesUser)
-          }
-          refresh()
-    
+  var numerouser=from;
+
+let usermsn={
+  status:stat,
+id:from,
+
+mesagges:[
+  message
+]
 }
-  socket.on('whatsapp_notification', (from, message) => {
+
+
+if (arrayMessages.length === 0) {
+//console.log("vacio")
+arrayMessages.push(usermsn)
+}else{
+let exist=""
+for(i=0;i<arrayMessages.length;i++){
+//console.log(" no vacio")
+if(arrayMessages[i].id==from){
+
+arrayMessages[i].mesagges.push(message)
+
+//console.log("ya existe")
+//exist="si"
+break;
+
+}else{
+  //console.log(" no  existe")
+
+exist="no"
+}
+}
+
+if(exist=="no"){
+  
+arrayMessages.push(usermsn)
+}
+
+}
+
+
+//console.log(from)
+
+
+   
+}
+function pintar(from,stat){
+  var mensajeview=document.querySelector("#lateral_view")
+
+   let mesagesUser=document.createElement('div');
+    let mesagesview=document.createElement('p');
+    mesagesUser.className="mesaggeUser"
+    
+    mesagesUser.id=from;
+   
+    mesagesview.id=from
+    mesagesview.innerHTML="Mensaje de:"+" "+from;
+    let divUser=document.getElementById(from)
+    
+    if(divUser){
+      
+      mesagesview.innerHTML="";
+     
+      divUser.appendChild(mesagesview)
+      
+      
+    }else{
+      
+      mesagesUser.appendChild(mesagesview)
+      mensajeview.appendChild(mesagesUser)
+      
+    }
+    
+    refresh()
+
+
+    if(stat=="new"){
+      let divUser=document.getElementById(from)
+      divUser.style.backgroundColor="red"
+
+    }else{
+
+    }
+}
+  socket.on('whatsapp_notification', (from, message,stat) => {
+
+    
+      
+  getMessages(from, message,stat);
     Notification.requestPermission(function (permission) {
       // Si el usuario nos lo concede, creamos la notificación
       if (permission === "granted") {
-      var notification = new Notification("Nuevo mensaje de:"+" "+from+"\n"+message);
+      var notification = new Notification("Nuevo mensaje ded:"+" "+from+"\n"+message +stat);
       }
       });
 
-     
-      
-    getMessages(from, message);
+  
      
   });
-  socket.on('db_messages', (from, message) => {
+  socket.on('db_messages', (from, message,stat) => {
 
-    getMessages(from, message)
+    getMessages(from, message,stat)
      
   });
   
   function refresh(){
     let numbernotif=arrayMessages.length
- console.log(arrayMessages.length)
+ //console.log(arrayMessages.length)
  document.title='('+numbernotif+')'+title
 for(i=0;i<arrayMessages.length;i++){
 
@@ -396,7 +422,7 @@ for(i=0;i<arrayMessages.length;i++){
   
 
   divUser.onclick=function(){
-
+    divUser.style="background:green;"
     let viewchat=document.getElementById("chatUser");
     var btn_send=document.getElementById("send_rta");
     var input_rta=document.getElementById("input_rta");

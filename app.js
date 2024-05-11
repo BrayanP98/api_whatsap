@@ -71,7 +71,7 @@ io.on('connection', function(socket)  {
   var celular =chatss[i].numero;
       for(let a=0;a<chatss[i].chat.length;a++){
          
-       io.emit('db_messages',celular ,chatss[i].chat[a].mensaje);
+       io.emit('db_messages',celular ,chatss[i].chat[a].mensaje,"old");
         
       }
    
@@ -83,6 +83,7 @@ io.on('connection', function(socket)  {
    
    });
 });
+
 
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
@@ -618,7 +619,7 @@ app.post("/webhook", (req, res) => {
       
       var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
       var date= req.body.entry[0].changes[0].value.messages[0].timestamp
-      io.emit('whatsapp_notification', from,msg_body1);
+      io.emit('whatsapp_notification', from,msg_body1,"new");
      save(msg_body1,from);
      
      var arrayMaessage=msg_body1.split(" ");
