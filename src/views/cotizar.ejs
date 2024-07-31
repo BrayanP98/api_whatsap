@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styless/styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src=
     "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
         </script>
@@ -17,7 +20,7 @@
 
     <form action="/cotizar" method="post" id="cotizar_form">
        <div id="info_user">
-        <label for="">cNombre</label>
+        <label for="">Nombre</label>
         <input type="text" id="name_cot" name="name_cot" required>
         <label for="">Cedula</label>
         <input type="text" id="doc_user_cot" name="doc_user_cot" required>
@@ -233,7 +236,7 @@ function addList(pos){
             <th></th>
             <th></th>
             <th></th>
-            <th>Total</th>
+            <th id="total_cot"><b>Total</b></th>
             <th id="th_total">0</th>
           </tfoot>
         </table>
@@ -243,16 +246,15 @@ function addList(pos){
     
     <script>
 var name_cot= document.querySelector("#name_cot")
-document. querySelector("#imprimir").onclick=function(){
 
-  imprimirElemento(submitForm(),name_cot.value)
-}
 
 document. querySelector("#pdf").onclick=function(){
 
 generarPFD(submitForm(),name_cot.value)
 }
+
 function submitForm() {
+  
     // Get table data and create an array of objects
    var table = document.getElementById('prod_cot');
     var data = [];
@@ -294,10 +296,12 @@ date.toLocaleString('default', { month: 'long' })
 var header= document.createElement("div")
 header.id="header_plantilla"
 plantilla.style.width="50%;  "
+
+
 var info_empresa= document.createElement("div");
 info_empresa.id="div_info_empresa"
 var p_info_empresa= document.createElement("p")
-p_info_empresa.innerHTML="NIT.1144143439-7 REG. SIMP. <br>TRANSVERSAL 9 # 57N - 202 <br>VIA AL BOSQUE  <br>Tel.: 3022456227 - 3006549863 "
+p_info_empresa.innerHTML="Automatic Home Solutions<br> NIT.1007452085 - 1 REG. SIMP.  <br>Tel.: 3157527681-3147459094 "
 var data_trans= document.createElement("div")
 data_trans.id="div_data_trans"
 var transaccion= document.createElement("p")
@@ -305,7 +309,7 @@ var fecha_transac= document.createElement("p")
 var numero_transac= document.createElement("p")
 transaccion.innerHTML="COTIZACION"
 numero_transac.innerHTML="COT"+" "+date.getFullYear()+date.getDate()+(date.getMonth()+1)+date.getHours()+date.getMinutes()
-var hoy= date.getFullYear()+"-"+date.getMonth()+1+"-"+date.getDate()
+var hoy= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
 fecha_transac.innerHTML=hoy
 
 data_trans.appendChild(transaccion);
@@ -407,7 +411,7 @@ nota.innerHTML="<b>Nota:</b>"+"La duracion de la cotizacion es de 15 dias, despu
 var footer=document.createElement("div")
 footer.id="footer_plant"
 var Pfooter=document.createElement("p")
-Pfooter.innerHTML="TRANSVERSAL 9 # 57N – 202 VIA EL BOSQUE <br>Tel: 3022456227 - 3006549863 <br> sanjuanelectronics@gmail.com <br> Popayán - Colombia"
+Pfooter.innerHTML=" <br>Tel: 3157527681 - 3147459094 <br>automatichomesolutions2024@gmail.com <br> Popayán - Colombia"
 footer.appendChild(Pfooter)
 header.appendChild(logo)
 header.appendChild(info_empresa)
@@ -418,8 +422,11 @@ plantilla.appendChild(div_table)
 plantilla.appendChild(nota)
 plantilla.appendChild(footer)
 
-
 return plantilla
+}
+document. querySelector("#imprimir").onclick=function(){
+
+  imprimirElemento(submitForm(),name_cot.value)
 }
 function imprimirElemento(elemento, name_cot) {
 
@@ -436,33 +443,34 @@ function imprimirElemento(elemento, name_cot) {
     ventana.close();
   };
   return true;*/
+  document.title="transacciones"
   var contenidoOriginal= document.body.innerHTML;
-  document.title="COT"+""+name_cot
+  document.body.style.width="725px"
+  document.body.style.height="600px"
   document.body.innerHTML = elemento.innerHTML;
   window.print();
-  document.title="transacciones"
+  
 
-  document.body.innerHTML = contenidoOriginal;
-  location.reload()
+  
 }
 
 function generarPFD(elemento, name_cot){
   var contenidoOriginal= document.body.innerHTML;
   document.body.style.width="725px"
-  document.body.style.height="600px"
+  document.body.style.height="fit-content"
   document.body.innerHTML = elemento.innerHTML;
 
 
 html2canvas(document.body, {
     allowTaint: false,
-    width: 1000, height: 1200 
+    width: 800, height: 1200 
   }) // Llamar a html2canvas y pasarle el elemento
     .then(canvas => {
            
       var img=canvas.toDataURL("image/png",1.0);
    var doc = new jsPDF('p', 'in', [15, 11]);
    doc.addImage(img,'JPEG',1,1);
-   doc.save('test.pdf');
+   doc.save('Cot_'+name_cot+'_.pdf');
     });
 }
     </script>
