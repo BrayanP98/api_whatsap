@@ -243,7 +243,7 @@
       overflow: hidden;
       overflow: scroll;
       max-height: 200px;
-      background: #1d65897f;
+      background: #fdfcfce9;
      display: none;
      z-index: 2;
      font-size: 15px;
@@ -251,7 +251,15 @@
      position:   absolute;
     top: 25px;
       list-style: none;
+    cursor: pointer;
      
+     }
+     #box-search li{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-size: 18px;
+     }
+     #box-search li:hover{
+      color: aqua;
      
      }
 
