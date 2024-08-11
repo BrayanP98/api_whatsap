@@ -345,6 +345,7 @@ app.post("/webhook", (req, res) => {
 
   // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
   if (req.body.object) {
+   
     if (
       req.body.entry &&
       req.body.entry[0].changes &&
@@ -352,9 +353,11 @@ app.post("/webhook", (req, res) => {
       req.body.entry[0].changes[0].value.messages &&
       req.body.entry[0].changes[0].value.messages[0]
     ) {
+
+     
       let phone_number_id ="426245237228457";
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-     
+      io.emit("estado",from)
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       
@@ -868,13 +871,13 @@ app.post('/add_user/:id',async(req, res)=>{
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
 app.get("/webhook", (req, res) => {
   
-  const verify_token = process.env.VERIFY_TOKEN;
-
+  const verify_token ="HAPPY";
+  
   // Parse params from the webhook verification request
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
   let challenge = req.query["hub.challenge"];
-
+  console.log(verify_token,mode,token,challenge);
   // Check if a token and mode were sent
   if (mode && token) {
     // Check the mode and token sent are correct
