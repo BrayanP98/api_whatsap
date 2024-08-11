@@ -507,11 +507,12 @@ for(var i=0;i<arrayMaessage.length;i++){
 
   send_whatsapp(arrayMaessage[i], img, descript);
 function send_whatsapp(number, img,  text){
-  var botId = '122100131648008841';
-  var phoneNbr = '573026055289';
-  var bearerToken = 'EABpkYoLqZBZCYBOxobhn1EwbivIl4Uu1ecsawuwsDQgtJv8n7SVaqPsiBLJusnZBOM7SKdvAt4ZCJtxZCcrAS5n5dMbP3dhb0mzfM3nlSRV3KZBLBY07uq6HDuz6TJkyfTCwRwBJZCjvvOxuQ37M1LwuHZA2ge57k5cDTa2eVo1LPvROqctQPOIPJzdWlBjZCtykLqxdmTDzgTwRITK9T';
+  var botId = '426245237228457';
+  var phoneNbr = '573157521681';
+  var bearerToken = 'EAAO79M2kv3MBO0Fi2DPZBe0SEHpFZA8ZBGposA0UByPNdTePvh8jcX4MaDvYwzyYnBB2ukSBl67e0o5cXZAlaTk1ZAwueEQ4OPmGAeKO0Nyqv7f4w8yJZBJgHatax00mrl6wVWvOHfek1ayxe30ZBguNGC8A7J7LrVqynLiMlEucOF9QAcOzKsRn2HMnDA66mVs8POyeyWjfdlSUx4ooaUZD';
   
-  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+  var url = 'https://graph.facebook.com/v20.0/' + botId + '/messages';
+ 
 
 
 
@@ -522,9 +523,9 @@ var  data= {
 "to": number,
 "type": "template",
 "template": {
-"name": "publicidad",
+"name": "promos",
 "language": {
-"code": "es"
+"code": "es_MX"
 },
 "components": [
 {
