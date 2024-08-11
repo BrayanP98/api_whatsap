@@ -474,6 +474,7 @@ socket.on('estado', (status) => {
 let div_notific=document.querySelector("#div_notific");
 let txt_div_notific=document.querySelector("#txt_div_notific")
 var cont_pet=0
+console.log(status)
 if(status=="delivered"){
 console.log("status")
 txt_div_notific.innerHTML="Mensaje entregado"
@@ -509,7 +510,7 @@ for(var i=0;i<arrayMaessage.length;i++){
 function send_whatsapp(number, img,  text){
   var botId = '426245237228457';
   var phoneNbr = '573157521681';
-  var bearerToken = 'EAAO79M2kv3MBO0Fi2DPZBe0SEHpFZA8ZBGposA0UByPNdTePvh8jcX4MaDvYwzyYnBB2ukSBl67e0o5cXZAlaTk1ZAwueEQ4OPmGAeKO0Nyqv7f4w8yJZBJgHatax00mrl6wVWvOHfek1ayxe30ZBguNGC8A7J7LrVqynLiMlEucOF9QAcOzKsRn2HMnDA66mVs8POyeyWjfdlSUx4ooaUZD';
+  var bearerToken = 'EAAO79M2kv3MBO7DTYj3aw5f1wr9suYFedBb8aehWyt3r47rhwGrbegZBrZA1jdfePJJCxZBPZAND7cfiOimVxa4Eyb3zc1gfifmHNhkQJfYKxF6iR8yEyB6hql54iL49kXb2aHq4mPiMCfE6gqJfpx1mhRo34wTFsFnbw3jZCRsRrEI6623WVt8cpZBmRcJEZCeZBDJcRzOr7uXnyGrtu9tY9JXXql98vptTSGZBmFQIZD';
   
   var url = 'https://graph.facebook.com/v20.0/' + botId + '/messages';
  

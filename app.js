@@ -48,7 +48,7 @@ io.on('connection', function(socket)  {
     axios({
       method: "POST", // Required, HTTP method, a string, e.g. POST, GET
       url:
-        "https://graph.facebook.com/v12.0/" +
+        "https://graph.facebook.com/v20.0/" +
        botId+
         "/messages?access_token=" +
         token,
@@ -352,8 +352,7 @@ app.post("/webhook", (req, res) => {
       req.body.entry[0].changes[0].value.messages &&
       req.body.entry[0].changes[0].value.messages[0]
     ) {
-      let phone_number_id =
-        req.body.entry[0].changes[0].value.metadata.phone_number_id;
+      let phone_number_id ="426245237228457";
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      
      //console.log()
@@ -385,7 +384,7 @@ app.post("/webhook", (req, res) => {
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
-             "https://graph.facebook.com/v12.0/" +
+             "https://graph.facebook.com/v20.0/" +
              phone_number_id +
              "/messages?access_token=" +
              token,
@@ -418,7 +417,7 @@ app.post("/webhook", (req, res) => {
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
-          "https://graph.facebook.com/v12.0/" +
+          "https://graph.facebook.com/v20.0/" +
           phone_number_id +
           "/messages?access_token=" +
           token,
@@ -458,7 +457,7 @@ app.post("/webhook", (req, res) => {
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
-              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
+              "https://graph.facebook.com/v20.0/"+phone_number_id +"/messages?access_token="+token,
                 data:{
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -508,7 +507,7 @@ app.post("/webhook", (req, res) => {
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
-              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
+              "https://graph.facebook.com/v20.0/"+phone_number_id +"/messages?access_token="+token,
                 data:{
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -641,7 +640,7 @@ app.post("/webhook", (req, res) => {
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
-          "https://graph.facebook.com/v12.0/" +
+          "https://graph.facebook.com/v20.0/" +
           phone_number_id +
           "/messages?access_token=" +
           token,
