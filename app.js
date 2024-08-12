@@ -108,45 +108,6 @@ app.post("/webhook", (req, res) => {
   var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
   {
-     gps:{
-      "cotizar":[
-        {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
-          "\n Adicional Automatic Home Solutions te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
-          "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
-          "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
-          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo."+
-          +"\n\n_#SeguridadComodidadInteligente_",
-          
-        }
-       ], 
-       "servicio tecnico":[
-        {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3147459064 *"+
-          "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*."+
-          "\n\n#SeguridadComodidadInteligente",
-          
-        }
-       ],
-       
-       "renovacion":[
-        {
-          "mesagge":"DomoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+
-          "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
-        "  \n Nuestros medios de pago son:"+
-          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
-
-        }
-       ],
-       "beneficios":[
-        {
-          "mesagge":"DomoBot🤖 dice :"+"\n\n Los sistemas de *GPS vehiculares* ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
-          
-        }
-       ],
-    
-     },
      cctv:{
       "cotizar":[
         {
@@ -655,7 +616,7 @@ app.post("/webhook", (req, res) => {
               header: {  
               type: "text",
               text: "Automatic Home Solutions"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *Securi Bot* 🤖  de  Automatic Home Solutions S.A.S."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+              body: {text: "Hola"+" "+name+" "+" "+"soy *DomoBot* 🤖  de  Automatic Home Solutions S.A.S."+"\n\n💛Tu seguridad es nuestra prioridad!"+
               "\n\nSiguenos en Facebook como: \n*Automatic Home Solutions S.A.S*."+"\n O visita nuestra WEB https://automatichomesolutions.tech/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
