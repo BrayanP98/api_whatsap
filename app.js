@@ -113,13 +113,13 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459064* o escribenos a Whatsapp a estos mismos numeros.",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros.",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459064 *"+
+          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*."+
           +
           "\n\n_#SeguridadComodidadInteligente_",
@@ -146,14 +146,14 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459064* o escribenos a Whatsapp a estos mismos numeros."+
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
           "\n\n#SeguridadComodidadInteligente",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459064 *"+
+          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#SeguridadComodidadInteligente",
           
         }
@@ -178,14 +178,14 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459064* o escribenos a Whatsapp a estos mismos numeros."
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."
           +"\n\n#SeguridadComodidadInteligente",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459064 *"+
+          "mesagge":"DomoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#SeguridadComodidadInteligente",
           
         }
@@ -210,8 +210,8 @@ app.post("/webhook", (req, res) => {
 
         "mesagge":"DomoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
-          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
+          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n cuenta de ahorro: 86862880295✅"+
+          +"\n\n_#SeguridadComodidadInteligente_"
 
           
     },
@@ -222,8 +222,8 @@ app.post("/webhook", (req, res) => {
       "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
-        " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*NEQUI:* 3006549863✅"+
-        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
+        " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*Cuenta de ahorro*: 86862880295✅"+
+       +"\n\n_#SeguridadComodidadInteligente_"
 
         
   },
@@ -251,16 +251,7 @@ app.post("/webhook", (req, res) => {
         }
        ],
       
-       "Ubicacion":[
-        {
-          "mesagge":"*DomoBot🤖 dice* :"+"\n\nSomos *Automatic Home Solutions S.A.S* \n💛Su seguridad es nuestra prioridad!"+
-          "\n\nEstamos ubicados en la transversal 9#57n-202 via al bosque a 2 minutos de cafe la palma."+
-          "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"+"\n\nPuedes contactarnos a los numeros:"+
-          "\n3026052089 -"+"\n\n_#SeguridadComodidadInteligente_"
-        
-        }
-
-       ], 
+       
        "PQRS":[
         {
           "mesagge":"*DomoBot🤖 dice* :  \n No disponible!"+
@@ -286,13 +277,13 @@ app.post("/webhook", (req, res) => {
   {
     promociones:{
       prom1:{
-        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/387042543_724012399741838_5498460068571543279_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Kxe5ErCfYJ4AX_47BXU&_nc_ht=scontent-bog1-1.xx&oh=00_AfCbskmDEkajNzrRidSwXiBzgkE3hWX2k1tJccmQ8CbDEA&oe=6537D8FB",
+        "img":"https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421061190_1042454900557220_2133877457132461225_n.jpg?ccb=11-4&oh=01_Q5AaIGqPF6JzoryrcqlVEaHRpx_B22MDqDSDGwZowgz_z4SP&oe=66C11A52&_nc_sid=5e03e0&_nc_cat=103",
         "message":"Promo inperdible"
 
 
       },
       prom2:{
-        "img":"https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/274943224_1537743729937140_1507675077666243572_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WhEq6nO29PUAX9cTX4A&_nc_oc=AQlDj-jf3ykxw1jc-LfUOYX48leTFOHu1P5MqLQC8NqP0Ekxi9ujBB__S8XjrtKC43k&_nc_ht=scontent-bog1-1.xx&oh=00_AfCFoYKFvZmYtQ4Otu1bgmjudkwhspSEoZahpUbM80ebdA&oe=6538A896",
+        "img":"https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421061190_1042454900557220_2133877457132461225_n.jpg?ccb=11-4&oh=01_Q5AaIGqPF6JzoryrcqlVEaHRpx_B22MDqDSDGwZowgz_z4SP&oe=66C11A52&_nc_sid=5e03e0&_nc_cat=103",
         "message":"GRAN PROMOCION"
       }
       
@@ -526,7 +517,7 @@ app.post("/webhook", (req, res) => {
 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
-        let asesrNumber="573147459064"
+        let asesrNumber="573147459094"
          sendOP(contactClient,asesrNumber)
          sendOP(rtaopt[butonRepli].mesagge,from);
          
@@ -542,39 +533,39 @@ app.post("/webhook", (req, res) => {
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459064"
+        let asesrNumber="573147459094"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="Renovar Plan"){
         butonrta="renovar_plan"
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459064"
+        let asesrNumber="573147459094"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="Detener promociones"){
        let mesagge="Entendido"
         sendOP(mesagge,from); 
         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459064"
+        let asesrNumber="573147459094"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
         let mesagge="DomoBot🤖 dice :"+"\n\nEntendido."+"\nAutomatic Home Solutions S.A.S le desea un feliz dia!.💛"+
-          "\n\nNuestros numeros de contacto son: 3147459064 "+
+          "\n\nNuestros numeros de contacto son: 3147459094 "+
           "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459064"
+         let asesrNumber="573147459094"
          sendOP(contactClient,asesrNumber); 
        }else if(butonrta==="RECLAMAR REGALO"){
         let mesagge="DomoBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
-          "\n\nNuestros numeros de contacto son: 3147459064 "+
+          "\n\nNuestros numeros de contacto son: 3147459094 "+
            "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459064"
+         let asesrNumber="573147459094"
          sendOP(contactClient,asesrNumber); 
        }
       
@@ -624,13 +615,14 @@ app.post("/webhook", (req, res) => {
                 button: "Nuestros Servicios",
                 sections:[
                  
+                
                   {
-                    title:"opcion 1",
+                    title:"Opcion 1",
                     rows: [
                       {
                         id:"1",
-                        title: "GPS",
-                        description: "gps",           
+                        title: "CCTV(camaras seguridad)",
+                        description: "cctv",           
                       }
                     ]
                   },
@@ -639,26 +631,16 @@ app.post("/webhook", (req, res) => {
                     rows: [
                       {
                         id:"2",
-                        title: "CCTV(camaras seguridad)",
-                        description: "cctv",           
-                      }
-                    ]
-                  },
-                  {
-                    title:"Opcion 3",
-                    rows: [
-                      {
-                        id:"3",
                         title: "Alarmas Recidenciales",
                         description: "alarmas",  
                              
                       }
                     ]
                   },{
-                    title:"Opcion 4",
+                    title:"Opcion 3",
                     rows: [
                       {
-                        id:"4",
+                        id:"3",
                         title: "Control de Acceso",
                         description: "Control_Acceso",  
                              
@@ -666,17 +648,17 @@ app.post("/webhook", (req, res) => {
                     ]
                   },
                   {
-                    title:"Opcion 5",
+                    title:"Opcion 4",
                     rows: [
                       {
-                        id:"5",
+                        id:"4",
                         title: "PROMOCIONES",
                         description: "promociones",  
                              
                       }
                     ]
                   },{
-                    title:"Opcion 6",
+                    title:"Opcion 5",
                     rows: [
                       {
                         id:"5",
@@ -701,11 +683,11 @@ app.post("/webhook", (req, res) => {
        break
     }
     else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("DomoBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#SeguridadComodidadInteligente:")
+      text=("DomoBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n#SeguridadComodidadInteligente")
       let contactClient= "Por favor ponerse en contacto con:"+" \n"+
       name+" "+"\n al numero:"+""+from+"" +"para asesoria";
 
-      let to= "573147459064"
+      let to= "573147459094"
       sendOP(text,from)
       sendOP(contactClient, to)
     }
