@@ -474,7 +474,6 @@ socket.on('estado', (status) => {
 let div_notific=document.querySelector("#div_notific");
 let txt_div_notific=document.querySelector("#txt_div_notific")
 var cont_pet=0
-console.log(status)
 if(status=="delivered"){
 console.log("status")
 txt_div_notific.innerHTML="Mensaje entregado"
