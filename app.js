@@ -120,7 +120,7 @@ app.post("/webhook", (req, res) => {
        "servicio tecnico":[
         {
           "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*."+
+          
           +
           "\n\n_#SeguridadComodidadInteligente_",
           
@@ -154,7 +154,7 @@ app.post("/webhook", (req, res) => {
        "servicio tecnico":[
         {
           "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#SeguridadComodidadInteligente",
+           +"\n\n#SeguridadComodidadInteligente",
           
         }
        ],
@@ -186,7 +186,7 @@ app.post("/webhook", (req, res) => {
        "servicio tecnico":[
         {
           "mesagge":"DomoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#SeguridadComodidadInteligente",
+         +"\n\n#SeguridadComodidadInteligente",
           
         }
        ],
@@ -351,7 +351,7 @@ app.post("/webhook", (req, res) => {
                  header: {  
                  type: "text",
                  text: "Automatic Home Solutions"},
-                 body: {text:"DomoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Tu seguridad es nuestra prioridad"
+                 body: {text:"DomoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Seguridad y Comodidad Inteligente"
                  +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
                    
@@ -607,7 +607,7 @@ app.post("/webhook", (req, res) => {
               header: {  
               type: "text",
               text: "Automatic Home Solutions"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *DomoBot* 🤖  de  Automatic Home Solutions S.A.S."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+              body: {text: "Hola"+" "+name+" "+" "+"soy *DomoBot* 🤖  de  Automatic Home Solutions S.A.S."+"\n\n💛Seguridad y Comodidad Inteligente!"+
               "\n\nSiguenos en Facebook como: \n*Automatic Home Solutions S.A.S*."+"\n O visita nuestra WEB https://automatichomesolutions.tech/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
