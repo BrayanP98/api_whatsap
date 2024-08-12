@@ -19,7 +19,7 @@ const save = require('./functions.js');
 
 
 
-const token = process.env.WHATSAPP_TOKEN;
+const token = "EAAO79M2kv3MBOz1YYJQJwdjzltLdkRdZBSqypPn0ENIN1SlHQdXR8s32tJFMV6jOcm4XvjZBrGpqNcAdpwZCoyys5C87byadTCRhuyTz9B0HZBo3UnqyVIOEEaf1tF1QNabjgl8t30mNP8liu7XqYCu4RRh49SBcgIFph9oapoOnNeBscZAA5lq8vEWaU4hscrLILpf6kMgQ4x53LYAZDZD";
 //const path= require('path');
 // Imports dependencies and set up http server
 const request = require("request"),
@@ -48,9 +48,9 @@ io.on('connection', function(socket)  {
     axios({
       method: "POST", // Required, HTTP method, a string, e.g. POST, GET
       url:
-        "https://graph.facebook.com/v20.0/" +
+        "https://graph.facebook.com/v12.0/" +
        botId+
-        "/messages" +
+        "/messages?access_token=" +
         token,
       data: {
         messaging_product: "whatsapp",
@@ -108,36 +108,74 @@ app.post("/webhook", (req, res) => {
   var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
   var rtaopt=
   {
-    
-     cctv:{
+     gps:{
       "cotizar":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
-          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3147459094* o escribenos a Whatsapp a estos mismos numeros.",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
+          "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
+          "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
+          "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
+          "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo."+
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*."+
+          "\n\n#TuSeguridadEsNuestraPrioridad",
+          
+        }
+       ],
+       
+       "renovacion":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+
+          "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
+        "  \n Nuestros medios de pago son:"+
+          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+
+        }
+       ],
+       "beneficios":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n Los sistemas de *GPS vehiculares* ofrecen una amplia gama de beneficios, desde la mejora de la eficiencia operativa y la reducción de costos hasta la optimización de la navegación y la seguridad personal. Estos beneficios varían según el contexto y la finalidad de su uso, ya sea para conductores individuales, flotas comerciales o aplicaciones de seguridad.",
+          
+        }
+       ],
+    
+     },
+     cctv:{
+      "cotizar":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros.",
+          
+        }
+       ], 
+       "servicio tecnico":[
+        {
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*."+
           +
-          "\n\n_#SeguridadComodidadInteligented_",
+          "\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
-          +"\n\n_#SeguridadComodidadInteligented_",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"Domobot🤖 dice :  \n No disponible!"+
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -145,30 +183,30 @@ app.post("/webhook", (req, res) => {
      alarmas:{
       "cotizar":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
-          "\n\n#SeguridadComodidadInteligented",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."+
+          "\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#SeguridadComodidadInteligented",
+          "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"Domobot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":"SecuriBot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"Domobot🤖 dice :  \n No disponible!"+
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -177,38 +215,60 @@ app.post("/webhook", (req, res) => {
     Control_Acceso:{
       "cotizar":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *-3147459094* o escribenos a Whatsapp a estos mismos numeros."
-          +"\n\n#SeguridadComodidadInteligented",
+          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."
+          +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"Domobot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#SeguridadComodidadInteligented",
+          "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#TuSeguridadEsNuestraPrioridad",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"Domobot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#SeguridadComodidadInteligented_",
+          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#TuSeguridadEsNuestraPrioridad_",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"Domobot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#SeguridadComodidadInteligented_"
+          "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
+          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
         }
        ]
     },
     
+    
+    renovar_plataforma:{
+
+        "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
+        "  \nNuestros medios de pago son:"+
+          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
+          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+
+          
+    },
+    renovar_plan:{
+
+      "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
+      "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
+      "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
+       
+      "\n\nNuestros medios de pago son:"+
+        " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*NEQUI:* 3006549863✅"+
+        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+
+        
+  },
   acceder_promo:{
 
-    "mesagge":"Domobot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darle mas informacion sobre este articulo."
+    "mesagge":"SecuriBot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darle mas informacion sobre este articulo."
       
       
 },
@@ -216,34 +276,33 @@ app.post("/webhook", (req, res) => {
     nosotros:{
       "Mision":[
         {
-          "mesagge":"*Domobot🤖 dice* :"+"\n   *MISION*"+"\n\nEn AUTOMATIC HOME SOLUTIONS S.A.S., nuestramisión es proporcionar soluciones integrales deautomatización y seguridad para hogares y"+
-"\nempresas, combinando innovación tecnológica y excelencia en el servicio. Nos comprometemos a mejorar la calidad de vida de nuestros clientes"+
-"\nmediante la creación de espacios más seguros, eficientes y confortables, asegurando la tranquilidad y el bienestar en cada proyecto que emprendemos. "
-        
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
+          "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_"
         }
        ], 
        "Vision":[
         {
-          "mesagge":"*Domobot🤖 dice* :"+"\n        *VISION*"+"\n\nSer líderes en el sector de la automatizacióndel hogar y seguridad electrónica en AméricaLatina, reconocidos por nuestra capacidad de"+
-"\ntransformar tanto viviendas como empresas en entornos inteligentes y altamente seguros. Aspiramos a establecer nuevos estándares de calidad y sostenibilidad, contribuyendo al"+
-"\ndesarrollo de comunidades más conectadas y tecnológicamente avanzadas."
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
+          " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
+          +"\n\n_#TuSeguridadEsNuestraPrioridad_"
         
         }
        ],
       
        "Ubicacion":[
         {
-          "mesagge":"*Domobot🤖 dice* :"+"\n\nSomos *Automatic Home Solutions* \n💛seguridad y comodidad inteligente!"+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n\nSomos *San Juan Electronics* \n💛Su seguridad es nuestra prioridad!"+
           "\n\nEstamos ubicados en la transversal 9#57n-202 via al bosque a 2 minutos de cafe la palma."+
           "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"+"\n\nPuedes contactarnos a los numeros:"+
-          "\n3147459094- "+"\n\n_#SeguridadComodidadInteligented_"
+          "\n3026052089 -- 3006549863"+"\n\n_#TuSeguridadEsNuestraPrioridad_"
         
         }
 
        ], 
        "PQRS":[
         {
-          "mesagge":"*Domobot🤖 dice* :  \n No disponible!"+
+          "mesagge":"*SecuriBot🤖 dice* :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -252,8 +311,8 @@ app.post("/webhook", (req, res) => {
     }, 
     catalogo:{
 
-      "mesagge":"Domobot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-      "  \n https://automatichomesolutions.tech/"+
+      "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+      "  \n https://sanjuanelectronics.online/"+
         " \n \n "+
         "\n "
   },
@@ -286,7 +345,6 @@ app.post("/webhook", (req, res) => {
 
   // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
   if (req.body.object) {
-   
     if (
       req.body.entry &&
       req.body.entry[0].changes &&
@@ -294,11 +352,10 @@ app.post("/webhook", (req, res) => {
       req.body.entry[0].changes[0].value.messages &&
       req.body.entry[0].changes[0].value.messages[0]
     ) {
-
-     
-      let phone_number_id ="426245237228457";
+      let phone_number_id =
+        req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-      io.emit("estado",from)
+     
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
       
@@ -328,9 +385,9 @@ app.post("/webhook", (req, res) => {
          axios({
            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
            url:
-             "https://graph.facebook.com/v20.0/" +
+             "https://graph.facebook.com/v12.0/" +
              phone_number_id +
-             "/messages" +
+             "/messages?access_token=" +
              token,
                data:{
                messaging_product: "whatsapp",
@@ -341,8 +398,8 @@ app.post("/webhook", (req, res) => {
                  type: "list",
                  header: {  
                  type: "text",
-                 text: "Automatic Home"},
-                 body: {text:"Domobot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Tu seguridad es nuestra prioridad"
+                 text: "San Juan"},
+                 body: {text:"SecuriBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Tu seguridad es nuestra prioridad"
                  +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
                    
@@ -361,9 +418,9 @@ app.post("/webhook", (req, res) => {
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
-          "https://graph.facebook.com/v20.0/" +
+          "https://graph.facebook.com/v12.0/" +
           phone_number_id +
-          "/messages" +
+          "/messages?access_token=" +
           token,
         data: {
           messaging_product: "whatsapp",
@@ -401,7 +458,7 @@ app.post("/webhook", (req, res) => {
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
-              "https://graph.facebook.com/v20.0/"+phone_number_id +"/messages"+token,
+              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
                 data:{
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -411,8 +468,8 @@ app.post("/webhook", (req, res) => {
                   type: "button",
                   header: {  
                   type: "text",
-                  text: "Automatic Home"},
-                  body: {text: "Domobot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
+                  text: "San Juan"},
+                  body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
                   footer: {
                     
                   text: "scaliwoodSoft"},
@@ -451,7 +508,7 @@ app.post("/webhook", (req, res) => {
           axios({
             method: "POST", // Required, HTTP method, a string, e.g. POST, GET
             url:
-              "https://graph.facebook.com/v20.0/"+phone_number_id +"/messages"+token,
+              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
                 data:{
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -508,7 +565,7 @@ app.post("/webhook", (req, res) => {
 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
-        let asesrNumber="573147459094"
+        let asesrNumber="573026055289"
          sendOP(contactClient,asesrNumber)
          sendOP(rtaopt[butonRepli].mesagge,from);
          
@@ -524,39 +581,39 @@ app.post("/webhook", (req, res) => {
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
+        let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="Renovar Plan"){
         butonrta="renovar_plan"
         sendOP(rtaopt[butonrta].mesagge,from); 
         let contactClient= "Por favor ponerse en contacto con:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
+        let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="Detener promociones"){
        let mesagge="Entendido"
         sendOP(mesagge,from); 
         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
+        let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="Domobot🤖 dice :"+"\n\nEntendido."+"\nAutomatic Home Solutions le desea un feliz dia!.💛"+
-          "\n\nNuestros numeros de contacto son: 3147459094 "+
-          "\n_#SeguridadComodidadInteligented_"
+        let mesagge="SecuriBot🤖 dice :"+"\n\nEntendido."+"\nSan Juan Electronics le desea un feliz dia!.💛"+
+          "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
+          "\n_#TuSeguridadEsNuestraPrioridad_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459094"
+         let asesrNumber="573026055289"
          sendOP(contactClient,asesrNumber); 
        }else if(butonrta==="RECLAMAR REGALO"){
-        let mesagge="Domobot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
-          "\n\nNuestros numeros de contacto son: 3147459094 "+
-           "\n_#SeguridadComodidadInteligented_"
+        let mesagge="SecuriBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
+          "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
+           "\n_#TuSeguridadEsNuestraPrioridad_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459094"
+         let asesrNumber="573026055289"
          sendOP(contactClient,asesrNumber); 
        }
       
@@ -571,12 +628,12 @@ app.post("/webhook", (req, res) => {
 
      for(var i=0;i<arrayMaessage.length;i++){
      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="Domobot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Automatic Home Solutions* poder servirle.😊"+
+      let msg_body ="SecuriBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *San Juan Electronics* poder servirle.😊"+
       "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
       +
-      "\n\nNo olvides seguirnos en las redes sociales como *Automatic Home Solutions* y visitarnos en nuestra pagina web http://automatichomesolutions.tech/"+
+      "\n\nNo olvides seguirnos en las redes sociales como *San Juan Electronics* y visitarnos en nuestra pagina web http://sanjuanelectronics.online/"+
      "\n\nFeliz dia!"+
-      "\n\n_#SeguridadComodidadInteligented_";          
+      "\n\n_#TuSeguridadEsNuestraPrioridad_";          
       
       sendOP(msg_body,from)
       break;
@@ -584,9 +641,9 @@ app.post("/webhook", (req, res) => {
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
-          "https://graph.facebook.com/v20.0/" +
+          "https://graph.facebook.com/v12.0/" +
           phone_number_id +
-          "/messages" +
+          "/messages?access_token=" +
           token,
           data: {
             messaging_product: "whatsapp",
@@ -597,9 +654,9 @@ app.post("/webhook", (req, res) => {
               type: "list",
               header: {  
               type: "text",
-              text: "Automatic Home"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *Domobot* 🤖  de  Automatic Home Solutions."+"\n\n💛Tu seguridad es nuestra prioridad!"+
-              "\n\nSiguenos en Facebook como: \n*Automatic Home Solutions*."+"\n O visita nuestra WEB https://automatichomesolutions.tech/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+              text: "San Juan"},
+              body: {text: "Hola"+" "+name+" "+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+              "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
               action: {
@@ -683,11 +740,11 @@ app.post("/webhook", (req, res) => {
        break
     }
     else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("Domobot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#SeguridadComodidadInteligented:")
+      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#TuSeguridadEsNuestraPrioridad:")
       let contactClient= "Por favor ponerse en contacto con:"+" \n"+
       name+" "+"\n al numero:"+""+from+"" +"para asesoria";
 
-      let to= "573147459094"
+      let to= "573026055289"
       sendOP(text,from)
       sendOP(contactClient, to)
     }
@@ -812,13 +869,13 @@ app.post('/add_user/:id',async(req, res)=>{
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
 app.get("/webhook", (req, res) => {
   
-  const verify_token ="HAPPY";
-  
+  const verify_token = process.env.VERIFY_TOKEN;
+
   // Parse params from the webhook verification request
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
   let challenge = req.query["hub.challenge"];
-  console.log(verify_token,mode,token,challenge);
+
   // Check if a token and mode were sent
   if (mode && token) {
     // Check the mode and token sent are correct
