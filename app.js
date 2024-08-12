@@ -112,11 +112,11 @@ app.post("/webhook", (req, res) => {
       "cotizar":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nEl Costo del dispositivo GPS mas su instalacion esta en *$380.000* ."+
-          "\n Adicional San Juan te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
+          "\n Adicional Automatic Home Solutions te ofrece un plan de datos con claro especial para *GPS* con un costo anual de *$95.000* "+
           "adquiriendo este plan se libera el usuario de estar realizando cada mes una regarga de datos al GPS"+
           "\n Esto sumaria un total de *$475.000* si el usuario decide adquirir el plan.✅ "+
           "\n\nEl fin de las recargas mensuales o el plan anual de datos para GPS el el correcto funcionamiento de las alertas que emite el dispositivo ya que los SMS y los datos permiten la correcta conecion estre el dispositivo *GPS* y la aplicacion de monitoreo."+
-          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
+          +"\n\n_#SeguridadComodidadInteligente_",
           
         }
        ], 
@@ -124,7 +124,7 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe ASESOR o comunicate escribiendo a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina ubicada en la *Transversal9 #57n-202 via al bosque*."+
-          "\n\n#TuSeguridadEsNuestraPrioridad",
+          "\n\n#SeguridadComodidadInteligente",
           
         }
        ],
@@ -135,7 +135,7 @@ app.post("/webhook", (req, res) => {
           "\nEn un momento uno de nuestros asesores lo contactara para continuan con el proceso de renovacion."+
         "  \n Nuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          "\n O puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
 
         }
        ],
@@ -161,7 +161,7 @@ app.post("/webhook", (req, res) => {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
           "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*."+
           +
-          "\n\n_#TuSeguridadEsNuestraPrioridad_",
+          "\n\n_#SeguridadComodidadInteligente_",
           
         }
        ],
@@ -169,7 +169,7 @@ app.post("/webhook", (req, res) => {
        "beneficios":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
-          +"\n\n_#TuSeguridadEsNuestraPrioridad_",
+          +"\n\n_#SeguridadComodidadInteligente_",
           
         }
        ], 
@@ -186,14 +186,14 @@ app.post("/webhook", (req, res) => {
           "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."+
-          "\n\n#TuSeguridadEsNuestraPrioridad",
+          "\n\n#SeguridadComodidadInteligente",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#TuSeguridadEsNuestraPrioridad",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque*." +"\n\n#SeguridadComodidadInteligente",
           
         }
        ],
@@ -218,28 +218,28 @@ app.post("/webhook", (req, res) => {
           "mesagge":"SecuriBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3026055289* o escribenos a Whatsapp a estos mismos numeros."
-          +"\n\n#TuSeguridadEsNuestraPrioridad",
+          +"\n\n#SeguridadComodidadInteligente",
           
         }
        ], 
        "servicio tecnico":[
         {
           "mesagge":"SecuriBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3026055289 - 3006549863*"+
-          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#TuSeguridadEsNuestraPrioridad",
+          "\n O acercate a nuestra oficina uicada en la *Transversal9 #57n-202 via al bosque.*" +"\n\n#SeguridadComodidadInteligente",
           
         }
        ],
       
        "beneficios":[
         {
-          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#TuSeguridadEsNuestraPrioridad_",
+          "mesagge":"SecuriBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#SeguridadComodidadInteligente_",
           
         }
        ], 
        "otros":[
         {
           "mesagge":"SecuriBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#SeguridadComodidadInteligente_"
         }
        ]
     },
@@ -250,7 +250,7 @@ app.post("/webhook", (req, res) => {
         "mesagge":"SecuriBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n *NEQUI:* 3006549863✅"+
-          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
 
           
     },
@@ -262,7 +262,7 @@ app.post("/webhook", (req, res) => {
        
       "\n\nNuestros medios de pago son:"+
         " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*NEQUI:* 3006549863✅"+
-        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+        "\n\nO puede acercarse a nuestra oficina y realizar el proceso de renovacion. \n\n🚩Estamos ubicados en la transversal 9 #57n-202 via al bosque."+"\n\n_#SeguridadComodidadInteligente_"
 
         
   },
@@ -278,24 +278,24 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"*SecuriBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
           "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
-          +"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          +"\n\n_#SeguridadComodidadInteligente_"
         }
        ], 
        "Vision":[
         {
           "mesagge":"*SecuriBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
           " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
-          +"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          +"\n\n_#SeguridadComodidadInteligente_"
         
         }
        ],
       
        "Ubicacion":[
         {
-          "mesagge":"*SecuriBot🤖 dice* :"+"\n\nSomos *San Juan Electronics* \n💛Su seguridad es nuestra prioridad!"+
+          "mesagge":"*SecuriBot🤖 dice* :"+"\n\nSomos *Automatic Home Solutions Electronics* \n💛Su seguridad es nuestra prioridad!"+
           "\n\nEstamos ubicados en la transversal 9#57n-202 via al bosque a 2 minutos de cafe la palma."+
           "\n🗺"+"https://maps.app.goo.gl/YWS9ivspu9mMcTay8"+"\n\nPuedes contactarnos a los numeros:"+
-          "\n3026052089 -- 3006549863"+"\n\n_#TuSeguridadEsNuestraPrioridad_"
+          "\n3026052089 -- 3006549863"+"\n\n_#SeguridadComodidadInteligente_"
         
         }
 
@@ -312,7 +312,7 @@ app.post("/webhook", (req, res) => {
     catalogo:{
 
       "mesagge":"SecuriBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-      "  \n https://sanjuanelectronics.online/"+
+      "  \n https://automatichomesolutions.tech/"+
         " \n \n "+
         "\n "
   },
@@ -398,7 +398,7 @@ app.post("/webhook", (req, res) => {
                  type: "list",
                  header: {  
                  type: "text",
-                 text: "San Juan"},
+                 text: "Automatic Home Solutions"},
                  body: {text:"SecuriBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Tu seguridad es nuestra prioridad"
                  +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
@@ -468,7 +468,7 @@ app.post("/webhook", (req, res) => {
                   type: "button",
                   header: {  
                   type: "text",
-                  text: "San Juan"},
+                  text: "Automatic Home Solutions"},
                   body: {text: "SecuriBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
                   footer: {
                     
@@ -598,9 +598,9 @@ app.post("/webhook", (req, res) => {
         let asesrNumber="573026055289"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="SecuriBot🤖 dice :"+"\n\nEntendido."+"\nSan Juan Electronics le desea un feliz dia!.💛"+
+        let mesagge="SecuriBot🤖 dice :"+"\n\nEntendido."+"\nAutomatic Home Solutions Electronics le desea un feliz dia!.💛"+
           "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
-          "\n_#TuSeguridadEsNuestraPrioridad_"
+          "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
@@ -609,7 +609,7 @@ app.post("/webhook", (req, res) => {
        }else if(butonrta==="RECLAMAR REGALO"){
         let mesagge="SecuriBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
           "\n\nNuestros numeros de contacto son: 3026055289 - 3006549863"+
-           "\n_#TuSeguridadEsNuestraPrioridad_"
+           "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
          let contactClient= "Por favor no enviar publicidad a:"+" \n"+
          name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
@@ -628,12 +628,12 @@ app.post("/webhook", (req, res) => {
 
      for(var i=0;i<arrayMaessage.length;i++){
      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="SecuriBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *San Juan Electronics* poder servirle.😊"+
+      let msg_body ="SecuriBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Automatic Home Solutions Electronics* poder servirle.😊"+
       "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
       +
-      "\n\nNo olvides seguirnos en las redes sociales como *San Juan Electronics* y visitarnos en nuestra pagina web http://sanjuanelectronics.online/"+
+      "\n\nNo olvides seguirnos en las redes sociales como *Automatic Home Solutions Electronics* y visitarnos en nuestra pagina web http://automatichomesolutions.tech/"+
      "\n\nFeliz dia!"+
-      "\n\n_#TuSeguridadEsNuestraPrioridad_";          
+      "\n\n_#SeguridadComodidadInteligente_";          
       
       sendOP(msg_body,from)
       break;
@@ -654,9 +654,9 @@ app.post("/webhook", (req, res) => {
               type: "list",
               header: {  
               type: "text",
-              text: "San Juan"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *Securi Bot* 🤖  de  San Juan Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
-              "\n\nSiguenos en Facebook como: \n*San Juan Electronics*."+"\n O visita nuestra WEB https://sanjuanelectronics.online/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+              text: "Automatic Home Solutions"},
+              body: {text: "Hola"+" "+name+" "+" "+"soy *Securi Bot* 🤖  de  Automatic Home Solutions Electronics."+"\n\n💛Tu seguridad es nuestra prioridad!"+
+              "\n\nSiguenos en Facebook como: \n*Automatic Home Solutions Electronics*."+"\n O visita nuestra WEB https://automatichomesolutions.tech/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
               action: {
@@ -740,7 +740,7 @@ app.post("/webhook", (req, res) => {
        break
     }
     else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#TuSeguridadEsNuestraPrioridad:")
+      text=("SecuriBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n_#SeguridadComodidadInteligente:")
       let contactClient= "Por favor ponerse en contacto con:"+" \n"+
       name+" "+"\n al numero:"+""+from+"" +"para asesoria";
 
