@@ -35,7 +35,7 @@ button_sendPaV.onclick=function(){
             {
               "type": "document",
               "document": {
-                "link": "https://apiwhatsap-dev-nrcg.4.us-1.fl0.io/pdf/COTIZACION.pdf"
+                "link": "public/pdf/COTIZACION.pdf"
               }
             }
           ]
@@ -45,7 +45,7 @@ button_sendPaV.onclick=function(){
           "parameters": [
             {
               "type": "text",
-              "text": "cotizacoin de equiposss"
+              "text": "cotizacoin de equipos"
             },
            
             
