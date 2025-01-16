@@ -589,6 +589,7 @@ function generarPFD(elemento, name_cot){
   modal.appendChild(plantilla1)
 
 
+<<<<<<< HEAD
   var cerrar_modal= document.querySelector("#cerrar_modal")
 cerrar_modal.onclick=function(){
   var modal= document.querySelector("#modal")
@@ -618,6 +619,23 @@ cerrar_modal.onclick=function(){
     }, 1000);*/
   }
 
+=======
+html2canvas(document.body, {
+    allowTaint: false,
+    width: 800, height: 800
+  }) // Llamar a html2canvas y pasarle el elemento
+    .then(canvas => {
+           
+      var img=canvas.toDataURL("image/jpeg",1.0);
+   var doc = new jsPDF('p', 'in', [8.9, 11]);
+   doc.addImage(img,'JPEG',0.3,0.2);
+   doc.save('Cta_cobro_'+name_cot+'_.pdf');
+    });
+    
+    setTimeout(function(){
+     location.reload()
+  }, 3000);
+>>>>>>> 7147102123de9d39a0e0898777625f1a3218665f
 }
     </script>
 
