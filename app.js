@@ -19,7 +19,9 @@ const save = require('./functions.js');
 
 
 
-const token = "EAAO79M2kv3MBO5apZCPoVpM3onhkxZBoYYbZBGblZC5LgD2DXJJf3lWIJKCSUQZAZApLOktWeVid166dbpQtJ8gbusLbIOpRhaXQhDlLiC72vZCEM1BgNzeWqppDT0Jh8lhLTuCZCybYbluj0pzX9Ehh4oTZAInKqEiSV6ze8yCT2TbqDeUvZATWeDjhOfQ6RjZAUlrKQZDZD";
+
+const token = "EAAO79M2kv3MBO52bofwZAOZALeGgZBC8vtdmcpEkZCdsGIuGttKy6YM3fkUTneWMAspA8XZA9yaMkDhxZC7Uh09qC14Ixyb1KI0wPjIX4iZBoR9cjRZBZC32Lsap5ebDCBxykTDZCMrXdTYvKl14ZCHrS6chZBt1uYyeULVlQLDfPdhq1Kg9HfYUgM9DfMJHojkYlZB5dCIfOsI3AfGbiYnHA";
+
 //const path= require('path');
 // Imports dependencies and set up http server
 const request = require("request"),
