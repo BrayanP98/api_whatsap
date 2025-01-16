@@ -201,9 +201,9 @@ button_sendPlV.onclick=function(){
   function send_whatsapp(data){ 
 
     
-  var botId = '122100131648008841';
+  var botId = '426245237228457';
   // var phoneNbr = '573026055289';
-  var bearerToken = 'EABpkYoLqZBZCYBO830lX7JudRZBUZArnQvXgYFWBBYzEXruZAoDDFOJKjoba5hA8CeWjh4ngXOOfow8c2jqvFTmv1KV3Vfogj8tJWbpf1LuZCzh8EBSRqhXIGGRGBJdYLorQLRnjjtFhhuwpk4HJOHtRSyIbSldyraqsyh7fhXOloMrlo30wVSzZC75N28XEkCZA';
+  var bearerToken = 'EAAO79M2kv3MBO8TZCRyxVRhau82TZC3UAOqkSz15Ps2ZA1DmOfmnqGP7tgqa2LVhfxZCvCkr851iiZCfLeaecCsWOZCkLRkjFl8FNt0avp0b8I7tLuQKZCYnwZBEtyLfebr6funPe5AWZAl2YxkUEeaZA9F0ZACgrmZCn8Y4CFyZA4w6fw1wNcXL6uyebPHRCOLknS81YCv7NiQK3x6sVMEe4jKP9SKaoNjYZD';
 
   var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
 
@@ -508,10 +508,10 @@ for(var i=0;i<arrayMaessage.length;i++){
   send_whatsapp(arrayMaessage[i], img, descript);
 function send_whatsapp(number, img,  text){
   var botId = '426245237228457';
-  var phoneNbr = '573157521681';
-  var bearerToken = 'EAAO79M2kv3MBO7DTYj3aw5f1wr9suYFedBb8aehWyt3r47rhwGrbegZBrZA1jdfePJJCxZBPZAND7cfiOimVxa4Eyb3zc1gfifmHNhkQJfYKxF6iR8yEyB6hql54iL49kXb2aHq4mPiMCfE6gqJfpx1mhRo34wTFsFnbw3jZCRsRrEI6623WVt8cpZBmRcJEZCeZBDJcRzOr7uXnyGrtu9tY9JXXql98vptTSGZBmFQIZD';
+  var phoneNbr = '573126460957';
+  var bearerToken = 'EAAO79M2kv3MBO8TZCRyxVRhau82TZC3UAOqkSz15Ps2ZA1DmOfmnqGP7tgqa2LVhfxZCvCkr851iiZCfLeaecCsWOZCkLRkjFl8FNt0avp0b8I7tLuQKZCYnwZBEtyLfebr6funPe5AWZAl2YxkUEeaZA9F0ZACgrmZCn8Y4CFyZA4w6fw1wNcXL6uyebPHRCOLknS81YCv7NiQK3x6sVMEe4jKP9SKaoNjYZD';
   
-  var url = 'https://graph.facebook.com/v20.0/' + botId + '/messages';
+  var url = 'https://graph.facebook.com/v21.0/' + botId + '/messages';
  
 
 

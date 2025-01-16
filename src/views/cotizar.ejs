@@ -12,26 +12,27 @@
         </script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 
-    <title>Document</title>
+    <title>Cotizar</title>
 </head>
 <body>
 <div class="container">
-    <h1 >cotizaciones</h1>
+    <h1 >Cotizacion en linea</h1>
 
     <form action="/cotizar" method="post" id="cotizar_form">
        <div id="info_user">
-        <label for="">Nombre</label>
-        <input type="text" id="name_cot" name="name_cot" required>
-        <label for="">Cedula</label>
-        <input type="text" id="doc_user_cot" name="doc_user_cot" required>
-        <label for="">Telefono</label>
-        <input type="text" id="cel_user_cot" name="cel_user_cot" required>
-        <label for="">Direccion</label>
-        <input type="text" id="aderess_user_cot" name="aderess_user_cot" required>
+       <div> <label for="">Nombre</label>
+        <input type="text" id="name_cot" name="name_cot" required></div>
+        <div><label for="">Cedula/nit</label>
+          <input type="text" id="doc_user_cot" name="doc_user_cot" required></div>
+        <div><label for="">Telefono</label>
+          <input type="text" id="cel_user_cot" name="cel_user_cot" required></div>
+       <div> <label for="">Direccion</label>
+        <input type="text" id="aderess_user_cot" name="aderess_user_cot" required></div>
        </div>
      
 
 <div class="buscador">
+    <h3>Buscador</h3>
     <input type="text" id="input_buscar" list="options1"> 
   
 
@@ -43,6 +44,38 @@
 </ul>
 
 </div>
+
+<div id="extra_item">
+  <div> <label for="">Item</label>
+    <input type="text" id="item_extra" name="item_extra" required></div>
+  
+   <div> <label for="">Cantidad</label>
+    <input type="text" id="cant_item_extra" name="cant_item_extra" required></div>
+ 
+   <div> <label for="">Valor Unit</label>
+    <input type="text" id="val_item_extra" name="val_item_extra" required></div>
+   
+   <button id="add_extra">Agregar</button>
+  
+</div>
+   
+
+
+<style>
+
+  #extra_item{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    position: relative;
+    justify-content: center;
+   gap: 5px;
+   border: 1px solid rgb(137, 136, 136);
+   padding: 15px;
+  }
+</style>
 <script>
 
 
@@ -146,53 +179,82 @@
 
   inputfind.addEventListener("keyup", buscador_interno) ;
 
-function addList(pos){
-    var body_prods=document.querySelector("#body_datesProd");
-    var tr= document.createElement("tr");
+function addList(pos,itemEx,cant,value){
+ 
+  var tr= document.createElement("tr");
 
-    var  th_total=document.querySelector("#th_total");
+  var  th_total=document.querySelector("#th_total");
 
+ 
+      var td_item=document.createElement("td");
+  var td_name=document.createElement("td");
+  var td_cant=document.createElement("td");
+  td_cant.innerHTML="1"
+  td_cant.setAttribute("contenteditable",true)
+  td_cant.setAttribute("type","number")
+  var td_valorUnit=document.createElement("td");
+  var td_valorTot=document.createElement("td");
+  var td_opt=document.createElement("td");
+  var input_catn=document.createElement("input");
+  var delete_prod=document.createElement("a");
+  delete_prod.style="cursor:pointer; color:red;"
+  delete_prod.innerHTML="X"
+  var body_prods=document.querySelector("#body_datesProd");
+  if(itemEx){
+    
+    var total_cot=th_total.innerHTML;
+    td_item.innerHTML="0000",
+    td_name.innerHTML=itemEx;
+    td_cant.innerHTML=cant;
+    td_valorUnit.innerHTML=(parseFloat(value)/1000).toFixed(3)
+    var val_tot=parseInt(value)*parseInt(cant)
+    td_valorTot.innerHTML=(parseFloat(val_tot)/1000).toFixed(3)
+    var totInt=parseInt(total_cot)+parseInt(val_tot)
+    th_total.innerHTML=  (parseFloat(totInt)/1000).toFixed(3)
    
-        var td_item=document.createElement("td");
-    var td_name=document.createElement("td");
-    var td_cant=document.createElement("td");
-    td_cant.innerHTML="1"
-    td_cant.setAttribute("contenteditable",true)
-    var td_valorUnit=document.createElement("td");
-    var td_valorTot=document.createElement("td");
-    var td_opt=document.createElement("td");
-    var input_catn=document.createElement("input");
-    var delete_prod=document.createElement("a");
-    delete_prod.style="cursor:pointer; color:red;"
-    delete_prod.innerHTML="X"
+  }else{
+   
+  
     td_item.innerHTML=products[pos].cod,
     td_name.innerHTML=products[pos].nombre;
-    input_catn.setAttribute("type","number")
-    input_catn.value=1
+  
+    
+    
    // td_cant.appendChild(input_catn);
 
     var total_cot=th_total.innerHTML;
     if(total_cot==="NaN"){
-      th_total.innerHTML=products[pos].valor;
+     
     }else{
-      th_total.innerHTML=  parseInt(total_cot)+parseInt(products[pos].valor)
+      
+      var tot_int=parseFloat(total_cot)*1000
+    console.log(tot_int*1000)
+      th_total.innerHTML=  ((parseInt(products[pos].valor)+tot_int)/1000).toFixed(3)
     }
    
     td_cant.addEventListener("keyup", function(){
-
-      if(!this.innerHTML){
-        
+      
+      if(this.innerHTML=="<br>"){
+        this.innerHTML=0
+        console.log(this.innerHTML)
       }else{
         var valor_act=td_valorTot.innerHTML;
       
       var total_cot=th_total.innerHTML;
-        var total=parseInt( this.innerHTML)*parseFloat(products[pos].valor);
-        td_valorTot.innerHTML=total
+        var total=parseFloat( this.innerHTML)*parseFloat(products[pos].valor);
+        td_valorTot.innerHTML=(parseFloat(total)/1000).toFixed(3)
        
         th_total.innerHTML= (parseInt(total_cot)-parseInt(valor_act))+total
       }
       
     })
+    td_valorUnit.innerHTML=(parseFloat(products[pos].valor)/1000).toFixed(3);
+    td_valorTot.innerHTML=(parseFloat(products[pos].valor)/1000).toFixed(3);
+
+   
+  }
+  dlt_prod()
+  function dlt_prod(){
     delete_prod.onclick=function(event){
       var total_cot=th_total.innerHTML;
       event.preventDefault();
@@ -203,21 +265,34 @@ function addList(pos){
 
     }
 
-   td_opt.appendChild(delete_prod)
-    td_valorUnit.innerHTML=products[pos].valor;
-    td_valorTot.innerHTML=products[pos].valor;
+   
+   
 
-    tr.appendChild(td_item);
-    tr.appendChild(td_name);
-    tr.appendChild(td_cant);
-    tr.appendChild(td_valorUnit);
-    tr.appendChild(td_valorTot);
-    tr.appendChild(td_opt);
-    body_prods.appendChild(tr)
+  }
     
-    
+  td_opt.appendChild(delete_prod)
+  tr.appendChild(td_item);
+  tr.appendChild(td_name);
+  tr.appendChild(td_cant);
+  tr.appendChild(td_valorUnit);
+  tr.appendChild(td_valorTot);
+  tr.appendChild(td_opt);
+  body_prods.appendChild(tr)
   
   }
+
+  var butt_extra=document.querySelector("#add_extra")
+  var itemExtra=document.querySelector("#item_extra")
+  var CantitemExtra=document.querySelector("#cant_item_extra")
+  var ValitemExtra=document.querySelector("#val_item_extra")
+
+  butt_extra.onclick=function(){
+
+    addList("",itemExtra.value, CantitemExtra.value, ValitemExtra.value)
+  
+
+  }
+
 
 
 
@@ -248,12 +323,15 @@ function addList(pos){
             <th></th>
             <th></th>
             <th></th>
-            <th id="total_cot"><b>Total</b></th>
-            <th id="th_total">0</th>
+            <th id="total_cot">Total</th>
+            <th id="th_total" >0</th>
           </tfoot>
         </table>
-       <button id="imprimir">imprimir</button>
-       <button id="pdf">GENERAR pdf</button>
+       <div id="opc_cot">
+
+        <button id="imprimir">Imprimir</button>
+       <button id="pdf">PDF</button>
+       </div>
     </form>
     
     <script>
@@ -263,6 +341,7 @@ var name_cot= document.querySelector("#name_cot")
 document. querySelector("#pdf").onclick=function(){
 
 generarPFD(submitForm(),name_cot.value)
+
 }
 
 function submitForm() {
@@ -297,6 +376,9 @@ function submitForm() {
     // Submit the form
     document.getElementById('cotizar_form').submit();*/
 //////plantilla cotizacion
+var fondo=document.createElement("img")
+fondo.id="fondo";
+fondo.setAttribute("src","img/lognexo1.png")
 var name_cot= document.querySelector("#name_cot")
 var doc_user_cot= document.querySelector("#doc_user_cot")
 var cel_user_cot= document.querySelector("#cel_user_cot")
@@ -313,14 +395,14 @@ plantilla.style.width="50%;  "
 var info_empresa= document.createElement("div");
 info_empresa.id="div_info_empresa"
 var p_info_empresa= document.createElement("p")
-p_info_empresa.innerHTML="Automatic Home Solutions<br> NIT.1007452085 - 1 REG. SIMP.  <br>Tel.: 3157527681-3147459094 "
+p_info_empresa.innerHTML="Nexo Security<br> Nit.1061813933 Reg. Simp.  <br>Tel: 3006846977-3147459094 "
 var data_trans= document.createElement("div")
 data_trans.id="div_data_trans"
 var transaccion= document.createElement("p")
 var fecha_transac= document.createElement("p")
 var numero_transac= document.createElement("p")
-transaccion.innerHTML="COTIZACION"
-numero_transac.innerHTML="COT"+" "+date.getFullYear()+date.getDate()+(date.getMonth()+1)+date.getHours()+date.getMinutes()
+transaccion.innerHTML="Cta_cobro"
+numero_transac.innerHTML="CO"+" "+date.getFullYear()+date.getDate()+(date.getMonth()+1)+date.getHours()+date.getMinutes()
 var hoy= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
 fecha_transac.innerHTML=hoy
 
@@ -331,9 +413,11 @@ info_empresa.appendChild(p_info_empresa)
 
 
 
+
+
 var logo=document.createElement("img")
-logo.style=" width:100px; height:100px;  position:relative; top:0;"
-logo.setAttribute("src","img/logo.png")
+logo.style=" width:90px; height:70px;  position:relative; top:0;"
+logo.setAttribute("src","img/lognexo1.png")
 
 var infoUser= document.createElement("div");
 infoUser.id="infoUser_plant"
@@ -406,7 +490,9 @@ data.forEach(data => {
     $tr.appendChild($tdValorUnit);
 
     let $tdValorTot = document.createElement("td");
+    
     $tdValorTot.textContent = data.val_tot; // el textContent del td es el nombre
+    $tdValorTot.style="font-weight: bolder;"
     $tr.appendChild($tdValorTot);
 
     tbody.appendChild($tr)
@@ -419,13 +505,17 @@ data.forEach(data => {
 table.appendChild(tbody)
 div_table.appendChild(table)
 var nota=document.createElement("p")
-nota.innerHTML="<b>Nota:</b>"+"La duracion de la cotizacion es de 15 dias, despues de este tiempo el valor se ajusta a cambios de mercado."
+nota.id="nota_cot"
+
+
+       
 var footer=document.createElement("div")
 footer.id="footer_plant"
 var Pfooter=document.createElement("p")
-Pfooter.innerHTML=" <br>Tel: 3157527681 - 3147459094 <br>automatichomesolutions2024@gmail.com <br> Popayán - Colombia"
+Pfooter.innerHTML=" <br>Tel: 300 684 6977 - 3147459094 <br>nexodirect2025@gmail.com <br> Popayán - Colombia"
 footer.appendChild(Pfooter)
 header.appendChild(logo)
+plantilla.appendChild(fondo)
 header.appendChild(info_empresa)
 header.appendChild(data_trans)
 plantilla.appendChild(header)
@@ -433,6 +523,7 @@ plantilla.appendChild(infoUser)
 plantilla.appendChild(div_table)
 plantilla.appendChild(nota)
 plantilla.appendChild(footer)
+
 
 return plantilla
 }
@@ -458,45 +549,92 @@ function imprimirElemento(elemento, name_cot) {
   document.title="transacciones"
   var contenidoOriginal= document.body.innerHTML;
   document.body.style.width="725px"
-  document.body.style.height="600px"
+  document.body.style.height="900px"
   document.body.innerHTML = elemento.innerHTML;
-  window.print();
-  
+ 
+  setTimeout(function(){
+    window.print(document);
+ }, 100);
 
   
 }
 
 function generarPFD(elemento, name_cot){
   var contenidoOriginal= document.body.innerHTML;
-  document.body.style.width="725px"
-  document.body.style.height="fit-content"
-  document.body.innerHTML = elemento.innerHTML;
+  document.body.style.width="600px"
+  document.body.style.height="800px"
+
+  var plantilla1=document.createElement("div")
+  plantilla1.appendChild(elemento)
+  document.body.innerHTML =plantilla1.innerHTML
 
 
 html2canvas(document.body, {
     allowTaint: false,
-    width: 800, height: 1200 
+    width: 800, height: 800
   }) // Llamar a html2canvas y pasarle el elemento
     .then(canvas => {
            
-      var img=canvas.toDataURL("image/png",1.0);
-   var doc = new jsPDF('p', 'in', [15, 11]);
-   doc.addImage(img,'JPEG',1,1);
-   doc.save('Cot_'+name_cot+'_.pdf');
+      var img=canvas.toDataURL("image/jpeg",1.0);
+   var doc = new jsPDF('p', 'in', [8.9, 11]);
+   doc.addImage(img,'JPEG',0.3,0.2);
+   doc.save('Cta_cobro_'+name_cot+'_.pdf');
     });
+    
+    setTimeout(function(){
+     location.reload()
+  }, 1000);
 }
     </script>
 
     <style>
 
-        form button{
-            width: 90px;
-            position: relative;
-            float: right;
-           
-
-
+      .container{
+        width: 100%;
+        
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        
+      }
+        #info_user{
+          width: 80%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: auto;
+          position: relative;
+          justify-content: center;
+         gap: 5px;
+         border: 1px solid rgb(137, 136, 136);
+         padding: 15px;
+         
         }
+        #info_user div{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+
+          .buscador{
+            width: 80%;
+            justify-content: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+           height: fit-content;
+           padding: 15px;
+            
+          }
+          .buscador h3{
+
+            font-size: 13px;
+          }
+          
+          
 
         
        
