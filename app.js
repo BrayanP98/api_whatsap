@@ -115,7 +115,7 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros.",
+          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros.",
           
         }
        ], 
@@ -148,7 +148,7 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
+          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
           "\n\n#SeguridadComodidadInteligente",
           
         }
@@ -180,7 +180,7 @@ app.post("/webhook", (req, res) => {
         {
           "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."
+          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros."
           +"\n\n#SeguridadComodidadInteligente",
           
         }
@@ -212,7 +212,7 @@ app.post("/webhook", (req, res) => {
 
         "mesagge":"NexoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
-          " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n cuenta de ahorro: 86862880295✅"+
+          " \n \n *Nequi:*  3006846977 ✅"+"\n cuenta de ahorro: 86862880295✅"+
           +"\n\n_#SeguridadComodidadInteligente_"
 
           
@@ -224,7 +224,7 @@ app.post("/webhook", (req, res) => {
       "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
       "\n\nNuestros medios de pago son:"+
-        " \n \n *Ahorro a la mano:*  03157527681 ✅ \n*Cuenta de ahorro*: 86862880295✅"+
+        " \n \n *Nequi:*  3006846977 ✅ \n*Cuenta de ahorro*: 86862880295✅"+
        +"\n\n_#SeguridadComodidadInteligente_"
 
         
@@ -353,7 +353,7 @@ app.post("/webhook", (req, res) => {
                  header: {  
                  type: "text",
                  text: "Nexo Security"},
-                 body: {text:"NexoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Seguridad y Comodidad Inteligente"
+                 body: {text:"NexoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💙Seguridad y Comodidad Inteligente"
                  +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
                    
@@ -552,7 +552,7 @@ app.post("/webhook", (req, res) => {
         let asesrNumber="573147459094"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="NexoBot🤖 dice :"+"\n\nEntendido."+"\nNexo Security S.A.S le desea un feliz dia!.💛"+
+        let mesagge="NexoBot🤖 dice :"+"\n\nEntendido."+"\nNexo Security  le desea un feliz dia!.💛"+
           "\n\nNuestros numeros de contacto son: 3147459094 "+
           "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
@@ -582,10 +582,10 @@ app.post("/webhook", (req, res) => {
 
      for(var i=0;i<arrayMaessage.length;i++){
      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="NexoBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Nexo Security S.A.S* poder servirle.😊"+
+      let msg_body ="NexoBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Nexo Security * poder servirle.😊"+
       "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
       +
-      "\n\nNo olvides seguirnos en las redes sociales como *Nexo Security S.A.S* y visitarnos en nuestra pagina web http://nexosecurity.netlify.app/"+
+      "\n\nNo olvides seguirnos en las redes sociales como *Nexo Security * y visitarnos en nuestra pagina web http://nexosecurity.netlify.app/"+
      "\n\nFeliz dia!"+
       "\n\n_#SeguridadComodidadInteligente_";          
       
@@ -609,8 +609,8 @@ app.post("/webhook", (req, res) => {
               header: {  
               type: "text",
               text: "Nexo Security"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security S.A.S."+"\n\n💛Seguridad y Comodidad Inteligente!"+
-              "\n\nSiguenos en Facebook como: \n*Nexo Security S.A.S*."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+              body: {text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security ."+"\n\n💙Seguridad y Comodidad Inteligente!"+
+              "\n\nSiguenos en Facebook como: \n*Nexo Security *."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
               action: {
