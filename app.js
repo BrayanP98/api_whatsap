@@ -113,7 +113,7 @@ app.post("/webhook", (req, res) => {
      cctv:{
       "cotizar":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros.",
           
@@ -121,7 +121,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
+          "mesagge":"NexoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
           
           +
           "\n\n_#SeguridadComodidadInteligente_",
@@ -131,14 +131,14 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
+          "mesagge":"NexoBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
           +"\n\n_#SeguridadComodidadInteligente_",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"DomoBot🤖 dice :  \n No disponible!"+
+          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -146,7 +146,7 @@ app.post("/webhook", (req, res) => {
      alarmas:{
       "cotizar":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
           "\n\n#SeguridadComodidadInteligente",
@@ -155,7 +155,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
+          "mesagge":"NexoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
            +"\n\n#SeguridadComodidadInteligente",
           
         }
@@ -163,13 +163,13 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":"DomoBot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
+          "mesagge":"NexoBot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"DomoBot🤖 dice :  \n No disponible!"+
+          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -178,7 +178,7 @@ app.post("/webhook", (req, res) => {
     Control_Acceso:{
       "cotizar":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
+          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
           "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
           "\n\n Puede agendar su cita llamando a los numeros *3006549863-3147459094* o escribenos a Whatsapp a estos mismos numeros."
           +"\n\n#SeguridadComodidadInteligente",
@@ -187,7 +187,7 @@ app.post("/webhook", (req, res) => {
        ], 
        "servicio tecnico":[
         {
-          "mesagge":"DomoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
+          "mesagge":"NexoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
          +"\n\n#SeguridadComodidadInteligente",
           
         }
@@ -195,13 +195,13 @@ app.post("/webhook", (req, res) => {
       
        "beneficios":[
         {
-          "mesagge":"DomoBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#SeguridadComodidadInteligente_",
+          "mesagge":"NexoBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#SeguridadComodidadInteligente_",
           
         }
        ], 
        "otros":[
         {
-          "mesagge":"DomoBot🤖 dice :  \n No disponible!"+
+          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#SeguridadComodidadInteligente_"
         }
        ]
@@ -210,7 +210,7 @@ app.post("/webhook", (req, res) => {
     
     renovar_plataforma:{
 
-        "mesagge":"DomoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
+        "mesagge":"NexoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
         "  \nNuestros medios de pago son:"+
           " \n \n *Ahorro a la mano:*  03157527681 ✅"+"\n cuenta de ahorro: 86862880295✅"+
           +"\n\n_#SeguridadComodidadInteligente_"
@@ -219,7 +219,7 @@ app.post("/webhook", (req, res) => {
     },
     renovar_plan:{
 
-      "mesagge":"DomoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
+      "mesagge":"NexoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
       "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
       "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
        
@@ -231,7 +231,7 @@ app.post("/webhook", (req, res) => {
   },
   acceder_promo:{
 
-    "mesagge":"DomoBot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darle mas informacion sobre este articulo."
+    "mesagge":"NexoBot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darle mas informacion sobre este articulo."
       
       
 },
@@ -239,14 +239,14 @@ app.post("/webhook", (req, res) => {
     nosotros:{
       "Mision":[
         {
-          "mesagge":"*DomoBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
+          "mesagge":"*NexoBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
           "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
           +"\n\n_#SeguridadComodidadInteligente_"
         }
        ], 
        "Vision":[
         {
-          "mesagge":"*DomoBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
+          "mesagge":"*NexoBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
           " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
           +"\n\n_#SeguridadComodidadInteligente_"
         
@@ -256,7 +256,7 @@ app.post("/webhook", (req, res) => {
        
        "PQRS":[
         {
-          "mesagge":"*DomoBot🤖 dice* :  \n No disponible!"+
+          "mesagge":"*NexoBot🤖 dice* :  \n No disponible!"+
           " \n \n Escribe *info* para reiniciar el chat."
         }
        ]
@@ -265,8 +265,8 @@ app.post("/webhook", (req, res) => {
     }, 
     catalogo:{
 
-      "mesagge":"DomoBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-      "  \n https://automatichomesolutions.tech/"+
+      "mesagge":"NexoBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
+      "  \n https://nexosecurity.netlify.app/"+
         " \n \n "+
         "\n "
   },
@@ -352,8 +352,8 @@ app.post("/webhook", (req, res) => {
                  type: "list",
                  header: {  
                  type: "text",
-                 text: "Automatic Home Solutions"},
-                 body: {text:"DomoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Seguridad y Comodidad Inteligente"
+                 text: "Nexo Security"},
+                 body: {text:"NexoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💛Seguridad y Comodidad Inteligente"
                  +"\n *Elije tus Opciones*"+"👇"},
                  footer: {
                    
@@ -422,8 +422,8 @@ app.post("/webhook", (req, res) => {
                   type: "button",
                   header: {  
                   type: "text",
-                  text: "Automatic Home Solutions"},
-                  body: {text: "DomoBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
+                  text: "Nexo Security"},
+                  body: {text: "NexoBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
                   footer: {
                     
                   text: "scaliwoodSoft"},
@@ -552,7 +552,7 @@ app.post("/webhook", (req, res) => {
         let asesrNumber="573147459094"
         sendOP(contactClient,asesrNumber); 
       }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="DomoBot🤖 dice :"+"\n\nEntendido."+"\nAutomatic Home Solutions S.A.S le desea un feliz dia!.💛"+
+        let mesagge="NexoBot🤖 dice :"+"\n\nEntendido."+"\nNexo Security S.A.S le desea un feliz dia!.💛"+
           "\n\nNuestros numeros de contacto son: 3147459094 "+
           "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
@@ -561,7 +561,7 @@ app.post("/webhook", (req, res) => {
          let asesrNumber="573147459094"
          sendOP(contactClient,asesrNumber); 
        }else if(butonrta==="RECLAMAR REGALO"){
-        let mesagge="DomoBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
+        let mesagge="NexoBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
           "\n\nNuestros numeros de contacto son: 3147459094 "+
            "\n_#SeguridadComodidadInteligente_"
          sendOP(mesagge,from); 
@@ -582,10 +582,10 @@ app.post("/webhook", (req, res) => {
 
      for(var i=0;i<arrayMaessage.length;i++){
      if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="DomoBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Automatic Home Solutions S.A.S* poder servirle.😊"+
+      let msg_body ="NexoBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Nexo Security S.A.S* poder servirle.😊"+
       "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
       +
-      "\n\nNo olvides seguirnos en las redes sociales como *Automatic Home Solutions S.A.S* y visitarnos en nuestra pagina web http://automatichomesolutions.tech/"+
+      "\n\nNo olvides seguirnos en las redes sociales como *Nexo Security S.A.S* y visitarnos en nuestra pagina web http://nexosecurity.netlify.app/"+
      "\n\nFeliz dia!"+
       "\n\n_#SeguridadComodidadInteligente_";          
       
@@ -608,9 +608,9 @@ app.post("/webhook", (req, res) => {
               type: "list",
               header: {  
               type: "text",
-              text: "Automatic Home Solutions"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *DomoBot* 🤖  de  Automatic Home Solutions S.A.S."+"\n\n💛Seguridad y Comodidad Inteligente!"+
-              "\n\nSiguenos en Facebook como: \n*Automatic Home Solutions S.A.S*."+"\n O visita nuestra WEB https://automatichomesolutions.tech/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
+              text: "Nexo Security"},
+              body: {text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security S.A.S."+"\n\n💛Seguridad y Comodidad Inteligente!"+
+              "\n\nSiguenos en Facebook como: \n*Nexo Security S.A.S*."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
               footer: {
               text: "scaliwoodSoft"},
               action: {
@@ -685,7 +685,7 @@ app.post("/webhook", (req, res) => {
        break
     }
     else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("DomoBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n#SeguridadComodidadInteligente")
+      text=("NexoBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n#SeguridadComodidadInteligente")
       let contactClient= "Por favor ponerse en contacto con:"+" \n"+
       name+" "+"\n al numero:"+""+from+"" +"para asesoria";
 
