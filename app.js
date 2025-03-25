@@ -89,7 +89,7 @@ io.on('connection', function(socket)  {
 app.get("/mesagge", (req, res) => {
   io.emit('whatsapp_notification', "573008565591","hola","new");
 })
-app.post("/webhook", await(req, res) => {
+app.post("/webhook", async (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
  console.log(JSON.stringify(req.body, null, 2));
