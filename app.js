@@ -116,8 +116,8 @@ app.post("/webhook", async (req, res) => {
   if (text === "publicar_blog") {
     user.state = "esperando_titulo";
     await user.save();
-  }
-    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
+  
+     sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
   }
 
  /* if (user.state === "esperando_titulo") {
