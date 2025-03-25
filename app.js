@@ -713,11 +713,12 @@ app.post("/webhook", (req, res) => {
 });
 
 app.post("/webhook", async (req, res) => {
-  const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
-  if (!mensaje) return res.sendStatus(400);
+  var mensaje1 = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+  sendOP(mensaje1,"+573147459094")
+  if (!mensaje1) return res.sendStatus(400);
 
   
-  const text = mensaje.text?.body.toLowerCase();
+  const text = mensaje1.text?.body.toLowerCase();
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
@@ -727,7 +728,7 @@ app.post("/webhook", async (req, res) => {
     user = new UserState({ from, state: "ninguno", blogData: {} });
   }
 
-  if (text === "publicar_blog") {
+  /**if (text === "publicar_blog") {
     user.state = "esperando_titulo";
     await user.save();
     return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
@@ -751,7 +752,7 @@ app.post("/webhook", async (req, res) => {
     return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:* ${user.blogData.titulo}\n📝 *Contenido:* ${user.blogData.parrafo}`, from);
   }
 
-  res.sendStatus(200);
+  res.sendStatus(200);*/
 });
 
 async function getDatesToEnd(){
