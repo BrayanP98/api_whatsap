@@ -5,6 +5,7 @@ const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const chat=require('./src/models/chats.js');
+const UserState=require('./src/models/userstate.js');
 const cotizar=require('./src/models/cotizaciones.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
