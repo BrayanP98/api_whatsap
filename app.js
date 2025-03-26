@@ -344,15 +344,17 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   const from1 = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
-  console.log(mensaje)
+ 
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from1 });
 
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
+    console.log("Si el usuario no tiene estado, lo creamos")
     user = new UserState({ from1, state: "ninguno", blogData: {} });
   }else{
+    console.log("Si el usuario ")
     if (text === "publicar_blog") {
       user.state = "esperando_titulo";
       await user.save();
