@@ -347,7 +347,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
  
 
   // Buscar si el usuario tiene un estado guardado
-  let user = await UserState.findOne({ from1 });
+  let user = await UserState.findOne({ from });
   
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
