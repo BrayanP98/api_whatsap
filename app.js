@@ -382,7 +382,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
       await user.findOneAndUpdate(
         { from: from },
-        { $push: { cont: cont_blog } }
+        { $push: { cont: cont_blog } });
        await user.save();
        
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
