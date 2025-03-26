@@ -368,6 +368,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   
     if (user.state === "esperando_titulo") {
       console.log("esperando_parrafo")
+      cont_blog.fecha="12/05/2025"
      cont_blog.titulo=text
        user.state = "esperando_parrafo";
       await user.save();
@@ -376,7 +377,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
     }
   
     if (user.state === "esperando_parrafo") {
-      cont_blog.fecha="12/05/2025"
+      
       cont_blog.parrafo=text
       user.state = "en espera";
 
@@ -392,11 +393,11 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
       user.state = "nada";
       if(text === "si"){
         await UserState.findOneAndUpdate(
-          { from },  // Buscar por el número del usuario
+          { from:from },  // Buscar por el número del usuario
           { 
-            $push: { cont: cont_blog }  // Agregar el blog al array
-          },
-          { upsert: true, new: true })
+            $push: { cont: cont_blog }}  // Agregar el blog al array
+          
+          )
          await user.save();
 
       }
