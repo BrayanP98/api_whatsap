@@ -353,11 +353,12 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   if (!user) {
     console.log("Si el usuario no tiene estado, lo creamos")
     user = new UserState({ from1, state: "ninguno", blogData: {} });
+    await user.save();
   }else{
     console.log("Si el usuario ")
     if (text === "publicar_blog") {
       user.state = "esperando_titulo";
-      await user.save();
+     
      return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
     }
   
