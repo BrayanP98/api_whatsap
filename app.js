@@ -326,6 +326,7 @@ const mensaje1 = "publicar_blog";
 
   const from1 = "573147459094";
   const text = mensaje.text?.body.toLowerCase();
+  console.log(mensaje)
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from1 });
