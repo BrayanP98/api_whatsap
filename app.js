@@ -326,7 +326,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   const from1 = mensaje.from;
  // sendOP(mensaje1,"573147459094")
-  if (!mensaje1) return res.sendStatus(400);
+  if (!mensaje) return res.sendStatus(400);
 
   
   const text = mensaje1.text?.body.toLowerCase();
@@ -336,10 +336,13 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
+    console.log("Si el usuario no tiene estado, lo creamos")
     user = new UserState({ from1, state: "ninguno", blogData: {} });
   }
 
   if (text === "publicar_blog") {
+    console.log("logooooooooooooo")
+
     user.state = "esperando_titulo";
     await user.save();}
   
