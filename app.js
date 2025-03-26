@@ -380,7 +380,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
       
       cont_blog.parrafo=text
       user.state = "en espera";
-
+      console.log(cont_blog);
       
        await user.save();
        
@@ -388,6 +388,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
       console.log("Blog recibido:", user.blogData);
   
       return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from);
+      res.sendStatus(200);
     }
     if(user.state === "en espera"){
       user.state = "nada";
