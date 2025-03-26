@@ -19,7 +19,7 @@ require("./database");
 
 const save = require('./functions.js');
 
-
+var cont_blog={}
 
 
 const token = "EAAO79M2kv3MBO52bofwZAOZALeGgZBC8vtdmcpEkZCdsGIuGttKy6YM3fkUTneWMAspA8XZA9yaMkDhxZC7Uh09qC14Ixyb1KI0wPjIX4iZBoR9cjRZBZC32Lsap5ebDCBxykTDZCMrXdTYvKl14ZCHrS6chZBt1uYyeULVlQLDfPdhq1Kg9HfYUgM9DfMJHojkYlZB5dCIfOsI3AfGbiYnHA";
@@ -349,7 +349,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
-  var cont_blog={}
+  
     // Si el usuario no tiene estado, lo creamos
   if (!user) {
    
