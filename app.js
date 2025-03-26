@@ -396,7 +396,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
           { 
             $push: { cont: cont_blog }  // Agregar el blog al array
           },
-          { upsert: true, new: true }
+          { upsert: true, new: true })
          await user.save();
 
       }
