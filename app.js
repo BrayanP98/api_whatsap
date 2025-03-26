@@ -316,7 +316,25 @@ app.post("/webhook", async (req, res) => {
         req.body.entry[0].changes[0].value.metadata.phone_number_id;
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
      
-
+      function sendOP(opction,para){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            status: "read",
+            to: para,
+            text: { body:  opction},
+            footer: {
+              text: "scaliwoodSoft"}
+          },
+          headers: { "Content-Type": "application/json" },
+        });
+      }
 
 
 ////////////////////////
@@ -334,31 +352,33 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
     user = new UserState({ from1, state: "ninguno", blogData: {} });
+  }else{
+    if (text === "publicar_blog") {
+      user.state = "esperando_titulo";
+      await user.save();
+     sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
+    }
+  
+    if (user.state === "esperando_titulo") {
+      user.blogData.titulo = text;
+      user.state = "esperando_parrafo";
+      await user.save();
+     sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
+    }
+  
+    if (user.state === "esperando_parrafo") {
+      user.blogData.parrafo = text;
+      user.state = "completado";
+      await user.save();
+  
+      // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
+      console.log("Blog recibido:", user.blogData);
+  
+      sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:`, from);
+    }
   }
 
-  if (text === "publicar_blog") {
-    user.state = "esperando_titulo";
-    await user.save();
-   // return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
-  }
-
-  if (user.state === "esperando_titulo") {
-    user.blogData.titulo = text;
-    user.state = "esperando_parrafo";
-    await user.save();
-  //  return sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
-  }
-
-  if (user.state === "esperando_parrafo") {
-    user.blogData.parrafo = text;
-    user.state = "completado";
-    await user.save();
-
-    // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
-    console.log("Blog recibido:", user.blogData);
-
-    //return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:* ${user.blogData.titulo}\n📝 *Contenido:* ${user.blogData.parrafo}`, from);
-  }
+ 
 
   
 
@@ -420,25 +440,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
            headers: { "Content-Type": "application/json" },
          });
        }
-     function sendOP(opction,para){
-      axios({
-        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-        url:
-          "https://graph.facebook.com/v12.0/" +
-          phone_number_id +
-          "/messages?access_token=" +
-          token,
-        data: {
-          messaging_product: "whatsapp",
-          status: "read",
-          to: para,
-          text: { body:  opction},
-          footer: {
-            text: "scaliwoodSoft"}
-        },
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+     
       // extract the message text from the webhook payload
      
      if( req.body.entry[0].changes[0].value.messages[0].interactive){
