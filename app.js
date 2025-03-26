@@ -324,15 +324,15 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 const mensaje1 = "publicar_blog";
   if (!mensaje) return res.sendStatus(400);
 
-  const from = "573147459094";
+  const from1 = "573147459094";
   const text = mensaje.toLowerCase();
 
   // Buscar si el usuario tiene un estado guardado
-  let user = await UserState.findOne({ from });
+  let user = await UserState.findOne({ from1 });
 
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
-    user = new UserState({ from, state: "ninguno", blogData: {} });
+    user = new UserState({ from1, state: "ninguno", blogData: {} });
   }
 
   if (text === "publicar_blog") {
