@@ -400,6 +400,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
           
           )
          await user.save();
+         eturn sendOP(`su post se ha publlicado con exito`, from);
 
       }
 
@@ -787,7 +788,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
     }
      
     }
-    res.sendStatus(200);
+  
   } else {
     // Return a '404 Not Found' if event is not from a WhatsApp API
     res.sendStatus(404);
