@@ -348,7 +348,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from1 });
-  await user.save();
+  
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
     console.log("Si el usuario no tiene estado, lo creamos")
@@ -358,7 +358,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
     console.log("Si el usuario ")
     if (text === "publicar_blog") {
       user.state = "esperando_titulo";
-     
+      await user.save();
      return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
     }
   
