@@ -349,8 +349,8 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
-  var blog= new Blogs();
-  // Si el usuario no tiene estado, lo creamos
+  var cont_blog={}
+    // Si el usuario no tiene estado, lo creamos
   if (!user) {
    
     user = new UserState({ from, state: "ninguno", blogData: {} });
@@ -360,26 +360,31 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
     if (text === "publicar_blog") {
       console.log("esperando_titulo")
       user.state = "esperando_titulo";
-      blog.pos = "1"; 
+      
       await user.save();
-      await blog.save();
+     
      return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
     }
   
     if (user.state === "esperando_titulo") {
       console.log("esperando_parrafo")
-      blog.blogData.titulo = text; 
+     cont_blog.titulo=text
        user.state = "esperando_parrafo";
       await user.save();
-      await blog.save();
+      
       return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
     }
   
     if (user.state === "esperando_parrafo") {
-      blog.blogData.parrafo = text;
+      cont_blog.fecha="12/05/2025"
+      cont_blog.parrafo=text
       user.state = "completado";
+
+      await user.findOneAndUpdate(
+        { from: from },
+        { $push: { cont: cont_blog } }
        await user.save();
-       await blog.save();
+       
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
       console.log("Blog recibido:", user.blogData);
   
