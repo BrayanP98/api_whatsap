@@ -7,17 +7,17 @@ const userSchema= new Schema({
 
     fecha:{
         type:String,
-        required:true,
+        required:false,
         unique:false,
     },
     titulo:{
         type:String,
-        required:true,
+        required:false,
         unique:false,
     },
     parrafo:{
         type:String,
-        required:true,
+        required:false,
         unique:false,
     }, }],
 });
