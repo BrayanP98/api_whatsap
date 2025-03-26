@@ -6,6 +6,7 @@ const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
 const chat=require('./src/models/chats.js');
 const UserState=require('./src/models/userstate.js');
+const Blogs=require('./src/models/blogs.js');
 const cotizar=require('./src/models/cotizaciones.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
@@ -344,11 +345,11 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   const from1 = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
- //console.log(from,from1)
+ console.log(from,mensaje)
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
-  
+  let Blogs= new Blogs()
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
    
@@ -365,17 +366,18 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   
     if (user.state === "esperando_titulo") {
       console.log("esperando_parrafo")
-      user.blogData.titulo = text;
-      user.state = "esperando_parrafo";
+      Blogs.blogData.titulo = text; 
+       user.state = "esperando_parrafo";
       await user.save();
+      await Blogs.save();
       return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
     }
   
     if (user.state === "esperando_parrafo") {
-      user.blogData.parrafo = text;
+      Blogs.blogData.parrafo = text;
       user.state = "completado";
        await user.save();
-  
+       await Blogs.save();
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
       console.log("Blog recibido:", user.blogData);
   
