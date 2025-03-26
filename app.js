@@ -321,10 +321,10 @@ app.post("/webhook", async (req, res) => {
 
 ////////////////////////
 const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
-const mensaje1 = "publicar_blog";
-  if (!mensaje) return res.sendStatus(400);
 
-  const from1 = "573147459094";
+  //if (!mensaje) return res.sendStatus(400);
+
+  const from1 = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
   console.log(mensaje)
 
@@ -360,8 +360,7 @@ const mensaje1 = "publicar_blog";
     //return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:* ${user.blogData.titulo}\n📝 *Contenido:* ${user.blogData.parrafo}`, from);
   }
 
-  res.sendStatus(200);
-
+  
 
      //console.log()
       var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
