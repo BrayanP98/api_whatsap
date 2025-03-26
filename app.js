@@ -378,11 +378,14 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
     if (user.state === "esperando_parrafo") {
       cont_blog.fecha="12/05/2025"
       cont_blog.parrafo=text
-      user.state = "completado";
+      user.state = "en espera";
 
-      await user.findOneAndUpdate(
-        { from: from },
-        { $push: { cont: cont_blog } });
+      await UserState.findOneAndUpdate(
+        { from },  // Buscar por el número del usuario
+        { 
+          $push: { cont: cont_blog }  // Agregar el blog al array
+        },
+        { upsert: true, new: true }
        await user.save();
        
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
@@ -390,6 +393,8 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   
       return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:`, from);
     }
+    
+    
   
 
  
