@@ -93,7 +93,7 @@ app.get("/mesagge", (req, res) => {
 app.post("/webhook", async (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
- console.log(JSON.stringify(req.body, null, 2));
+ //console.log(JSON.stringify(req.body, null, 2));
 
 
 
@@ -344,7 +344,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   const from1 = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
- console.log(from,from1)
+ //console.log(from,from1)
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
@@ -352,23 +352,23 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
    
-    user = new UserState({ from1, state: "ninguno", blogData: {} });
+    user = new UserState({ from, state: "ninguno", blogData: {} });
     await user.save();
-  }else{
+  }
    
     if (text === "publicar_blog") {
+      console.log("esperando_titulo")
       user.state = "esperando_titulo";
       await user.save();
-      sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
-     break
+     return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
     }
   
     if (user.state === "esperando_titulo") {
+      console.log("esperando_parrafo")
       user.blogData.titulo = text;
       user.state = "esperando_parrafo";
       await user.save();
-        sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
-      break
+      return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
     }
   
     if (user.state === "esperando_parrafo") {
@@ -379,10 +379,9 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
       console.log("Blog recibido:", user.blogData);
   
-       sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:`, from);
-      break
+      return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:`, from);
     }
-  }
+  
 
  
 
