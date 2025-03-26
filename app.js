@@ -344,7 +344,7 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   const from1 = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
- 
+ console.log(from,from1)
 
   // Buscar si el usuario tiene un estado guardado
   let user = await UserState.findOne({ from });
