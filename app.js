@@ -323,6 +323,8 @@ app.post("/webhook", async (req, res) => {
 
 
   var mensaje1=req.body.entry[0].changes[0].value.messages[0].text.body;
+
+  const from1 = mensaje1.from;
  // sendOP(mensaje1,"573147459094")
   if (!mensaje1) return res.sendStatus(400);
 
@@ -330,11 +332,11 @@ app.post("/webhook", async (req, res) => {
   const text = mensaje1.text?.body.toLowerCase();
 
   // Buscar si el usuario tiene un estado guardado
-  let user = await UserState.findOne({ from });
+  let user = await UserState.findOne({ from1 });
 
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
-    user = new UserState({ from, state: "ninguno", blogData: {} });
+    user = new UserState({ from1, state: "ninguno", blogData: {} });
   }
 
   if (text === "publicar_blog") {
