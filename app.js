@@ -320,11 +320,11 @@ app.post("/webhook", async (req, res) => {
 
 
 ////////////////////////
-
+const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
   var mensaje1=req.body.entry[0].changes[0].value.messages[0].text.body;
 
-  const from1 = mensaje1.from;
+  const from1 = mensaje.from;
  // sendOP(mensaje1,"573147459094")
   if (!mensaje1) return res.sendStatus(400);
 
