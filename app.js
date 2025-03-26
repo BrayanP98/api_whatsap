@@ -380,18 +380,27 @@ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
       cont_blog.parrafo=text
       user.state = "en espera";
 
-      await UserState.findOneAndUpdate(
-        { from },  // Buscar por el número del usuario
-        { 
-          $push: { cont: cont_blog }  // Agregar el blog al array
-        },
-        { upsert: true, new: true }
+      
        await user.save();
        
       // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
       console.log("Blog recibido:", user.blogData);
   
-      return sendOP(`DomoBot🤖 dice: \n¡Tu blog ha sido registrado! 🎉\n\n📌 *Título:`, from);
+      return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from);
+    }
+    if(user.state === "en espera"){
+      user.state = "nada";
+      if(text === "si"){
+        await UserState.findOneAndUpdate(
+          { from },  // Buscar por el número del usuario
+          { 
+            $push: { cont: cont_blog }  // Agregar el blog al array
+          },
+          { upsert: true, new: true }
+         await user.save();
+
+      }
+
     }
     
     
