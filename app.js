@@ -103,7 +103,7 @@ app.post("/webhook", async (req, res) => {
 
   // Obtener ID del número de teléfono
   var phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
-  console.log(phone_number_id);
+  
 
   const from = mensaje.from;
   const text = mensaje.text?.body.toLowerCase();
@@ -116,7 +116,7 @@ app.post("/webhook", async (req, res) => {
 
   // Si el usuario no tiene estado, lo creamos
   if (!user) {
-    user = new UserState({rol:"user", from, state: "transito", chats: []});
+    user = new UserState({role:"user", from, state: "transito", chats: []});
     await user.save();
   }
 
@@ -165,12 +165,12 @@ app.post("/webhook", async (req, res) => {
       }
     }else {
 
-      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
+      let name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
       const palabras = text.split(" ");
       const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
     
       if (esSaludo) {
-        return sendOP("¡Hola! Soy NexoBot🤖 asistente virtual de  Nexo Security  ¿En qué puedo ayudarte hoy?", from, phone_number_id);
+        return sendOP(`¡Hola ${name}! Soy NexoBot🤖, asistente virtual de Nexo Security. ¿En qué puedo ayudarte hoy?`, from, phone_number_id);
       }
     
       return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
