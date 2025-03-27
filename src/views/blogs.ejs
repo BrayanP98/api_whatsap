@@ -52,8 +52,7 @@ async function obtenerBlogs() {
                 console.log(data,response,data.success)
                 
                 if (data) {
-                    const blogContainer = document.getElementById("blogContainer");
-                    blogContainer.innerHTML = "";
+                    
 
                     pintar_post(data)
                        pintar(data)
