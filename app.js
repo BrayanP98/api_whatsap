@@ -157,7 +157,7 @@ app.post("/webhook", async (req, res) => {
      console.log("Blog recibido:", user.blogData);
  
      return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from,phone_number_id);
-     res.sendStatus(200);
+     
    }
    if(user.state === "en espera"){
      user.state = "nada";
