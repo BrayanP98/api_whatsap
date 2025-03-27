@@ -99,9 +99,10 @@ app.post("/webhook", async (req, res) => {
 
  
 
-  
-
  const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+ if (!mensaje) return res.sendStatus(400);
+
+ const from = mensaje.from;
 
  //if (!mensaje) return res.sendStatus(400);
 
@@ -168,7 +169,7 @@ console.log(from,mensaje)
 
    }
    
-   
+   res.sendStatus(200);
  
 });
 
