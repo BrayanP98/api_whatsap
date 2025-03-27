@@ -201,7 +201,7 @@ async function sendMenuOptions(to, phone_number_id) {
       interactive: {
         type: "list",
         header: { type: "text", text: "Nexo Security" },
-        body: { text: 'Hola ${name}, soy *NexoBot* 🤖 de Nexo Security. \n💙 ¡Seguridad y Comodidad Inteligente!'
+        body: { text: `Hola ${name}, soy *NexoBot* 🤖 de Nexo Security. \n💙 ¡Seguridad y Comodidad Inteligente!`
             
            + '📌 \n\nSíguenos en Facebook: Nexo Security'
           +'\n🌐 Visita nuestra web: https://nexosecurity.netlify.app/'+
