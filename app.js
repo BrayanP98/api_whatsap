@@ -96,7 +96,7 @@ app.post("/webhook", async (req, res) => {
   let body = req.body;
  //console.log(JSON.stringify(req.body, null, 2));
 
-
+ var phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
  
 
  const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
@@ -126,7 +126,7 @@ console.log(from,mensaje)
      
      await user.save();
     
-    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
+    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from,phone_number_id);
    }
  
    if (user.state === "esperando_titulo") {
@@ -136,7 +136,7 @@ console.log(from,mensaje)
       user.state = "esperando_parrafo";
      await user.save();
      
-     return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
+     return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from,phone_number_id);
    }
  
    if (user.state === "esperando_parrafo") {
@@ -150,7 +150,7 @@ console.log(from,mensaje)
      // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
      console.log("Blog recibido:", user.blogData);
  
-     return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from);
+     return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from,phone_number_id);
      res.sendStatus(200);
    }
    if(user.state === "en espera"){
@@ -173,7 +173,7 @@ console.log(from,mensaje)
  
 });
 
-function sendOP(opction,para){
+function sendOP(opction,para,phone_number_id){
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
