@@ -55,7 +55,7 @@ async function obtenerBlogs() {
                     const blogContainer = document.getElementById("blogContainer");
                     blogContainer.innerHTML = "";
 
-                    
+                    pintar_post(data)
                        pintar(data)
                 
                 } else {
@@ -221,9 +221,9 @@ async function obtenerBlogs() {
         
         
         ]
-        pintar_post()
+       
     
-        function pintar_post(){
+        function pintar_post(data){
             var content_post2=document.getElementById("content_post2");
             var principal_post=document.getElementById("principal_post");  
 
