@@ -201,7 +201,12 @@ async function sendMenuOptions(to, phone_number_id) {
       interactive: {
         type: "list",
         header: { type: "text", text: "Nexo Security" },
-        body: { text: "📌 Para más información sobre nuestros servicios, elige una opción 👇👇👇" },
+        body: { text: 'Hola ${name}, soy *NexoBot* 🤖 de Nexo Security. \n💙 ¡Seguridad y Comodidad Inteligente!'
+            
+           + 📌 '\n\nSíguenos en Facebook: Nexo Security'
+          +'\n🌐 Visita nuestra web: https://nexosecurity.netlify.app/'+
+            
+           ' \n\nPara más información, elige una opción 👇👇👇',
         footer: { text: "scaliwoodSoft" },
         action: {
           button: "Nuestros Servicios",
@@ -258,7 +263,7 @@ async function sendMenuOptions(to, phone_number_id) {
       responseMessage = "❌ Opción no válida. Por favor, elige una opción del menú.";
   }
 
-  await sendTextMessage(to, phone_number_id, responseMessage);
+  await sendOP(responseMessage,to, phone_number_id);
 }
 
 
