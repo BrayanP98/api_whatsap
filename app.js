@@ -102,7 +102,7 @@ app.post("/webhook", async (req, res) => {
 
 
 
- var phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
+ var phone_number_id =res
  console.log(phone_number_id)
 
  const mensaje =req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
@@ -184,7 +184,7 @@ function sendOP(opction,para,phone_number_id){
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
       "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
+      "426245237228457" +
       "/messages?access_token=" +
       token,
     data: {
@@ -197,7 +197,7 @@ function sendOP(opction,para,phone_number_id){
     },
     headers: { "Content-Type": "application/json" },
   });
-  return  res.sendStatus(200);
+  return  phone_number_id.sendStatus(200);
 }
 
 async function getDatesToEnd(){
