@@ -97,704 +97,79 @@ app.post("/webhook", async (req, res) => {
  //console.log(JSON.stringify(req.body, null, 2));
 
 
- res.sendStatus(200);
-
-  
-
- if(body.entry[0].changes[0].value.statuses){
-  let status=body.entry[0].changes[0].value.statuses[0]["status"]
-  //console.log(status)
- io.emit("estado",status)
-  
-
-
- }else{
-  
-
-  var optinos=["1","2","3","4"]
-  var saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
-  var optinoSpecial=["nosotros","cotizar","catalogo"]
-  var agradecimiento=["vale","gracias","muchas gracias","bueno","ok","listo","okey"]
-  var rtaopt=
-  {
-     cctv:{
-      "cotizar":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de CCTV* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
-          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros.",
-          
-        }
-       ], 
-       "servicio tecnico":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-          
-          +
-          "\n\n_#SeguridadComodidadInteligente_",
-          
-        }
-       ],
-      
-       "beneficios":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\n Un *sistema de CCTV* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes."+
-          +"\n\n_#SeguridadComodidadInteligente_",
-          
-        }
-       ], 
-       "otros":[
-        {
-          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."
-        }
-       ]
-     },
-     alarmas:{
-      "cotizar":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de una *Alarma de seguridad* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
-          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros."+
-          "\n\n#SeguridadComodidadInteligente",
-          
-        }
-       ], 
-       "servicio tecnico":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\nPara servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-           +"\n\n#SeguridadComodidadInteligente",
-          
-        }
-       ],
-      
-       "beneficios":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+" \n\nUna *Alarma de seguridad* es una herramienta valiosa para la seguridad, la vigilancia y el control en una variedad de contextos. Los beneficios pueden ser particularmente evidentes en la prevención de delitos, la resolución de disputas, la seguridad del personal y la supervisión remota, entre otros aspectos. Sin embargo, es importante implementar y utilizar los sistemas de CCTV de manera ética y cumpliendo con las regulaciones de privacidad y derechos civiles pertinentes.",
-          
-        }
-       ], 
-       "otros":[
-        {
-          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."
-        }
-       ]
-
-    },
-    Control_Acceso:{
-      "cotizar":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n\n El Costo de un *sistema de control de acceso* varia segun las necesidades del usuario, los dispotitivos que se instalen y sus caractertisticas"+
-          "\n Lo invitamos a programar una visita tecnica de uno de nuestros especialistas el cual lo guiara en el proceso de eleccion de que sistema se adecua mejor a sus necesidades"+
-          "\n\n Puede agendar su cita llamando a los numeros *3006846977-3147459094* o escribenos a Whatsapp a estos mismos numeros."
-          +"\n\n#SeguridadComodidadInteligente",
-          
-        }
-       ], 
-       "servicio tecnico":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+"\n \n Para servicio tecnico escribe *ASESOR* o comunicate a los numeros: \n *3147459094 *"+
-         +"\n\n#SeguridadComodidadInteligente",
-          
-        }
-       ],
-      
-       "beneficios":[
-        {
-          "mesagge":"NexoBot🤖 dice :"+" \n \nUn *sistema de control de acceso* es fundamental para garantizar la seguridad, la privacidad y la gestión eficiente de recursos en una amplia variedad de contextos. Desde la seguridad cibernética hasta la protección de instalaciones físicas, sus beneficios son esenciales para mantener la integridad de los sistemas y la información." +"\n\n_#SeguridadComodidadInteligente_",
-          
-        }
-       ], 
-       "otros":[
-        {
-          "mesagge":"NexoBot🤖 dice :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."+"\n\n_#SeguridadComodidadInteligente_"
-        }
-       ]
-    },
-    
-    
-    renovar_plataforma:{
-
-        "mesagge":"NexoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plataforma anual tiene un costo de *$80.000* ."+"\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
-        "  \nNuestros medios de pago son:"+
-          " \n \n *Nequi:*  3006846977 ✅"+"\n cuenta de ahorro: 86862880295✅"+
-          +"\n\n_#SeguridadComodidadInteligente_"
-
-          
-    },
-    renovar_plan:{
-
-      "mesagge":"NexoBot🤖 dice :"+"\nHola! "+"\n\nLa renovacion de plan anual tiene un costo de *$130.000* ."+
-      "\n\n *El no pago de la renovacion del plan generará el bloqueo inmediato de la SIM y la inhabilidad del servicio GPS.* "+
-      "\n\nEn un momento uno de nuestros asesores lo contactara para continuar con el proceso de renovacion."+
-       
-      "\n\nNuestros medios de pago son:"+
-        " \n \n *Nequi:*  3006846977 ✅ \n*Cuenta de ahorro*: 86862880295✅"+
-       +"\n\n_#SeguridadComodidadInteligente_"
-
-        
-  },
-  acceder_promo:{
-
-    "mesagge":"NexoBot🤖 dice :"+"\n \n En breve se uno de nuestros asesores se pondra en contactocon usted,  para darle mas informacion sobre este articulo."
-      
-      
-},
-    
-    nosotros:{
-      "Mision":[
-        {
-          "mesagge":"*NexoBot🤖 dice* :"+"\n   *MISION*"+"\n\nProveer servicios de seguridad electrónica de alta calidad, adaptados a las necesidades y expectativas de cada cliente. Ofrecemos sistemas de alarmas, cámaras, control de acceso, monitoreo y asistencia técnica, con el respaldo de un equipo profesional y comprometido. "+
-          "Buscamos generar valor agregado y satisfacción a nuestros clientes, garantizando su seguridad y la de sus bienes. Aspiramos a ser un referente en el mercado, por nuestra innovación, responsabilidad y ética."
-          +"\n\n_#SeguridadComodidadInteligente_"
-        }
-       ], 
-       "Vision":[
-        {
-          "mesagge":"*NexoBot🤖 dice* :"+"\n        *VISION*"+"\n\nNuestra visión es ser la empresa líder en seguridad electrónica, ofreciendo soluciones innovadoras y personalizadas que protejan a nuestros clientes y sus activos. Queremos brindar un servicio de excelencia, basado en la confianza,"+
-          " la calidad y la experiencia. Nuestro objetivo es contribuir al bienestar y la tranquilidad de las personas y las organizaciones, mediante el uso de la tecnología más avanzada y el talento humano más capacitado."
-          +"\n\n_#SeguridadComodidadInteligente_"
-        
-        }
-       ],
-      
-       
-       "PQRS":[
-        {
-          "mesagge":"*NexoBot🤖 dice* :  \n No disponible!"+
-          " \n \n Escribe *info* para reiniciar el chat."
-        }
-       ]
-      
-
-    }, 
-    catalogo:{
-
-      "mesagge":"NexoBot🤖 dice :"+"\n\n A continuacion te dejamos un enlace a nuestra WEB donde podras observar nuestro catalogo de productos y servicios."+
-      "  \n https://nexosecurity.netlify.app/"+
-        " \n \n "+
-        "\n "
-  },
-  
-  
-    
-
-   }
-   var utilities=
-  {
-    promociones:{
-      prom1:{
-        "img":"https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421061190_1042454900557220_2133877457132461225_n.jpg?ccb=11-4&oh=01_Q5AaIGqPF6JzoryrcqlVEaHRpx_B22MDqDSDGwZowgz_z4SP&oe=66C11A52&_nc_sid=5e03e0&_nc_cat=103",
-        "message":"Promo inperdible"
-
-
-      },
-      prom2:{
-        "img":"https://media-bog2-2.cdn.whatsapp.net/v/t61.24694-24/421061190_1042454900557220_2133877457132461225_n.jpg?ccb=11-4&oh=01_Q5AaIGqPF6JzoryrcqlVEaHRpx_B22MDqDSDGwZowgz_z4SP&oe=66C11A52&_nc_sid=5e03e0&_nc_cat=103",
-        "message":"GRAN PROMOCION"
-      }
-      
-      
-      
-},
-  }
-
-  // Check the Incoming webhook message
-  //console.log(JSON.stringify(req.body, null, 2));
-
-  // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
-  if (req.body.object) {
-    if (
-      req.body.entry &&
-      req.body.entry[0].changes &&
-      req.body.entry[0].changes[0] &&
-      req.body.entry[0].changes[0].value.messages &&
-      req.body.entry[0].changes[0].value.messages[0]
-    ) {
-      let phone_number_id =
-        req.body.entry[0].changes[0].value.metadata.phone_number_id;
-      let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-     
-      function sendOP(opction,para){
-        axios({
-          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-          url:
-            "https://graph.facebook.com/v12.0/" +
-            phone_number_id +
-            "/messages?access_token=" +
-            token,
-          data: {
-            messaging_product: "whatsapp",
-            status: "read",
-            to: para,
-            text: { body:  opction},
-            footer: {
-              text: "scaliwoodSoft"}
-          },
-          headers: { "Content-Type": "application/json" },
-        });
-      }
-
-
-////////////////////////
-const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
-
-  //if (!mensaje) return res.sendStatus(400);
-
-  const from1 = mensaje.from;
-  const text = mensaje.text?.body.toLowerCase();
- console.log(from,mensaje)
-
-  // Buscar si el usuario tiene un estado guardado
-  let user = await UserState.findOne({ from });
-  
-    // Si el usuario no tiene estado, lo creamos
-  if (!user) {
-   
-    user = new UserState({ from, state: "ninguno", blogData: {} });
-    await user.save();
-  }
-   
-    if (text === "publicar_blog") {
-      console.log("esperando_titulo")
-      user.state = "esperando_titulo";
-      
-      await user.save();
-     
-     return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
-    }
-  
-    if (user.state === "esperando_titulo") {
-      console.log("esperando_parrafo")
-      cont_blog.fecha="12/05/2025"
-     cont_blog.titulo=text
-       user.state = "esperando_parrafo";
-      await user.save();
-      
-      return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
-    }
-  
-    if (user.state === "esperando_parrafo") {
-      
-      cont_blog.parrafo=text
-      user.state = "en espera";
-      console.log(cont_blog);
-      
-       await user.save();
-       
-      // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
-      console.log("Blog recibido:", user.blogData);
-  
-      return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from);
-      res.sendStatus(200);
-    }
-    if(user.state === "en espera"){
-      user.state = "nada";
-      if(text === "si"){
-        await UserState.findOneAndUpdate(
-          { from:from },  // Buscar por el número del usuario
-          { 
-            $push: { cont: cont_blog }}  // Agregar el blog al array
-          
-          )
-         await user.save();
-         return sendOP(`su post se ha publlicado con exito`, from);
-
-      }
-
-    }
-    
-    
-  
-
  
 
   
 
-     //console.log()
-      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
-      
-      function sendInteractive(opt, service){
+ const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
-        var kys= Object.keys(opt);
-        var seccions=[  
-        ]
+ //if (!mensaje) return res.sendStatus(400);
 
-       
-        for(var i=0;i<kys.length;i++){
-          let optn={
-            title:"Opcion"+(i+1),
-            rows: [
-              {
-                id:service,
-                title:kys[i],
-                description:kys[i]           
-              }
-            ]
-          }
-        
-          seccions.push(optn)
-        
-        
-        }
-         axios({
-           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-           url:
-             "https://graph.facebook.com/v12.0/" +
-             phone_number_id +
-             "/messages?access_token=" +
-             token,
-               data:{
-               messaging_product: "whatsapp",
-               recipient_type: "individual",
-               to : from,
-               type: "interactive" ,
-               interactive:{
-                 type: "list",
-                 header: {  
-                 type: "text",
-                 text: "Nexo Security"},
-                 body: {text:"NexoBot🤖 dice :"+ "\n\nMenu"+" "+service.toUpperCase()+"\n\n💙Seguridad y Comodidad Inteligente"
-                 +"\n *Elije tus Opciones*"+"👇"},
-                 footer: {
-                   
-                 text: "scaliwoodSoft"},
-                 action: {
-                   button: "Menu de Opciones",
-                   sections:seccions
-                 }
-               }
-                   }
-          ,
-           headers: { "Content-Type": "application/json" },
-         });
-       }
-     
-      // extract the message text from the webhook payload
-     
-     if( req.body.entry[0].changes[0].value.messages[0].interactive){
-    
+ const from1 = mensaje.from;
+ const text = mensaje.text?.body.toLowerCase();
+console.log(from,mensaje)
 
-      if(req.body.entry[0].changes[0].value.messages[0].interactive.list_reply){
-       
-      
-       
-        let tileServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-       
-       if(rtaopt[tileServ]){
-          
-        sendInteractive(rtaopt[tileServ],tileServ)
-    
-      }else{
-        let msg_interctive = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.description;
-        let idServ = req.body.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
-       
-       
-         if(msg_interctive==="renovacion"){
-
-          axios({
-            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-            url:
-              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
-                data:{
-                messaging_product: "whatsapp",
-                recipient_type: "individual",
-                to : from,
-                type: "interactive" ,
-                interactive:{
-                  type: "button",
-                  header: {  
-                  type: "text",
-                  text: "Nexo Security"},
-                  body: {text: "NexoBot🤖 dice :"+"\n Elije el servicio que deseas renovar \n \n*Opciones*"+"👇"},
-                  footer: {
-                    
-                  text: "scaliwoodSoft"},
-                  action: {
-                    "buttons": [
-                      {
-                        "type": "reply",
-                        "reply": {
-                          "id": "renovar_plataforma",
-                          "title": "Renovar Plataforma"
-                        }
-                      },
-                      {
-                        "type": "reply",
-                        "reply": {
-                          "id": "renovar_plan",
-                          "title": "Renovar Plan"
-                        }
-                      }
-                    ]
-                  }
-                }
-                    }
-           ,
-            headers: { "Content-Type": "application/json" },
-          });
-         
-
-         }else if(msg_interctive==="promociones"){
-
-
-
-          var promodata=utilities["promociones"];
-          var kys= Object.values(utilities.promociones);
-          for(var i=0;i<kys.length;i++){
-          axios({
-            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-            url:
-              "https://graph.facebook.com/v12.0/"+phone_number_id +"/messages?access_token="+token,
-                data:{
-                messaging_product: "whatsapp",
-                recipient_type: "individual",
-                to : from,
-                type: "interactive" ,
-                interactive:{
-                  type: "button",
-                  header: {  
-                    type:"image",
-                    "image": {
-                      "link" : kys[i].img
-                        }, 
-                      },
-                  body: {text:  kys[i].message},
-                  footer: {
-                    
-                  text: "scaliwoodSoft"},
-                  action: {
-                    "buttons": [
-                    
-                      {
-                        "type": "reply",
-                        "reply": {
-                          "id": "acceder_promo",
-                          "title": "Acceder"
-                        }
-                      }
-                    ]
-                  }
-                }
-                    }
-           ,
-            headers: { "Content-Type": "application/json" },
-          });
-        }
-            }
-
-
-         else{
-          let servicio= rtaopt[idServ]
-       
-          var sub=servicio[msg_interctive];
-          sendOP(sub[0].mesagge,from)
-         }
-        
-      }
-      
-       
-      
-      }else if(req.body.entry[0].changes[0].value.messages[0].interactive.button_reply){
-        let butonRepli= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
-        let butonTitle= req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
-        
-
-        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-        name+" "+"\n al numero:"+""+from+", para"+" "+butonRepli
-        let asesrNumber="573147459094"
-         sendOP(contactClient,asesrNumber)
-         sendOP(rtaopt[butonRepli].mesagge,from);
-         
-
-      }
-
-
-
-     }else if(req.body.entry[0].changes[0].value.messages[0].button){
-      let butonrta = req.body.entry[0].changes[0].value.messages[0].button.text;
-      if(butonrta==="Renovar Plataforma"){
-        butonrta="renovar_plataforma"
-        sendOP(rtaopt[butonrta].mesagge,from); 
-        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-        name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
-        sendOP(contactClient,asesrNumber); 
-      }else if(butonrta==="Renovar Plan"){
-        butonrta="renovar_plan"
-        sendOP(rtaopt[butonrta].mesagge,from); 
-        let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-        name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
-        sendOP(contactClient,asesrNumber); 
-      }else if(butonrta==="Detener promociones"){
-       let mesagge="Entendido"
-        sendOP(mesagge,from); 
-        let contactClient= "Por favor no enviar publicidad a:"+" \n"+
-        name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-        let asesrNumber="573147459094"
-        sendOP(contactClient,asesrNumber); 
-      }else if(butonrta==="NO MOLESTAR!"){
-        let mesagge="NexoBot🤖 dice :"+"\n\nEntendido."+"\nNexo Security  le desea un feliz dia!.💛"+
-          "\n\nNuestros numeros de contacto son: 3147459094 "+
-          "\n_#SeguridadComodidadInteligente_"
-         sendOP(mesagge,from); 
-         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
-         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459094"
-         sendOP(contactClient,asesrNumber); 
-       }else if(butonrta==="RECLAMAR REGALO"){
-        let mesagge="NexoBot🤖 dice :"+"\n\nPronto uno de nuestros asesores👨‍💻 se pondra en contacto con usted para acordar la entrega de su beneficio.🎉🎁"+
-          "\n\nNuestros numeros de contacto son: 3147459094 "+
-           "\n_#SeguridadComodidadInteligente_"
-         sendOP(mesagge,from); 
-         let contactClient= "Por favor no enviar publicidad a:"+" \n"+
-         name+" "+"\n al numero:"+""+from+", para"+" "+butonrta
-         let asesrNumber="573147459094"
-         sendOP(contactClient,asesrNumber); 
-       }
-      
-     }else{
-      
-      var msg_body1 = req.body.entry[0].changes[0].value.messages[0].text.body;
-      var date= req.body.entry[0].changes[0].value.messages[0].timestamp
-      io.emit('whatsapp_notification', from,msg_body1,"new");
-     save(msg_body1,from);
-     
-     var arrayMaessage=msg_body1.split(" ");
-
-     for(var i=0;i<arrayMaessage.length;i++){
-     if(agradecimiento.includes(arrayMaessage[i].toLocaleLowerCase())){
-      let msg_body ="NexoBot🤖 dice :"+"\n\n"+name+" "+", "+"\nes un gusto para *Nexo Security * poder servirle.😊"+
-      "\n\nGracias por elegirnos para ayudarte a proteger lo que mas te ha costado💛"
-      +
-      "\n\nNo olvides seguirnos en las redes sociales como *Nexo Security * y visitarnos en nuestra pagina web http://nexosecurity.netlify.app/"+
-     "\n\nFeliz dia!"+
-      "\n\n_#SeguridadComodidadInteligente_";          
-      
-      sendOP(msg_body,from)
-      break;
-    }else if(saludos.includes(arrayMaessage[i].toLocaleLowerCase())){
-      axios({
-        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-        url:
-          "https://graph.facebook.com/v12.0/" +
-          phone_number_id +
-          "/messages?access_token=" +
-          token,
-          data: {
-            messaging_product: "whatsapp",
-            recipient_type: "individual",
-            to : from,
-            type: "interactive" ,
-            interactive:{
-              type: "list",
-              header: {  
-              type: "text",
-              text: "Nexo Security"},
-              body: {text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security ."+"\n\n💙Seguridad y Comodidad Inteligente!"+
-              "\n\nSiguenos en Facebook como: \n*Nexo Security *."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 "},
-              footer: {
-              text: "scaliwoodSoft"},
-              action: {
-                button: "Nuestros Servicios",
-                sections:[
-                 
-                
-                  {
-                    title:"Opcion 1",
-                    rows: [
-                      {
-                        id:"1",
-                        title: "CCTV(camaras seguridad)",
-                        description: "cctv",           
-                      }
-                    ]
-                  },
-                  {
-                    title:"Opcion 2",
-                    rows: [
-                      {
-                        id:"2",
-                        title: "Alarmas Recidenciales",
-                        description: "alarmas",  
-                             
-                      }
-                    ]
-                  },{
-                    title:"Opcion 3",
-                    rows: [
-                      {
-                        id:"3",
-                        title: "Control de Acceso",
-                        description: "Control_Acceso",  
-                             
-                      }
-                    ]
-                  },
-                  {
-                    title:"Opcion 4",
-                    rows: [
-                      {
-                        id:"4",
-                        title: "PROMOCIONES",
-                        description: "promociones",  
-                             
-                      }
-                    ]
-                  },{
-                    title:"Opcion 5",
-                    rows: [
-                      {
-                        id:"5",
-                        title: "Nosotros",
-                        description: "nosotros",  
-                             
-                      }
-                    ]
-                  }
-                  
-                ]
-              }
-            }
-                },
-        headers: { "Content-Type": "application/json" },
-      });
-      break;
-    }else if(rtaopt[arrayMaessage[i].toLocaleLowerCase()]){
-      sendInteractive(rtaopt[arrayMaessage[i].toLocaleLowerCase()], arrayMaessage[i].toLocaleLowerCase())
-     
-      
-       break
-    }
-    else if(arrayMaessage[i].toLocaleLowerCase()=="asesor"){
-      text=("NexoBot🤖 dice :"+"\nEn minutos uno de nuestros asesores se pondra en contacto con usted."+"\n\n#SeguridadComodidadInteligente")
-      let contactClient= "Por favor ponerse en contacto con:"+" \n"+
-      name+" "+"\n al numero:"+""+from+"" +"para asesoria";
-
-      let to= "573147459094"
-      sendOP(text,from)
-      sendOP(contactClient, to)
-    }
-     
-  }
-     
-      
-      
-     
-     
-    }
-     
-    }
+ // Buscar si el usuario tiene un estado guardado
+ let user = await UserState.findOne({ from });
+ 
+   // Si el usuario no tiene estado, lo creamos
+ if (!user) {
   
-  } else {
-    // Return a '404 Not Found' if event is not from a WhatsApp API
-    res.sendStatus(404);
-  }
+   user = new UserState({ from, state: "ninguno", blogData: {} });
+   await user.save();
+ }
+  
+   if (text === "publicar_blog") {
+     console.log("esperando_titulo")
+     user.state = "esperando_titulo";
+     
+     await user.save();
+    
+    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from);
+   }
+ 
+   if (user.state === "esperando_titulo") {
+     console.log("esperando_parrafo")
+     cont_blog.fecha="12/05/2025"
+    cont_blog.titulo=text
+      user.state = "esperando_parrafo";
+     await user.save();
+     
+     return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from);
+   }
+ 
+   if (user.state === "esperando_parrafo") {
+     
+     cont_blog.parrafo=text
+     user.state = "en espera";
+     console.log(cont_blog);
+     
+      await user.save();
+      
+     // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
+     console.log("Blog recibido:", user.blogData);
+ 
+     return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from);
+     res.sendStatus(200);
+   }
+   if(user.state === "en espera"){
+     user.state = "nada";
+     if(text === "si"){
+       await UserState.findOneAndUpdate(
+         { from:from },  // Buscar por el número del usuario
+         { 
+           $push: { cont: cont_blog }}  // Agregar el blog al array
+         
+         )
+        await user.save();
+        return sendOP(`su post se ha publlicado con exito`, from);
 
-}
+     }
+
+   }
+   
+   
+ 
 });
 
 
