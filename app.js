@@ -92,14 +92,20 @@ app.get("/mesagge", (req, res) => {
   io.emit('whatsapp_notification', "573008565591","hola","new");
 })
 app.post("/webhook", async (req, res) => {
+
+
+  res.sendStatus(200);
+
   // Parse the request body from the POST
   let body = req.body;
  //console.log(JSON.stringify(req.body, null, 2));
 
- var phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
- 
 
- const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+
+ var phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
+ console.log(phone_number_id)
+
+ const mensaje =req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
  if (!mensaje) return res.sendStatus(400);
 
  const from = mensaje.from;
@@ -108,7 +114,7 @@ app.post("/webhook", async (req, res) => {
 
  const from1 = mensaje.from;
  const text = mensaje.text?.body.toLowerCase();
-console.log(from,mensaje)
+
 
  // Buscar si el usuario tiene un estado guardado
  let user = await UserState.findOne({ from });
@@ -121,7 +127,7 @@ console.log(from,mensaje)
  }
   
    if (text === "publicar_blog") {
-     console.log("esperando_titulo")
+    
      user.state = "esperando_titulo";
      
      await user.save();
@@ -130,7 +136,7 @@ console.log(from,mensaje)
    }
  
    if (user.state === "esperando_titulo") {
-     console.log("esperando_parrafo")
+     
      cont_blog.fecha="12/05/2025"
     cont_blog.titulo=text
       user.state = "esperando_parrafo";
@@ -143,7 +149,7 @@ console.log(from,mensaje)
      
      cont_blog.parrafo=text
      user.state = "en espera";
-     console.log(cont_blog);
+     
      
       await user.save();
       
@@ -169,7 +175,7 @@ console.log(from,mensaje)
 
    }
    
-   res.sendStatus(200);
+  
  
 });
 
@@ -191,6 +197,7 @@ function sendOP(opction,para,phone_number_id){
     },
     headers: { "Content-Type": "application/json" },
   });
+  return  res.sendStatus(200);
 }
 
 async function getDatesToEnd(){
