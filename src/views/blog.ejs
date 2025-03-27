@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Publicados</title>
+</head>
+<body>
+    <h1>Lista de Blogs</h1>
+    <div id="blogContainer"></div>
+
+    <script>
+        async function obtenerBlogs() {
+            try {
+                const response = await fetch("https://api-whatsap.onrender.com/api/blogs"); // Ajusta la URL si es necesario
+                const data = await response.json();
+
+                if (data.success) {
+                    const blogContainer = document.getElementById("blogContainer");
+                    blogContainer.innerHTML = "";
+
+                    data.blogs.forEach(user => {
+                        user.blogData.forEach(blog => {
+                            const blogElement = document.createElement("div");
+                            blogElement.innerHTML = `
+                                <h2>${blog.titulo}</h2>
+                                <p>${blog.parrafo}</p>
+                                <small>📅 Fecha: ${blog.fecha}</small>
+                                <hr>
+                            `;
+                            blogContainer.appendChild(blogElement);
+                        });
+                    });
+                } else {
+                    console.error("Error al obtener blogs:", data.message);
+                }
+            } catch (error) {
+                console.error("Error al conectar con la API:", error);
+            }
+        }
+
+        obtenerBlogs(); // Llamar a la función al cargar la página
+    </script>
+</body>
+</html>

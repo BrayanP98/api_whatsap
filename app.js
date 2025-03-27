@@ -347,6 +347,20 @@ app.post("/cotizar", async(req, res) => {
 
 
 });
+
+
+app.get("/api/blogs", async (req, res) => {
+  try {
+    const users = await UserState.find();
+    const blogs = users.flatMap(user => user.blogData);
+    res.json(blogs);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener los blogs" });
+  }
+});
+app.get("/blog", async(req, res) => {
+  res.render("blog.ejs")
+});
 app.get("/cotizar", async(req, res) => {
   res.render("cotizar.ejs")
 });
