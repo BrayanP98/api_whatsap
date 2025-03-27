@@ -171,7 +171,7 @@ app.post("/webhook", async (req, res) => {
         const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
       
         if (esSaludo) {
-          return sendOP(`¡Hola ${name}! Soy NexoBot🤖, asistente virtual de Nexo Security. ¿En qué puedo ayudarte hoy?`, from, phone_number_id);
+           return await sendMenuOptions(from, phone_number_id);
         }
       
         return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
@@ -235,6 +235,30 @@ async function sendMenuOptions(to, phone_number_id) {
   } catch (error) {
     console.error("❌ Error al enviar menú:", error.response?.data || error.message);
   }
+}async function handleUserSelection(to, phone_number_id, selectedId) {
+  let responseMessage;
+
+  switch (selectedId) {
+    case "1":
+      responseMessage = "📹 *CCTV (Cámaras de Seguridad)*\nProtege tu hogar o negocio con nuestros sistemas avanzados de videovigilancia.";
+      break;
+    case "2":
+      responseMessage = "🚨 *Alarmas Residenciales*\nSistemas de seguridad que alertan ante cualquier intrusión en tu hogar.";
+      break;
+    case "3":
+      responseMessage = "🔐 *Control de Acceso*\nGestiona quién puede ingresar a tu propiedad con nuestras soluciones de acceso inteligente.";
+      break;
+    case "4":
+      responseMessage = "🎉 *PROMOCIONES*\nDescubre nuestras ofertas y descuentos especiales en seguridad.";
+      break;
+    case "5":
+      responseMessage = "ℹ️ *Nosotros*\nConoce más sobre Nexo Security y nuestra misión de brindarte seguridad y comodidad.";
+      break;
+    default:
+      responseMessage = "❌ Opción no válida. Por favor, elige una opción del menú.";
+  }
+
+  await sendTextMessage(to, phone_number_id, responseMessage);
 }
 
 
