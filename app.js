@@ -149,9 +149,10 @@ app.post("/webhook", async (req, res) => {
   if (user.state === "en espera") {
     console.log(cont_blog)
     if (text === "si") {
+      
       await UserState.findOneAndUpdate(
         { from: from },  
-        { $push: { cont: cont_blog } }  // Agregar blog al array
+        { $push: { blogData: cont_blog } }  // Agregar blog al array
       );
 
       user.state = "ninguno";
