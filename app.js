@@ -209,7 +209,7 @@ async function sendMenuOptions(to, phone_number_id,name) {
           sections: [
             {
               title: "Opción 1",
-              rows: [{ id: "1", title: "CCTV (Cámaras de Seguridad)", description: "cctv" }]
+              rows: [{ id: "1", title: "CCTV-CámarasSeguridad", description: "cctv" }]
             },
             {
               title: "Opción 2",
