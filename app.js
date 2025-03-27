@@ -92,92 +92,77 @@ app.get("/mesagge", (req, res) => {
   io.emit('whatsapp_notification', "573008565591","hola","new");
 })
 app.post("/webhook", async (req, res) => {
+  // Parsear el cuerpo de la petición
+  let body = req.body;
 
+  // Validar estructura del mensaje antes de responder
+  const mensaje = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+  if (!mensaje) return;  // ✅ Evita responder dos veces
 
+  // Obtener ID del número de teléfono
+  var phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+  console.log(phone_number_id);
+
+  const from = mensaje.from;
+  const text = mensaje.text?.body.toLowerCase();
+
+  // ✅ Responder a WhatsApp para evitar reintentos
   res.sendStatus(200);
 
-  // Parse the request body from the POST
-  let body = req.body;
- //console.log(JSON.stringify(req.body, null, 2));
+  // Buscar si el usuario tiene un estado guardado
+  let user = await UserState.findOne({ from });
 
+  // Si el usuario no tiene estado, lo creamos
+  if (!user) {
+    user = new UserState({ from, state: "ninguno", blogData: {} });
+    await user.save();
+  }
 
+  // Variable para almacenar datos del blog
+  if (!user.blogData) {
+    user.blogData = {};
+  }
 
- var phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
- console.log(phone_number_id)
+  // ✅ Flujo de publicación de blog
+  if (text === "publicar_blog") {
+    user.state = "esperando_titulo";
+    await user.save();
+    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from, phone_number_id);
+  }
 
- const mensaje =req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
- if (!mensaje) return res.sendStatus(400);
+  if (user.state === "esperando_titulo") {
+    user.blogData.fecha = new Date().toLocaleDateString();
+    user.blogData.titulo = text;
+    user.state = "esperando_parrafo";
+    await user.save();
+    return sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from, phone_number_id);
+  }
 
- const from = mensaje.from;
+  if (user.state === "esperando_parrafo") {
+    user.blogData.parrafo = text;
+    user.state = "en espera";
+    await user.save();
+    return sendOP("DomoBot🤖 dice: \n¿Deseas publicar tu blog? (Responde 'si' o 'no')", from, phone_number_id);
+  }
 
- //if (!mensaje) return res.sendStatus(400);
+  if (user.state === "en espera") {
+    if (text === "si") {
+      await UserState.findOneAndUpdate(
+        { from: from },  
+        { $push: { cont: user.blogData } }  // Agregar blog al array
+      );
 
- const from1 = mensaje.from;
- const text = mensaje.text?.body.toLowerCase();
-
-
- // Buscar si el usuario tiene un estado guardado
- let user = await UserState.findOne({ from });
- 
-   // Si el usuario no tiene estado, lo creamos
- if (!user) {
-  
-   user = new UserState({ from, state: "ninguno", blogData: {} });
-   await user.save();
- }
-  
-   if (text === "publicar_blog") {
-    
-     user.state = "esperando_titulo";
-     
-     await user.save();
-    
-    return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from,phone_number_id);
-   }
- 
-   if (user.state === "esperando_titulo") {
-     
-     cont_blog.fecha="12/05/2025"
-    cont_blog.titulo=text
-      user.state = "esperando_parrafo";
-     await user.save();
-     
-     return  sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from,phone_number_id);
-   }
- 
-   if (user.state === "esperando_parrafo") {
-     
-     cont_blog.parrafo=text
-     user.state = "en espera";
-     
-     
+      user.state = "ninguno";
       await user.save();
-      
-     // Aquí podrías guardar el blog en una base de datos o publicarlo en una API
-     console.log("Blog recibido:", user.blogData);
- 
-     return sendOP(`DomoBot🤖 dice: \deseas publicar tu blog?`, from,phone_number_id);
-     
-   }
-   if(user.state === "en espera"){
-     user.state = "nada";
-     if(text === "si"){
-       await UserState.findOneAndUpdate(
-         { from:from },  // Buscar por el número del usuario
-         { 
-           $push: { cont: cont_blog }}  // Agregar el blog al array
-         
-         )
-        await user.save();
-        return sendOP(`su post se ha publlicado con exito`, from);
-
-     }
-
-   }
-   
-  
- 
+      return sendOP("DomoBot🤖 dice: \n✅ Tu post ha sido publicado con éxito.", from, phone_number_id);
+    } else {
+      user.state = "ninguno";
+      await user.save();
+      return sendOP("DomoBot🤖 dice: \n❌ Publicación cancelada.", from, phone_number_id);
+    }
+  }
 });
+
 
 function sendOP(opction,para,phone_number_id){
   axios({
