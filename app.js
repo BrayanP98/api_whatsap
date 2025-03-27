@@ -162,24 +162,80 @@ app.post("/webhook", async (req, res) => {
           await user.save();
           return sendOP("DomoBot🤖 dice: \n❌ Publicación cancelada.", from, phone_number_id);
         }
-      }
+      }//////////////////////////////////////// fin publicar blog*////////////////////////
     }else {
+      if (mensaje.type === "text") {
 
-      let name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
-      const palabras = text.split(" ");
-      const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
-    
-      if (esSaludo) {
-        return sendOP(`¡Hola ${name}! Soy NexoBot🤖, asistente virtual de Nexo Security. ¿En qué puedo ayudarte hoy?`, from, phone_number_id);
+        let name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
+        const palabras = text.split(" ");
+        const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
+      
+        if (esSaludo) {
+          return sendOP(`¡Hola ${name}! Soy NexoBot🤖, asistente virtual de Nexo Security. ¿En qué puedo ayudarte hoy?`, from, phone_number_id);
+        }
+      
+        return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
+        
       }
-    
-      return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
+      if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
+        const selectedId = mensaje.interactive.list_reply.id;
+        await handleUserSelection(from, phone_number_id, selectedId);
+        return;
+      }
+      
   
   }
   
   
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });
+
+
+async function sendMenuOptions(to, phone_number_id) {
+  try {
+    await axios.post(`https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`, {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to,
+      type: "interactive",
+      interactive: {
+        type: "list",
+        header: { type: "text", text: "Nexo Security" },
+        body: { text: "📌 Para más información sobre nuestros servicios, elige una opción 👇👇👇" },
+        footer: { text: "scaliwoodSoft" },
+        action: {
+          button: "Nuestros Servicios",
+          sections: [
+            {
+              title: "Opción 1",
+              rows: [{ id: "1", title: "CCTV (Cámaras de Seguridad)", description: "cctv" }]
+            },
+            {
+              title: "Opción 2",
+              rows: [{ id: "2", title: "Alarmas Residenciales", description: "alarmas" }]
+            },
+            {
+              title: "Opción 3",
+              rows: [{ id: "3", title: "Control de Acceso", description: "Control_Acceso" }]
+            },
+            {
+              title: "Opción 4",
+              rows: [{ id: "4", title: "PROMOCIONES", description: "promociones" }]
+            },
+            {
+              title: "Opción 5",
+              rows: [{ id: "5", title: "Nosotros", description: "nosotros" }]
+            }
+          ]
+        }
+      }
+    }, { headers: { "Content-Type": "application/json" } });
+
+    console.log("✅ Menú enviado con éxito");
+  } catch (error) {
+    console.error("❌ Error al enviar menú:", error.response?.data || error.message);
+  }
+}
 
 
 function sendOP(opction,para,phone_number_id){
