@@ -166,12 +166,12 @@ app.post("/webhook", async (req, res) => {
     }else {
       if (mensaje.type === "text") {
 
-        let name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
+        var name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
         const palabras = text.split(" ");
         const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
       
         if (esSaludo) {
-           return await sendMenuOptions(from, phone_number_id);
+           return await sendMenuOptions(from, phone_number_id,name);
         }
       
         return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
@@ -191,7 +191,7 @@ app.post("/webhook", async (req, res) => {
 });
 
 
-async function sendMenuOptions(to, phone_number_id) {
+async function sendMenuOptions(to, phone_number_id,name) {
   try {
     await axios.post(`https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`, {
       messaging_product: "whatsapp",
