@@ -88,9 +88,9 @@ io.on('connection', function(socket)  {
    });
 });
 
-app.get("/mesagge", (req, res) => {
-  io.emit('whatsapp_notification', "573008565591","hola","new");
-})
+const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
+
+
 app.post("/webhook", async (req, res) => {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,9 +164,17 @@ app.post("/webhook", async (req, res) => {
         }
       }
     }else {
-      console.log(user)
 
-    return sendOP("❌ No tienes permisos para publicar blogs.", from, phone_number_id);
+      var name=req.body.entry[0].changes[0].value.contacts[0].profile.name;
+      const palabras = text.split(" ");
+      const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
+    
+      if (esSaludo) {
+        return sendOP("¡Hola! Soy NexoBot🤖 asistente virtual de  Nexo Security  ¿En qué puedo ayudarte hoy?", from, phone_number_id);
+      }
+    
+      return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
+    });
   }
   
   
