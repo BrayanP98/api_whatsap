@@ -234,7 +234,8 @@ async function sendMenuOptions(to, phone_number_id) {
           ]
         }
       }
-    }, { headers: { "Content-Type": "application/json" } });
+    },  headers: { "Content-Type": "application/json" },
+  });
 
     console.log("✅ Menú enviado con éxito");
   } catch (error) {
