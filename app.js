@@ -119,9 +119,9 @@ app.post("/webhook", async (req, res) => {
   }
 
   // Variable para almacenar datos del blog
-  if (!user.blogData) {
+ /* if (!user.blogData) {
     user.blogData = {};
-  }
+  }*/
 
   // ✅ Flujo de publicación de blog
   if (text === "publicar_blog") {
@@ -131,25 +131,27 @@ app.post("/webhook", async (req, res) => {
   }
 
   if (user.state === "esperando_titulo") {
-    user.blogData.fecha = new Date().toLocaleDateString();
-    user.blogData.titulo = text;
+    cont_blog.fecha=new Date().toLocaleDateString();
+     cont_blog.titulo=text
     user.state = "esperando_parrafo";
     await user.save();
     return sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from, phone_number_id);
   }
 
   if (user.state === "esperando_parrafo") {
-    user.blogData.parrafo = text;
+    
+    cont_blog.parrafo = text;
     user.state = "en espera";
     await user.save();
     return sendOP("DomoBot🤖 dice: \n¿Deseas publicar tu blog? (Responde 'si' o 'no')", from, phone_number_id);
   }
 
   if (user.state === "en espera") {
+    console.log(cont_blog)
     if (text === "si") {
       await UserState.findOneAndUpdate(
         { from: from },  
-        { $push: { cont: user.blogData } }  // Agregar blog al array
+        { $push: { cont: cont_blog } }  // Agregar blog al array
       );
 
       user.state = "ninguno";
