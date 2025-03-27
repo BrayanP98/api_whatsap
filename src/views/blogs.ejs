@@ -368,10 +368,10 @@ async function obtenerBlogs() {
 
             var img_creador=document.createElement("img")
             img_creador.className="img_creador"
-            img_creador.setAttribute("src",posts[pos].icon)
+            img_creador.setAttribute("src",posts[1].icon)
             var name_creador=document.createElement("a")
             name_creador.className="name_creador"
-            name_creador.innerHTML=posts[pos].autor
+            name_creador.innerHTML=posts[1].autor
             var date_post=document.createElement("a")
            date_post.className="date_post"
            date_post.innerHTML=posts[pos].date
@@ -399,10 +399,10 @@ async function obtenerBlogs() {
          
            var img_post=document.createElement("img");
           img_post.className="img_post"
-          img_post.setAttribute("src",posts[pos].image)
+          img_post.setAttribute("src",posts[1].image)
           var intro_post=document.createElement("p");
           intro_post.className="intro_post"
-          intro_post.innerHTML=posts[pos].descrip
+          intro_post.innerHTML=posts[1].descrip
           var cont_post=document.createElement("div");
           cont_post.className="cont_post"
 
