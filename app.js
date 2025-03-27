@@ -359,7 +359,7 @@ app.get("/api/blogs", async (req, res) => {
   }
 });
 app.get("/blog", async(req, res) => {
-  res.render("blog.ejs")
+  res.render("blogs.ejs")
 });
 app.get("/cotizar", async(req, res) => {
   res.render("cotizar.ejs")

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO_Blog</title>
+    <link rel="icon" type="image/x-icon" href="img/logo1.png" >
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="/styless/style.css">
+    
+</head>
+
+<body>
+ 
+    <style>
+
+        body{
+            background-color: rgba(65, 167, 167, 0.299);
+        }
+    </style>
+    <div class="content" style=" top:0;">
+        <h2 id="title_blog">Nexo Digital</h2>
+
+         <p id="descrip_blog">Tu fuente semanal de noticias y consejos sobre seguridad electrónica.</p>
+        
+        
+        <h3 id="title_new">Lo más nuevo..</h3>
+
+
+         <div id="principal_post">
+
+           
+        </div>
+
+        <section id="more_cont">
+
+            <h4>Más contenido</h4>
+
+            <div id="content_post2">
+             
+            
+            </div>
+        </section>
+    </div>
+    <script>
+
+
+async function obtenerBlogs() {
+            try {
+                const response = await fetch("https://api-whatsap.onrender.com/api/blogs"); // Ajusta la URL si es necesario
+                const data = await response.json();
+                console.log(data,response,data.success)
+                
+                if (data) {
+                    const blogContainer = document.getElementById("blogContainer");
+                    blogContainer.innerHTML = "";
+
+                    
+                       pintar(data)
+                
+                } else {
+                    console.error("Error al obtener blogs:", data.message);
+                }
+            } catch (error) {
+                console.error("Error al conectar con la API:", error);
+            }
+        }
+
+        obtenerBlogs();
+
+
+
+        var posts=[
+    
+        post1={
+            "autor":"bot",
+            "icon":"https://img.freepik.com/free-vector/illustration-robot_53876-5576.jpg?t=st=1742828301~exp=1742831901~hmac=352d2df54d0c29ce8e5bdc41e6c900e2464b5a41aa51f4c43fb7b6312090f9f7&w=826",
+            "image":"https://img.freepik.com/free-photo/hand-holding-smartphone-home_23-2150639946.jpg?t=st=1742829387~exp=1742832987~hmac=0957ba321e0388be8934e4d15bf50194c70a180161ad338cc79e9928bcad8e72&w=1380",
+            "date":"enero 25 de 2025",
+            "nombre":"Iluminacion Inteligente",
+            "subTitulo":"los muchos beneficios de un sistema inteligente de iluminacion",
+            "descrip":" Las luces inteligentes se adaptan a tus hábitos y se apagan automáticamente cuando no son necesarias, lo que se traduce en una menor factura de la luz", 
+            "reactions":"5",
+            content:[
+                titulo1={
+                    "nombre":"¿Qué es la iluminación inteligente?",
+                    "parrafo":"La iluminación inteligente es un sistema que te permite controlar tus luces de forma remota, programar horarios y crear escenas de iluminación personalizadas, todo desde tu smartphone o dispositivo inteligente.",
+                },
+                titulo2={
+                    "nombre":"Beneficios de la iluminación inteligente:",
+                    "parrafo":"<b>Ahorro de energía:</b> Las luces inteligentes se adaptan a tus hábitos y se apagan automáticamente cuando no son necesarias, lo que se traduce en una menor factura de la luz."+
+                    "<br><br><b>Comodidad:</b>  Controla tus luces desde cualquier lugar y en cualquier momento. Programa horarios para que se enciendan y apaguen automáticamente, o crea escenas de iluminación para diferentes momentos del día."+
+                    "<br><br><b>Seguridad:</b>  Simula presencia en tu hogar cuando estás ausente con horarios de encendido aleatorios.",
+                },
+                titulo3={
+                    "nombre":"¿Cómo empezar con la iluminación inteligente?",
+                    "parrafo":"<b>Bombillas inteligentes:</b>  Cambia tus bombillas tradicionales por modelos"+
+                    "<br><br><b>Tiras LED:</b>  Personaliza tus espacios con tiras LED inteligentes y crea ambientes únicos."+
+                    "<br><br><b>Paneles de control:</b>  Centraliza el control de tus luces con un panel táctil o una aplicación móvil.",
+                },
+                titulo4={
+                    "nombre":"",
+                    "parrafo":"En resumen, la iluminación inteligente te ofrece un control total sobre tu entorno lumínico, permitiéndote crear espacios personalizados, ahorrar energía y mejorar tu calidad de vida.",
+                },
+
+
+
+            ]
+            
+            
+           
+            
+    
+        },
+        post2={
+            "autor":"Brayan P",
+            "icon":"https://img.freepik.com/psd-gratis/ilustracion-3d-hombre-negocios-gafas_23-2149436194.jpg?t=st=1723761540~exp=1723765140~hmac=77547ec865e9b30103006d5ec08fccd21c923e6720b6feeb52f320be7e994c66&w=740",
+            "image":"https://img.freepik.com/free-photo/cctv-security-technology-with-lock-icon-digital-remix_53876-104935.jpg?t=st=1742828977~exp=1742832577~hmac=8bb107c7ca7fafd4f7c72e71637c6f4137e85b543f56117ad5f324ba210c2045&w=1380",
+            "date":"Febrero 25 de 2025",
+            "nombre":"Por que invertir en un sistema de CCTV?",
+            "subTitulo":"los muchos beneficios de un sistema de CCTV",
+            "descrip":"La presencia visible de cámaras actúa como un elemento disuasorio para delincuentes.", 
+            "reactions":"5",
+            content:[
+                titulo1={
+                    "nombre":"¿Vale la pena instalar un sistema de videovigilancia? ",
+                    "parrafo":"La respuesta es sí. Un sistema de CCTV (Circuito Cerrado de Televisión) es una herramienta clave para garantizar la seguridad en cualquier entorno. No solo permite monitorear lo que sucede en tiempo real, sino que también brinda evidencia en caso de incidentes.",
+                },
+                titulo2={
+                    "nombre":"¿Cómo ayuda un sistema de CCTV a prevenir robos? ",
+
+                   "parrafo": "La presencia visible de cámaras actúa como un elemento disuasorio para delincuentes."+" Saber que están siendo grabados reduce significativamente las probabilidades de robos o vandalismo. Además, en caso de un incidente, las grabaciones pueden proporcionar pruebas valiosas para las autoridades.",
+                    
+                },
+                titulo3={
+                    "nombre":"¿¿Es útil el CCTV solo para la seguridad? 📊🔍",
+                    "parrafo":"No. Además de la seguridad, el CCTV ayuda a supervisar operaciones en negocios, mejorar la productividad y garantizar el cumplimiento de normas. En empresas y comercios, permite evaluar el comportamiento de empleados y clientes, optimizando la gestión del negocio.",
+                },
+                titulo4={
+                    "nombre":"¿Qué otros beneficios ofrece un sistema de CCTV? ✅",
+                    "parrafo":"Los sistemas modernos permiten acceso remoto desde cualquier dispositivo móvil, lo que brinda tranquilidad cuando estás fuera. También pueden integrarse con alarmas y sensores para ofrecer una solución de seguridad más completa. Invertir en un CCTV es proteger lo que más valoras.",
+                },
+
+
+
+            ]
+            
+            
+    
+        },
+       post3={
+            "autor":"Brayan P",
+            "icon":"https://img.freepik.com/psd-gratis/ilustracion-3d-hombre-negocios-gafas_23-2149436194.jpg?t=st=1723761540~exp=1723765140~hmac=77547ec865e9b30103006d5ec08fccd21c923e6720b6feeb52f320be7e994c66&w=740",
+           "image":"https://img.freepik.com/free-photo/home-automation-with-tablet_23-2148994124.jpg?t=st=1742828955~exp=1742832555~hmac=11d0f6692296e4db90874b288f2b54e2a268587a5228522d59d83cd0cda6760a&w=1380",
+            "date":"Enero 15 de 2025",
+            "nombre":"porque invertir en un sistema de Alarma",
+            "subTitulo":"los muchos beneficios de un sistema inteligente Alarma",
+            "descrip":"Los sistemas de alarma actúan como un gran disuasivo para los delincuentes.", 
+            "reactions":"25",
+            content:[
+                titulo1={
+                    "nombre":"🔐 ¿Por qué instalar un sistema de alarma en tu hogar o negocio?",
+                    "parrafo":"La seguridad es una prioridad en cualquier espacio, ya sea tu casa o tu empresa. Un sistema de alarma no solo protege tus bienes, sino que también te brinda tranquilidad al saber que estás resguardado ante posibles amenazas. Con tecnología avanzada y monitoreo en tiempo real, estos sistemas son una barrera efectiva contra robos e intrusos.",
+                },
+                titulo2={
+                    "nombre":"🤔 ¿Cómo ayuda un sistema de alarma a prevenir robos?",
+                    "parrafo":"Los sistemas de alarma actúan como un gran disuasivo para los delincuentes. La simple presencia de sensores y cámaras puede hacer que los intrusos piensen dos veces antes de intentar ingresar. Además, en caso de detectar actividad sospechosa, la alarma emite una alerta sonora y puede notificar a una central de monitoreo o a las autoridades.",
+                },
+                titulo3={
+                    "nombre":"📲 ¿Qué ventajas ofrecen las alarmas modernas?",
+                    "parrafo":"Actualmente, los sistemas de alarma han evolucionado con funciones inteligentes como control desde el celular, detección de movimientos específicos y conexión con otros dispositivos de seguridad. Esto permite a los usuarios supervisar su propiedad en todo momento y recibir alertas inmediatas en caso de cualquier incidencia.",
+                },
+                titulo4={
+                    "nombre":"🏡 ¿Vale la pena invertir en un sistema de alarma?",
+                    "parrafo":"Definitivamente sí. Más allá del valor material de los objetos que protege, un sistema de alarma proporciona seguridad y paz mental para ti y tu familia. En un negocio, reduce pérdidas y mejora el control del entorno. La seguridad no es un gasto, sino una inversión en bienestar.",
+                },
+
+
+
+            ]
+            
+    
+        },
+        post4={
+            "autor":"bot",
+            "icon":"https://img.freepik.com/free-vector/illustration-robot_53876-5576.jpg?t=st=1742828301~exp=1742831901~hmac=352d2df54d0c29ce8e5bdc41e6c900e2464b5a41aa51f4c43fb7b6312090f9f7&w=826",
+           "image":"https://img.freepik.com/free-photo/scanning-finger-coronavirus-contaminated-fingerprint-access-control_53876-95279.jpg?t=st=1742829232~exp=1742832832~hmac=e4aa9ea5a7d30b6797107cb81d18186f8ff6b71c017c34abab654cd9df0aaeb6&w=1380",
+            "date":"Marzo 05 de 2025",
+            "nombre":"¿Por qué invertir en un sistema de control de acceso?",
+            "subTitulo":"los muchos beneficios de un sistema de control de acceso",
+            "descrip":"En un mundo donde la seguridad es una prioridad, contar con un sistema de control de acceso se ha convertido en una necesidad para empresas, residencias y espacios restringidos.", 
+            "reactions":"8",
+            content:[
+                titulo1={
+                    "nombre":"¿Por qué invertir en un sistema de control de acceso?",
+                    "parrafo":"En un mundo donde la seguridad es una prioridad, contar con un sistema de control de acceso se ha convertido en una necesidad para empresas, residencias y espacios restringidos. Estos sistemas permiten gestionar quién puede ingresar a determinadas áreas, reduciendo riesgos y mejorando la organización.",
+                },
+                titulo2={
+                    "nombre":"¿Cuáles son sus principales beneficios?",
+                    "parrafo":"Uno de los mayores beneficios es el aumento en la seguridad. Al limitar el acceso solo a personas autorizadas, se minimiza el riesgo de robos, intrusiones o incidentes. Además, se pueden registrar y monitorear entradas y salidas en tiempo real, lo que facilita la identificación de cualquier anomalía.",
+                },
+                titulo3={
+                    "nombre":"¿Cómo mejora la eficiencia operativa?",
+                    "parrafo":"Además de la seguridad, estos sistemas optimizan los procesos internos. Se eliminan las llaves físicas, reduciendo problemas de pérdidas o duplicados, y se integran con sistemas de horarios laborales, controlando asistencia y productividad de empleados de manera automática.",
+                },
+                titulo4={
+                    "nombre":"¿Es una inversión rentable?",
+                    "parrafo":"Definitivamente. A largo plazo, un sistema de control de acceso reduce costos en personal de vigilancia, pérdidas por robos y mejora la gestión del flujo de personas. La tranquilidad y el control que ofrece hacen que sea una solución indispensable en la actualidad.",
+                },
+
+
+
+            ]
+            
+    
+        },
+        
+
+        
+        
+        
+        
+        ]
+        pintar_post()
+    
+        function pintar_post(){
+            var content_post2=document.getElementById("content_post2");
+            var principal_post=document.getElementById("principal_post");  
+
+            var content_post2=document.getElementById("content_post2");
+            var principal_post=document.getElementById("principal_post");  
+             /////primer post/////
+             var   img_top=document.createElement("img"); 
+             img_top.setAttribute("src",posts[0].image)
+             img_top.id="img_top";
+             img_top.onclick= function(){
+                pintar(0)
+             }
+             
+             var   info_post=document.createElement("div"); 
+             info_post.className="info_post";
+
+             var  date_post=document.createElement("div");  
+             date_post.id="date_post"
+
+             var  date_postA=document.createElement("a");  
+             date_postA.innerHTML=posts[0].date
+             var  date_postA1=document.createElement("a");  
+
+             date_post.appendChild(date_postA)
+             date_post.appendChild(date_postA1)
+
+             var  name_post=document.createElement("h3");
+             name_post.innerHTML=posts[0].nombre
+             var  descript_post=document.createElement("p");   
+             descript_post.id="descript_post"
+             descript_post.innerHTML=posts[0].descrip
+
+
+             
+             
+             var  reactions_post=document.createElement("div");  
+             reactions_post.id="reactions_post"
+
+             var  iconFoot_post=document.createElement("a");  
+             iconFoot_post.innerHTML="<box-icon name='message'></box-icon>"+0
+             var  iconFoot_post1=document.createElement("a");
+             iconFoot_post1.innerHTML="<box-icon type='solid' name='low-vision'></box-icon>"+0
+             var   iconFoot_post2=document.createElement("a");
+             iconFoot_post2.id="heart"
+             iconFoot_post2.innerHTML=" <box-icon  name='heart'  color='red'>";
+
+             reactions_post.appendChild(iconFoot_post)
+             reactions_post.appendChild(iconFoot_post1)
+             reactions_post.appendChild(iconFoot_post2);
+
+             info_post.appendChild(date_post)
+             info_post.appendChild(name_post)
+             info_post.appendChild(descript_post)
+             info_post.appendChild(reactions_post)
+             principal_post.appendChild(img_top)
+             principal_post.appendChild(info_post)
+       
+              
+            
+
+                        data.forEach(blog => {
+
+            
+
+
+                var  other_post=document.createElement("div");
+                other_post.className="other_post";
+                var  ImgOther_post=document.createElement("img");
+                ImgOther_post.setAttribute("src",posts[i].image)
+                ImgOther_post.onclick=function(){
+                    window.scrollTo({
+                        top:0,
+                        behavior:"smooth"
+                       })
+                    pintar(i)
+
+                }
+        
+                ////////
+                 var info_post = document.createElement("div");
+                 info_post.className="info_post"
+                 var Date_post = document.createElement("a");
+                 var Title_post = document.createElement("h3");
+                 var hashtag_post = document.createElement("a");
+                 var Descript_post = document.createElement("p");
+        
+                 hashtag_post.id="hashtag_post"
+                 Date_post.innerHTML=posts[i].date;
+                 Title_post.innerHTML=blog.titulo
+                 hashtag_post.innerHTML="#NexoSecurity"
+                 Descript_post.innerHTML=blog.fecha
+                 ///
+                 var divReact_post = document.createElement("div");
+                 divReact_post.id="reactions_post"
+                 var React_post = document.createElement("a");
+                 var iconReact_post = document.createElement("box-icon");
+                
+                 React_post.innerHTML=  "<box-icon  name='like'></box-icon> " +posts[i].reactions
+        
+                
+                 info_post.appendChild(Date_post)
+                 info_post.appendChild(Title_post)
+                 info_post.appendChild(hashtag_post)
+                 info_post.appendChild(Descript_post)
+                 
+               
+                 divReact_post.appendChild(React_post)
+                 info_post.appendChild(divReact_post)
+        
+                 other_post.appendChild(ImgOther_post)
+                 other_post.appendChild(info_post)
+                
+                 content_post2.appendChild(other_post)
+        
+            
+        });}
+     
+        
+        
+        var principal_post=document.getElementById("principal_post");
+    
+        function pintar(data){
+           const antes=principal_post.innerHTML
+
+         var  title_new=document.getElementById("title_new")
+         title_new.innerHTML="Al Principio..."
+         title_new.style="cursor:pointer";
+
+         title_new.onclick=function(){
+            this.innerHTML="Lo más nuevo..."
+            this.style="cursor=none"
+            principal_post.innerHTML=""
+            content_post2.innerHTML=""
+            pintar_post()
+         }
+            principal_post.style="opacity:0.5"
+             principal_post.innerHTML=""
+            principal_post.classList.add("active")
+             principal_post.style="opacity:1"
+             /////informacion fechay creador post
+            var Top_info=document.createElement("div")
+            Top_info.className="info_top"
+
+            var img_creador=document.createElement("img")
+            img_creador.className="img_creador"
+            img_creador.setAttribute("src",posts[pos].icon)
+            var name_creador=document.createElement("a")
+            name_creador.className="name_creador"
+            name_creador.innerHTML=posts[pos].autor
+            var date_post=document.createElement("a")
+           date_post.className="date_post"
+           date_post.innerHTML=posts[pos].date
+            var late_post=document.createElement("a")
+           late_post.className="late_post"
+           late_post.innerHTML=" 5 min de lectura"
+            var share_post=document.createElement("a")
+          share_post.className="share_post"
+          share_post.innerHTML="<box-icon name='menu-alt-right'></box-icon>";
+          share_post.onclick=function(){
+
+          }
+
+
+          //////content post//////
+
+          var title_post=document.createElement("h2")
+          title_post.className="title_post"
+        title_post.innerHTML=posts[pos].nombre
+
+          var subTitle_post=document.createElement("h4")
+          subTitle_post.className="subTitle_post"
+           subTitle_post.innerHTML=posts[pos].subTitulo
+         
+         
+           var img_post=document.createElement("img");
+          img_post.className="img_post"
+          img_post.setAttribute("src",posts[pos].image)
+          var intro_post=document.createElement("p");
+          intro_post.className="intro_post"
+          intro_post.innerHTML=posts[pos].descrip
+          var cont_post=document.createElement("div");
+          cont_post.className="cont_post"
+
+
+          data.forEach(blog => {
+                           /* const blogElement = document.createElement("div");
+                            blogElement.innerHTML = `
+                                <h2>${blog.titulo}</h2>
+                                <p>${blog.parrafo}</p>
+                                <small>📅 Fecha: ${blog.fecha}</small>
+                                <hr>
+                            `;
+                            blogContainer.appendChild(blogElement);*/
+
+
+
+                            var contentTitle_post=document.createElement("h3")
+                var contentparraf_post=document.createElement("p")
+                contentTitle_post.innerHTML=blog.titulo
+                contentparraf_post.innerHTML=blog.parrafo
+
+                cont_post.appendChild(contentTitle_post)
+                cont_post.appendChild(contentparraf_post)
+                        });
+
+            
+//////////foter redes //////
+
+            var div_post_redes=document.createElement("div");
+            div_post_redes.className="redes_footer"
+            var facebook_post=document.createElement("a");
+            facebook_post.innerHTML="<box-icon name='facebook' type='logo' ></box-icon>"
+            var youtube_post=document.createElement("a");
+            youtube_post.innerHTML="<box-icon name='youtube' type='logo' ></box-icon>"
+            var insta_post=document.createElement("a");
+            insta_post.innerHTML="<box-icon name='instagram' type='logo' ></box-icon>"
+            var linkedin_post=document.createElement("a");
+            linkedin_post.innerHTML="<box-icon name='linkedin-square' type='logo' ></box-icon>"
+
+
+
+
+            ///foter reactions//////
+            var div_post_react=document.createElement("div");
+            div_post_react.className="div_post_react"
+            var views_post=document.createElement("a");
+            views_post.className="views_post";
+            views_post.innerHTML=5+" vistas"
+            var like_post=document.createElement("a");
+            like_post.className="like_post"
+            like_post.innerHTML=posts[pos].reactions+"<box-icon name='heart'></box-icon>"
+            like_post.onclick=function(){
+
+                
+
+                var likes=parseInt(posts[pos].reactions);
+                likes=likes+1
+
+            like_post.innerHTML=likes+"<box-icon name='heart' type='solid' color='#da1515' ></box-icon>"
+            }
+
+             div_post_react.appendChild(views_post)
+             div_post_react.appendChild(like_post)
+
+
+            div_post_redes.appendChild(facebook_post)
+            div_post_redes.appendChild(youtube_post)
+            div_post_redes.appendChild(insta_post)
+            div_post_redes.appendChild(linkedin_post)
+
+
+            Top_info.appendChild(img_creador)
+            Top_info.appendChild(name_creador)
+            Top_info.appendChild(date_post)
+            Top_info.appendChild(late_post)
+            Top_info.appendChild(share_post)
+
+           
+
+
+
+           principal_post.appendChild(Top_info) 
+
+            ////////addd content post////
+            principal_post.appendChild(title_post)
+            principal_post.appendChild(subTitle_post)
+            principal_post.appendChild(img_post)
+            principal_post.appendChild(intro_post)
+            principal_post.appendChild(cont_post)
+
+            principal_post.appendChild(div_post_redes)
+            principal_post.appendChild(div_post_react)
+
+
+
+        }
+
+    
+    </script>
+
+   
+</body>
+<script src="/js/index.js"></script>
+<footer>
+    <p>Copyright 2024, ScaliwoodSoft All Rights Reserved</p>
+</footer>
+</html>
