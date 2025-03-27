@@ -206,7 +206,7 @@ async function sendMenuOptions(to, phone_number_id,name) {
            + '📌 \n\nSíguenos en Facebook: Nexo Security'
           +'\n🌐 Visita nuestra web: https://nexosecurity.netlify.app/'+
             
-           ' \n\nPara más información, elige una opción 👇👇👇',
+           ' \n\nPara más información, elige una opción 👇👇👇'},
         footer: { text: "scaliwoodSoft" },
         action: {
           button: "Nuestros Servicios",
