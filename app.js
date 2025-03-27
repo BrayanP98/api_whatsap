@@ -201,19 +201,15 @@ async function sendMenuOptions(to, phone_number_id,name) {
       interactive: {
         type: "list",
         header: { type: "text", text: "Nexo Security" },
-        body: { text: `Hola ${name}, soy *NexoBot* 🤖 de Nexo Security. \n💙 ¡Seguridad y Comodidad Inteligente!`
-            
-           + '📌 \n\nSíguenos en Facebook: Nexo Security'
-          +'\n🌐 Visita nuestra web: https://nexosecurity.netlify.app/'+
-            
-           ' \n\nPara más información, elige una opción 👇👇👇'},
+        body: { text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security ."+"\n\n💙Seguridad y Comodidad Inteligente!"+
+              "\n\nSiguenos en Facebook como: \n*Nexo Security *."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 " },
         footer: { text: "scaliwoodSoft" },
         action: {
           button: "Nuestros Servicios",
           sections: [
             {
               title: "Opción 1",
-              rows: [{ id: "1", title: "CCTV-Cámaras Seguridad", description: "cctv" }]
+              rows: [{ id: "1", title: "CCTV (Cámaras de Seguridad)", description: "cctv" }]
             },
             {
               title: "Opción 2",
@@ -234,14 +230,14 @@ async function sendMenuOptions(to, phone_number_id,name) {
           ]
         }
       }
-    },  headers: { "Content-Type": "application/json" },
-  });
+    }, { headers: { "Content-Type": "application/json" } });
 
     console.log("✅ Menú enviado con éxito");
   } catch (error) {
     console.error("❌ Error al enviar menú:", error.response?.data || error.message);
   }
-}async function handleUserSelection(to, phone_number_id, selectedId) {
+}
+async function handleUserSelection(to, phone_number_id, selectedId) {
   let responseMessage;
 
   switch (selectedId) {
