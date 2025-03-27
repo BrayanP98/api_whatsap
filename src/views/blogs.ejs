@@ -374,7 +374,7 @@ async function obtenerBlogs() {
             name_creador.innerHTML=posts[1].autor
             var date_post=document.createElement("a")
            date_post.className="date_post"
-           date_post.innerHTML=posts[pos].date
+           date_post.innerHTML=posts[1].date
             var late_post=document.createElement("a")
            late_post.className="late_post"
            late_post.innerHTML=" 5 min de lectura"
@@ -390,11 +390,11 @@ async function obtenerBlogs() {
 
           var title_post=document.createElement("h2")
           title_post.className="title_post"
-        title_post.innerHTML=posts[pos].nombre
+        title_post.innerHTML=posts[1].nombre
 
           var subTitle_post=document.createElement("h4")
           subTitle_post.className="subTitle_post"
-           subTitle_post.innerHTML=posts[pos].subTitulo
+           subTitle_post.innerHTML=posts[1].subTitulo
          
          
            var img_post=document.createElement("img");
@@ -453,12 +453,12 @@ async function obtenerBlogs() {
             views_post.innerHTML=5+" vistas"
             var like_post=document.createElement("a");
             like_post.className="like_post"
-            like_post.innerHTML=posts[pos].reactions+"<box-icon name='heart'></box-icon>"
+            like_post.innerHTML=posts[1].reactions+"<box-icon name='heart'></box-icon>"
             like_post.onclick=function(){
 
                 
 
-                var likes=parseInt(posts[pos].reactions);
+                var likes=parseInt(posts[1].reactions);
                 likes=likes+1
 
             like_post.innerHTML=likes+"<box-icon name='heart' type='solid' color='#da1515' ></box-icon>"
