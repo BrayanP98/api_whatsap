@@ -173,7 +173,25 @@ console.log(from,mensaje)
  
 });
 
-
+function sendOP(opction,para){
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      status: "read",
+      to: para,
+      text: { body:  opction},
+      footer: {
+        text: "scaliwoodSoft"}
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+}
 
 async function getDatesToEnd(){
  
