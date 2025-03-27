@@ -1,0 +1,1256 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+
+    margin: 1px;
+  }
+
+#titulo{
+    font-size: 35px;
+    font-weight: bolder;
+     text-decoration: none;
+     color: rgb(34, 34, 35);
+     font-family: "PT Serif", serif;
+     
+ }
+ #sas{
+    text-decoration: none;
+    color: rgb(34, 34, 35);
+    font-family: "PT Serif", serif;
+    font-weight: bolder;
+    font-size: 15px;
+}
+#ayuda{
+    width: 10%;
+    position: absolute;
+    text-decoration: none;
+    color: rgb(42, 79, 165);
+ font-size: 13px;
+  vertical-align: middle;
+   right: 0%;
+   cursor: help;
+}
+#phone{
+    width: 15%;
+    position: absolute;
+    text-decoration: none;
+    color: rgb(48, 49, 50);
+ font-size: 13px;
+  vertical-align: middle;
+ 
+   right: 10%;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+#menu{
+    width: 99.9%;
+    height: 50px;
+   
+    transition: all 1s ease-out;
+   overflow: hidden;
+   background-color: rgba(142, 139, 139, 0.086);
+   z-index: 99;
+   position: absolute;
+}
+#logo{
+   
+    width: 150px;
+    height: 50px;
+    
+   
+}
+
+#desplegable{
+   
+    width: 90%;
+    height: fit-content;
+    
+  
+}
+
+
+
+#ayuda box-icon{
+ width: 10px;
+    vertical-align: middle;
+    right: 5px;
+}
+#desplegable button{
+    position: absolute;
+    border: none;
+  width: 30px;
+  height: 25spx;
+    margin-left: 15px;
+    top: 10px;
+    border-radius: 5px;
+
+}
+
+#menu.active{
+    height: fit-content;
+    transition: all 1s ease-out;
+   
+}
+  
+
+
+#subMenu{
+    width: 100%;
+    height: fit-content;
+   
+   opacity: 0;
+    transition: all 1s ease-out;
+    
+    justify-content: center; display: flex;
+    flex-direction: row;
+    
+    padding-top: 25px;
+   
+}
+#subMenu.visible{
+    opacity: 1;
+    transition: all 1s ease-out;background: rgba(255, 255, 255, 0.533);
+   
+}
+#cont_subMenu{
+    width: 50%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    bottom: 15px;
+    justify-content: center;
+    gap: 30px;
+   
+}
+.items{
+    width: 150px;
+    height: fit-content;
+    position: relative;
+   
+   
+   
+    text-align: center;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.items a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+   
+}
+.items img{
+    width: 50px;
+    padding: 10px;
+    border-radius: 50px;
+    border-style:double;
+    border: 1px solid rgb(0, 81, 255);
+    
+    height: 40px;
+   
+    
+}
+.items img:hover{
+    background: rgb(0, 85, 255);
+    transform: scale(1.1);
+    transition: all 0.5s ease-out;   
+    opacity: 0.8; 
+}
+
+.container{
+    width: 100%;
+    height: 200px;
+    background-color: rgb(21, 0, 255);
+}
+#videoSlider{
+position: relative;
+    width: 100%;
+    
+   
+}
+#pros{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: gray;
+    background-color: #eaf6f4;
+    top: 100px;
+    padding-bottom: 100px;
+}
+
+#solutions{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    top: 55px;
+}
+#solutions h2{
+    color: gray;
+}
+#cont_solutions{
+    position: relative;
+      width: 90%;
+      height: fit-content;
+     
+      display: flex;
+      flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+.item_solution{
+    width: 45%;
+    height: 300px;
+  position: relative;
+    background-size: 100%;
+     background-repeat: no-repeat ;
+     justify-content: center;
+     display: flex;
+     border-radius: 5px;
+    
+}
+
+.item_solution button{
+ width: 60%;
+ height: 70px;
+ border: none;
+ background-color: rgba(14, 63, 198, 0.837);
+ vertical-align: middle;
+ margin: auto;
+ color: aliceblue;
+ font-size: 18px;
+ 
+ 
+ 
+}
+.item_solution button:hover{
+    background-color: rgba(14, 66, 198, 0.692);
+    cursor: pointer;
+}
+
+.item_solution  img{
+    width: 30px;
+    height: 30px;
+}
+.item_solution button box-icon{
+    
+     vertical-align: middle;
+     color: white;
+}
+#img_pros,#img_pros1{
+    position: relative;
+    width: 70%;
+    height: 400px;
+    border-radius: 20px;
+    transition: all 1s ease-out;
+
+}
+#whatsapp{
+    width: 70px;
+    height:70px;
+    position: fixed;
+    z-index: 999;
+    bottom: 10px;
+    right: 10px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#whatsapp.active{
+    background-color: #25d366;
+    width: 200px;
+    border-radius: 50px;
+    transition: all 0.5s ease-out ;
+    
+}
+#whatsapp box-icon{
+   width: 100%;
+   height: 100%;
+    
+
+}
+#chat_whatsapp{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 300px;
+    height: 300px;
+  background-color: aliceblue;
+    background-size: 50%;
+    background: transparent 1;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 15px;
+    transform: scale(0);
+    transition: all 0.5s ease-out ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 99;
+}
+
+#chat_whatsapp.active{
+opacity: 1;
+
+transform: scale(1);
+
+transition: all 0.5s ease-out ;
+}
+#header_chat{
+    width: 100%;
+    height: 50px;
+    background:#25d366;
+    display: flex;
+    flex-direction: row;
+}
+#header_chat button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(128, 128, 128, 0.504);
+    border: 0;
+    cursor: pointer;
+}
+#chat_whatsapp h4{
+    padding-top: 10px;
+    position: relative;
+    margin-top: 0;
+    width: 60%;
+   
+    font-size: 20px;
+    color: white;
+    
+}
+#chat_whatsapp box-icon{
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+  
+    
+    
+}
+
+#chat_demo{
+    width: 100%;
+    height: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+   
+    overflow: hidden;
+   
+}
+#chat_message{
+    font-family: "Raleway", sans-serif;
+    width: 50%;
+    height: 40px;
+    background-color:white;
+    position: relative;
+   font-size: 15px;
+   font-weight: 600;
+    margin-top: 0px;
+    border-radius: 20px;
+    padding: 10px;
+}
+#chat_message.active{
+    background: gray;
+}
+#chat_demo button{
+    position: relative;
+    top: 10%;
+    width: 100%;
+    height: 70%;
+    border-radius: 50px;
+    border: 0;
+    background-color: #128c7e;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#chat_demo button:hover{
+    transform: scale(1.1);
+
+}
+
+#chat_demo a{
+    cursor: pointer;
+}
+#sed_whatsapp{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+#redes{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 150px;
+    height: 200px;
+    position: fixed;
+   left: -105px;
+    bottom: 30%;
+    background-color: rgba(19, 19, 199, 0.907);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease-out;
+    font-size: 20px;
+    z-index: 99;
+ margin: auto;
+}
+#redes:hover {
+transition: all 0.5s ease-in;
+    left: 0px;
+}
+.item_redes{
+    color: aliceblue;
+    margin: auto;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    height: 20%;
+   left: 0;
+   padding: 8px;
+    text-align: center;
+    padding-top: 10px;
+}
+.item_redes:hover{
+    background-color: rgb(21, 21, 213);
+}
+.item_redes box-icon{
+    position: relative;
+    vertical-align:middle;
+    position: relative;
+    width: 50px;
+    
+    text-align: center;
+}
+#cotizar{
+    width: 98%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  
+   position: relative;
+ 
+   
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   overflow: hidden;
+  
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+ 
+  
+}
+#cotizar H2{
+    opacity: 5;
+    width: 90%;
+    height: fit-content;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+     color: rgb(248, 247, 247);
+       left: 25px;
+       font-size: 50px;
+      top: 15px;
+     
+}
+#cotizar p{
+   color: rgb(26, 23, 23);
+    position: relative;
+    width: 60%;
+    height: fit-content;
+    font-size: 20px;
+    left: 30px;
+    top: -25px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    
+    box-shadow: 5px 5px 5px 5px rgba(130, 126, 126, 0.534);
+}
+#cotizar p:hover{
+    background-color: rgba(128, 128, 128, 0.551);
+
+}
+#cotizar button{
+   
+position: relative;
+    width: 250px;
+    height:80px;
+   left: 100px;
+   font-family: "Raleway", sans-serif;
+   font-weight: 400;
+   background: rgba(51, 114, 231, 0.701);
+   border: 2px solid rgba(52, 92, 237, 0.812);
+   border-radius: 5px;
+   color: white;
+   font-size: 20px;
+   
+}
+#cotizar button:hover{
+  background:  rgba(52, 80, 237, 0.812);
+  cursor: pointer;
+}
+#cotizar button box-icon{
+    vertical-align: middle;
+}
+
+
+.float_message{
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    background-color: #fbfcfc;
+    visibility: hidden;
+    right: 15px;
+    top: 30%;
+   overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+#float_message.active{
+    visibility: visible;
+   
+
+}
+
+.float_message img{
+    position: relative;
+   margin-top:50px ;
+    width: 160px;
+    height: 100px;
+    background-color: #68696c93;
+    
+    vertical-align:middle ;
+}
+.float_text{
+    text-align: center;
+    padding: 5px;
+    width: 50%;
+    height:200px;
+    color: rgb(108, 104, 104);
+    display: flex;
+    flex-direction: column;
+    font-family: "Raleway", sans-serif;
+}
+.float_text button{
+    position: relative;
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    background: rgba(4, 4, 171, 0.832);
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+
+}
+
+#description_pros{
+    position: relative;
+    width: 40%;
+    height: fit-content;
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+    top: 20px;
+    
+   }
+   .p_medio{
+    position: relative;
+    top: 100px;
+   text-decoration: solid;
+   text-align: center;
+    width: 50%;
+    height: 300px;
+    font-size: 30px;
+    
+    color: rgb(150, 148, 148);
+
+   }
+
+
+   /***section contact US***/
+
+   svg{
+    z-index: 0;
+    position: absolute;
+    background:url('') no-repeat center center;
+    background-size:cover;
+    width:100%;
+    bottom: 0;
+  }
+#contact_us {
+    
+    z-index: 1;
+    position: relative;
+   background-position-y:170% ;
+   background-position-x:100% ;
+    background-image:url("https://www.niceforyou.com/sites/default/files/styles/1920x710_crop/public/2024-02/contact-man-d.jpg?itok=YCMlwHdq") ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: fit-content;
+   top: 55px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+  
+    font-family: "Raleway", sans-serif;
+    overflow: hidden;
+    padding-bottom: 10px;
+    background-attachment: fixed;
+   
+  
+
+}
+
+
+#contact_us1{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: #000;
+    opacity: .3;
+    
+}
+
+#contact_us a{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    height: fit-content;
+}
+#contact_us #sub1,#sub2{
+    width: 40%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    line-height: 20px;
+    padding: 35px;
+    height: fit-content;
+}
+
+#button_contact {
+    width: 80%;
+    height: fit-content;
+    position: relative;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 25px;
+    margin: auto;
+    
+}
+#button_contact button{
+width: 150px;
+height: 45px;
+position: relative;
+background-color: white;
+border: 0;
+border-radius: 50px;
+color: rgb(0, 94, 255);
+font-weight: 500;
+right: 0;
+cursor: pointer;
+font-size: 18px;
+
+}
+#contact_us #p_contact{
+    font-size:18px;
+    color: rgb(248, 246, 246);
+    width: 93%;
+   line-height: 30px;
+}
+#sub1 p:nth-child(1){
+    font-size: 45px;
+    color: #fcfefe;
+    font-weight: 700;
+}
+
+#sub1 :nth-child(2){
+    font-size: 25px;
+    color: #fbfcfc;
+    font-weight: 700;
+  
+}
+
+#sub1 :nth-child(3){
+    font-size: 25px;
+    color: #fbfcfc;
+    font-weight: 700;
+  
+}
+
+
+
+#contact_us h4{
+    font-size: 25px;
+    color: white;
+}
+#contact_us img{
+    width: 90%;
+  
+}
+footer{
+position: relative;
+    width: 100%;
+    height: 50px;
+    background: rgb(151, 151, 155);
+    text-align: center;
+    display: flex;
+    top: 85px;
+}
+footer p{
+    font-family: "Raleway", sans-serif;
+    position: relative;
+    color: white;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* styless blog*/
+
+       
+        .content{
+            position: relative;
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            font-family: "Raleway", sans-serif;
+            gap: 15px;
+            top: 50px;
+        }
+        #title_blog{
+            color: #12458c;
+            font-size: 35px;
+            width: 90%;
+            text-align: center;
+        }
+        #descrip_blog{
+            color: #12458c;
+            font-size: 18spx;
+            width: 90%;
+            text-align: center;
+        }
+
+        #title_new{
+            position: relative;
+            color: #12458c;
+            font-size: 18spx;
+            width: 50%;
+           margin-left: 15%;
+        }
+        #principal_post{
+            width: 70%;
+            height: fit-content;
+            margin: auto;
+            border: 1px solid black;
+            
+       
+
+        }
+        #principal_post.active{
+            width: 60%;
+            border: 0;
+            transform: scale(1);
+            
+
+        }
+        .cont_post{
+           
+            display: flex;
+            flex-direction: column;
+            
+            padding-bottom: 20px;
+        }
+        .cont_post h3{
+            font-size: 30px;
+            color: #12498c;
+            border-radius: 25px;
+           
+        }
+        .cont_post h3::first-letter{
+            text-transform: uppercase;
+            color: #122f8c;
+        } 
+        .cont_post p{
+            width: 80%;
+        }
+
+
+        .info_post{
+            display: flex;
+            flex-direction:  column;
+            padding: 5px;
+            width: 90%;
+            margin: auto;
+            color: #12458c;
+           
+        }
+      
+        #date_post {
+            gap: 8px;
+            display: flex;
+            flex-direction: row;
+            
+        }
+        #date_post a{
+            color:  gray    ;
+            text-decoration: none;
+        }
+        
+        #info_post h3{
+            color: #12498c;
+            font-size: 30px;
+        }
+        #img_top{
+            cursor:  progress;
+            width: 100%;
+            height: 50%;
+            margin: auto;
+
+        }
+        #reactions_post{
+            width:  100%;
+            height: 50px;
+            border-top: 1px solid rgba(128, 128, 128, 0.799);
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+
+        #reactions_post a{
+            position: relative;
+            width:fit-content;
+          text-decoration: none;
+            vertical-align: middle;
+           color: #000;
+           cursor: pointer;
+
+           
+        }
+       
+       
+        #reactions_post box-icon{
+            position: relative;
+            width:fit-content;
+           
+            vertical-align: middle;
+
+
+        }
+        
+        
+        #reactions_post #heart{
+        
+          margin-right: 0px;
+         position:absolute;
+         right: 0;
+            
+        }
+
+        #more_cont{
+            position: relative;
+            width: 90%;
+            height: fit-content;
+            margin: auto;
+            top:100px;
+            
+            
+
+        }
+        #content_post2{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 4.5%;
+            flex-wrap: wrap;
+            justify-content: center;
+          
+        }
+        .other_post{
+            border-radius: 10px;
+            position: relative;
+            margin-top: 25px;
+            width: 20%;
+            height: fit-content;
+            
+        overflow: hidden;
+            display: flex;
+            flex-direction: column  ;
+            min-width: 250px;
+        }
+        #hashtag_post{
+            font-weight: 800;
+        }
+        #hashtag_post:hover{
+            color: red;
+        }
+        
+        .other_post h3{
+            color: #12458c;
+            font-size: 25px;
+            
+        }
+        .other_post h3::first-letter{
+            text-transform: uppercase;
+        }
+        .other_post p{
+            color: #474d54;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+           
+            overflow: hidden;
+            
+        }
+
+
+        /* post onclik */
+
+        .info_top{
+            width: 100%;
+            height: 50px;
+            font-size: 13px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            position: relative;
+            border-top: 2px solid rgba(128, 128, 128, 0.388);
+           
+        }
+
+        .info_top img{
+            position: relative;
+            width: 30px;
+            height: fit-content;
+            vertical-align: middle;
+            border-radius: 50px;
+            height: 30px;
+            top: -10px;
+          
+        }
+        .share_post{
+            position: absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+
+
+        /*content post*/
+        .title_post{
+            width: 80%;
+            font-size: 35px;
+           
+
+        }
+        .subTitle_post{
+            width: 80%;
+            font-size: 20px;
+            font-weight: 500;
+           
+
+        }
+    .img_post{
+
+       width: 100%;
+       height: 600px;
+    }  
+    
+    .redes_footer{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        width: 100%;
+        height: 50px;
+        border-top:1px solid gray;
+        border-bottom:1px solid gray;
+       
+        
+    }
+    .redes_footer a{
+        position: relative;
+       top: 10px;
+       
+    }
+    .div_post_react{
+        width: 100%;
+        height: 50px;
+        position: relative;
+        padding-top: 10px;
+    }
+    .like_post{
+        position: absolute;
+        right: 5px;
+        cursor: pointer;
+       
+
+    }
+
+    
+
+@media (max-width: 600px) {
+    #titulo{
+        font-size: 18px;
+        
+         
+     }
+     #phone{
+        width: 25%;
+        height: 20px;
+        overflow: hidden;
+        font-size: 13px;
+        right: 15%;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif;
+     }
+     #ayuda{
+        right: 3%;
+        
+     }
+
+     .items{
+        width: 80px;
+        height: fit-content;
+        position: relative;
+       
+     } 
+     #cont_subMenu{
+        width: 80%;
+        height: fit-content;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        bottom: 15px;
+        justify-content: center;
+        gap: 30px;
+       
+    }   
+     #videoSlider{
+        position: relative;
+           
+            top: 50px;
+           
+        }
+        #float_messageDomo.active{
+            visibility: hidden;
+           
+        
+        }
+     .float_message{
+       
+        width: 350px;
+        height: 220px;
+    padding-bottom: 5px;}
+    #cotizar H2{
+        font-size: 20px;
+    }
+    #cotizar p{
+        
+         position: relative;
+         width: 90%;
+         height: fit-content;
+         font-size: 15px;
+      
+         top: 5px;
+         font-family: "Raleway", sans-serif;
+         font-weight: 400;
+         
+         box-shadow: 5px 5px 5px 5px rgba(130, 126, 126, 0.534);
+     }
+    #cotizar button{
+
+    width: 100%;
+    font-size: 10px;
+    height: 50px;
+    margin: auto;
+    vertical-align: middle  ;
+    left:100% ;
+    }
+    #cotizar {
+        display: flex;
+        height: fit-content;
+       position: relative;
+       top: 50px;
+       padding-bottom: 5px;
+     background-position:28%;
+
+        }
+    #descrip_video{
+display: none;
+    }
+    .item_solution{
+        width:100% ;
+       
+        height: 150px;
+       
+    }
+    .item_solution button{
+        margin-top: 10px;
+    }
+    #pros{
+        position: relative;
+        top: 150px;
+       
+      
+    }
+    #description_pros{
+        font-size: 15px;
+        width: 80%;
+    }
+    #img_pros,#img_pros1{
+        width: 90%;
+        height: 220px;
+    }
+    
+
+    #sub1 p:nth-child(1){
+        font-size: 35px;
+        line-height: 35px;
+    }
+    
+    #sub1 :nth-child(2){
+        font-size: 25px;
+       
+        
+      
+    }
+    
+    #sub1 :nth-child(3){
+        font-size: 20px;
+       
+      
+    }
+    
+        .p_medio{
+            font-size: 25px;
+            width: 90%;}
+            #redes{
+
+                bottom: 50%;
+            }
+            
+            #chat_whatsapp{
+                
+                width: 300px;}
+
+
+
+
+                /*   display blog*/
+
+
+                #principal_post{
+                    width: 95%;
+                    height: fit-content;
+                    margin: auto;
+                    border: 1px solid black;
+                    
+        
+        
+                }
+                
+                #more_cont{
+                  
+                    width: 100%;
+                 
+                }
+               
+                #sas{
+                    
+                    font-size: 10px;
+                }
+                #principal_post.active{
+                    width: 90%;
+                    border: 0;
+            
+                }
+                .img_post{
+
+                   
+                    height: 400px;
+                 }  
+              
+
+        #contact_us{
+            background-position-y:50% ;
+            background-position-x:100% ;
+            background-size: 200%;
+            flex-direction: column;
+            gap: 40px;
+            
+
+        }
+
+        #contact_us #sub1,#sub2{
+            top: 0;
+            width: 90%;
+        }
+        #contact_us #sub1,#sub2{
+            margin: auto;
+        }
+        #contact_us p{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        #contact_us #p_contact{
+            font-weight: 500;
+           line-height: 25px;
+           
+        }
+        #contact_us img{
+            width: 100%;
+            height: 200px;
+
+        }
+        #contact_us a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+            }

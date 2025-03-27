@@ -310,7 +310,7 @@ async function obtenerBlogs() {
                  var Descript_post = document.createElement("p");
         
                  hashtag_post.id="hashtag_post"
-                 Date_post.innerHTML=posts[i].date;
+                 Date_post.innerHTML=posts[1].date;
                  Title_post.innerHTML=blog.titulo
                  hashtag_post.innerHTML="#NexoSecurity"
                  Descript_post.innerHTML=blog.fecha
@@ -320,7 +320,7 @@ async function obtenerBlogs() {
                  var React_post = document.createElement("a");
                  var iconReact_post = document.createElement("box-icon");
                 
-                 React_post.innerHTML=  "<box-icon  name='like'></box-icon> " +posts[i].reactions
+                 React_post.innerHTML=  "<box-icon  name='like'></box-icon> " +posts[1].reactions
         
                 
                  info_post.appendChild(Date_post)
