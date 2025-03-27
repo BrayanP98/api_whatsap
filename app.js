@@ -164,6 +164,8 @@ app.post("/webhook", async (req, res) => {
         }
       }
     }else {
+      console.log(user)
+
     return sendOP("❌ No tienes permisos para publicar blogs.", from, phone_number_id);
   }
   

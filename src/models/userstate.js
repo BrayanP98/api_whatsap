@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 
 const userSchema= new Schema({
-  rol: String,     
+  role: String,     
   from: String,      // Número del usuario
   state: String,     // Estado actual ("esperando_titulo", "esperando_parrafo", etc.)
   blogData: [
