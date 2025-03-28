@@ -8,6 +8,7 @@ const userSchema= new Schema({
     {
       fecha: String,
       titulo: String,
+      url: String,
       parrafo: String
     }
   ],

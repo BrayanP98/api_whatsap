@@ -126,23 +126,29 @@ app.post("/webhook", async (req, res) => {
       if (text === "publicar_blog") {
         user.state = "esperando_titulo";
         await user.save();
-        return sendOP("DomoBot🤖 dice: \nPor favor ingresa el título del blog:", from, phone_number_id);
+        return sendOP("NexoBot🤖 dice: \nPor favor ingresa el título del blog:", from, phone_number_id);
       }
 
       if (user.state === "esperando_titulo") {
         cont_blog.fecha=new Date().toLocaleDateString();
         cont_blog.titulo=text
+        user.state = "esperando_img";
+        await user.save();
+        return sendOP("NexoBot🤖 dice: \nAhora ingrese la URL de la imagen del blog:", from, phone_number_id);
+      }
+      if (user.state === "esperando_img") {
+        
+        cont_blog.Url = text;
         user.state = "esperando_parrafo";
         await user.save();
-        return sendOP("DomoBot🤖 dice: \nAhora ingresa el primer párrafo del blog:", from, phone_number_id);
+        return sendOP("NexoBot🤖 dice: \n por favor ingresa el parrafo del blog:", from, phone_number_id);
       }
-
       if (user.state === "esperando_parrafo") {
         
         cont_blog.parrafo = text;
         user.state = "en espera";
         await user.save();
-        return sendOP("DomoBot🤖 dice: \n¿Deseas publicar tu blog? (Responde 'si' o 'no')", from, phone_number_id);
+        return sendOP("NexoBot🤖 dice: \n¿Deseas publicar tu blog? (Responde 'si' o 'no')", from, phone_number_id);
       }
 
       if (user.state === "en espera") {
@@ -156,11 +162,11 @@ app.post("/webhook", async (req, res) => {
 
           user.state = "ninguno";
           await user.save();
-          return sendOP("DomoBot🤖 dice: \n✅ Tu post ha sido publicado con éxito.", from, phone_number_id);
+          return sendOP("NexoBot🤖 dice: \n✅ Tu post ha sido publicado con éxito.", from, phone_number_id);
         } else {
           user.state = "ninguno";
           await user.save();
-          return sendOP("DomoBot🤖 dice: \n❌ Publicación cancelada.", from, phone_number_id);
+          return sendOP("NexoBot🤖 dice: \n❌ Publicación cancelada.", from, phone_number_id);
         }
       }//////////////////////////////////////// fin publicar blog*////////////////////////
     }else {
@@ -174,7 +180,7 @@ app.post("/webhook", async (req, res) => {
            return await sendMenuOptions(from, phone_number_id,name);
         }
       
-        return sendOP("DomoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
+        return sendOP("NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
         
       }
       if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
