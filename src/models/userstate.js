@@ -8,8 +8,8 @@ const userSchema= new Schema({
     {
       fecha: String,
       titulo: String,
-      url: String,
-      parrafo: String
+      imagen: String,
+      parrafo: String,
     }
   ],
   chats: [

@@ -138,7 +138,7 @@ app.post("/webhook", async (req, res) => {
       }
       if (user.state === "esperando_img") {
         
-        cont_blog.Url = text;
+        cont_blog.imagen= text;
         user.state = "esperando_parrafo";
         await user.save();
         return sendOP("NexoBot🤖 dice: \n por favor ingresa el parrafo del blog:", from, phone_number_id);
