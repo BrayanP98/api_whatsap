@@ -49,11 +49,11 @@ async function obtenerBlogs() {
             try {
                 const response = await fetch("https://api-whatsap.onrender.com/api/blogs"); // Ajusta la URL si es necesario
                 const data = await response.json();
-                console.log(data,response,data.success)
+                
                 
                 if (data) {
                     
-
+                    
                     pintar_post(data)
                        pintar(data)
                 
@@ -283,10 +283,7 @@ async function obtenerBlogs() {
               
             
 
-                        data.forEach(blog => {
-
-            
-
+             data.blogsOrdenados.forEach((blog,index) => {
 
                 var  other_post=document.createElement("div");
                 other_post.className="other_post";
@@ -297,7 +294,7 @@ async function obtenerBlogs() {
                         top:0,
                         behavior:"smooth"
                        })
-                    pintar(i)
+                    pintar(index)
 
                 }
         
