@@ -363,12 +363,12 @@ app.get("/api/blogs", async (req, res) => {
 const blogs = users.flatMap(user => user.blogData);
 
 // Ordenar los blogs por fecha (de más reciente a más antiguo)
-const blogs1 = blogs.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+const blogsOrdenados = blogs.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
 // Obtener el último blog (el más reciente)
 const ultimoBlog = blogsOrdenados.length > 0 ? blogsOrdenados[0] : null;
 
-console.log("Último blog:",blogs1, ultimoBlog);
+console.log("Último blog:",blogsOrdenados, ultimoBlog);
 
   } catch (error) {
     res.status(500).json({ error: "Error al obtener los blogs" });
