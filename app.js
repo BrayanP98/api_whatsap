@@ -367,8 +367,8 @@ const blogsOrdenados = blogs.sort((a, b) => new Date(b.fecha) - new Date(a.fecha
 
 // Obtener el último blog (el más reciente)
 const ultimoBlog = blogsOrdenados.length > 0 ? blogsOrdenados[0] : null;
+res.json({ success: true, blogsOrdenados, ultimoBlog });
 
-console.log("Último blog:",blogsOrdenados, ultimoBlog);
 
   } catch (error) {
     res.status(500).json({ error: "Error al obtener los blogs" });
