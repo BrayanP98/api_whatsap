@@ -288,13 +288,13 @@ async function obtenerBlogs() {
                 var  other_post=document.createElement("div");
                 other_post.className="other_post";
                 var  ImgOther_post=document.createElement("img");
-                ImgOther_post.setAttribute("src",posts[1].image)
+                ImgOther_post.setAttribute("src",blog.imagen)
                 ImgOther_post.onclick=function(){
                     window.scrollTo({
                         top:0,
                         behavior:"smooth"
                        })
-                    pintar(index)
+                    pintar(data,index)
 
                 }
         
@@ -307,7 +307,7 @@ async function obtenerBlogs() {
                  var Descript_post = document.createElement("p");
         
                  hashtag_post.id="hashtag_post"
-                 Date_post.innerHTML=posts[1].date;
+                 Date_post.innerHTML=blog.fecha;
                  Title_post.innerHTML=blog.titulo
                  hashtag_post.innerHTML="#NexoSecurity"
                  Descript_post.innerHTML=blog.fecha
@@ -340,8 +340,10 @@ async function obtenerBlogs() {
         
         
         var principal_post=document.getElementById("principal_post");
-    
-        function pintar(data){
+
+
+    ////////////////////////////////////////////////////////////////////////////pintar////////////////////////
+        function pintar(data, index){
            const antes=principal_post.innerHTML
 
          var  title_new=document.getElementById("title_new")
@@ -353,6 +355,9 @@ async function obtenerBlogs() {
             this.style="cursor=none"
             principal_post.innerHTML=""
             content_post2.innerHTML=""
+
+
+/
             pintar_post()
          }
             principal_post.style="opacity:0.5"
@@ -371,7 +376,7 @@ async function obtenerBlogs() {
             name_creador.innerHTML="Nexo"
             var date_post=document.createElement("a")
            date_post.className="date_post"
-           date_post.innerHTML=data.ultimoBlog.fecha;
+           date_post.innerHTML=data.blogsOrdenados[index].fecha;
             var late_post=document.createElement("a")
            late_post.className="late_post"
            late_post.innerHTML=" 5 min de lectura"
@@ -387,25 +392,25 @@ async function obtenerBlogs() {
 
           var title_post=document.createElement("h2")
           title_post.className="title_post"
-        title_post.innerHTML=data.ultimoBlog.titulo;
+        title_post.innerHTML=data.blogsOrdenados[index].titulo;
 
           var subTitle_post=document.createElement("h4")
           subTitle_post.className="subTitle_post"
-           subTitle_post.innerHTML=data.ultimoBlog.titulo;
+           subTitle_post.innerHTML=data.blogsOrdenados[index].titulo;
          
          
            var img_post=document.createElement("img");
           img_post.className="img_post"
-          img_post.setAttribute("src",data.ultimoBlog.imagen)
+          img_post.setAttribute("src",data.blogsOrdenados[index].imagen)
           var intro_post=document.createElement("p");
           intro_post.className="intro_post"
-          intro_post.innerHTML=data.ultimoBlog.titulo;
+          intro_post.innerHTML=data.blogsOrdenados[index].titulo;
           var cont_post=document.createElement("div");
           cont_post.className="cont_post"
           //var contentTitle_post=document.createElement("h3")
           var contentparraf_post=document.createElement("p")
           
-                contentparraf_post.innerHTML=data.ultimoBlog.parrafo
+                contentparraf_post.innerHTML=data.blogsOrdenados[index].parrafo
 
                 
                 cont_post.appendChild(contentparraf_post)
