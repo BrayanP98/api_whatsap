@@ -51,7 +51,7 @@ async function obtenerBlogs() {
                 const data = await response.json();
                 
                 
-                if (data) {
+                if (data.success) {
                     
                     
                     pintar_post(data)
@@ -230,10 +230,10 @@ async function obtenerBlogs() {
             var principal_post=document.getElementById("principal_post");  
              /////primer post/////
              var   img_top=document.createElement("img"); 
-             img_top.setAttribute("src",posts[0].image)
+             img_top.setAttribute("src",data.ultimoBlog.imagen)
              img_top.id="img_top";
              img_top.onclick= function(){
-                pintar(0)
+                pintar(data,0)
              }
              
              var   info_post=document.createElement("div"); 
@@ -243,17 +243,17 @@ async function obtenerBlogs() {
              date_post.id="date_post"
 
              var  date_postA=document.createElement("a");  
-             date_postA.innerHTML=posts[0].date
+             date_postA.innerHTML=data.ultimoBlog.fecha
              var  date_postA1=document.createElement("a");  
 
              date_post.appendChild(date_postA)
              date_post.appendChild(date_postA1)
 
              var  name_post=document.createElement("h3");
-             name_post.innerHTML=posts[0].nombre
+             name_post.innerHTML=data.ultimoBlog.titulo
              var  descript_post=document.createElement("p");   
              descript_post.id="descript_post"
-             descript_post.innerHTML=posts[0].descrip
+             descript_post.innerHTML=data.ultimoBlog.titulo
 
 
              
