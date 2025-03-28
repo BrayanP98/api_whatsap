@@ -357,9 +357,19 @@ app.post("/cotizar", async(req, res) => {
 
 app.get("/api/blogs", async (req, res) => {
   try {
+
+    
     const users = await UserState.find();
-    const blogs = users.flatMap(user => user.blogData);
-    res.json(blogs);
+const blogs = users.flatMap(user => user.blogData);
+
+// Ordenar los blogs por fecha (de más reciente a más antiguo)
+const blogs = blogs.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+
+// Obtener el último blog (el más reciente)
+const ultimoBlog = blogsOrdenados.length > 0 ? blogsOrdenados[0] : null;
+
+console.log("Último blog:",blogs, ultimoBlog);
+
   } catch (error) {
     res.status(500).json({ error: "Error al obtener los blogs" });
   }
