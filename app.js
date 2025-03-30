@@ -119,7 +119,10 @@ async function chatWithOpenAssistant(text) {
   }
 }
 
-
+async function processWhatsAppMessage(from, text) {
+  const response = await chatWithOpenAssistant(text);
+  ContentVisibilityAutoStateChangeEvent.log(response)
+}
 
 const predefinedMessages = {
   "saludo": "Hola, ¿cómo puedo ayudarte?",
@@ -262,18 +265,7 @@ app.post("/webhook", async (req, res) => {
     // Enviar respuesta por WhatsApp
    return  sendOP(responseMessage, from, phone_number_id)*/
 
-   console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
-
-   chatWithHuggingFace("Hola, ¿cómo estás?")
-   .then(respuesta => console.log("🤖 Respuesta:", respuesta))
-   .catch(err => console.error("❌ Error:", err));
-        
-      }
-      if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
-        const selectedId = mensaje.interactive.list_reply.id;
-        await handleUserSelection(from, phone_number_id, selectedId);
-        return;
-      }
+   processWhatsAppMessage(from, "Hola, ¿cómo funciona la IA?");
       
   
   }
