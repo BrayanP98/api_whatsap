@@ -104,10 +104,10 @@ io.on('connection', function(socket)  {
 //////////////////////////////prueba modelo asistente ////////////////////////
 
 
-async function chatWithHuggingFace(message) {
+async function chatWithHuggingFace(text) {
   const response = await axios.post(
       "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
-      { inputs: message },
+      { inputs: text },
       { headers: { Authorization: `Bearer ${apiKey}` } }
   );
   return response.data.generated_text;
@@ -261,8 +261,9 @@ app.post("/webhook", async (req, res) => {
 
     try {
         const responseMessage = await chatWithHuggingFace(text);
+        console.log(responseMessage);
 
-        return sendOP(responseMessage, from, phone_number_id)
+       return sendOP(responseMessage, from, phone_number_id)
     } catch (error) {
         console.error("❌ Error:", error);
         res.status(500).send("Error interno del servidor");
