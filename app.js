@@ -105,12 +105,23 @@ io.on('connection', function(socket)  {
 
 
 async function chatWithHuggingFace(text) {
-  const response = await axios.post(
-      "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
-      { inputs: text },
-      { headers: { Authorization: `Bearer ${apiKey}` } }
-  );
-  return response.data.generated_text;
+  try {
+      const response = await axios.post(
+          "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
+          { inputs: text },
+          { headers: { Authorization: `Bearer ${apiKey}` } }
+      );
+
+      // Verifica si la respuesta es válida y tiene contenido
+      if (response.data && response.data.length > 0) {
+          return response.data[0].generated_text;
+      } else {
+          return "⚠️ No se recibió una respuesta del modelo.";
+      }
+  } catch (error) {
+      console.error("❌ Error en Hugging Face API:", error.response ? error.response.data : error.message);
+      return "⚠️ Error al procesar la respuesta.";
+  }
 }
 
 
@@ -259,15 +270,9 @@ app.post("/webhook", async (req, res) => {
 
    console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
 
-    try {
-        const responseMessage = await chatWithHuggingFace(text);
-        console.log(responseMessage);
-
-       return sendOP(responseMessage, from, phone_number_id)
-    } catch (error) {
-        console.error("❌ Error:", error);
-        res.status(500).send("Error interno del servidor");
-    }
+   chatWithHuggingFace("Hola, ¿cómo estás?")
+   .then(respuesta => console.log("🤖 Respuesta:", respuesta))
+   .catch(err => console.error("❌ Error:", err));
         
       }
       if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
