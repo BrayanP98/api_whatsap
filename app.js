@@ -109,7 +109,7 @@ async function chatWithOpenAssistant(text) {
       const response = await axios.post(
           "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-6-llama-30b",
           { inputs: `Responde en español: ${text}` },
-          { headers: { Authorization: `Bearer ${HF_API_KEY}` } }
+          { headers: { Authorization: `Bearer ${apiKey}` } }
       );
 
       return response.data[0]?.generated_text || "⚠️ No se recibió respuesta del modelo.";
