@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
 
-const { getEmbedding } = require('./src/models/asistente.js');
+const { getEmbedding } = require('./model');
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
@@ -135,7 +135,7 @@ function cosineSimilarity(vecA, vecB) {
   const normB = Math.sqrt(vecB.reduce((sum, b) => sum + b * b, 0));
   return dotProduct / (normA * normB);
 }
-const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
+const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu"]
 
 
 app.post("/webhook", async (req, res) => {
@@ -227,8 +227,10 @@ app.post("/webhook", async (req, res) => {
            return await sendMenuOptions(from, phone_number_id,name);
         }
       
-        /////////////////////////////////////////////////////
-        // Obtener embedding del mensaje del usuario
+      //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
+        console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
+
+    // Obtener embedding del mensaje del usuario
     const userEmbedding = await getEmbedding(text);
 
     // Encontrar la intención más parecida
@@ -238,9 +240,7 @@ app.post("/webhook", async (req, res) => {
     console.log(`🤖 Respuesta: "${responseMessage}"`);
 
     // Enviar respuesta por WhatsApp
-    sendOP(responseMessage,from, phone_number_id)
-
-    res.sendStatus(200);
+   return  sendOP(responseMessage, from, phone_number_id)
         
       }
       if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
