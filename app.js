@@ -13,7 +13,7 @@ const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
 const { getEmbedding } = require('./src/models/asistente.js');
 
-const { getEmbedding } = require('./model');
+
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
