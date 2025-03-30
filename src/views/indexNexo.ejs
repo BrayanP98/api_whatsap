@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="/styless/style.css">
+    <link rel="icon" type="image/x-icon" href="img/logo1.png" >
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
+        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v20.0&appId=1051085026672499" nonce="XGkdd638"></script>
+        <meta name="facebook-domain-verification" content="gkkwknj0ubztlyqynjkao295kjrj84" />
+    <title>NexoSecurity</title>
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <div id="desplegable">
+                <img id="logo" src="/img/logo1.png" alt="">
+                <a id="titulo" href=""></a><a id="sas" href=""> </a>
+                <button id="btn_desplegar"><box-icon name='chevron-down' type='solid' flip='horizontal' color='#5d5454' style="background: rgba(255, 255, 255, 0.533);"></box-icon></button>
+              
+               <a  id="phone" href="tel:+573147459094">3147459094</a>
+                <a href="" id="ayuda">Ayuda</a>
+            </div>
+            <div id="subMenu">
+                <div id="cont_subMenu">
+                    <div class="items"><img src="img/camara-de-seguridad.png" alt=""> <a target="_blank" href="/cctv.html">Tranquilidad</a></div>
+                    <div class="items"><img src="img/lightbulb_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt=""> <a href="">Iluminacion  Inteligente</a></div>
+                    <div class="items"><img src="img/contacts_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt=""> <a href="">Acceso Inteligente</a></div>
+                    <div class="items"><img src="img/energy_savings_leaf_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt=""> <a href="">Ahorro Inteligente</a></div>
+                    <div class="items"><img src="img/pngwing.com.png" alt=""><a target="_blank" href="/blog.html">Blog</a></div>
+                    <div class="items"><img src="img/leadership_2903299.png" alt=""> <a target="_blank" href="/nosotros.html">Nosotros</a></div>
+                </div>
+               
+
+            </div>
+            <div class="float_message" id="float_message">
+
+                <img src="img/logo1.png"    alt="">
+                <div class="float_text">
+                    <p>Aumenta la seguridad de tu hogar y de tu familia con un sistema CCTV de última generación.
+                        Disfruta de mayor tranquilidad y reduce el riesgo de robos e intrusiones.</p>
+
+                        <a target="_blank" href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor"><button>Contratar</button></a>
+                </div>
+            </div>
+            <div class="float_message" id="float_messageDomo">
+
+                <img src="img/lognexo1.png" alt="">
+                <div class="float_text">
+                    <p>Optimizar el confort y la seguridad del hogar mediante la tecnología. Controla y gestiona todos los aspectos de la vivienda desde un solo dispositivo.</p>
+
+                        <a target="_blank" href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor"><button>Contratar</button></a>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+
+            var btn_despegar= document.getElementById("btn_desplegar");
+            var div_menu= document.getElementById("menu")
+            var div_subMenu= document.getElementById("subMenu")
+            btn_despegar.onclick= function(){
+                div_menu.classList.toggle("active")
+
+                div_subMenu.classList.toggle("visible")
+                cerrar()
+                
+            }
+
+           function cerrar(){
+            window.addEventListener('click', function(e){
+
+                if (div_menu.contains(e.target)){
+                
+              } else{
+                div_menu.classList.remove("active")
+                div_subMenu.classList.remove("visible")
+              }
+            })
+           }
+           function cerrarFloat(){
+            window.addEventListener('click', function(e){
+            var div_float=document.getElementById("float_message") 
+            var div_messageDomo=document.getElementById("float_messageDomo")
+                if (div_menu.contains(e.target)){
+                
+              } else{
+                div_float.classList.remove("active")
+                div_messageDomo.classList.remove("active")
+                
+              }
+            })
+           }
+           const showOnPx = 500;
+           const showOnPx1 = 2800;
+           const scrollContainer = () => {
+            return document.documentElement || document.body;
+          };
+          var float_message=document.getElementById("float_message");
+          var float_messageDomo=document.getElementById("float_messageDomo")
+
+           document.addEventListener("scroll", () => {
+           
+            if (scrollContainer().scrollTop >showOnPx&&scrollContainer().scrollTop <1300) {
+                float_message.classList.add("active")
+                cerrarFloat()
+            } else if(scrollContainer().scrollTop >showOnPx1&&scrollContainer().scrollTop <3300){
+                float_messageDomo.classList.add("active")
+            }else {
+                float_message.classList.remove("active")
+                float_messageDomo.classList.remove("active")
+                cerrarFloat()
+            }
+            
+            
+          })
+          
+        </script>
+        
+<style>
+   
+</style>
+
+    </header>
+<div class="conrainer">
+   <div id="cont_video"> <video id="videoSlider" autoplay muted  src="https://www.niceforyou.com/sites/default/files/2024-02/hero.mp4" ></video>
+   
+
+<p id="descrip_video">La domótica es la automatización de un hogar, que permite controlar y gestionar dispositivos y sistemas de una vivienda de forma remota, ya sea a través de una aplicación móvil, comandos de voz o una interfaz centralizada</p>
+
+</div>
+ 
+ 
+    <script>
+
+    var video1=[
+      "https://www.niceforyou.com/sites/default/files/2024-02/hero.mp4",
+      "https://www.niceforyou.com/sites/default/files/2023-12/clip-shutters.mp4",
+    "https://cdn.savant.com/video/GEL_Savant_LightingHypeVideo_020822.mp4",
+    "https://cdn.savant.com/video/Shades+Hero+Video.mp4",
+    "https://cdn.savant.com/video/9027_Savant_AnthemVideo_SHORT.m4v",
+  
+
+
+]
+var des_video1=[
+"La domótica es una aliada fundamental para reducir el consumo energético en nuestros hogares. Al automatizar sistemas como la iluminación, la climatización y los electrodomésticos, podemos optimizar su funcionamiento y evitar el desperdicio de energía. ",
+"La domótica es la automatización de un hogar, que permite controlar y gestionar dispositivos y sistemas de una vivienda de forma remota, ya sea a través de una aplicación móvil, comandos de voz o una interfaz centralizada",
+"El CCTV, o circuito cerrado de televisión, es un sistema de seguridad que utiliza cámaras para monitorear áreas específicas, tanto en interiores como en exteriores. Estas cámaras capturan imágenes en tiempo real que pueden ser visualizadas y grabadas para su posterior análisis.",
+"La domótica es una aliada fundamental para reducir el consumo energético en nuestros hogares. Al automatizar sistemas como la iluminación, la climatización y los electrodomésticos, podemos optimizar su funcionamiento y evitar el desperdicio de energía. ",
+"La domótica es una aliada fundamental para reducir el consumo energético en nuestros hogares. Al automatizar sistemas como la iluminación, la climatización y los electrodomésticos, podemos optimizar su funcionamiento y evitar el desperdicio de energía. "
+
+
+]
+
+var cont = 0;
+var descrip_video1= document.getElementById("descrip_video");
+descrip_video1.innerText=des_video1[0]
+
+    
+    document.getElementById("videoSlider").addEventListener("ended", function(){
+      
+      
+        cont=cont +1
+        
+       if(cont<video1.length){
+        console.log(cont)
+        this.setAttribute("src",video1[cont])
+        descrip_video1.innerText=des_video1[cont]
+       }else{
+        cont = 0;
+        this.setAttribute("src",video1[cont])
+       }
+      });
+ </script>
+
+<section id="solutions">
+    <h2>Soluciones personalizadas</h2>
+    <div id="cont_solutions">
+        <div class="item_solution" style="background-image: url('https://cyc-tecnologia.com/wp-content/uploads/2015/07/videoseguridad-620x420@2x.jpg');">
+        
+            <button class="button_solution"> <box-icon name='menu'  color= 'white' ></box-icon>Seguridad electronica</button>
+        </div>
+        <div class="item_solution" style="background-image: url('https://alullan.es/wp-content/uploads/2019/11/domotica-en-el-hogar-beneficios-y-ventajas-980x461.jpg');">
+            <button class="button_solution"><box-icon name='menu' color= 'white' ></box-icon>Automatizacion residencial.</button>
+        </div>
+        <div class="item_solution" style="background-image: url('https://controlaccesosysistemas.com/wp-content/uploads/2022/05/teclado-control-de-accesos.jpg');">
+            <button class="button_solution"><box-icon name='menu' color= 'white' ></box-icon>Control de acceso</button>
+        </div>
+        <div class="item_solution" style="background-image: url('https://media.istockphoto.com/id/1322507941/es/foto/smartphone-de-control-de-hogar-inteligente-concepto-de-internet-de-las-cosas-iot.jpg?s=612x612&w=0&k=20&c=kqyPevdMmifsxc6xGewJUnwAm6umGh1E-qOgUYF-lPw=');">
+            <button class="button_solution"><box-icon name='menu' color= 'white'></box-icon>Sistemas de alarma</button>
+        </div>
+    </div>
+
+    <p class="p_medio">Disfruta de la tranquilidad de saber que tu casa está protegida con la última tecnología en vigilancia. Monitorea y controla remotamente tus cámaras para una mayor seguridad y comodidad.</p>
+    <div id="cotizar" style="background-image: url('https://media.istockphoto.com/id/1431874851/es/foto/ingenier%C3%ADa-trabajando-con-inspecci%C3%B3n-de-dibujos-en-computadora-port%C3%A1til-en-la-oficina-y.jpg?s=1024x1024&w=is&k=20&c=7gBMfjK5u28JY2O83IkFlFr5vXnbDbOFKg7CzbsYLMg=')">
+        <h2>
+            COTIZACION PERSONALIZADA SEGUN TU NECECESIDAD
+        </h2>
+        <p>Si tiene en planificación un proyecto que incluye tecnología avanzada y no sabe por dónde empezar o cómo poder implementar en su empresa, con las mejores garantías, fiabilidad y un control sencillo y eficaz. Tenemos a su disposición nuestra entrevista de diagnóstico en la cuál le orientamos sobre las mejores opciones para su proyecto.</p>
+       <a href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor" target="_blank"> <button><box-icon name='edit' color='#f1e7e7' ></box-icon></box-icon>Solicitar Cotizacion</button></a>
+    </div>
+   
+</section>
+<section id="pros"><h3>Seguridad y Proteccion</h3>
+<h2>Tranquilidad, por dentro y por fuera.</h2>
+<img id="img_pros" src="https://lh3.googleusercontent.com/6HBeKh5k2WMGH1mAUQAhnu-zZXf8-GN1U0WaVYNq19cCB2S7oNi_OUpoy2MjTHdbT5TPAsaoLEuvgnn6cq074NIGETR1Q9dz998=rw-e365-nu-w1500" alt="">
+<div class="selecPros">
+
+    <button class="button_pros" id="button_pros1">Sepa lo que está sucediendo, las 24 horas del día.</button>
+    <button class="button_pros" id="button_pros2">Controla tu casa, incluso cuando estés lejos.</button>
+    <button class="button_pros" id="button_pros3">Revise el historial de la cámara desde su navegador.</button>
+</div>
+<p id="description_pros">Los timbres y las cámaras pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes.</p>
+
+
+<p class="p_medio">Gestiónalos todos con un simple toque, una sola orden de voz o incluso deja que las cosas ocurran automáticamente sin necesidad de que interactúes.</p>
+<h3>Energía y ahorro</h3>
+<h2>Haz del ahorro de energía una rutina diaria.</h2>
+<img id="img_pros1" src="https://escuderodissenyblog.com/wp-content/uploads/2022/12/termostato-de-google.jpg?w=1845&h=762&crop=1" alt="">
+
+<div class="selecPros">
+
+    <button class="button_pros" id="button_pros1_1">Comodidad ecológica</button>
+    <button class="button_pros" id="button_pros1_2">Aprovecha una energía más limpia o menos costosa.</button>
+    <button class="button_pros" id="button_pros1_3">Detecte muchos problemas del sistema HVAC a tiempo.</button>
+</div>
+<p id="description_pros">Los timbres y las cámaras  pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes.</p>
+<!--<div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61563564633472" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/profile.php?id=61563564633472" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/profile.php?id=61563564633472">Automatic Home Solutions</a></blockquote></div>-->
+</section>
+
+<div id="contact_us">
+    <svg viewbox="0 0 100 25">
+        <path fill="rgb(0, 98, 255)" opacity="0.5" d="M0 30 V15 Q30 3 60 15 V30z" />
+        <path fill=" rgb(0, 51, 255)"opacity="0.8"  d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
+    </svg>
+    <div id="contact_us1">
+        <picture>
+
+            <source media="(min-width: 768px)" srcset="https://www.niceforyou.com/sites/default/files/styles/1920x710_crop/public/2024-02/contact-man-d.jpg?itok=YCMlwHdq" data-srcset="https://www.niceforyou.com/sites/default/files/styles/1920x710_crop/public/2024-02/contact-man-d.jpg?itok=YCMlwHdq">
+        </picture>
+    </div>
+   
+    <div id="sub1">
+        <p>Tienes alguna pregunta?</p>
+        <p>Pregunta lo que quieras!</p>
+        <p>Estamos para brindarte la mejor ayuda</p>
+       
+   
+       
+        <div id="button_contact">
+            <a  href="tel:+573147459094" id="contact_call"><button>Llamar</button></a>
+            <a href="" id="contact_mail"><button>e-mail</button></a>
+        </div>
+
+
+</div>
+
+    <div id="sub2"> 
+        <h4>Estamos aquí para ti.</h4>
+        <p id="p_contact">
+            La iluminación, el sonido, la seguridad pueden ser complicados. Podemos ayudarle. Póngase en contacto con nosotros si tiene preguntas sobre cómo encontrar los productos adecuados proyecto, o cotizaciones personalizadas. </p>
+           
+   
+        </div>
+      
+           
+          
+
+</div>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+   
+   
+    #cont_video{
+        position: relative;
+        
+        width: 100%;
+        height: fit-content;
+       
+    }
+    #descrip_video{
+        width: 30%;
+      right: 5%;
+      overflow: hidden;
+       position: absolute;
+       bottom: 18%;
+       font-weight: 300;
+       color: rgb(250, 251, 251);
+       font-size: 25px;
+       font-family: "Raleway", sans-serif;
+       word-wrap: break-word;
+       border-bottom: 3px solid white;padding-bottom: 15px;
+    }
+    #descrip_video:hover{
+        background: rgba(128, 128, 128, 0.529);
+    }
+ 
+    #pros h3{
+        font-size: 25px; 
+        font-weight: lighter;
+    }
+    #pros h2{
+
+        font-size: 40px;
+    }
+    #img_pros::after{
+        transition: all 1s ease-out;
+    }
+   
+    .selecPros{
+        position: relative;
+        width: 90%;
+        height: fit-content;
+        
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+   .button_pros{
+    position: relative;
+ width: 300px;
+ height: 100px;
+ top: 0;
+ display: block;
+ border: 0;
+
+ font-size: 15px;
+ color: rgb(51, 49, 49);
+ font-weight: bolder;
+   }
+   .button_pros:hover{
+    background-color: rgba(69, 64, 64, 0.375);
+   }
+  
+  
+</style>
+<script>
+
+    var pros=[
+    
+    {
+        id:"button1",
+        img:"",
+        parrafo:""
+
+    },
+    {
+        id:"button2",
+        img:"",
+        parrafo:""
+
+    },
+    {
+        id:"button3",
+        img:"",
+        parrafo:""
+
+    },
+    ]
+    var button_pros1=document.querySelector("#button_pros1")
+    var button_pros2=document.querySelector("#button_pros2")
+    var button_pros3=document.querySelector("#button_pros3")
+    var img_pros=document.querySelector("#img_pros")
+    var description_pros=document.querySelector("#description_pros")
+    button_pros1.onclick=function(){
+        img_pros.setAttribute("src","https://lh3.googleusercontent.com/6HBeKh5k2WMGH1mAUQAhnu-zZXf8-GN1U0WaVYNq19cCB2S7oNi_OUpoy2MjTHdbT5TPAsaoLEuvgnn6cq074NIGETR1Q9dz998=rw-e365-nu-w1500")
+       description_pros.innerHTML="Los timbres y las cámaras  pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes."
+     this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+     button_pros2.style="border-bottom: none;"
+      button_pros3.style="border-bottom: none;"
+    
+    }
+    button_pros2.onclick=function(){
+        this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+       img_pros.setAttribute("src","https://lh3.googleusercontent.com/InpislWF4opK-HjHhTiQ7kSxVpp0pLiqbFQmcMr7J1w4PXfe4hg6dAkVOU4ordi6bXoqwOd200JYFS0BqVFuTNrIa9YnAbygfLE=rw-e365-nu-w1500")
+    description_pros.innerHTML="Controla tus cámaras y tu timbre  con la aplicación Google Home. Ahora puedes estar en cualquier lugar y seguir informado."
+    
+       button_pros1.style="border-bottom: none;"
+      button_pros3.style="border-bottom: none;"
+}
+    button_pros3.onclick=function(){
+        img_pros.setAttribute("src"," https://lh3.googleusercontent.com/OBumTPFbXpA9dewx9-aK0IfsRB0L1I4y5nr8RwEDDCkCxdD8CkATj2O3PFe3UvYtxau4WibcqENph7YA7xBVWHdHhqH96GJYHK8=rw-e365-nu-w1500")
+       description_pros.innerHTML="Puede ver el historial de su cámara como eventos o en una línea de tiempo, además de descargar clips directamente desde su navegador.s"
+     this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+      button_pros1.style="border-bottom: none;"
+      button_pros2.style="border-bottom: none;"
+    }
+
+
+
+
+    var button_pros1_1=document.querySelector("#button_pros1_1")
+    var button_pros1_2=document.querySelector("#button_pros1_2")
+    var button_pros1_3=document.querySelector("#button_pros1_3")
+    var img_pros1=document.querySelector("#img_pros1")
+    button_pros1_1.onclick=function(){
+        img_pros1.setAttribute("src","https://escuderodissenyblog.com/wp-content/uploads/2022/12/termostato-de-google.jpg?w=1845&h=762&crop=")
+       description_pros.innerHTML="Los timbres y las cámaras  pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes."
+     this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+     button_pros1_2.style="border-bottom: none;"
+      button_pros1_3.style="border-bottom: none;"
+      
+    
+    }
+    button_pros1_2.onclick=function(){
+        img_pros1.setAttribute("src","https://lh3.googleusercontent.com/diksUNfRCmtsUCRWT85cNznaLUNTleK3O3-EV42TGJZAWULE_nK8hLmRiTNryYTpA7bm_c0X3fvcEhWdCJ1Sy4RHFRefnakKig=rw-e365-nu-w1500")
+       description_pros.innerHTML="Los timbres y las cámaras  pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes."
+     this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+     button_pros1_1.style="border-bottom: none;"
+      button_pros1_3.style="border-bottom: none;"
+      
+    
+    }
+    button_pros1_3.onclick=function(){
+        img_pros1.setAttribute("src","https://escuderodissenyblog.com/wp-content/uploads/2022/12/termostato-de-google.jpg?w=1845&h=762&crop=")
+       description_pros.innerHTML="Los timbres y las cámaras  pueden detectar la diferencia entre una persona, un animal y un vehículo. Serás el primero en saberlo, con notificaciones de actividades importantes."
+     this.style="border-bottom: 3px solid rgb(64, 62, 62);"
+     button_pros1_2.style="border-bottom: none;"
+      button_pros1_1.style="border-bottom: none;"
+      
+    
+    }
+</script>
+</div>
+<div id="chat_whatsapp">
+   <div id="header_chat"> <h4><box-icon name='whatsapp' type='logo' color='#faeded' ></box-icon> WhatsApp</h4> <button id="close_chat">x</button></div>
+    <div id="chat_demo"><a id="chat_message">Quisiera realizar una cotizacion </a> <a target="_blank" href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor"><button class="send_chat"><box-icon name='send' type='solid' color='#fdfbfb' ></box-icon></box-icon></button></a> </div>
+    <div id="chat_demo"> <a id="chat_message">Quisiera solicitar una revision tecnica</a><a  target="_blank" href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor"><button  class="send_chat"><box-icon name='send' type='solid' color='#fdfbfb' ></box-icon></button></a> </div>
+    <div id="chat_demo"> <a id="chat_message">   Informacion sobre productos y servicios</a> <a target="_blank" href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor"><button class="send_chat"><box-icon name='send' type='solid' color='#fdfbfb' ></box-icon></button></a></div>
+</div>
+<a  id="" target="_blank"><button id="whatsapp"><box-icon name='whatsapp' type='logo' color='#43f111' ></box-icon></button></a>
+
+
+<script>
+   var  whatsapp=document.querySelector("#whatsapp");
+   var  chat_whatsapp=document.querySelector("#chat_whatsapp");
+ var close_chat=document.querySelector("#close_chat");
+   whatsapp.onclick=function(){
+    var anterior=this.innerHTML;
+    
+    this.innerHTML=""
+   var send_whatsapp= document.createElement("a")
+  
+    chat_whatsapp.classList.add("active");
+   // sed_whatsapp.setAttribute("href","https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor")
+   
+   close_chat.onclick=function(){
+   close()
+   }   
+
+   function close(){
+    chat_whatsapp.classList.remove("active")
+   
+    whatsapp.innerHTML=anterior
+   }
+}
+   
+/*var send_chat=document.querySelectorAll("button.send_chat");
+var chat_demo=document.querySelectorAll("a#chat_message");
+send_chat[0].addEventListener("mouseout", function( event ) {
+    chat_demo[0].classList.toggle("active")
+  });
+  send_chat[1].addEventListener("mouseout", function( event ) {
+    chat_demo[1].classList.toggle("active")
+  });
+  send_chat[2].addEventListener("mouseout", function( event ) {
+    chat_demo[2].classList.toggle("active")
+  });
+  */
+
+</script>
+
+<div id="redes">
+    <a class="item_redes" target="_blank" href="https://www.facebook.com/profile.php?id=61563564633472">Facebook<box-icon name='facebook' type='logo' color='#faeded' ></box-icon></a>
+    <a class="item_redes" href="">Instagram<box-icon name='instagram' type='logo' color='#faeded' ></box-icon></a>
+    <a class="item_redes" href="">Youtube  <box-icon name='youtube' type='logo' color='#faeded' ></box-icon></a>
+    <a class="item_redes" href="">  Linkedin  <box-icon name='linkedin-square' type='logo' color='#faeded' ></box-icon></a>
+
+</div>
+
+
+   
+</body>
+
+
+
+<footer>
+   
+    <p>Copyright 2024, ScaliwoodSoft All Rights Reserved</p>
+
+</footer>
+
+</html>
