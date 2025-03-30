@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
 
-const { getEmbedding } = require('./model');
+const { getEmbedding } = require('./src/models/asistente.js');
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
