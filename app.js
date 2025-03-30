@@ -19,7 +19,6 @@ const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
 require("./database");
-
 const save = require('./functions.js');
 
 var cont_blog={}
@@ -504,3 +503,4 @@ app.post("/v1/account/verify", (req, res) => {
 
 console.log(req,res)
 })
+

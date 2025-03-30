@@ -814,7 +814,8 @@ footer p{
             color: #122f8c;
         } 
         .cont_post p{
-            width: 80%;
+            width: 100%;
+            text-align: justify;
         }
 
 
