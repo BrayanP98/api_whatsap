@@ -121,7 +121,7 @@ async function chatWithOpenAssistant(text) {
 
 async function processWhatsAppMessage(from, text) {
   const response = await chatWithOpenAssistant(text);
-  Console.log(response)
+  console.log(response)
 }
 
 const predefinedMessages = {
