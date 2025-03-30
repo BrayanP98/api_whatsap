@@ -104,26 +104,20 @@ io.on('connection', function(socket)  {
 //////////////////////////////prueba modelo asistente ////////////////////////
 
 
-async function chatWithHuggingFace(text) {
+async function chatWithOpenAssistant(text) {
   try {
       const response = await axios.post(
-         "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
-          { inputs: text },
-          { headers: { Authorization: `Bearer ${apiKey}` } }
+          "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-6-llama-30b",
+          { inputs: `Responde en español: ${text}` },
+          { headers: { Authorization: `Bearer ${HF_API_KEY}` } }
       );
 
-      // Verifica si la respuesta es válida y tiene contenido
-      if (response.data && response.data.length > 0) {
-          return response.data[0].generated_text;
-      } else {
-          return "⚠️ No se recibió una respuesta del modelo.";
-      }
+      return response.data[0]?.generated_text || "⚠️ No se recibió respuesta del modelo.";
   } catch (error) {
-      console.error("❌ Error en Hugging Face API:", error.response ? error.response.data : error.message);
+      console.error("❌ Error en Hugging Face:", error.response ? error.response.data : error.message);
       return "⚠️ Error al procesar la respuesta.";
   }
 }
-
 
 
 
