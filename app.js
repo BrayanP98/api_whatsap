@@ -119,10 +119,7 @@ async function chatWithOpenAssistant(text) {
   }
 }
 
-async function processWhatsAppMessage(from, text) {
-  const response = await chatWithOpenAssistant(text);
-  console.log(response)
-}
+
 
 const predefinedMessages = {
   "saludo": "Hola, ¿cómo puedo ayudarte?",
@@ -264,8 +261,13 @@ app.post("/webhook", async (req, res) => {
 
     // Enviar respuesta por WhatsApp
    return  sendOP(responseMessage, from, phone_number_id)*/
+   
+    const response = await chatWithOpenAssistant(text);
+    return sendOP(response, from, phone_number_id);
+    
+  
 
-   processWhatsAppMessage(from, "Hola, ¿cómo funciona la IA?");
+   
       }
   
   }
