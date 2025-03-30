@@ -107,7 +107,7 @@ io.on('connection', function(socket)  {
 async function chatWithHuggingFace(text) {
   try {
       const response = await axios.post(
-          "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf",
+         "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
           { inputs: text },
           { headers: { Authorization: `Bearer ${apiKey}` } }
       );
