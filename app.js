@@ -11,6 +11,8 @@ const cotizar=require('./src/models/cotizaciones.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
+
+const { getEmbedding } = require('./model');
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
@@ -88,6 +90,51 @@ io.on('connection', function(socket)  {
    });
 });
 
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////prueba modelo asistente ////////////////////////
+const predefinedMessages = {
+  "saludo": "Hola, ¿cómo puedo ayudarte?",
+  "despedida": "Hasta luego, ¡que tengas un buen día!",
+  "ayuda": "Puedes preguntarme sobre tecnología, IA o lo que necesites."
+};
+
+// Embeddings precomputados de frases conocidas
+const knownEmbeddings = {};
+(async () => {
+  for (const key in predefinedMessages) {
+      knownEmbeddings[key] = await getEmbedding(predefinedMessages[key]);
+  }
+  console.log("✅ Embeddings de referencia generados.");
+})();
+
+// Función para encontrar la intención más cercana
+function findClosestIntent(userEmbedding) {
+  let bestMatch = { intent: "desconocido", similarity: 0 };
+
+  for (const key in knownEmbeddings) {
+      const similarity = cosineSimilarity(userEmbedding, knownEmbeddings[key]);
+      if (similarity > bestMatch.similarity) {
+          bestMatch = { intent: key, similarity };
+      }
+  }
+
+  return bestMatch.intent;
+}
+function cosineSimilarity(vecA, vecB) {
+  const dotProduct = vecA.reduce((sum, a, i) => sum + a * vecB[i], 0);
+  const normA = Math.sqrt(vecA.reduce((sum, a) => sum + a * a, 0));
+  const normB = Math.sqrt(vecB.reduce((sum, b) => sum + b * b, 0));
+  return dotProduct / (normA * normB);
+}
 const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","ayuda","informacion","buen día","menu"]
 
 
@@ -180,7 +227,20 @@ app.post("/webhook", async (req, res) => {
            return await sendMenuOptions(from, phone_number_id,name);
         }
       
-        return sendOP("NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id);
+        /////////////////////////////////////////////////////
+        // Obtener embedding del mensaje del usuario
+    const userEmbedding = await getEmbedding(text);
+
+    // Encontrar la intención más parecida
+    const intent = findClosestIntent(userEmbedding);
+    const responseMessage = predefinedMessages[intent] || "Lo siento, no entendí tu mensaje.";
+
+    console.log(`🤖 Respuesta: "${responseMessage}"`);
+
+    // Enviar respuesta por WhatsApp
+    sendOP(responseMessage,from, phone_number_id)
+
+    res.sendStatus(200);
         
       }
       if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
