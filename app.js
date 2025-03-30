@@ -11,6 +11,7 @@ const cotizar=require('./src/models/cotizaciones.js');
 const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
+const { getEmbedding } = require('./src/models/asistente.js');
 
 const { getEmbedding } = require('./model');
 require("./functions.js");
