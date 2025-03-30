@@ -24,7 +24,7 @@ const save = require('./functions.js');
 
 var cont_blog={}
 
-
+const apiKey = process.env.HF_API_KEY; 
 const token = "EAAO79M2kv3MBO52bofwZAOZALeGgZBC8vtdmcpEkZCdsGIuGttKy6YM3fkUTneWMAspA8XZA9yaMkDhxZC7Uh09qC14Ixyb1KI0wPjIX4iZBoR9cjRZBZC32Lsap5ebDCBxykTDZCMrXdTYvKl14ZCHrS6chZBt1uYyeULVlQLDfPdhq1Kg9HfYUgM9DfMJHojkYlZB5dCIfOsI3AfGbiYnHA";
 
 //const path= require('path');
@@ -102,6 +102,20 @@ io.on('connection', function(socket)  {
 
 
 //////////////////////////////prueba modelo asistente ////////////////////////
+
+
+async function chatWithHuggingFace(message) {
+  const response = await axios.post(
+      "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
+      { inputs: message },
+      { headers: { Authorization: `Bearer ${apiKey}` } }
+  );
+  return response.data.generated_text;
+}
+
+
+
+
 const predefinedMessages = {
   "saludo": "Hola, ¿cómo puedo ayudarte?",
   "despedida": "Hasta luego, ¡que tengas un buen día!",
@@ -229,7 +243,7 @@ app.post("/webhook", async (req, res) => {
         }
       
       //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
-        console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
+      /*  console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
 
     // Obtener embedding del mensaje del usuario
     const userEmbedding = await getEmbedding(text);
@@ -241,7 +255,18 @@ app.post("/webhook", async (req, res) => {
     console.log(`🤖 Respuesta: "${responseMessage}"`);
 
     // Enviar respuesta por WhatsApp
-   return  sendOP(responseMessage, from, phone_number_id)
+   return  sendOP(responseMessage, from, phone_number_id)*/
+
+   console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
+
+    try {
+        const responseMessage = await chatWithHuggingFace(text);
+
+        return sendOP(responseMessage, from, phone_number_id)
+    } catch (error) {
+        console.error("❌ Error:", error);
+        res.status(500).send("Error interno del servidor");
+    }
         
       }
       if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
