@@ -338,7 +338,7 @@ function addList(pos,itemEx,cant,value){
     <dialog id="modal" style="width: 600px;  height: fit-content; border:0;" >
      
 
-      <button id="cerrar_modal" style="position: absolute; top:10px; right:15px; z-index:999" >close</button>
+      <button id="cerrar_modal" style="position: fixed; top:15px; right:25px; z-index:999" >close</button>
       <button id="pdf_modal" style="position: absolute; bottom:25px; right:15px; z-index:999" >PDF</button>
       <button id="imprimir" style="position: absolute; bottom:2px; right:15px; z-index:999">Imprimir</button>
     </dialog>
@@ -600,7 +600,7 @@ cerrar_modal.onclick=function(){
   modal.showModal()
 
 
-  var pdf_modal= document.querySelector("#pdf_modal")
+  /*var pdf_modal= document.querySelector("#pdf_modal")
   pdf_modal.onclick=function(){
     html2canvas(plantilla1, {
       allowTaint: false,
@@ -616,8 +616,31 @@ cerrar_modal.onclick=function(){
       
      /* setTimeout(function(){
        location.reload()
-    }, 1000);*/
-  }
+    }, 1000);
+  }*/
+  document.querySelector("#pdf_modal").onclick = function () {
+    const modal = document.querySelector("#modal");
+
+    // Asegurar que el modal esté completamente visible antes de capturar
+    setTimeout(() => {
+        html2canvas(modal, {
+            scale: 2, // Mejora la calidad de la imagen
+            useCORS: true, // Para imágenes externas
+            windowWidth: modal.scrollWidth,
+            windowHeight: modal.scrollHeight
+        }).then(canvas => {
+            const imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+            // Definir tamaño adecuado para el PDF (A4 en pulgadas)
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210; // Ancho A4 en mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+            doc.save('Cta_cobro.pdf');
+        });
+    }, 500); // Pequeño delay para que el modal se renderice completamente
+};
 
 
 
