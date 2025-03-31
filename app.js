@@ -107,7 +107,7 @@ io.on('connection', function(socket)  {
 async function chatWithOpenAssistant(text) {
   try {
       const response = await axios.post(
-          "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-3B-Instruct",
+          "https://api-inference.huggingface.co/models/microsoft/phi-2",
           { inputs: `Responde en español: ${text}` },
           { headers: { Authorization: `Bearer ${apiKey}` } }
       );
@@ -463,7 +463,7 @@ app.get("/blog", async(req, res) => {
 app.get("/cotizar", async(req, res) => {
   res.render("cotizar.ejs")
 });
-app.get("/chats", async(req, res) => {
+app.get("/chat", async(req, res) => {
  
   res.render("index.ejs")
 
