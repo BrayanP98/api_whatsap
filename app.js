@@ -107,7 +107,7 @@ io.on('connection', function(socket)  {
 async function chatWithOpenAssistant(text) {
   try {
       const response = await axios.post(
-          "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1",
+          "https://api-inference.huggingface.co/models/deepseek-ai/DeepSeek-V3",
           { inputs: `Responde en español: ${text}` },
           { headers: { Authorization: `Bearer ${apiKey}` } }
       );
