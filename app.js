@@ -108,7 +108,7 @@ async function chatWithOpenAssistant(text) {
   try {
       const response = await axios.post(
           "https://api-inference.huggingface.co/models/google/gemma-2b-it",
-          { inputs:  ${text}` },
+          { inputs: `Responde en español: ${text}` },
           { headers: { Authorization: `Bearer ${apiKey}` } }
       );
 
