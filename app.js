@@ -104,21 +104,6 @@ io.on('connection', function(socket)  {
 //////////////////////////////prueba modelo asistente ////////////////////////
 
 
-async function chatWithOpenAssistant(text) {
-  try {
-      const response = await axios.post(
-          "https://api-inference.huggingface.co/models/google/gemma-7b",
-          { inputs: `Responde en español: ${text}` },
-          { headers: { Authorization: `Bearer ${apiKey}` } }
-      );
-
-      return response.data[0]?.generated_text || "⚠️ No se recibió respuesta del modelo.";
-  } catch (error) {
-      console.error("❌ Error en Hugging Face:", error.response ? error.response.data : error.message);
-      return "⚠️ Error al procesar la respuesta.";
-  }
-}
-
 
 
 const predefinedMessages = {
@@ -248,7 +233,7 @@ app.post("/webhook", async (req, res) => {
         }
       
       //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
-      /*  console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
+        console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
 
     // Obtener embedding del mensaje del usuario
     const userEmbedding = await getEmbedding(text);
@@ -260,10 +245,8 @@ app.post("/webhook", async (req, res) => {
     console.log(`🤖 Respuesta: "${responseMessage}"`);
 
     // Enviar respuesta por WhatsApp
-   return  sendOP(responseMessage, from, phone_number_id)*/
+   return  sendOP(responseMessage, from, phone_number_id)
    
-    const response = await chatWithOpenAssistant(text);
-    return sendOP(response, from, phone_number_id);
     
   
 
