@@ -142,6 +142,7 @@ function cosineSimilarity(vecA, vecB) {
 }
 const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu","servicio"]
 
+const despedida=["adios","gracias","hasta luego","bueno"]
 
 app.post("/webhook", async (req, res) => {
 
@@ -226,27 +227,18 @@ app.post("/webhook", async (req, res) => {
 
         var name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
         const palabras = text.split(" ");
-        const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
+        const esSaludo = palabras.some((palabra) => saludos.includes(palabra));despedida
+        const esDespedida = palabras.some((palabra) => despedida.includes(palabra));
       
         if (esSaludo) {
            return await sendMenuOptions(from, phone_number_id,name);
         }
+        if (esDespedida) {
+          return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
+       }
       
       //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
-        console.log(`📩 Mensaje recibido: "${text}" de ${from}`);
-
-    // Obtener embedding del mensaje del usuario
-    const userEmbedding = await getEmbedding(text);
-
-    // Encontrar la intención más parecida
-    const intent = findClosestIntent(userEmbedding);
-    const responseMessage = predefinedMessages[intent] || "Lo siento, no entendí tu mensaje.";
-
-    console.log(`🤖 Respuesta: "${responseMessage}"`);
-
-    // Enviar respuesta por WhatsApp
-   return  sendOP(responseMessage, from, phone_number_id)
-   
+       
     
   
 
