@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styless/styless.css">
+    <title>Chats SanJuan Electronics</title>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="https://apiwhatsap-mro6-dev.fl0.io/socket.io/socket.io.js"></script>
+   
+</head>
+<body>
+  <div id="div_notific">
+
+    <p id="txt_div_notific">mensaje enviado</p>
+</div>
+  <h1>Chats SanJuan Electronics</h1>
+  <div class="container">     
+    
+<div  id="viewMessages">
+  <div id="lateral_view"></div>
+  
+
+  <div id="viewchat">
+    <div id="chatUser">
+      
+    </div>
+    <div id="responder">
+      <input type="text" id="input_rta">
+      <button id="send_rta">Enviar</button>
+    </div>
+  </div>
+
+</div>
+<div id="sms_user">
+  <div id="sms_input">
+    <input id="number_to_send" type="text" placeholder="ingrese numero">
+    <input id="date_to_end" type="text" placeholder="fecha vencimiento">
+    <textarea name="text_sms" id="text_sms" cols="20" rows="7">su plan claro se encuentra pronto a vencer</textarea>
+  </div>
+    
+    
+    <div id="sms_buttons">
+      <button id="send_messagePaV"> Plataforma a vencer</button>
+      <button id="send_messagePv">Plataforma vencida</button>
+      <button id="send_messagePlV">Plan claro a vencer</button>
+    </div>
+
+  <div id="send_promos">
+    <h3>Promos</h3>
+    <div id="data_promo">
+      <label for="number_promo">numero clientes</label>
+      <textarea name="" id="number_promo" cols="30" rows="7"></textarea>
+      <label for="url_img_promo">URL imagen</label>
+      <textarea name="" id="url_img_promo" cols="30" rows="7"></textarea>
+      <label for="texto_promo">texto promo</label>
+      <textarea name="" id="texto_promo" cols="30" rows="7"></textarea>
+      <button id="send_promo">SEND</button>
+    </div>
+<style>
+ #data_promo{
+display: flex;
+
+ }
+
+ #vencimientos{
+
+  width: 100%;
+  height: 250px;
+  background-color: rgb(0, 157, 255);
+  position: relative;
+  top: 20px;
+  font-size: 14px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
+ #vencimientos table{
+
+width: 60%;
+height: fit-content;
+
+}
+#vencimientos table   thead th{
+
+background-color: bisque;
+border: 1px solid rgba(62, 60, 60, 0.749);
+text-decoration: solid;
+
+}
+#vencimientos table   tbody td{
+  border: 1px solid rgba(62, 60, 60, 0.749);
+
+padding: 8px 15px;
+
+}
+</style>
+
+  </div>
+  
+</div>
+<div id="vencimientos">
+<h2>Dispositivos proximos a vencer</h2>
+  <table>
+    <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Celular</th>
+          <th>Placa</th>
+          <th>Fecha Plataforma</th>
+          <th>Dias</th>
+          <th>Fecha Plan</th>
+          <th>Dias</th>
+          
+      </tr>
+  </thead>
+  <tbody id="body_dates">
+          
+       
+  </tbody>
+
+  </table>
+
+
+</div>
+  
+ 
+</div>  
+
+
+
+
+   
+      <script src="index.js"></script>
+</body>
+</html>
