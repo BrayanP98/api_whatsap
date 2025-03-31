@@ -624,23 +624,26 @@ cerrar_modal.onclick=function(){
     // Asegurar que el modal esté completamente visible antes de capturar
     setTimeout(() => {
         html2canvas(modal, {
-            scale: 2, // Mejora la calidad de la imagen
-            useCORS: true, // Para imágenes externas
-            windowWidth: modal.scrollWidth,
-            windowHeight: modal.scrollHeight
+            scale: 3, // Mayor calidad de imagen
+            useCORS: true, // Para capturar imágenes externas
+            logging: true, // Para ver errores en la consola
+            backgroundColor: "#ffffff" // Evitar fondo transparente
         }).then(canvas => {
-            const imgData = canvas.toDataURL("image/jpeg", 1.0);
+            const imgData = canvas.toDataURL("image/png");
 
-            // Definir tamaño adecuado para el PDF (A4 en pulgadas)
-            const doc = new jsPDF('p', 'mm', 'a4');
-            const imgWidth = 210; // Ancho A4 en mm
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            // Definir tamaño de PDF basado en el tamaño del canvas
+            const pdfWidth = 210; // A4 ancho en mm
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-            doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+            const doc = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]); // Ajusta el tamaño dinámicamente
+            doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
             doc.save('Cta_cobro.pdf');
+        }).catch(error => {
+            console.error("Error generando PDF:", error);
         });
-    }, 500); // Pequeño delay para que el modal se renderice completamente
+    }, 1000); // Aumentar el delay si el modal tarda en renderizarse
 };
+
 
 
 
