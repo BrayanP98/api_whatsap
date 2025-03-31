@@ -140,7 +140,7 @@ function cosineSimilarity(vecA, vecB) {
   const normB = Math.sqrt(vecB.reduce((sum, b) => sum + b * b, 0));
   return dotProduct / (normA * normB);
 }
-const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu"]
+const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu","servicio"]
 
 
 app.post("/webhook", async (req, res) => {
