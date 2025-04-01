@@ -1,6 +1,10 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const fs = require('fs');
+const Papa = require('papaparse');
+const tf = require('@tensorflow/tfjs-node');
+const natural = require('natural');
 const path= require('path');
 const body_parser = require("body-parser");
 const Image=require('./src/models/IMAGE.js');
@@ -12,7 +16,7 @@ const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
 const { getEmbedding } = require('./src/models/asistente.js');
-//const { responder } = require('./asistente');
+const { responder } = require('./asistente');
 
 
 require("./functions.js");
@@ -104,71 +108,108 @@ io.on('connection', function(socket)  {
 
 //////////////////////////////prueba modelo asistente ////////////////////////
 
+const tokenizer = new natural.WordTokenizer();
+const vocabulario = new Set();
+const maxLen = 10;
+const datos = [];
 
-
-
-// Tu token de Hugging Face
-
-
-async function generarRespuestaConAPI(pregunta) {
-  try {
-    // Realizar la solicitud a la API de Hugging Face
-    const response = await axios.post(
-      'https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium',
-      { inputs: pregunta,
-        parameters: { temperature: 0.7, max_length: 50,top_p: 0.9 } 
-       },
-      {
-        headers: { Authorization: `Bearer ${apiKey}` }
-      }
-    );
-
-    console.log("Respuesta generada:", response.data[0].generated_text);
-  } catch (error) {
-    console.error("Error al generar la respuesta:", error);
-  }
+// Cargar los datos desde el CSV
+function cargarDatosCSV(rutaArchivo) {
+    const contenido = fs.readFileSync(rutaArchivo, 'utf8');
+    return new Promise((resolve) => {
+        Papa.parse(contenido, {
+            header: true,
+            dynamicTyping: true,
+            complete: (resultado) => resolve(resultado.data),
+        });
+    });
 }
 
-// Llamar a la función con una pregunta
+// Procesar preguntas y respuestas para entrenar el modelo
+async function procesarDatos() {
+    const datosCSV = await cargarDatosCSV('src/datasets/dataset.csv'); // Actualiza la ruta al archivo CSV
+    datosCSV.forEach(({ pregunta, respuesta }) => {
+        if (typeof pregunta === 'string' && typeof respuesta === 'string') {
+            tokenizer.tokenize(pregunta).forEach(word => vocabulario.add(word));
+            tokenizer.tokenize(respuesta).forEach(word => vocabulario.add(word));
+            datos.push({ pregunta, respuesta });
+        }
+    });
 
+    const palabraAIndice = {};
+    const indiceAPalabra = {};
+    Array.from(vocabulario).forEach((word, index) => {
+        palabraAIndice[word] = index + 1;
+        indiceAPalabra[index + 1] = word;
+    });
 
+    function textoATensor(texto) {
+        let secuencia = tokenizer.tokenize(texto).map(word => palabraAIndice[word] || 0);
+        while (secuencia.length < maxLen) secuencia.push(0); // Padding con 0
+        return secuencia.slice(0, maxLen);
+    }
 
+    function oneHotEncoding(indices, vocabSize) {
+        return indices.map(idx => {
+            let vector = new Array(vocabSize).fill(0);
+            if (idx > 0) vector[idx] = 1;
+            return vector;
+        });
+    }
 
+    // Crear los tensores de preguntas y respuestas
+    const preguntas = tf.tensor2d(datos.map(d => textoATensor(d.pregunta)), [datos.length, maxLen]);
+    const respuestasIndices = datos.map(d => textoATensor(d.respuesta));
+    const respuestasOneHot = respuestasIndices.map(seq => oneHotEncoding(seq, vocabulario.size + 1));
+    const respuestasTensor = tf.tensor3d(respuestasOneHot, [datos.length, maxLen, vocabulario.size + 1]);
 
-const predefinedMessages = {
-  "saludo": "Hola, ¿cómo puedo ayudarte?",
-  "despedida": "Hasta luego, ¡que tengas un buen día!",
-  "ayuda": "Puedes preguntarme sobre tecnología, IA o lo que necesites."
-};
-
-// Embeddings precomputados de frases conocidas
-const knownEmbeddings = {};
-(async () => {
-  for (const key in predefinedMessages) {
-      knownEmbeddings[key] = await getEmbedding(predefinedMessages[key]);
-  }
-  console.log("✅ Embeddings de referencia generados.");
-})();
-
-// Función para encontrar la intención más cercana
-function findClosestIntent(userEmbedding) {
-  let bestMatch = { intent: "desconocido", similarity: 0 };
-
-  for (const key in knownEmbeddings) {
-      const similarity = cosineSimilarity(userEmbedding, knownEmbeddings[key]);
-      if (similarity > bestMatch.similarity) {
-          bestMatch = { intent: key, similarity };
-      }
-  }
-
-  return bestMatch.intent;
+    return { preguntas, respuestasTensor };
 }
-function cosineSimilarity(vecA, vecB) {
-  const dotProduct = vecA.reduce((sum, a, i) => sum + a * vecB[i], 0);
-  const normA = Math.sqrt(vecA.reduce((sum, a) => sum + a * a, 0));
-  const normB = Math.sqrt(vecB.reduce((sum, b) => sum + b * b, 0));
-  return dotProduct / (normA * normB);
+
+// Crear y entrenar el modelo
+async function entrenarModelo() {
+    const { preguntas, respuestasTensor } = await procesarDatos();
+
+    const modelo = tf.sequential();
+    modelo.add(tf.layers.embedding({ inputDim: vocabulario.size + 1, outputDim: 64, inputLength: maxLen }));
+    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
+    modelo.add(tf.layers.dropout({ rate: 0.5 }));
+    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
+    modelo.add(tf.layers.dropout({ rate: 0.5 }));
+    modelo.add(tf.layers.dense({ units: vocabulario.size + 1, activation: 'softmax' }));
+
+    modelo.compile({ optimizer: tf.train.adam(0.0005), loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
+
+    // Entrenar el modelo
+    await modelo.fit(preguntas, respuestasTensor, { epochs: 5, batchSize: 4 });
+    console.log("Entrenamiento finalizado.");
+    return modelo;
 }
+
+// Responder a la pregunta
+async function responder(pregunta, modelo) {
+    const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, maxLen]);
+    const prediccion = modelo.predict(tensorPregunta);
+    const arrayPrediccion = await prediccion.array();
+
+    let respuestaGenerada = [];
+    for (let i = 0; i < maxLen; i++) {
+        const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
+        if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
+    }
+
+    return respuestaGenerada.join(" ") || "Lo siento, no entendí. ¿Puedes reformular la pregunta?";
+}
+
+
+
+
+
+
+
+
+
+
 const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu","servicio"]
 
 const despedida=["adios","gracias","hasta luego","bueno"]
@@ -266,8 +307,11 @@ app.post("/webhook", async (req, res) => {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
       
-      // const respuestaGenerada = await responder(mensaje);
-    //  return sendOP(respuestaGenerada, from, phone_number_id)
+       const modelo = await entrenarModelo();
+
+       const respuestaGenerada = await responder(mensaje, modelo);
+       console.log(`Respuesta generada: ${respuestaGenerada}`);
+      return sendOP(respuestaGenerada, from, phone_number_id)
        
     
   
