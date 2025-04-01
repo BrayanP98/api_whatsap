@@ -104,7 +104,7 @@ io.on('connection', function(socket)  {
 //////////////////////////////prueba modelo asistente ////////////////////////
 
 
-const axios = require('axios');
+
 
 // Tu token de Hugging Face
 
