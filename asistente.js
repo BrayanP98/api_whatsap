@@ -59,47 +59,37 @@ async function iniciar() {
     const respuestasOneHot = respuestasIndices.map(seq => oneHotEncoding(seq, vocabulario.size + 1));
     const respuestasTensor = tf.tensor3d(respuestasOneHot, [datosFiltrados.length, maxLen, vocabulario.size + 1]);
 
-    const learningRateSchedule = (epoch) => {
-      const initialLearningRate = 0.0005;  // Tasa de aprendizaje inicial
-      const decayRate = 0.96;             // Decaimiento exponencial
-      const decayStep = 5;               // Pasos después de los cuales reducir la tasa
-  
-      return initialLearningRate * Math.pow(decayRate, Math.floor(epoch / decayStep));
-  };
-
     const modelo = tf.sequential();
     modelo.add(tf.layers.embedding({ inputDim: vocabulario.size + 1, outputDim: 64, inputLength: maxLen }));
     modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
     modelo.add(tf.layers.dropout({ rate: 0.5 })); // Mayor dropout para evitar overfitting
-
     modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
     modelo.add(tf.layers.dropout({ rate: 0.5 })); // Mayor dropout para evitar overfitting
-
     modelo.add(tf.layers.dense({ units: vocabulario.size + 1, activation: 'softmax' }));
 
     modelo.compile({ optimizer: tf.train.adam(0.0005), loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 
     console.log("Entrenando...");
-    const optimizer = tf.train.adam(learningRateSchedule);
-    modelo.compile({ optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
+    await modelo.fit(preguntas, respuestasTensor, { epochs: 150, batchSize: 4 });
     console.log("Entrenamiento finalizado.");
 
-
-
+    // Definir la función responder
     async function responder(pregunta) {
-      const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, maxLen]);
-      const prediccion = modelo.predict(tensorPregunta);
-      const arrayPrediccion = await prediccion.array();
-  
-      let respuestaGenerada = [];
-      for (let i = 0; i < maxLen; i++) {
-          const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
-          if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
-      }
-  
-      return respuestaGenerada.join(" ") || "Lo siento, no entendí. ¿Puedes reformular la pregunta?";
-  }
-  module.exports = { responder };
+        const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, maxLen]);
+        const prediccion = modelo.predict(tensorPregunta);
+        const arrayPrediccion = await prediccion.array();
+
+        let respuestaGenerada = [];
+        for (let i = 0; i < maxLen; i++) {
+            const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
+            if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
+        }
+
+        return respuestaGenerada.join(" ") || "Lo siento, no entendí. ¿Puedes reformular la pregunta?";
+    }
+
+    // Exportar la función responder
+    module.exports = { responder };
 }
 
-iniciar()
+iniciar();
