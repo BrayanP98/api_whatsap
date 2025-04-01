@@ -104,6 +104,32 @@ io.on('connection', function(socket)  {
 //////////////////////////////prueba modelo asistente ////////////////////////
 
 
+const axios = require('axios');
+
+// Tu token de Hugging Face
+
+
+async function generarRespuestaConAPI(pregunta) {
+  try {
+    // Realizar la solicitud a la API de Hugging Face
+    const response = await axios.post(
+      'https://api-inference.huggingface.co/models/gpt2',
+      { inputs: pregunta },
+      {
+        headers: { Authorization: `Bearer ${apiKey}` }
+      }
+    );
+
+    console.log("Respuesta generada:", response.data[0].generated_text);
+  } catch (error) {
+    console.error("Error al generar la respuesta:", error);
+  }
+}
+
+// Llamar a la función con una pregunta
+
+
+
 
 
 const predefinedMessages = {
@@ -236,6 +262,7 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
+       generarRespuestaConAPI("¿Cómo estás?");
       
       //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
        
