@@ -99,7 +99,7 @@ async function iniciar() {
   
       return respuestaGenerada.join(" ") || "Lo siento, no entendí. ¿Puedes reformular la pregunta?";
   }
-  
+  module.exports = { responder };
 }
 
-module.exports = { responder };
+iniciar()
