@@ -114,7 +114,9 @@ async function generarRespuestaConAPI(pregunta) {
     // Realizar la solicitud a la API de Hugging Face
     const response = await axios.post(
       'https://api-inference.huggingface.co/models/gpt2',
-      { inputs: pregunta },
+      { inputs: pregunta,
+        parameters: { temperature: 0.7, max_length: 50,top_p: 0.9 } 
+       },
       {
         headers: { Authorization: `Bearer ${apiKey}` }
       }
