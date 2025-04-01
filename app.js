@@ -452,7 +452,7 @@ for(var i=0;i<VehicleTo7.length;i++){
 
 }
 const { jsPDF } = require("jspdf");
-const fs = require('fs');
+
 const { error } = require('console');
 app.post("/cotizar", async(req, res) => {
   var date= new Date()
