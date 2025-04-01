@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 const cron=require('node-cron');
 const chats = require('./src/models/chats.js');
 const { getEmbedding } = require('./src/models/asistente.js');
+const { responder } = require('./asistente');
 
 
 require("./functions.js");
@@ -264,9 +265,9 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
-       generarRespuestaConAPI(text);
       
-      //////////////////  //returnsendOP(NexoBot🤖 dice: No entendí tu mensaje. ¿Puedes repetirlo?", from, phone_number_id)
+       const respuestaGenerada = await responder(mensaje);
+      return sendOP(respuestaGenerada, from, phone_number_id)
        
     
   
