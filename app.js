@@ -287,12 +287,12 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
-       const mensaje = "que es cctv";
-    console.log(`📩 Pregunta: ${mensaje}`);
-    const respuesta = await responder(mensaje);
-    console.log(`🤖 Respuesta: ${respuesta}`);
-       console.log(respuesta)
-      // return awaitsendOP( respuesta,from, phone_number_id);
+     //  constmensaje = "que es cctv";
+    //console.log(`📩 Pregunta: ${mensaje}`);
+    const respuesta = await responder(text);
+   // console.log(`🤖 Respuesta: ${respuesta}`);
+       
+       return awaitsendOP("🤖 :" +respuesta,from, phone_number_id);
 
 
        
