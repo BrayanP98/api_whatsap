@@ -81,10 +81,10 @@ async function preprocesarDatos() {
 // Función para construir el modelo
 function construirModelo(vocabSize) {
     const modelo = tf.sequential();
-    modelo.add(tf.layers.embedding({ inputDim: vocabSize, outputDim: 64, inputLength: MAX_LEN }));
-    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
+    modelo.add(tf.layers.embedding({ inputDim: vocabSize, outputDim: 128, inputLength: MAX_LEN }));
+    modelo.add(tf.layers.lstm({ units: 1024, returnSequences: true }));
     modelo.add(tf.layers.dropout({ rate: 0.5 }));
-    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
+    modelo.add(tf.layers.lstm({ units: 1024, returnSequences: true }));
     modelo.add(tf.layers.dropout({ rate: 0.5 }));
     modelo.add(tf.layers.dense({ units: vocabSize, activation: 'softmax' }));
 
@@ -102,7 +102,7 @@ async function entrenarModelo() {
     const modelo = construirModelo(vocabulario.size + 1);
 
     console.log("Entrenando modelo...");
-    await modelo.fit(preguntas, respuestasTensor, { epochs: 100, batchSize: 6});
+    await modelo.fit(preguntas, respuestasTensor, { epochs: 150, batchSize: 6});
 
     console.log("Guardando modelo...");
     await modelo.save(RUTA_MODELO);
