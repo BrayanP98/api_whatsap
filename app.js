@@ -18,7 +18,7 @@ const chats = require('./src/models/chats.js');
 const { getEmbedding } = require('./src/models/asistente.js');
 //const { responder } = require('./asistente');
 
-
+require("./asistente.js");
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 server.listen(PORT, () => {
- // console.log(`Server listening on port ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
 io.on('connection', function(socket)  {
   socket.on("send_rta", function (to, message) {
@@ -107,104 +107,79 @@ io.on('connection', function(socket)  {
 
 
 //////////////////////////////prueba modelo asistente ////////////////////////
+const MAX_LEN = 10;
+const RUTA_MODELO = "file://./modelo_entrenado";
 
-const tokenizer = new natural.WordTokenizer();
-const vocabulario = new Set();
-const maxLen = 10;
-const datos = [];
+let palabraAIndice = {};
+let indiceAPalabra = {};
+let modelo = null;
 
-// Cargar los datos desde el CSV
-function cargarDatosCSV(rutaArchivo) {
-    const contenido = fs.readFileSync(rutaArchivo, 'utf8');
-    return new Promise((resolve) => {
-        Papa.parse(contenido, {
-            header: true,
-            dynamicTyping: true,
-            complete: (resultado) => resolve(resultado.data),
-        });
-    });
+
+
+// 📌 Cargar el modelo
+async function cargarModelo() {
+    if (!fs.existsSync("./modelo_entrenado/model.json")) {
+        console.log("⚠️ No se encontró un modelo guardado.");
+        return null;
+    }
+    console.log("📥 Cargando modelo entrenado...");
+    modelo = await tf.loadLayersModel(`${RUTA_MODELO}/model.json`);
+    console.log("✅ Modelo cargado correctamente.");
 }
 
-// Procesar preguntas y respuestas para entrenar el modelo
-async function procesarDatos() {
-    const datosCSV = await cargarDatosCSV('src/datasets/dataset.csv'); // Actualiza la ruta al archivo CSV
-    datosCSV.forEach(({ pregunta, respuesta }) => {
-        if (typeof pregunta === 'string' && typeof respuesta === 'string') {
-            tokenizer.tokenize(pregunta).forEach(word => vocabulario.add(word));
-            tokenizer.tokenize(respuesta).forEach(word => vocabulario.add(word));
-            datos.push({ pregunta, respuesta });
-        }
-    });
+// 📌 Cargar el vocabulario
+async function cargarVocabulario() {
+    const vocabFile = "./modelo_entrenado/vocab.json";
+    if (fs.existsSync(vocabFile)) {
+        const vocabData = JSON.parse(fs.readFileSync(vocabFile, "utf8"));
+        palabraAIndice = vocabData.palabraAIndice;
+        indiceAPalabra = vocabData.indiceAPalabra;
+        console.log("✅ Vocabulario cargado correctamente.");
+    } else {
+        console.log("⚠️ No se encontró vocabulario guardado.");
+    }
+}
 
-    const palabraAIndice = {};
-    const indiceAPalabra = {};
-    Array.from(vocabulario).forEach((word, index) => {
-        palabraAIndice[word] = index + 1;
-        indiceAPalabra[index + 1] = word;
-    });
+// 📌 Convertir texto a tensor
+function textoATensor(texto) {
+    const tokenizer = new natural.WordTokenizer();
+    if (typeof texto !== "string") return new Array(MAX_LEN).fill(0);
 
-    function textoATensor(texto) {
-        let secuencia = tokenizer.tokenize(texto).map(word => palabraAIndice[word] || 0);
-        while (secuencia.length < maxLen) secuencia.push(0); // Padding con 0
-        return secuencia.slice(0, maxLen);
+    let secuencia = tokenizer.tokenize(texto).map(word => palabraAIndice[word] || 0);
+    while (secuencia.length < MAX_LEN) secuencia.push(0);
+
+    return secuencia.slice(0, MAX_LEN);
+}
+
+// 📌 Responder preguntas con el modelo cargado
+async function responder(pregunta) {
+  await cargarVocabulario();
+  await cargarModelo();
+    if (!modelo) {
+        console.log("❌ No hay un modelo cargado. No se puede responder.");
+        return "Error: No se ha cargado un modelo.";
     }
 
-    function oneHotEncoding(indices, vocabSize) {
-        return indices.map(idx => {
-            let vector = new Array(vocabSize).fill(0);
-            if (idx > 0) vector[idx] = 1;
-            return vector;
-        });
-    }
-
-    // Crear los tensores de preguntas y respuestas
-    const preguntas = tf.tensor2d(datos.map(d => textoATensor(d.pregunta)), [datos.length, maxLen]);
-    const respuestasIndices = datos.map(d => textoATensor(d.respuesta));
-    const respuestasOneHot = respuestasIndices.map(seq => oneHotEncoding(seq, vocabulario.size + 1));
-    const respuestasTensor = tf.tensor3d(respuestasOneHot, [datos.length, maxLen, vocabulario.size + 1]);
-
-    return { preguntas, respuestasTensor };
-}
-
-// Crear y entrenar el modelo
-async function entrenarModelo() {
-    const { preguntas, respuestasTensor } = await procesarDatos();
-
-    const modelo = tf.sequential();
-    modelo.add(tf.layers.embedding({ inputDim: vocabulario.size + 1, outputDim: 64, inputLength: maxLen }));
-    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
-    modelo.add(tf.layers.dropout({ rate: 0.5 }));
-    modelo.add(tf.layers.lstm({ units: 512, returnSequences: true }));
-    modelo.add(tf.layers.dropout({ rate: 0.5 }));
-    modelo.add(tf.layers.dense({ units: vocabulario.size + 1, activation: 'softmax' }));
-
-    modelo.compile({ optimizer: tf.train.adam(0.0005), loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
-
-    // Entrenar el modelo
-    await modelo.fit(preguntas, respuestasTensor, { epochs: 5, batchSize: 4 });
-    console.log("Entrenamiento finalizado.");
-    return modelo;
-}
-
-// Responder a la pregunta
-async function responder(pregunta, modelo) {
-    const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, maxLen]);
+    const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
     const prediccion = modelo.predict(tensorPregunta);
-    const arrayPrediccion = await prediccion.array();
+    const arrayPrediccion = await prediccion.data();
 
     let respuestaGenerada = [];
-    for (let i = 0; i < maxLen; i++) {
-        const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
+    for (let i = 0; i < MAX_LEN; i++) {
+        const indicePalabra = arrayPrediccion[i] ? arrayPrediccion.indexOf(Math.max(...arrayPrediccion)) : 0;
         if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
     }
 
-    return respuestaGenerada.join(" ") || "Lo siento, no entendí. ¿Puedes reformular la pregunta?";
+    return respuestaGenerada.length > 0 ? respuestaGenerada.join(" ") : "Lo siento, no entendí.";
 }
 
 
 
 
 
+
+
+///////////////////////////////////////////////////////////////////////////
 
 
 
@@ -307,7 +282,9 @@ app.post("/webhook", async (req, res) => {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
       
-       const modelo = await entrenarModelo();
+       const respuesta = await responder("que es cctv");
+       return await sendOP( respuesta,from, phone_number_id);
+
 
        const respuestaGenerada = await responder(mensaje, modelo);
        console.log(`Respuesta generada: ${respuestaGenerada}`);
