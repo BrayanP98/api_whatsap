@@ -162,5 +162,5 @@ async function iniciarEntrenamientoDiario() {
         await entrenarModelo();
     }, 8 * 60 * 60 * 1000);
 }
-
+//iniciar()
 iniciarEntrenamientoDiario();

@@ -292,7 +292,7 @@ app.post("/webhook", async (req, res) => {
     const respuesta = await responder(text);
    // console.log(`🤖 Respuesta: ${respuesta}`);
        
-       return awaitsendOP("🤖 :" +respuesta,from, phone_number_id);
+       return await sendOP("🤖 :" +respuesta,from, phone_number_id);
 
 
        
