@@ -151,27 +151,33 @@ function textoATensor(texto) {
     return secuencia.slice(0, MAX_LEN);
 }
 
-// 📌 Responder preguntas con el modelo cargado
 async function responder(pregunta) {
   await cargarVocabulario();
   await cargarModelo();
-    if (!modelo) {
-        console.log("❌ No hay un modelo cargado. No se puede responder.");
-        return "Error: No se ha cargado un modelo.";
-    }
+  
+  if (!modelo) {
+      console.log("❌ No hay un modelo cargado. No se puede responder.");
+      return "Error: No se ha cargado un modelo.";
+  }
 
-    const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
-    const prediccion = modelo.predict(tensorPregunta);
-    const arrayPrediccion = await prediccion.data();
+  const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
+  const prediccion = modelo.predict(tensorPregunta);
+  const arrayPrediccion = await prediccion.array(); // Convertir tensor a array anidado
 
-    let respuestaGenerada = [];
-    for (let i = 0; i < MAX_LEN; i++) {
-        const indicePalabra = arrayPrediccion[i] ? arrayPrediccion.indexOf(Math.max(...arrayPrediccion)) : 0;
-        if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
-    }
+  let respuestaGenerada = [];
+  for (let i = 0; i < MAX_LEN; i++) {
+      if (!arrayPrediccion[0] || arrayPrediccion[0][i] === undefined) continue;
 
-    return respuestaGenerada.length > 0 ? respuestaGenerada.join(" ") : "Lo siento, no entendí.";
+      // Encontrar el índice de la palabra con mayor probabilidad en la posición i
+      const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
+      if (indicePalabra > 0 && indiceAPalabra[indicePalabra]) {
+          respuestaGenerada.push(indiceAPalabra[indicePalabra]);
+      }
+  }
+
+  return respuestaGenerada.length > 0 ? respuestaGenerada.join(" ") : "Lo siento, no entendí.";
 }
+
 
 
 
@@ -281,8 +287,10 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
-      
-       const respuesta = await responder("que es cctv");
+       const mensaje = "que es cctv";
+    console.log(`📩 Pregunta: ${mensaje}`);
+    const respuesta = await responder(mensaje);
+    console.log(`🤖 Respuesta: ${respuesta}`);
        console.log(respuesta)
       // return awaitsendOP( respuesta,from, phone_number_id);
 

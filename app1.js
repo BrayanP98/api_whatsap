@@ -48,6 +48,8 @@ function textoATensor(texto) {
 
 // Responder preguntas con el modelo cargado
 async function responder(pregunta) {
+    await cargarVocabulario();
+    await cargarModelo();
     if (!modelo) {
         console.log("❌ No hay un modelo cargado. No se puede responder.");
         return "Error: No se ha cargado un modelo.";
@@ -68,9 +70,7 @@ async function responder(pregunta) {
 
 // Inicializar y probar el chatbot
 async function iniciar() {
-    await cargarVocabulario();
-    await cargarModelo();
-
+    
     // Prueba con una pregunta
     const mensaje = "que es cctv";
     console.log(`📩 Pregunta: ${mensaje}`);
