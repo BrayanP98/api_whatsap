@@ -283,12 +283,11 @@ app.post("/webhook", async (req, res) => {
        }
       
        const respuesta = await responder("que es cctv");
-       return await sendOP( respuesta,from, phone_number_id);
+       console.log(respuesta)
+      // return awaitsendOP( respuesta,from, phone_number_id);
 
 
-       const respuestaGenerada = await responder(mensaje, modelo);
-       console.log(`Respuesta generada: ${respuestaGenerada}`);
-      return sendOP(respuestaGenerada, from, phone_number_id)
+       
        
     
   
