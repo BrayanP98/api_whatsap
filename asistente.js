@@ -211,6 +211,6 @@ async function iniciar() {
     const respuesta = await responder("que es cctv", modelo);
    // console.log("Respuesta:", respuesta);
 }
-iniciar()
+
 
 module.exports = iniciar;
