@@ -279,8 +279,9 @@ app.post("/webhook", async (req, res) => {
 
         var name = req.body.entry?.[0]?.changes?.[0]?.value?.contacts?.[0]?.profile?.name || "Usuario";
         const palabras = text.split(" ");
-        const esSaludo = palabras.some((palabra) => saludos.includes(palabra));despedida
+        const esSaludo = palabras.some((palabra) => saludos.includes(palabra));
         const esDespedida = palabras.some((palabra) => despedida.includes(palabra));
+        const esTraining= palabras.some((palabra) => training.includes(palabra));
       
         if (esSaludo) {
            return await sendMenuOptions(from, phone_number_id,name);
@@ -288,7 +289,7 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
-       if (estraining) {
+       if (esTraining) {
         asistente()
 
         return await sendOP( "NexoBot🤖 dice: modelo entrenando",from, phone_number_id);
