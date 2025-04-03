@@ -23,7 +23,7 @@ require("./functions.js");
 const app = express();
 app.use(body_parser.json());
 const server = http.createServer(app);
-require("./database");
+require("./database.js");
 
 const save = require('./functions.js');
 
@@ -107,7 +107,7 @@ io.on('connection', function(socket)  {
 
 
 //////////////////////////////prueba modelo asistente ////////////////////////
-const MAX_LEN = 10;
+const MAX_LEN = 20;
 const RUTA_MODELO = "file://./modelo_entrenado";
 
 let palabraAIndice = {};
@@ -296,12 +296,12 @@ app.post("/webhook", async (req, res) => {
      }
 
 
-     
+
       const mensaje = "que es cctv";
       console.log(text)
     //console.log(`📩 Pregunta: ${mensaje}`);
     const respuesta = await responder(mensaje);
-   // console.log(`🤖 Respuesta: ${respuesta}`);
+    console.log(`🤖 Respuesta: ${respuesta}`);
        
        return await sendOP("🤖 :" +respuesta,from, phone_number_id);
 

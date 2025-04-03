@@ -2,6 +2,10 @@
   "name": "whatsap",
   "version": "1.0.0",
   "main": "app.js",
+  
+    "type": "commonjs",
+  
+  
   "scripts": {
     "start": "node app.js"
   },
