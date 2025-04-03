@@ -288,7 +288,7 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
-       if (training) {
+       if (estraining) {
         asistente()
 
         return await sendOP( "NexoBot🤖 dice: modelo entrenando",from, phone_number_id);
