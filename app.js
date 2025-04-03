@@ -18,7 +18,7 @@ const chats = require('./src/models/chats.js');
 const { getEmbedding } = require('./src/models/asistente.js');
 //const { responder } = require('./asistente');
 
-require("./asistente.js");
+const asistente=require("./asistente.js");
 require("./functions.js");
 const app = express();
 app.use(body_parser.json());
@@ -194,6 +194,7 @@ async function responder(pregunta) {
 const saludos=["buen dia","hola","buenos","hello","ole","buenas","dias","buen","dia","info","tarde","informacion","buen día","menu","servicio"]
 
 const despedida=["adios","gracias","hasta luego","bueno"]
+const training=["entrenar","practicar"]
 
 app.post("/webhook", async (req, res) => {
 
@@ -287,6 +288,11 @@ app.post("/webhook", async (req, res) => {
         if (esDespedida) {
           return await sendOP( "NexoBot🤖 dice: fue un gusto poder ayudarte el dia de hoy ¡Que tengas un excelente día! 👋",from, phone_number_id);
        }
+       if (training) {
+        asistente()
+
+        return await sendOP( "NexoBot🤖 dice: modelo entrenando",from, phone_number_id);
+     }
      //  constmensaje = "que es cctv";
     //console.log(`📩 Pregunta: ${mensaje}`);
     const respuesta = await responder(text);
@@ -301,8 +307,17 @@ app.post("/webhook", async (req, res) => {
   
 
    
-      }
-  
+      
+
+    
+
+  }
+  if (mensaje.type === "interactive" && mensaje.interactive.type === "list_reply") {
+    const selectedId = mensaje.interactive.list_reply.id;
+    await handleUserSelection(from, phone_number_id, selectedId);
+    return;
+  }
+
   }
   
   
