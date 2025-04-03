@@ -294,9 +294,13 @@ app.post("/webhook", async (req, res) => {
 
         return await sendOP( "NexoBot🤖 dice: modelo entrenando",from, phone_number_id);
      }
-     //  constmensaje = "que es cctv";
+
+
+     
+      const mensaje = "que es cctv";
+      console.log(text)
     //console.log(`📩 Pregunta: ${mensaje}`);
-    const respuesta = await responder(text);
+    const respuesta = await responder(mensaje);
    // console.log(`🤖 Respuesta: ${respuesta}`);
        
        return await sendOP("🤖 :" +respuesta,from, phone_number_id);
