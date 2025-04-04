@@ -114,8 +114,6 @@ let palabraAIndice = {};
 let indiceAPalabra = {};
 let modelo = null;
 
-
-
 // 📌 Cargar el modelo
 async function cargarModelo() {
     if (!fs.existsSync("./modelo_entrenado/model.json")) {
@@ -151,32 +149,56 @@ function textoATensor(texto) {
     return secuencia.slice(0, MAX_LEN);
 }
 
-async function responder(pregunta) {
-  await cargarVocabulario();
-  await cargarModelo();
-  
-  if (!modelo) {
-      console.log("❌ No hay un modelo cargado. No se puede responder.");
-      return "Error: No se ha cargado un modelo.";
-  }
+// 📌 Sampling con temperatura
+function sampleWithTemperature(probabilities, temperature = 0.7) {
+    const logits = probabilities.map(p => Math.log(p + 1e-9) / temperature);
+    const expLogits = logits.map(Math.exp);
+    const sumExp = expLogits.reduce((a, b) => a + b);
+    const softmax = expLogits.map(e => e / sumExp);
 
-  const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
-  const prediccion = modelo.predict(tensorPregunta);
-  const arrayPrediccion = await prediccion.array(); // Convertir tensor a array anidado
-
-  let respuestaGenerada = [];
-  for (let i = 0; i < MAX_LEN; i++) {
-      if (!arrayPrediccion[0] || arrayPrediccion[0][i] === undefined) continue;
-
-      // Encontrar el índice de la palabra con mayor probabilidad en la posición i
-      const indicePalabra = arrayPrediccion[0][i].indexOf(Math.max(...arrayPrediccion[0][i]));
-      if (indicePalabra > 0 && indiceAPalabra[indicePalabra]) {
-          respuestaGenerada.push(indiceAPalabra[indicePalabra]);
-      }
-  }
-
-  return respuestaGenerada.length > 0 ? respuestaGenerada.join(" ") : "Lo siento, no entendí.";
+    let rand = Math.random();
+    for (let i = 0; i < softmax.length; i++) {
+        rand -= softmax[i];
+        if (rand <= 0) return i;
+    }
+    return softmax.length - 1;
 }
+
+// 📌 Generar respuesta
+async function responder(pregunta) {
+    await cargarVocabulario();
+    await cargarModelo();
+
+    if (!modelo) {
+        console.log("❌ No hay un modelo cargado. No se puede responder.");
+        return "Error: No se ha cargado un modelo.";
+    }
+
+    const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
+    const prediccion = modelo.predict(tensorPregunta);
+    const arrayPrediccion = await prediccion.array();
+
+    let respuestaGenerada = [];
+    for (let i = 0; i < arrayPrediccion[0].length; i++) {
+        const probs = arrayPrediccion[0][i];
+        const sampledIdx = sampleWithTemperature(probs, 0.7); // Puedes ajustar la temperatura
+
+        if (sampledIdx > 0 && indiceAPalabra[sampledIdx]) {
+            respuestaGenerada.push(indiceAPalabra[sampledIdx]);
+        }
+    }
+
+    const respuestaFinal = respuestaGenerada.length > 0
+        ? respuestaGenerada.join(" ")
+        : "Lo siento, no entendí.";
+    
+    console.log(respuestaFinal);
+    return respuestaFinal;
+}
+
+// 📥 Prueba
+//const mensaje = "quiero instalar una alarma";
+//responder(mensaje);
 
 
 
@@ -297,13 +319,13 @@ app.post("/webhook", async (req, res) => {
 
 
 
-      const mensaje = "que es cctv";
+      //onstmensaje = "que es cctv";
       console.log(text)
     //console.log(`📩 Pregunta: ${mensaje}`);
-    const respuesta = await responder(mensaje);
+    const respuesta = await responder(text);
     console.log(`🤖 Respuesta: ${respuesta}`);
        
-       return await sendOP("🤖 :" +respuesta,from, phone_number_id);
+       return await sendOP("🤖 dice:" +respuesta,from, phone_number_id);
 
 
        
