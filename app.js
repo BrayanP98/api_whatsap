@@ -113,7 +113,7 @@ const RUTA_MODELO = "file://./modelo_entrenado";
 let palabraAIndice = {};
 let indiceAPalabra = {};
 let modelo = null;
-
+const tokenizer = new natural.WordTokenizer();
 // 📌 Cargar el modelo
 async function cargarModelo() {
     if (!fs.existsSync("./modelo_entrenado/model.json")) {
@@ -136,9 +136,10 @@ async function cargarVocabulario() {
     } else {
         console.log("⚠️ No se encontró vocabulario guardado.");
     }
+
 }
 
-// 📌 Convertir texto a tensor
+
 function textoATensor(texto) {
     if (typeof texto !== "string") return new Array(MAX_LEN).fill(0);
     let secuencia = tokenizer.tokenize(texto).map(word => palabraAIndice[word] || 0);
@@ -156,7 +157,7 @@ function sampleWithTemperature(probabilidades, temperature) {
 }
 
 // Función para generar la respuesta
-async function responder(pregunta, modelo, temperature = 0.5) {
+async function responder(pregunta, modelo, temperature = 0.7) {
     const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
     const prediccion = modelo.predict(tensorPregunta);
     const arrayPrediccion = await prediccion.array();
@@ -188,9 +189,26 @@ async function responder(pregunta, modelo, temperature = 0.5) {
     return respuestaGenerada.join(" ") || "No entendí, intenta de nuevo.";
 }
 
-// 📥 Prueba
-//const mensaje = "quiero instalar una alarma";
-//responder(mensaje);
+// 📌 Convertir texto a tensor
+
+
+ //📥 Prueba
+
+ async function iniciar() {
+  await cargarVocabulario();  // Asegúrate de cargar el vocabulario
+  await cargarModelo();  // Cargar el modelo
+
+  if (!modelo) {
+      console.log("⚠️ El modelo no se ha cargado correctamente.");
+      return;
+  }
+
+  const respuesta = await responder("cuales son tus funciones", modelo);
+  console.log("Respuesta:", respuesta);
+}
+
+iniciar();  // Ejecuta el proceso completo
+
 
 
 
