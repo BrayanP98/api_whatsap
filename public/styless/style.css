@@ -814,8 +814,7 @@ footer p{
             color: #122f8c;
         } 
         .cont_post p{
-            width: 100%;
-            text-align: justify;
+            width: 80%;
         }
 
 
@@ -899,6 +898,7 @@ footer p{
             height: fit-content;
             margin: auto;
             top:100px;
+            margin-bottom: 100px;
             
             
 
@@ -913,27 +913,45 @@ footer p{
           
         }
         .other_post{
-            border-radius: 10px;
+            border-radius: 0;
             position: relative;
             margin-top: 25px;
-            width: 20%;
-            height: fit-content;
-            
-        overflow: hidden;
+            width: 45%;
+            min-width: 400px;
+            height: 120px;
+            padding: 5px;
+            overflow: hidden;
             display: flex;
-            flex-direction: column  ;
-            min-width: 250px;
+            flex-direction: row  ;
+            border-bottom:1px solid #6c6969;
+            
+        }
+        
+       
+        .other_post div{
+           height: 100%;
         }
         #hashtag_post{
             font-weight: 800;
+            margin-top: 0;
         }
         #hashtag_post:hover{
             color: red;
         }
-        
-        .other_post h3{
+        .other_post a{
+           position: absolute;
+            width: 90%;
+            height: fit-content;
+            color: #8c1214;
+            position: relative;
+            margin-top: 0;
+        }
+        .other_post h3{width: 90%;
+            height: fit-content;
             color: #12458c;
-            font-size: 25px;
+            font-size: 20px;
+            position: relative;
+            margin-top: 0;
             
         }
         .other_post h3::first-letter{
@@ -941,10 +959,10 @@ footer p{
         }
         .other_post p{
             color: #474d54;
-            font-size: 15px;
+            font-size: 12px;
             font-weight: 400;
             letter-spacing: 1px;
-           
+            margin-top: 0;
             overflow: hidden;
             
         }
