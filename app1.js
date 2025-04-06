@@ -369,19 +369,31 @@ async function continuarEntrenamiento() {
 
     return modelo;
 }
-function sampleWithTemperature(predictions, temperature = 1.0) {
-    predictions = predictions.map(p => Math.pow(p, 1 / temperature));
-    const sum = predictions.reduce((a, b) => a + b, 0);
-    const probabilities = predictions.map(p => p / sum);
-
-    let rand = Math.random();
-    let cumulative = 0;
-    for (let i = 0; i < probabilities.length; i++) {
-        cumulative += probabilities[i];
-        if (rand < cumulative) return i;
+function sampleWithTemperature(logits, temperature = 1.0) {
+    if (temperature <= 0) {
+        // Selección determinista (argmax) si temperatura es 0 o menor
+        return logits.indexOf(Math.max(...logits));
     }
-    return probabilities.length - 1;
+
+    // Convertimos los logits a una distribución de probabilidad
+    const logitsScaled = logits.map(logit => logit / temperature);
+    const maxLogit = Math.max(...logitsScaled);
+    const exps = logitsScaled.map(logit => Math.exp(logit - maxLogit)); // estabilidad numérica
+    const sumExps = exps.reduce((a, b) => a + b);
+    const probs = exps.map(exp => exp / sumExps);
+
+    // Muestreo por probabilidad acumulada
+    const r = Math.random();
+    let acum = 0;
+    for (let i = 0; i < probs.length; i++) {
+        acum += probs[i];
+        if (r < acum) return i;
+    }
+
+    // Fallback
+    return probs.length - 1;
 }
+
 
 
 ///////////////////////////////////////////////////
@@ -499,31 +511,45 @@ function sampleWithTemperature(probabilidades, temperature) {
 }
 
 // Función para generar la respuesta
-async function responder(pregunta, modelo, temperature = 1.0) {
-    // Convertir la pregunta en tensor
+async function responder(pregunta, modelo, temperature = 0.7) {
     const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
-    
-    // Realizar la predicción
     const prediccion = modelo.predict(tensorPregunta);
     const arrayPrediccion = await prediccion.array();
-    prediccion.dispose(); // Liberar memoria
 
-    // Generar la respuesta
+    tensorPregunta.dispose();
+    prediccion.dispose();
+
     let respuestaGenerada = [];
+    let palabraAnterior = "";
+
     for (let i = 0; i < MAX_LEN; i++) {
-        const indicePalabra = sampleWithTemperature(arrayPrediccion[0][i], temperature);
-        if (indicePalabra > 0) respuestaGenerada.push(indiceAPalabra[indicePalabra]);
+        const logits = arrayPrediccion[0][i];
+        const indicePalabra = sampleWithTemperature(logits, temperature);
+        
+        if (indicePalabra === 0) break;
+
+        const palabra = indiceAPalabra[indicePalabra];
+
+        // Romper si es <end> o undefined
+        if (!palabra || palabra === "<end>") break;
+
+        // Evitar repeticiones consecutivas
+        if (palabra === palabraAnterior) continue;
+
+        respuestaGenerada.push(palabra);
+        palabraAnterior = palabra;
     }
 
     return respuestaGenerada.join(" ") || "No entendí, intenta de nuevo.";
 }
 
 
+
 // 🔹 Función principal
 async function iniciar() {
     
     const modelo = await continuarEntrenamiento();
-    const respuesta = await responder("cuánto cuesta instalar una cámara", modelo);
+    const respuesta = await responder("cuales son tus funciones", modelo);
     console.log("Respuesta:", respuesta);
 }
 iniciar()

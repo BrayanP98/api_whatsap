@@ -814,7 +814,8 @@ footer p{
             color: #122f8c;
         } 
         .cont_post p{
-            width: 80%;
+            width: 100%;
+            text-align: justify;
         }
 
 
@@ -939,7 +940,7 @@ footer p{
             color: red;
         }
         .other_post img{
-            width: 30%;
+            width: 50%;
         }
         .other_post a{
            position: absolute;
@@ -1275,4 +1276,14 @@ display: none;
             text-decoration: none;
             font-size: 18px;
         }
+
+        .other_post{
+            
+            width: 45%;
+            min-width: 350px;
+            height: 120px;
+           
+            
+        }
+           
             }

@@ -140,60 +140,52 @@ async function cargarVocabulario() {
 
 // 📌 Convertir texto a tensor
 function textoATensor(texto) {
-    const tokenizer = new natural.WordTokenizer();
     if (typeof texto !== "string") return new Array(MAX_LEN).fill(0);
-
     let secuencia = tokenizer.tokenize(texto).map(word => palabraAIndice[word] || 0);
     while (secuencia.length < MAX_LEN) secuencia.push(0);
-
     return secuencia.slice(0, MAX_LEN);
 }
 
-// 📌 Sampling con temperatura
-function sampleWithTemperature(probabilities, temperature = 0.7) {
-    const logits = probabilities.map(p => Math.log(p + 1e-9) / temperature);
-    const expLogits = logits.map(Math.exp);
-    const sumExp = expLogits.reduce((a, b) => a + b);
-    const softmax = expLogits.map(e => e / sumExp);
-
-    let rand = Math.random();
-    for (let i = 0; i < softmax.length; i++) {
-        rand -= softmax[i];
-        if (rand <= 0) return i;
-    }
-    return softmax.length - 1;
+// Función para muestrear una palabra con temperatura
+function sampleWithTemperature(probabilidades, temperature) {
+    const logits = tf.div(probabilidades, temperature);
+    const probabilidadesTemperatura = tf.softmax(logits);
+    const distribucion = probabilidadesTemperatura.dataSync();
+    const maxIndex = tf.argMax(probabilidadesTemperatura, -1).dataSync()[0];
+    return maxIndex;
 }
 
-// 📌 Generar respuesta
-async function responder(pregunta) {
-    await cargarVocabulario();
-    await cargarModelo();
-
-    if (!modelo) {
-        console.log("❌ No hay un modelo cargado. No se puede responder.");
-        return "Error: No se ha cargado un modelo.";
-    }
-
+// Función para generar la respuesta
+async function responder(pregunta, modelo, temperature = 0.5) {
     const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
     const prediccion = modelo.predict(tensorPregunta);
     const arrayPrediccion = await prediccion.array();
 
-    let respuestaGenerada = [];
-    for (let i = 0; i < arrayPrediccion[0].length; i++) {
-        const probs = arrayPrediccion[0][i];
-        const sampledIdx = sampleWithTemperature(probs, 0.7); // Puedes ajustar la temperatura
+    tensorPregunta.dispose();
+    prediccion.dispose();
 
-        if (sampledIdx > 0 && indiceAPalabra[sampledIdx]) {
-            respuestaGenerada.push(indiceAPalabra[sampledIdx]);
-        }
+    let respuestaGenerada = [];
+    let palabraAnterior = "";
+
+    for (let i = 0; i < MAX_LEN; i++) {
+        const logits = arrayPrediccion[0][i];
+        const indicePalabra = sampleWithTemperature(logits, temperature);
+        
+        if (indicePalabra === 0) break;
+
+        const palabra = indiceAPalabra[indicePalabra];
+
+        // Romper si es <end> o undefined
+        if (!palabra || palabra === "<end>") break;
+
+        // Evitar repeticiones consecutivas
+        if (palabra === palabraAnterior) continue;
+
+        respuestaGenerada.push(palabra);
+        palabraAnterior = palabra;
     }
 
-    const respuestaFinal = respuestaGenerada.length > 0
-        ? respuestaGenerada.join(" ")
-        : "Lo siento, no entendí.";
-    
-    console.log(respuestaFinal);
-    return respuestaFinal;
+    return respuestaGenerada.join(" ") || "No entendí, intenta de nuevo.";
 }
 
 // 📥 Prueba
