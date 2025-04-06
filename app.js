@@ -207,7 +207,7 @@ async function responder(pregunta, modelo, temperature = 0.7) {
   console.log("Respuesta:", respuesta);
 }
 
-iniciar();  // Ejecuta el proceso completo
+
 
 
 
@@ -329,11 +329,16 @@ app.post("/webhook", async (req, res) => {
 
 
 
-      //onstmensaje = "que es cctv";
-      console.log(text)
-    //console.log(`📩 Pregunta: ${mensaje}`);
-    const respuesta = await responder(text);
-    console.log(`🤖 Respuesta: ${respuesta}`);
+     await cargarVocabulario();  // Asegúrate de cargar el vocabulario
+  await cargarModelo();  // Cargar el modelo
+
+  if (!modelo) {
+      console.log("⚠️ El modelo no se ha cargado correctamente.");
+      return;
+  }
+
+  const respuesta = await responder(text, modelo);
+  console.log("Respuesta:", respuesta);
        
        return await sendOP("🤖 dice:" +respuesta,from, phone_number_id);
 
