@@ -938,6 +938,9 @@ footer p{
         #hashtag_post:hover{
             color: red;
         }
+        .other_post img{
+            width: 30%;
+        }
         .other_post a{
            position: absolute;
             width: 90%;

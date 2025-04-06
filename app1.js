@@ -345,7 +345,7 @@ async function continuarEntrenamiento() {
     console.log("🚀 Continuando entrenamiento...");
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
     await modelo.fit(preguntas, respuestasTensor, {
-        epochs: 50,
+        epochs: 100,
         batchSize,
         callbacks: {
             onEpochEnd: async (epoch, logs) => {
