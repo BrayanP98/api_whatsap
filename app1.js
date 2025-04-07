@@ -53,8 +53,9 @@ async function preprocesarDatos() {
     const datosFiltrados = datos
         .filter(d => typeof d.pregunta === "string" && typeof d.respuesta === "string")
         .map(d => ({
-            pregunta: limpiarTexto(d.pregunta),
-            respuesta: limpiarTexto(d.respuesta)
+           pregunta: `<start> ${limpiarTexto(d.pregunta)} <end>`,
+            respuesta: `<start> ${limpiarTexto(d.respuesta)} <end>`
+
         }))
         .filter(d => d.pregunta.length > 2 && d.respuesta.length > 2);
         const datosValidacion = datosFiltrados.slice(0, 20);
@@ -345,7 +346,7 @@ async function continuarEntrenamiento() {
     console.log("🚀 Continuando entrenamiento...");
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
     await modelo.fit(preguntas, respuestasTensor, {
-        epochs: 100,
+        epochs: 50,
         batchSize,
         callbacks: {
             onEpochEnd: async (epoch, logs) => {
@@ -369,7 +370,7 @@ async function continuarEntrenamiento() {
 
     return modelo;
 }
-function sampleWithTemperature(logits, temperature = 1.0) {
+function sampleWithTemperature(logits, temperature ) {
     if (temperature <= 0) {
         // Selección determinista (argmax) si temperatura es 0 o menor
         return logits.indexOf(Math.max(...logits));
@@ -511,7 +512,7 @@ function sampleWithTemperature(probabilidades, temperature) {
 }
 
 // Función para generar la respuesta
-async function responder(pregunta, modelo, temperature = 0.7) {
+async function responder(pregunta, modelo, temperature =1.2) {
     const tensorPregunta = tf.tensor2d([textoATensor(pregunta)], [1, MAX_LEN]);
     const prediccion = modelo.predict(tensorPregunta);
     const arrayPrediccion = await prediccion.array();
@@ -532,6 +533,7 @@ async function responder(pregunta, modelo, temperature = 0.7) {
 
         // Romper si es <end> o undefined
         if (!palabra || palabra === "<end>") break;
+        if (!palabra || palabra === "end") break;
 
         // Evitar repeticiones consecutivas
         if (palabra === palabraAnterior) continue;

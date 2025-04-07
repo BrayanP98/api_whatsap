@@ -178,7 +178,7 @@ async function responder(pregunta, modelo, temperature = 0.7) {
 
         // Romper si es <end> o undefined
         if (!palabra || palabra === "<end>") break;
-
+        if (!palabra || palabra === "end") break;
         // Evitar repeticiones consecutivas
         if (palabra === palabraAnterior) continue;
 
