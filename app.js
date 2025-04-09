@@ -209,7 +209,7 @@ async function responder(pregunta, modelo, temperature = 0.7) {
 
 
 
-
+iniciar()
 
 
 

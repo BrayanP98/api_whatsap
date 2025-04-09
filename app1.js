@@ -10,7 +10,7 @@ const MAX_LEN = 20;
 
 let palabraAIndice = {};
 let indiceAPalabra = {};
-const stopwords = new Set(["de", "la", "el", "en", "y", "a", "un", "una", "con", "por", "para", "que", "su", "se", "lo", "como", "al", "es"]); // Puedes ampliarlo
+const stopwords = new Set(["de", "la", "en", "a", "un", "una", "con", "por", "para", "que", "su", "se", "lo", "como", "al", "es"]); // Puedes ampliarlo
 // 🔹 Cargar vocabulario si existe
 function cargarVocabulario() {
     if (fs.existsSync(RUTA_VOCAB)) {
@@ -85,12 +85,10 @@ async function preprocesarDatos() {
     }
 
     function oneHotEncoding(indices) {
-        return indices.map(idx => {
-            let vector = new Array(vocabSize).fill(0);
-            if (idx > 0 && idx < vocabSize) vector[idx] = 1;
-            return vector;
-        }).concat(new Array(MAX_LEN - indices.length).fill(new Array(vocabSize).fill(0))).slice(0, MAX_LEN);
+        const padded = indices.concat(new Array(MAX_LEN - indices.length).fill(0)).slice(0, MAX_LEN);
+        return tf.oneHot(padded, vocabSize).arraySync(); // Devuelve el mismo resultado que antes
     }
+    
 
     const preguntas = tf.tensor2d(
         datosFiltrados.map(d => textoATensor(d.pregunta)), 
@@ -208,49 +206,64 @@ function capaAtencionBahdanau(units) {
 }
 
 // 🔹 Construcción del modelo
-function construirModello(vocabSize) {
+function construirModelo(vocabSize) {
     const modelo = tf.sequential();
 
-// Capa de embedding
-modelo.add(tf.layers.embedding({ inputDim: vocabSize, outputDim: 64, inputLength: MAX_LEN }));
-
-// Capa LSTM bidireccional
-modelo.add(tf.layers.bidirectional({ 
-    layer: tf.layers.lstm({ units: 256, returnSequences: true,recurrentDropout: 0.2 }), // <- true para usar atención
-    mergeMode: 'concat'
-}));
-modelo.add(tf.layers.batchNormalization());
-modelo.add(tf.layers.dropout({ rate: 0.3 }));
-
-
-// --------------------------------------
-
-// Segunda capa LSTM
-modelo.add(tf.layers.lstm({ units: 128, returnSequences: true ,recurrentDropout: 0.2}));
-modelo.add(tf.layers.batchNormalization());
-modelo.add(tf.layers.dropout({ rate: 0.3 }));
-
-// Capa densa con activación ReLU
-modelo.add(tf.layers.dense({ units: 128, activation: 'relu' }));
-modelo.add(tf.layers.batchNormalization());
-modelo.add(tf.layers.dropout({ rate: 0.3 }));
-
-// Capa de salida
-const outputLayer = tf.layers.dense({
-    units: vocabSize, // Tamaño del vocabulario
-    activation: 'softmax'
-  });
-
-// Compilar el modelo
-modelo.compile({
-    optimizer: tf.train.adam( 0.0005, 0.9, 0.98, 1e-8),
-    loss: 'categoricalCrossentropy',
-    metrics: ['accuracy']
-});
-   
+    // Embedding
+    modelo.add(tf.layers.embedding({
+        inputDim: vocabSize,
+        outputDim: 64,
+        inputLength: MAX_LEN
+    }));
+    
+    // LSTM Bidireccional con regularización
+    modelo.add(tf.layers.bidirectional({
+        layer: tf.layers.lstm({
+            units: 64, // reducido de 256
+            returnSequences: true,
+            recurrentDropout: 0.2,
+            kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+        }),
+        mergeMode: 'concat'
+    }));
+    
+    modelo.add(tf.layers.batchNormalization());
+    modelo.add(tf.layers.dropout({ rate: 0.35 }));
+    
+    // Segunda LSTM con regularización
+    modelo.add(tf.layers.lstm({
+        units: 64, // reducido de 128
+        returnSequences: true,
+        recurrentDropout: 0.2,
+        kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+    }));
+    
+    modelo.add(tf.layers.batchNormalization());
+    modelo.add(tf.layers.dropout({ rate: 0.4 }));
+    modelo.add(tf.layers.dense({
+        units: 64,
+        activation: 'relu'
+      }));
+      
+    // Capa de salida densa con regularización
+    modelo.add(tf.layers.timeDistributed({
+        layer: tf.layers.dense({
+            units: vocabSize,
+            activation: 'softmax',
+            kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+        })
+    }));
+    
+    // Compilar el modelo
+    modelo.compile({
+        optimizer: tf.train.adam(0.0005, 0.9, 0.98, 1e-8),
+        loss: 'categoricalCrossentropy',
+        metrics: ['accuracy']
+    });
+    
     return modelo;
 }
-function construirModelo(vocabSize) {
+function construirMlodelo(vocabSize) {
     const modelo = tf.sequential();
 
     modelo.add(tf.layers.embedding({
@@ -305,9 +318,10 @@ async function entrenarModelo() {
 
     console.log("Entrenando modelo...");
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
-    await modelo.fit(preguntas, respuestasTensor, { epochs: 100, batchSize , callbacks: {
+    await modelo.fit(preguntas, respuestasTensor, { epochs: 100,validationSplit: 0.2, batchSize , callbacks: {
         onEpochEnd: async (epoch, logs) => {
-            console.log(`📈 Epoch ${epoch + 1} - loss: ${logs.loss.toFixed(3)} - acc: ${logs.acc?.toFixed(3)}`);
+            console.log(`📈 Epoch ${epoch + 1} - loss: ${logs.loss.toFixed(3)} - acc: ${logs.acc?.toFixed(3) || logs.accuracy?.toFixed(3)} - val_acc: ${logs.val_acc?.toFixed(3) || logs.val_accuracy?.toFixed(3)}`);
+
         }
     }});
 
@@ -347,10 +361,12 @@ async function continuarEntrenamiento() {
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
     await modelo.fit(preguntas, respuestasTensor, {
         epochs: 50,
+        validationSplit: 0.2,
         batchSize,
         callbacks: {
             onEpochEnd: async (epoch, logs) => {
-                console.log(`📈 Epoch ${epoch + 1} - loss: ${logs.loss.toFixed(3)} - acc: ${logs.acc?.toFixed(3)}`);
+                console.log(`📈 Epoch ${epoch + 1} - loss: ${logs.loss.toFixed(3)} - acc: ${logs.acc?.toFixed(3) || logs.accuracy?.toFixed(3)} - val_acc: ${logs.val_acc?.toFixed(3) || logs.val_accuracy?.toFixed(3)}`);
+
             }
         }
      
