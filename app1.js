@@ -222,7 +222,7 @@ function construirModelo(vocabSize) {
             units: 64, // reducido de 256
             returnSequences: true,
             recurrentDropout: 0.2,
-            kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+            kernelRegularizer: tf.regularizers.l2({ l2: 0.0005 })
         }),
         mergeMode: 'concat'
     }));
@@ -235,22 +235,23 @@ function construirModelo(vocabSize) {
         units: 64, // reducido de 128
         returnSequences: true,
         recurrentDropout: 0.2,
-        kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+        kernelRegularizer: tf.regularizers.l2({ l2: 0.0005 })
     }));
     
     modelo.add(tf.layers.batchNormalization());
     modelo.add(tf.layers.dropout({ rate: 0.4 }));
     modelo.add(tf.layers.dense({
         units: 64,
-        activation: 'relu'
+        activation: 'tanh'
       }));
+      
       
     // Capa de salida densa con regularización
     modelo.add(tf.layers.timeDistributed({
         layer: tf.layers.dense({
             units: vocabSize,
             activation: 'softmax',
-            kernelRegularizer: tf.regularizers.l2({ l2: 0.001 })
+            kernelRegularizer: tf.regularizers.l2({ l2: 0.0005 })
         })
     }));
     
@@ -360,7 +361,7 @@ async function continuarEntrenamiento() {
     console.log("🚀 Continuando entrenamiento...");
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
     await modelo.fit(preguntas, respuestasTensor, {
-        epochs: 50,
+        epochs: 100,
         validationSplit: 0.2,
         batchSize,
         callbacks: {
