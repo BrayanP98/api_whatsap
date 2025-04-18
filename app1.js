@@ -353,7 +353,7 @@ async function continuarEntrenamiento() {
 
 
     // 💡 Recompilar antes de continuar el entrenamiento
-    modelo.compile({ optimizer: tf.train.adam(0.0005, 0.9, 0.98, 1e-8, true, 1.0), loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
+    modelo.compile({ optimizer: tf.train.adam(0.0003, 0.9, 0.98, 1e-8, true, 1.0), loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 
     console.log("📥 Cargando nuevos datos...");
     const { preguntas, respuestasTensor, datosValidacion  } = await preprocesarDatos();
@@ -362,7 +362,7 @@ async function continuarEntrenamiento() {
     const batchSize = Math.min(256, Math.floor(preguntas.shape[0] / 10));
     await modelo.fit(preguntas, respuestasTensor, {
         epochs: 100,
-        validationSplit: 0.2,
+        validationSplit: 0.3,
         batchSize,
         callbacks: {
             onEpochEnd: async (epoch, logs) => {
