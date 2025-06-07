@@ -13,7 +13,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Cotización en línea</h1>
+        <h1>Gestion en linea</h1>
+
+     <select name="tipoDoc" id="tipoDoc">
+  <option value="cotizacion">Cotización</option>
+  <option value="cuenta_cobro">Cuenta de cobro</option>
+</select>
+
+<p id="resultado"></p>
+
         
         <form id="cotizar_form">
             <!-- Información del usuario -->
@@ -40,7 +48,9 @@
             </div>
 
             <!-- Agregar productos -->
+             <h5>Agregar item extra</h5>
             <div id="extra_item">
+                
                 <div><label for="item_extra">Item</label>
                     <input type="text" id="item_extra" name="item_extra" required>
                 </div>
@@ -72,7 +82,10 @@
                     </tr>
                 </tfoot>
             </table>
-
+            <div id="nota">
+                <label for="notaUser">Nota</label>
+                <textarea name="notaUser" id="notaUser"></textarea>
+              </div>
             <!-- Opciones -->
             <div id="opc_cot">
                 <button type="button" id="pdf">Visualizar</button>
@@ -277,6 +290,8 @@ const item = document.getElementById("item_extra").value;
 const cantidad = document.getElementById("cant_item_extra").value;
 const valor = document.getElementById("val_item_extra").value;
 addProductToTable({}, item, cantidad, valor);
+
+ document.getElementById("item_extra").value="" ;document.getElementById("cant_item_extra").value="";document.getElementById("val_item_extra").value=""
 });
 
 
@@ -295,11 +310,14 @@ addProductToTable({}, item, cantidad, valor);
 
 
 function submitForm() {
-  
+   const select = document.getElementById("tipoDoc");
+  const valorSeleccionado = select.value;
     var table = document.getElementById('prod_cot');
     var data = [];
     var dataTot = [];
-    
+    var notaUser=document.getElementById("notaUser")
+       var cont=notaUser.value
+       
     for (var i = 1; i < table.rows.length; i++) {
         var row = table.rows[i];
     
@@ -308,6 +326,7 @@ function submitForm() {
            console.warn(row.cells[1].innerText.trim());
            var rowDataTot = {total:row.cells[1].innerText.trim()}
            dataTot.push(rowDataTot);
+           dataTot.push(cont);
             continue; // Saltar esta fila
         }
     
@@ -320,11 +339,11 @@ function submitForm() {
         };
     
         data.push(rowData);
-      
+ 
        
     }
-    console.log(dataTot);
     
+        
     
     
     
@@ -370,8 +389,20 @@ data_trans.id="div_data_trans"
 var transaccion= document.createElement("p")
 var fecha_transac= document.createElement("p")
 var numero_transac= document.createElement("p")
-transaccion.innerHTML="Cta_cobro"
-numero_transac.innerHTML="CO"+" "+date.getFullYear()+date.getDate()+(date.getMonth()+1)+date.getHours()+date.getMinutes()
+transaccion.innerHTML=valorSeleccionado
+
+const anio = date.getFullYear();
+const dia = String(date.getDate()).padStart(2, '0');
+const mes = String(date.getMonth() + 1).padStart(2, '0');
+const hora = String(date.getHours()).padStart(2, '0');
+const minuto = String(date.getMinutes()).padStart(2, '0');
+
+// Prefijo según tipo de documento
+const prefijo = valorSeleccionado === "cuenta_cobro" ? "V" : "C";
+
+// Generar número de transacción
+numero_transac.innerHTML = `${prefijo} ${anio}${dia}${mes}${hora}${minuto}`;
+
 var hoy= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
 fecha_transac.innerHTML=hoy
 
@@ -488,10 +519,10 @@ data.forEach(data => {
 
 table.appendChild(tbody)
 div_table.appendChild(table)
-var nota=document.createElement("p")
-nota.id="nota_cot"
 
 
+var nota1=document.createElement("p")
+nota1.innerHTML=dataTot[1]
        
 var footer=document.createElement("div")
 footer.id="footer_plant"
@@ -505,7 +536,7 @@ header.appendChild(data_trans)
 plantilla.appendChild(header)
 plantilla.appendChild(infoUser)
 plantilla.appendChild(div_table)
-plantilla.appendChild(nota)
+plantilla.appendChild(nota1)
 plantilla.appendChild(footer)
 
 
@@ -577,11 +608,50 @@ function generarPFD(elemento, name_cot){
 }  
 
 document.getElementById("pdf").addEventListener("click", () => {
-    generarPFD(submitForm(),"wwww")
+
+    const select = document.getElementById("tipoDoc");
+  const valorSeleccionado = select.value;
+ // document.getElementById("resultado").textContent = "Seleccionaste: " + valorSeleccionado;
+    generarPFD(submitForm(),valorSeleccionado )
 });
 
 </script>
 <style>
+.buscador{
+            width: 80%;
+            justify-content: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+           height: fit-content;
+           padding: 15px;
+            
+          }
+          .buscador h3{
+
+            font-size: 13px;
+          }
+    #info_user{
+          width: 80%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: auto;
+          position: relative;
+          justify-content: center;
+         gap: 5px;
+         border: 1px solid rgb(137, 136, 136);
+         padding: 15px;
+         
+        }
+        #info_user div{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
     /* General Styles */
 body {
     font-family: 'Montserrat', sans-serif;
@@ -597,11 +667,23 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
+    border: 1px solid rgb(83, 82, 82);
+    border-radius: 10px;
+    height: 50px;
+    align-items: center;
+    padding: 5px;
+
 }
 
 button {
+    height: 30px;
+     border: 1px solid rgb(238, 233, 233);
     margin-top: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    background-color: aqua;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 #prod_cot {
