@@ -1,148 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styless/styless.css">
+    <link rel="stylesheet" href="styless/styless.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src=
-    "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
-        </script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
-
-    <title>Cotizar</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+    <title>Cotización en línea</title>
 </head>
 <body>
-<div class="container">
-    <h1 >Cotizacion en linea</h1>
+    <div class="container">
+        <h1>Cotización en línea</h1>
+        
+        <form id="cotizar_form">
+            <!-- Información del usuario -->
+            <div id="info_user">
+                <div><label for="name_cot">Nombre</label>
+                    <input type="text" id="name_cot" name="name_cot" required>
+                </div>
+                <div><label for="doc_user_cot">Cédula/NIT</label>
+                    <input type="text" id="doc_user_cot" name="doc_user_cot" required>
+                </div>
+                <div><label for="cel_user_cot">Teléfono</label>
+                    <input type="text" id="cel_user_cot" name="cel_user_cot" required>
+                </div>
+                <div><label for="aderess_user_cot">Dirección</label>
+                    <input type="text" id="aderess_user_cot" name="aderess_user_cot" required>
+                </div>
+            </div>
 
-    <form action="/cotizar" method="post" id="cotizar_form">
-       <div id="info_user">
-       <div> <label for="">Nombre</label>
-        <input type="text" id="name_cot" name="name_cot" required></div>
-        <div><label for="">Cedula/nit</label>
-          <input type="text" id="doc_user_cot" name="doc_user_cot" required></div>
-        <div><label for="">Telefono</label>
-          <input type="text" id="cel_user_cot" name="cel_user_cot" required></div>
-       <div> <label for="">Direccion</label>
-        <input type="text" id="aderess_user_cot" name="aderess_user_cot" required></div>
-       </div>
+            <!-- Buscador de productos -->
+            <div class="buscador">
+                <h3>Buscador</h3>
+                <input type="text" id="input_buscar" list="options1">
+                <ul id="box-search"></ul>
+            </div>
+
+            <!-- Agregar productos -->
+            <div id="extra_item">
+                <div><label for="item_extra">Item</label>
+                    <input type="text" id="item_extra" name="item_extra" required>
+                </div>
+                <div><label for="cant_item_extra">Cantidad</label>
+                    <input type="text" id="cant_item_extra" name="cant_item_extra" required>
+                </div>
+                <div><label for="val_item_extra">Valor Unit</label>
+                    <input type="text" id="val_item_extra" name="val_item_extra" required>
+                </div>
+                <button type="button" id="add_extra">Agregar</button>
+            </div>
+
+            <!-- Tabla de productos seleccionados -->
+            <table id="prod_cot">
+                <thead>
+                    <tr>
+                        <th>Cod</th>
+                        <th>Item</th>
+                        <th>Cantidad</th>
+                        <th>Valor Unit</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody id="body_datesProd"></tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">Total</th>
+                        <th id="th_total">0.000</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- Opciones -->
+            <div id="opc_cot">
+                <button type="button" id="pdf">Visualizar</button>
+            </div>
+        </form>
+
+      
+       
+        
+    </div>
+    <dialog id="modal" style="width: 600px;  height: 1000px; border:2px; position: absolute; ;"  >
      
 
-<div class="buscador">
-    <h3>Buscador</h3>
-    <input type="text" id="input_buscar" list="options1"> 
-  
-
-<ul id="box-search">
-
- 
- 
-  
-</ul>
-
-</div>
-
-<div id="extra_item">
-  <div> <label for="">Item</label>
-    <input type="text" id="item_extra" name="item_extra" required></div>
-  
-   <div> <label for="">Cantidad</label>
-    <input type="text" id="cant_item_extra" name="cant_item_extra" required></div>
- 
-   <div> <label for="">Valor Unit</label>
-    <input type="text" id="val_item_extra" name="val_item_extra" required></div>
-   
-   <button id="add_extra">Agregar</button>
-  
-</div>
-   
-
-
-<style>
-
-  #extra_item{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    position: relative;
-    justify-content: center;
-   gap: 5px;
-   border: 1px solid rgb(137, 136, 136);
-   padding: 15px;
-  }
-</style>
+        <button id="cerrar_modal" style="position: fixed; top:10px; right:0px; z-index:999" >close</button>
+        <button id="pdf_modal" style="position: fixed; bottom:50%; right:30%; z-index:999" >PDF</button>
+        <button id="imprimir" style="position: fixed; bottom:45%; right:30%; z-index:999">Imprimir</button>
+      </dialog>
+    <script src="app.js"></script>
+</body>
+</html>
 <script>
-
-
-    var products=[{ 
+    // Productos disponibles
+const products = [
+{ cod: "1234", nombre: "MANO DE OBRA X PUNTO", cantidad: "15", valor: "40000" },
+{ cod: "5589", nombre: "MATERIALES X PUNTO", cantidad: "15", valor: "50000" },
+{ cod: "25345", nombre: "CAMARA DOMO_5MP", cantidad: "15", valor: "84600" },
+{ cod: "25345", nombre: "CAMARA DAHUA DOMO 5MP MOTORIZADA", cantidad: "15", valor: "221000" },
+{ cod: "25346", nombre: "XVR 4CH/2CH", cantidad: "15", valor: "294000" },
+{ cod: "25346", nombre: "Disco duro 1TB", cantidad: "15", valor: "293000" }
+];
+pintarProd(products)
+// Función para pintar productos en el buscador
+function pintarProd(prods){
+    var length= prods.length;
+   
+    for(let i=0; i< length; i++){
+      var listop=document.getElementById("box-search")
+      var buscar_btn=document.getElementById("input_buscar")
+    var li_options1= document.createElement("li");
+    var a_options1= document.createElement("a");
+  ////llenando li de busqueda
+    a_options1.innerHTML=prods[i].nombre;
+    li_options1.appendChild(a_options1)
+    listop.appendChild(li_options1)
+  
+   
       
-      cod:"1234",
-      nombre:"MANO DE OBRA X PUNTO",
-      cantidad:"15",
-      valor:"40000"
-  },{
-      
-      cod:"5589",
-      nombre:"MATERIALES X PUNTO",
-      cantidad:"15",
-      valor:"50000"
-  },{
-      
-        cod:"25345",
-        nombre:"camara domo_5mp, lente 2.8mm",
-        cantidad:"15",
-        valor:"84600"
-    },{
-      
-      cod:"25345",
-      nombre:"CAMARA DAHUA DOMO 5MP MOTORIZADA",
-      cantidad:"15",
-      valor:"221000"
-  },{
-        cod:"25346",
-        nombre:"XVR 4CH/2CH IP/GRABACION HASTA 5mp 1 HDMI 1 E/SRCA 1 SATA H264O",
-        cantidad:"15",
-        valor:"294000"
-    },
-    {
-        cod:"25346",
-        nombre:"XVR 8CH/2CH IP/GRABACION HASTA 5mp 1 HDMI 1 E/SRCA 1 SATA H264O",
-        cantidad:"15",
-        valor:"397000"
-    },
-    {
-      cod:"25346",
-      nombre:"Disco duro de 1Tb, 256Mb de cache",
-      cantidad:"15",
-      valor:"293000"
+    }
   }
-    ]
 
-    pintarProd(products)
 
-    function pintarProd(prods){
-  var length= prods.length;
- 
-  for(let i=0; i< length; i++){
-    var listop=document.getElementById("box-search")
-    var buscar_btn=document.getElementById("input_buscar")
-  var li_options1= document.createElement("li");
-  var a_options1= document.createElement("a");
-////llenando li de busqueda
-  a_options1.innerHTML=prods[i].nombre;
-  li_options1.appendChild(a_options1)
-  listop.appendChild(li_options1)
 
- 
-    
-  }
-}
-    var buscarbtn=document.querySelector("#buscar_prod");
   var inputfind=document.querySelector("#input_buscar");
   var box_serach=document.querySelector("#box-search");
 
@@ -161,7 +143,7 @@
        
         inputfind.value=li[i].innerText;
         box_serach.style.display="none"
-        addList(i)
+        addProductToTable(i);
         inputfind.value=""
 
        }
@@ -179,202 +161,174 @@
 
   inputfind.addEventListener("keyup", buscador_interno) ;
 
-function addList(pos,itemEx,cant,value){
- 
-  var tr= document.createElement("tr");
 
-  var  th_total=document.querySelector("#th_total");
+// Función para seleccionar un producto y agregarlo a la tabla
+function selectProduct(product) {
+addProductToTable(product);
+document.getElementById("input_buscar").value = "";
+document.getElementById("box-search").style.display = "none";
+}
 
- 
-      var td_item=document.createElement("td");
-  var td_name=document.createElement("td");
-  var td_cant=document.createElement("td");
-  td_cant.innerHTML="1"
-  td_cant.setAttribute("contenteditable",true)
-  td_cant.setAttribute("type","number")
-  var td_valorUnit=document.createElement("td");
-  var td_valorTot=document.createElement("td");
-  var td_opt=document.createElement("td");
-  var input_catn=document.createElement("input");
-  var delete_prod=document.createElement("a");
-  delete_prod.style="cursor:pointer; color:red;"
-  delete_prod.innerHTML="X"
-  var body_prods=document.querySelector("#body_datesProd");
-  if(itemEx){
+// Función para agregar el producto seleccionado a la tabla
+function addProductToTable(pos,itemExtra,cant,val) {
+const tbody = document.getElementById("body_datesProd");
+const tr = document.createElement("tr");
+
+if(itemExtra){
+    tr.innerHTML = `
+    <td>${"00"}</td>
+    <td>${itemExtra || product.nombre}</td>
+    <td contenteditable="true" class="td-cant">${cant}</td>
+    <td>${(parseFloat(val) / 1000).toFixed(3)}</td>
+    <td class="td-total">${(parseFloat(val) * cant / 1000).toFixed(3)}</td>
+    <td><a href="#" style="color: red;" onclick="removeProduct(this)">X</a></td>
+`;
+tbody.appendChild(tr);
+updateTotal();
+const tdCant = tr.querySelector(".td-cant");
+const tdTotal = tr.querySelector(".td-total");
+tdCant.addEventListener("keyup", function(){
+
+   
+    let nuevaCantidad = parseFloat(this.innerText);
+    if (isNaN(nuevaCantidad) || nuevaCantidad < 0) nuevaCantidad = 0;
+    const nuevoTotal = ((val * nuevaCantidad) / 1000).toFixed(3);
+    tdTotal.innerText = nuevoTotal;
+    updateTotal();
+})
+}else{
     
-    var total_cot=th_total.innerHTML;
-    td_item.innerHTML="0000",
-    td_name.innerHTML=itemEx;
-    td_cant.innerHTML=cant;
-    td_valorUnit.innerHTML=(parseFloat(value)/1000).toFixed(3)
-    var val_tot=parseInt(value)*parseInt(cant)
-    td_valorTot.innerHTML=(parseFloat(val_tot)/1000).toFixed(3)
-    var totInt=parseInt(total_cot)+parseInt(val_tot)
-    th_total.innerHTML=  (parseFloat(totInt)/1000).toFixed(3)
-   
-  }else{
-   
-  
-    td_item.innerHTML=products[pos].cod,
-    td_name.innerHTML=products[pos].nombre;
-  
-    
-    
-   // td_cant.appendChild(input_catn);
+    tr.innerHTML = `
+    <td>${products[pos].cod}</td>
+    <td>${products[pos].nombre}</td>
+    <td class="td-cant"contenteditable="true" >${1}</td>
+    <td>${(parseFloat(products[pos].valor) / 1000).toFixed(3)}</td>
+   <td class="td-total">
+  ${formatearValorLatino(parseFloat(products[pos].valor) * 1 / 1000)}
+</td>
+    <td><a href="#" style="color: red;" onclick="removeProduct(this)">X</a></td>
+`;
+tbody.appendChild(tr);
+updateTotal();
 
-    var total_cot=th_total.innerHTML;
-    if(total_cot==="NaN"){
-     
-    }else{
-      
-      var tot_int=parseFloat(total_cot)
-    console.log(tot_int*1000)
-      th_total.innerHTML=  ((parseInt(products[pos].valor)+tot_int)/1000).toFixed(3)
-    }
-   
-    td_cant.addEventListener("keyup", function(){
-      
-      if(this.innerHTML=="<br>"){
-        this.innerHTML=0
-        console.log(this.innerHTML)
-      }else{
-        var valor_act=td_valorTot.innerHTML;
-      
-      var total_cot=th_total.innerHTML;
-        var total=parseFloat( this.innerHTML)*parseFloat(products[pos].valor);
-        td_valorTot.innerHTML=(parseFloat(total)/1000).toFixed(3)
-       
-        th_total.innerHTML= (parseInt(total_cot)-parseInt(valor_act))+total
-      }
-      
-    })
-    td_valorUnit.innerHTML=(parseFloat(products[pos].valor)/1000).toFixed(3);
-    td_valorTot.innerHTML=(parseFloat(products[pos].valor)/1000).toFixed(3);
+
+const tdCant = tr.querySelector(".td-cant");
+const tdTotal = tr.querySelector(".td-total");
+var valorUnitario=parseFloat(products[pos].valor)
+tdCant.addEventListener("keyup", function(){
 
    
-  }
-  dlt_prod()
-  function dlt_prod(){
-    delete_prod.onclick=function(event){
-      var total_cot=th_total.innerHTML;
-      event.preventDefault();
-      var valor_act=td_valorTot.innerHTML;
-      th_total.innerHTML= (parseInt(total_cot)-parseInt(valor_act))
-      
-      this.closest('tr').remove();
-
-    }
-
-   
-   
-
-  }
-    
-  td_opt.appendChild(delete_prod)
-  tr.appendChild(td_item);
-  tr.appendChild(td_name);
-  tr.appendChild(td_cant);
-  tr.appendChild(td_valorUnit);
-  tr.appendChild(td_valorTot);
-  tr.appendChild(td_opt);
-  body_prods.appendChild(tr)
-  
-  }
-
-  var butt_extra=document.querySelector("#add_extra")
-  var itemExtra=document.querySelector("#item_extra")
-  var CantitemExtra=document.querySelector("#cant_item_extra")
-  var ValitemExtra=document.querySelector("#val_item_extra")
-
-  butt_extra.onclick=function(){
-
-    addList("",itemExtra.value, CantitemExtra.value, ValitemExtra.value)
-  
-
-  }
-
-
-
-
-
-
-</script>
-       <div id="item_prod">
-      
-
-        <table id="prod_cot" >
-            <thead>
-              <tr>
-                <th>Cod</th>
-                <th>Item</th>
-                <th>Cantidad</th>
-                <th>Valor_Unit</th>
-                <th>Valor_Total</th>
-                 
-                  
-              </tr>
-          </thead>
-          <tbody id="body_datesProd">
-                  
-               
-          </tbody>
-          <tfoot>
-           
-            <th></th>
-            <th></th>
-            <th></th>
-            <th id="total_cot">Total</th>
-            <th id="th_total" >0</th>
-          </tfoot>
-        </table>
-       <div id="opc_cot">
-
-        
-       <button id="pdf">Visualizar</button>
-       </div>
-    </form>
-    
-
-    <dialog id="modal" style="width: 600px;  height: fit-content; border:0;" >
-     
-
-      <button id="cerrar_modal" style="position: fixed; top:15px; right:25px; z-index:999" >close</button>
-      <button id="pdf_modal" style="position: absolute; bottom:25px; right:15px; z-index:999" >PDF</button>
-      <button id="imprimir" style="position: absolute; bottom:2px; right:15px; z-index:999">Imprimir</button>
-    </dialog>
-    <script>
-var name_cot= document.querySelector("#name_cot")
-
-
-document. querySelector("#pdf").onclick=function(){
-
-generarPFD(submitForm(),name_cot.value)
+    let nuevaCantidad = parseFloat(this.innerText);
+    if (isNaN(nuevaCantidad) || nuevaCantidad < 0) nuevaCantidad = 0;
+    const nuevoTotal = ((valorUnitario * nuevaCantidad) / 1000).toFixed(3);
+    tdTotal.innerText = nuevoTotal;
+    updateTotal();
+})
+}
 
 }
 
 
-/*document. querySelector("#pdf").onclick=function(){
-var modal= document.querySelector("#modal")
-modal.showModal()
+//formateo totales
+function formatearValorLatino(num) {
+   return num
+        .toFixed(3)                 // Ej: 1000000.123
+        .replace(".", ".")          // Cambiar el separador decimal
+        .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Agregar puntos cada 3 cifras
+}
 
-}*/
+
+
+// Función para eliminar un producto de la tabla
+function removeProduct(link) {
+const row = link.closest("tr");
+row.remove();
+updateTotal();
+}
+
+// Función para actualizar el total de la cotización
+function updateTotal() {
+    const rows = document.querySelectorAll("#body_datesProd tr");
+    let total = 0;
+
+    rows.forEach(row => {
+        const cell = row.cells[4];
+        if (cell) {
+            const val = parseFloat(cell.innerText.replace(/[^0-9.-]+/g, ""));
+            if (!isNaN(val)) {
+                total += val;
+            }
+        }
+    });
+
+    // Formatear con puntos y coma al estilo latino
+    const formattedTotal = total
+        .toFixed(3)                 // Ej: 1000000.123
+        .replace(".", ".")          // Cambiar el separador decimal
+        .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Agregar puntos cada 3 cifras
+
+    document.getElementById("th_total").innerText = formattedTotal;
+}
+
+
+// Evento para agregar productos personalizados
+document.getElementById("add_extra").addEventListener("click", () => {
+const item = document.getElementById("item_extra").value;
+const cantidad = document.getElementById("cant_item_extra").value;
+const valor = document.getElementById("val_item_extra").value;
+addProductToTable({}, item, cantidad, valor);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Generar PDF al hacer clic en el botón "Visualizar"
+
 
 function submitForm() {
   
-    // Get table data and create an array of objects
-   var table = document.getElementById('prod_cot');
+    var table = document.getElementById('prod_cot');
     var data = [];
+    var dataTot = [];
     
     for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+    
+        // Asegúrate de que hay al menos 5 celdas
+        if (row.cells.length < 5) {
+           console.warn(row.cells[1].innerText.trim());
+           var rowDataTot = {total:row.cells[1].innerText.trim()}
+           dataTot.push(rowDataTot);
+            continue; // Saltar esta fila
+        }
+    
         var rowData = {
-            cod: table.rows[i].cells[0].innerText,
-            name: table.rows[i].cells[1].innerText,
-            cant: table.rows[i].cells[2].innerText,
-            val_unit: table.rows[i].cells[3].innerText,
-            val_tot:table.rows[i].cells[4].innerText,   
+            cod: row.cells[0].innerText.trim(),
+            name: row.cells[1].innerText.trim(),
+            cant: row.cells[2].innerText.trim(),
+            val_unit: row.cells[3].innerText.trim(),
+            val_tot: row.cells[4].innerText.trim()
         };
+    
         data.push(rowData);
+      
+       
     }
+    console.log(dataTot);
+    
+    
+    
+    
+    
 
     // Convert data to JSON
    /* var jsonData = JSON.stringify(data);
@@ -455,8 +409,22 @@ var div_table= document.createElement("div");
 div_table.id="div_table_plant"
 var table= document.createElement("table");
 var thead= document.createElement("thead");
+var tfoot= document.createElement("tfoot");
 
-
+var trfoot= document.createElement("tr");
+var th_foot= document.createElement("th");
+var th_foot1= document.createElement("th");
+var th_foot2= document.createElement("th");
+var th_foot3= document.createElement("th");
+th_foot.innerHTML="Total"
+var th_footVal= document.createElement("th");
+th_footVal.innerHTML="$"+dataTot[0].total;
+trfoot.appendChild(th_foot1)
+trfoot.appendChild(th_foot2)
+trfoot.appendChild(th_foot3)
+trfoot.appendChild(th_foot)
+trfoot.appendChild(th_footVal)
+tfoot.appendChild(trfoot)
 var tr= document.createElement("tr");
 var th_cod= document.createElement("th");
 th_cod.innerHTML="Cod"
@@ -476,6 +444,7 @@ tr.appendChild(th_vUnit)
 tr.appendChild(th_vTot)
 thead.appendChild(tr)
 table.appendChild(thead)
+table.appendChild(tfoot)
 
 var tbody= document.createElement("tbody");
 var trBody= document.createElement("tr");
@@ -542,172 +511,130 @@ plantilla.appendChild(footer)
 
 return plantilla
 }
-document. querySelector("#imprimir").onclick=function(){
-
-  imprimirElemento(submitForm(),name_cot.value)
-}
-function imprimirElemento(elemento, name_cot) {
-
- /*var ventana = window.open('', 'PRINT', 'height=800,width=900');
-  ventana.document.write('<html><head><title>' + "COT"+"-"+name_cot.value + '</title>');
-  ventana.document.write('<link rel="stylesheet" href="/styless/styless.css">'); //Cargamos otra hoja, no la normal
-  ventana.document.write('</head><body >');
-  ventana.document.write(elemento.innerHTML);
- 
-  ventana.document.close();
-  ventana.focus();
-  ventana.onload = function() {
-    ventana.print();
-    ventana.close();
-  };
-  return true;*/
-  document.title="transacciones"
-  var contenidoOriginal= document.body.innerHTML;
-  
- 
-  var modal= document.querySelector("#modal")
-  
-  var plantilla1=document.createElement("div")
-  plantilla1.appendChild(elemento)
-  var cerrar_moda1l= document.querySelector("#cerrar_modal")
-  var pdf_modal= document.querySelector("#pdf_modal")
-  pdf_modal.style="visibility:hidden;"
-  cerrar_moda1l.style="visibility:hidden;"
-  
-    window.print(plantilla1);
-
-
-  
-}
-
 function generarPFD(elemento, name_cot){
-  var contenidoOriginal= document.body.innerHTML;
- 
-  var modal= document.querySelector("#modal")
-  var plantilla1=document.createElement("div")
-  plantilla1.appendChild(elemento)
-  modal.appendChild(plantilla1)
-
-
-
-  var cerrar_modal= document.querySelector("#cerrar_modal")
-cerrar_modal.onclick=function(){
-  var modal= document.querySelector("#modal")
-  modal.close()
-  plantilla1.innerHTML=""
+    var contenidoOriginal= document.body.innerHTML;
+   
+    var modal= document.getElementById("modal")
+    var plantilla1=document.createElement("div")
+    plantilla1.appendChild(elemento)
+    modal.appendChild(plantilla1)
   
-  }
-  modal.showModal()
-
-
-  /*var pdf_modal= document.querySelector("#pdf_modal")
-  pdf_modal.onclick=function(){
-    html2canvas(plantilla1, {
-      allowTaint: false,
-      width: 800, height: 800
-    }) // Llamar a html2canvas y pasarle el elemento
-      .then(canvas => {
-             
-        var img=canvas.toDataURL("image/jpeg",1.0);
-     var doc = new jsPDF('p', 'in', [8.9, 11]);
-     doc.addImage(img,'JPEG',0.3,0.2);
-     doc.save('Cta_cobro_'+name_cot+'_.pdf');
-      });
-      
-     /* setTimeout(function(){
-       location.reload()
-    }, 1000);
-  }*/
-  document.querySelector("#pdf_modal").onclick = function () {
-    const modal = document.querySelector("#modal");
-
-    // Asegurar que el modal esté completamente visible antes de capturar
-    setTimeout(() => {
-        html2canvas(modal, {
-            scale: 1, // Mayor calidad de imagen
-            useCORS: true, // Para capturar imágenes externas
-            logging: true, // Para ver errores en la consola
-            backgroundColor: "#ffffff" // Evitar fondo transparente
-        }).then(canvas => {
-            const imgData = canvas.toDataURL("image/png");
-
-            // Definir tamaño de PDF basado en el tamaño del canvas
-            const pdfWidth = 210; // A4 ancho en mm
-            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-            const doc = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]); // Ajusta el tamaño dinámicamente
-            doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            doc.save('Cta_cobro.pdf');
-        }).catch(error => {
-            console.error("Error generando PDF:", error);
+    modal.showModal()
+  console.log("ww")
+    var cerrar_modal= document.querySelector("#cerrar_modal")
+  cerrar_modal.onclick=function(){
+    var modal= document.querySelector("#modal")
+    modal.close()
+    plantilla1.innerHTML=""
+    
+    }
+  
+  
+  
+    /*var pdf_modal= document.querySelector("#pdf_modal")
+    pdf_modal.onclick=function(){
+      html2canvas(plantilla1, {
+        allowTaint: false,
+        width: 800, height: 800
+      }) // Llamar a html2canvas y pasarle el elemento
+        .then(canvas => {
+               
+          var img=canvas.toDataURL("image/jpeg",1.0);
+       var doc = new jsPDF('p', 'in', [8.9, 11]);
+       doc.addImage(img,'JPEG',0.3,0.2);
+       doc.save('Cta_cobro_'+name_cot+'_.pdf');
         });
-    }, 1000); // Aumentar el delay si el modal tarda en renderizarse
-};
-
-
-
-
-
-}
-    </script>
-
-    <style>
-
-      .container{
-        width: 100%;
         
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-        
-      }
-        #info_user{
-          width: 80%;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          margin: auto;
-          position: relative;
-          justify-content: center;
-         gap: 5px;
-         border: 1px solid rgb(137, 136, 136);
-         padding: 15px;
-         
-        }
-        #info_user div{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-
-          .buscador{
-            width: 80%;
-            justify-content: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: auto;
-           height: fit-content;
-           padding: 15px;
-            
-          }
-          .buscador h3{
-
-            font-size: 13px;
-          }
-          
-          
-
-        
-       
-    </style>
-</div>
-
-
+       /* setTimeout(function(){
+         location.reload()
+      }, 1000);
+    }*/
+    document.querySelector("#pdf_modal").onclick = function () {
+      const modal = document.querySelector("#modal");
   
-</object>
-</body>
+      // Asegurar que el modal esté completamente visible antes de capturar
+      setTimeout(() => {
+          html2canvas(modal, {
+              scale: 3, // Mayor calidad de imagen
+              useCORS: true, // Para capturar imágenes externas
+              logging: true, // Para ver errores en la consola
+              backgroundColor: "#ffffff" // Evitar fondo transparente
+          }).then(canvas => {
+              const imgData = canvas.toDataURL("image/png");
+  
+              // Definir tamaño de PDF basado en el tamaño del canvas
+              const pdfWidth = 210; // A4 ancho en mm
+              const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+  
+              const doc = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]); // Ajusta el tamaño dinámicamente
+              doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+              doc.save('Cta_cobro.pdf');
+          }).catch(error => {
+              console.error("Error generando PDF:", error);
+          });
+      }, 1000); // Aumentar el delay si el modal tarda en renderizarse
+  };
+}  
 
-</html>
+document.getElementById("pdf").addEventListener("click", () => {
+    generarPFD(submitForm(),"wwww")
+});
+
+</script>
+<style>
+    /* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+#extra_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#prod_cot {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#prod_cot th, #prod_cot td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+#th_total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Modal styles */
+#modal {
+    
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#cerrar_modal {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+</style>
