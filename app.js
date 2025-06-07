@@ -550,6 +550,10 @@ app.get("/", async(req, res) => {
 app.get("/blog", async(req, res) => {
   res.render("blogs.ejs")
 });
+
+app.get("/us", async(req, res) => {
+  res.render("nosotros.ejs")
+});
 app.get("/cotizar", async(req, res) => {
   res.render("cotizar.ejs")
 });
