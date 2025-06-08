@@ -82,7 +82,7 @@
                     </tr>
                 </tfoot>
             </table>
-            <div id="nota">
+            <div id="nota_cot">
                 <label for="notaUser">Nota</label>
                 <textarea name="notaUser" id="notaUser"></textarea>
               </div>
@@ -366,18 +366,20 @@ function submitForm() {
 //////plantilla cotizacion
 var fondo=document.createElement("img")
 fondo.id="fondo";
-fondo.setAttribute("src","img/lognexo1.png")
+//fondo.setAttribute("src","img/lognexo1.png")
 var name_cot= document.querySelector("#name_cot")
 var doc_user_cot= document.querySelector("#doc_user_cot")
 var cel_user_cot= document.querySelector("#cel_user_cot")
 var address_user_cot= document.querySelector("#aderess_user_cot")
 var plantilla= document.createElement("div")
+plantilla.id="plantilla";
+    plantilla.style="height: 100%;"
 
 var date= new Date();
 date.toLocaleString('default', { month: 'long' })
 var header= document.createElement("div")
 header.id="header_plantilla"
-plantilla.style.width="50%;  "
+plantilla.style.width="100%;  "
 
 
 var info_empresa= document.createElement("div");
@@ -519,10 +521,16 @@ data.forEach(data => {
 
 table.appendChild(tbody)
 div_table.appendChild(table)
-
-
 var nota1=document.createElement("p")
-nota1.innerHTML=dataTot[1]
+if (dataTot[1] && dataTot[1].trim() !== "") {
+  // Tiene contenido útil
+  nota1.id="notaPDF"
+nota1.style="z-index:999; position:absolute; font-size:11px;"
+nota1.innerHTML= "<b>nota:</b>"+" "+dataTot[1]
+} 
+
+
+
        
 var footer=document.createElement("div")
 footer.id="footer_plant"
@@ -612,6 +620,7 @@ function generarPFD(elemento, name_cot){
    
     var modal= document.getElementById("modal")
     var plantilla1=document.createElement("div")
+    
     plantilla1.appendChild(elemento)
     modal.appendChild(plantilla1)
   
@@ -621,7 +630,7 @@ function generarPFD(elemento, name_cot){
   cerrar_modal.onclick=function(){
     var modal= document.querySelector("#modal")
     modal.close()
-    plantilla1.innerHTML=""
+    plantilla1.remove()
     
     }
   
@@ -785,6 +794,11 @@ button {
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+
+#notaPDF{
+    z-index:999;
+    position:relative;
 }
 
 </style>
