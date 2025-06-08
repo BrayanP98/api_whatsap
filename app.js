@@ -525,6 +525,68 @@ app.post("/cotizar", async(req, res) => {
 });
 
 
+///////////////
+///////////////////////
+app.post("/api/enviar-datos", async(req, res) => {
+ // console.log(req.body);
+  const data=req.body
+ //console.log("📥 Datos recibidos:", req.body);
+
+  // Aquí podrías guardar en base de datos, escribir en archivo, etc.
+  res.json({ mensaje: "Datos recibidos correctamente" });
+
+ var tamano=data.length-1
+    
+var date= new Date()
+var transac={
+ tipo:data[1].tipo,
+ numero:data[1].numero,
+ products:data[2]
+
+}
+var nombre=data[0].nombre
+console.log(data[tamano].nombre)
+  try{
+     const cotizacion= new cotizar();
+   let user = await cotizar.findOne({ nombre});
+   if(user){
+ await cotizar.findOneAndUpdate(
+        { nombre },  // Buscar por el número del usuario
+        { 
+          $push: { documents: transac }  // Agregar el blog al array
+        },
+       
+      );
+   }else{
+cotizacion.nombre=data[0].nombre;
+    cotizacion.cedula=data[0].id;
+    cotizacion.telefono=data[0].tel;
+    cotizacion.direccion=data[0].addres;
+
+
+  
+
+    cotizacion.documents.push(transac);
+ 
+
+      await cotizacion.save();  
+   }
+  
+
+   
+     
+   
+}catch(err){
+  console.log(err)
+}
+
+
+});
+
+
+
+
+
 app.get("/api/blogs", async (req, res) => {
   try {
 

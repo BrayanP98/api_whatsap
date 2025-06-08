@@ -77,7 +77,7 @@
                 <tbody id="body_datesProd"></tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="4">Total</th>
+                        <th colspan="4">Total:</th>
                         <th id="th_total">0.000</th>
                     </tr>
                 </tfoot>
@@ -371,6 +371,9 @@ var name_cot= document.querySelector("#name_cot")
 var doc_user_cot= document.querySelector("#doc_user_cot")
 var cel_user_cot= document.querySelector("#cel_user_cot")
 var address_user_cot= document.querySelector("#aderess_user_cot")
+
+
+
 var plantilla= document.createElement("div")
 plantilla.id="plantilla";
     plantilla.style="height: 100%;"
@@ -401,7 +404,7 @@ const minuto = String(date.getMinutes()).padStart(2, '0');
 
 // Prefijo según tipo de documento
 const prefijo = valorSeleccionado === "cuenta_cobro" ? "V" : "C";
-
+var numeroTransac=`${prefijo} ${anio}${dia}${mes}${hora}${minuto}`
 // Generar número de transacción
 numero_transac.innerHTML = `${prefijo} ${anio}${dia}${mes}${hora}${minuto}`;
 
@@ -449,7 +452,7 @@ var th_foot= document.createElement("th");
 var th_foot1= document.createElement("th");
 var th_foot2= document.createElement("th");
 var th_foot3= document.createElement("th");
-th_foot.innerHTML="Total"
+th_foot.innerHTML="Total:"
 var th_footVal= document.createElement("th");
 th_footVal.innerHTML="$"+dataTot[0].total;
 trfoot.appendChild(th_foot1)
@@ -546,9 +549,52 @@ plantilla.appendChild(infoUser)
 plantilla.appendChild(div_table)
 plantilla.appendChild(nota1)
 plantilla.appendChild(footer)
+const dataUser = {
+  nombre: name_cot.value,
+  id: doc_user_cot.value,
+  tel: cel_user_cot.value,
+  addres: address_user_cot.value
+};
 
+saveDatabase(data,dataUser,numeroTransac, valorSeleccionado)
 
 return plantilla
+}
+
+
+function saveDatabase(dataProd,datauser,ntransac, tipo ){
+var transac={
+    numero:ntransac,
+    tipo:tipo
+}
+
+var dataSave=[]
+dataSave.push(datauser)
+dataSave.push(transac)
+dataSave.push(dataProd)
+
+
+
+//console.log(dataSave)
+fetch("/api/enviar-datos", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify( dataSave) // 🔄 Enviar directamente el objeto si es solo uno
+})
+.then(res => res.json())
+.then(data => {
+  console.log("✅ Respuesta del servidor:");
+})
+.catch(err => {
+  console.error("❌ Error al enviar datos:", err);
+});
+
+
+///////////////////////////
+
+
 }
 
 var imprimir=document.getElementById("imprimir");
@@ -615,7 +661,7 @@ function imprimirModal(elemento) {
 
 
 
-function generarPFD(elemento, name_cot){
+function generarPFD(elemento,selected,name){
     var contenidoOriginal= document.body.innerHTML;
    
     var modal= document.getElementById("modal")
@@ -636,27 +682,10 @@ function generarPFD(elemento, name_cot){
   
   
   
-    /*var pdf_modal= document.querySelector("#pdf_modal")
-    pdf_modal.onclick=function(){
-      html2canvas(plantilla1, {
-        allowTaint: false,
-        width: 800, height: 800
-      }) // Llamar a html2canvas y pasarle el elemento
-        .then(canvas => {
-               
-          var img=canvas.toDataURL("image/jpeg",1.0);
-       var doc = new jsPDF('p', 'in', [8.9, 11]);
-       doc.addImage(img,'JPEG',0.3,0.2);
-       doc.save('Cta_cobro_'+name_cot+'_.pdf');
-        });
-        
-       /* setTimeout(function(){
-         location.reload()
-      }, 1000);
-    }*/
+    
     document.querySelector("#pdf_modal").onclick = function () {
-      const modal = document.querySelector("#modal");
-  
+        
+
       // Asegurar que el modal esté completamente visible antes de capturar
       setTimeout(() => {
           html2canvas(modal, {
@@ -673,20 +702,26 @@ function generarPFD(elemento, name_cot){
   
               const doc = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]); // Ajusta el tamaño dinámicamente
               doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-              doc.save('Cta_cobro.pdf');
+              doc.save( selected+'_'+name+'.pdf');
           }).catch(error => {
               console.error("Error generando PDF:", error);
           });
       }, 1000); // Aumentar el delay si el modal tarda en renderizarse
   };
+
+  
+
+
 }  
 
 document.getElementById("pdf").addEventListener("click", () => {
+    var name_cot=document.querySelector("#name_cot").value
 
+console.log(name_cot)
     const select = document.getElementById("tipoDoc");
   const valorSeleccionado = select.value;
  // document.getElementById("resultado").textContent = "Seleccionaste: " + valorSeleccionado;
-    generarPFD(submitForm(),valorSeleccionado )
+    generarPFD(submitForm(),valorSeleccionado,name_cot)
 });
 
 </script>

@@ -1,19 +1,7 @@
 const {Schema, model} = require('mongoose');
 
 const imagSchema= new Schema({
-    numero:{
-        type:String,
-        required:true,
-        unique:false,
-        trim:true
-           },
-    fecha:{
-        type:String,
-        required:true,
-        unique:false,
-        trim:true
-           },
-    nombre:{
+   nombre:{
         type:String,
         required:true,
         unique:false,
@@ -24,12 +12,12 @@ const imagSchema= new Schema({
             required:false,
             unique:false,
             trim:true
-               },
-         telefono:{
-                type:String,
-                required:false,
-                unique:false,
-                trim:true
+               },   
+       telefono:{
+         type:String,
+         required:false,
+         unique:false,
+         trim:true
                    },
      direccion:{
        type:String,
@@ -37,7 +25,10 @@ const imagSchema= new Schema({
        unique:false,
         trim:true
           },
-    products:[{
+    documents:[{
+
+      
+           
 
    
     }],
