@@ -714,13 +714,13 @@ updateTotal();
 
    const tdCant = tr.querySelector(".td-cant");
 const tdTotal = tr.querySelector(".td-total");
-var valorUnitario=parseFloat(array[i].products[a].val_unit)
-tdCant.addEventListener("keyup", function(){
 
+tdCant.addEventListener("keyup", function(){
+var valorUnitario=parseFloat(array[i].products[a].val_unit)
    
     let nuevaCantidad = parseFloat(this.innerText);
     if (isNaN(nuevaCantidad) || nuevaCantidad < 0) nuevaCantidad = 0;
-    const nuevoTotal = ((valorUnitario * nuevaCantidad) / 1000).toFixed(3);
+    const nuevoTotal = ((valorUnitario * nuevaCantidad) ).toFixed(3);
     tdTotal.innerText = nuevoTotal;
     updateTotal();
 })
