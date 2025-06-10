@@ -701,7 +701,7 @@ transaction_item.appendChild(transaction_number)
     <td>${array[i].products[a].cod}</td>
     <td>${array[i].products[a].name}</td>
     <td class="td-cant"contenteditable="true" >${array[i].products[a].cant}</td>
-    <td>${(parseFloat(array[i].products[a].val_unit) / 1000).toFixed(3)}</td>
+    <td>${(parseFloat(array[i].products[a].val_unit)  ).toFixed(3)}</td>
    <td class="td-total">
   ${formatearValorLatino(parseFloat(array[i].products[a].val_tot))}
 </td>
@@ -741,6 +741,7 @@ transaction_catn.innerHTML=array[i].products.length;
 transaction_total.innerHTML="$"+(total).toFixed(3);
 transaction_item.appendChild(transaction_catn)
 transaction_item.appendChild(transaction_total)
+total=0
   //console.log("primera tanda"+(total).toFixed(3))
   }
 
