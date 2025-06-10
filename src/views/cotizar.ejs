@@ -20,6 +20,8 @@
   <option value="cuenta_cobro">Cuenta de cobro</option>
 </select>
 
+
+
 <p id="resultado"></p>
 
         
@@ -88,13 +90,32 @@
               </div>
             <!-- Opciones -->
             <div id="opc_cot">
-                <button type="button" id="pdf">Visualizar</button>
+                <button type="button" id="pdf">Save</button>
             </div>
         </form>
 
       
        
-        
+         <section id="transacciones">
+
+
+        <label for="name_search">ingrese nombre</label>
+        <input  id="name_search" type="text">
+        <button onclick=getDatabase()>buscar</button>
+
+        <div id="viewer_transactions">
+
+
+
+
+        </div>
+
+
+
+
+
+      </section>
+    <script src="app.js"></script>
     </div>
     <dialog id="modal" style="width: 600px;  height: 1000px; border:2px; position: absolute; ;"  >
      
@@ -103,7 +124,8 @@
         <button id="pdf_modal" style="position: fixed; bottom:50%; right:20%; z-index:999" >PDF</button>
         <button id="imprimir" style="position: fixed; bottom:45%; right:20%; z-index:999">Imprimir</button>
       </dialog>
-    <script src="app.js"></script>
+
+     
 </body>
 </html>
 <script>
@@ -388,7 +410,7 @@ plantilla.style.width="100%;  "
 var info_empresa= document.createElement("div");
 info_empresa.id="div_info_empresa"
 var p_info_empresa= document.createElement("p")
-p_info_empresa.innerHTML="Nexo Security<br> Nit.1061813933 Reg. Simp.  <br>Tel: 3006846977-3147459094 "
+p_info_empresa.innerHTML="San Juan Electronics <br> NIT.1144143439-7 REG. SIMP.<br>TRANSVERSAL 9 # 57N - 202<br>VIA AL BOSQUE <br>Tel.: 3022456227 - 3006549863 "
 var data_trans= document.createElement("div")
 data_trans.id="div_data_trans"
 var transaccion= document.createElement("p")
@@ -422,7 +444,7 @@ info_empresa.appendChild(p_info_empresa)
 
 var logo=document.createElement("img")
 logo.style=" width:90px; height:70px;  position:relative; top:0;"
-logo.setAttribute("src","img/logonexo.png")
+logo.setAttribute("src","img/logo_sanjuan.png")
 
 var infoUser= document.createElement("div");
 infoUser.id="infoUser_plant"
@@ -538,7 +560,7 @@ nota1.innerHTML= "<b>nota:</b>"+" "+dataTot[1]
 var footer=document.createElement("div")
 footer.id="footer_plant"
 var Pfooter=document.createElement("p")
-Pfooter.innerHTML=" <br>Tel: 300 684 6977 - 3147459094 <br>nexodirect2025@gmail.com <br> Popayán - Colombia"
+Pfooter.innerHTML=" <br>TRANSVERSAL 9 # 57N – 202 VIA EL BOSQUE <br>Tel: 3022456227 - 3006549863   <br>nsanjuanelectronics@gmail.com <br> Popayán - Colombia"
 footer.appendChild(Pfooter)
 header.appendChild(logo)
 plantilla.appendChild(fondo)
@@ -597,12 +619,151 @@ fetch("/api/enviar-datos", {
 
 }
 
+function getDatabase(){
+
+  var name_search=document.getElementById("name_search")
+  if (name_search.value.trim() === "") {
+    name_search.style="background-color: rgba(208, 15, 15, 0.478);"
+    name_search.setAttribute("placeholder","ingrese nombre por favor")
+  }else{
+      name_search.style="background-color: white"
+      name_search.setAttribute("placeholder","  ")
+      fetch("/api/buscar-datos", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({mensaje:name_search.value}) // 🔄 Enviar directamente el objeto si es solo uno
+})
+.then(res => res.json())
+.then(data => {
+  pintar_transacciones(data)
+})
+.catch(err => {
+ // console.error("❌ Error al enviar datos:", err);
+  name_search.style="background-color: rgba(208, 15, 15, 0.478);"
+  name_search.value=""
+    name_search.setAttribute("placeholder","Datos invalidos")
+});
+
+  }
+  
+  
+}
+
 var imprimir=document.getElementById("imprimir");
 imprimir.onclick=function(){
     imprimirModal(submitForm())
 
 }
 
+//////////////////////////////////////////
+ function pintar_transacciones(data){
+ const modal = document.querySelector("#modal");
+
+ 
+
+ var viewer_transactions= document.getElementById("viewer_transactions")
+ viewer_transactions.innerHTML=""
+ var total=0
+var cont=0
+
+let array= data.resultado1.documents;
+  for (let i = 0; i < array.length; i++) {
+
+ var transaction_item= document.createElement("div");
+ transaction_item.classList="transaction_item"
+  var transaction_type= document.createElement("a");
+  transaction_type.classList="transaction_type"
+var transaction_number= document.createElement("a");
+ transaction_number.classList="transaction_number"
+ 
+var transaction_catn= document.createElement("a");
+transaction_catn.classList="transaction_catn"
+var transaction_total= document.createElement("a");
+transaction_total.classList="transaction_total"
+transaction_type.innerHTML=array[i].tipo
+transaction_number.innerHTML=array[i].numero
+   const tbody = document.getElementById("body_datesProd");
+
+
+transaction_item.appendChild(transaction_type)
+transaction_item.appendChild(transaction_number)
+
+
+
+ transaction_number.onclick=function(){
+  body_datesProd.innerHTML=""
+   for (let a = 0; a < array[i].products.length; a++) {
+    const tr = document.createElement("tr");
+    console.log(array[i].products)
+  tr.innerHTML = `
+    <td>${array[i].products[a].cod}</td>
+    <td>${array[i].products[a].name}</td>
+    <td class="td-cant"contenteditable="true" >${array[i].products[a].cant}</td>
+    <td>${(parseFloat(array[i].products[a].val_unit) / 1000).toFixed(3)}</td>
+   <td class="td-total">
+  ${formatearValorLatino(parseFloat(array[i].products[a].val_tot))}
+</td>
+    <td><a href="#" style="color: red;" onclick="removeProduct(this)">X</a></td>
+`;
+
+tbody.appendChild(tr);
+
+updateTotal();
+
+   const tdCant = tr.querySelector(".td-cant");
+const tdTotal = tr.querySelector(".td-total");
+var valorUnitario=parseFloat(array[i].products[a].val_unit)
+tdCant.addEventListener("keyup", function(){
+
+   
+    let nuevaCantidad = parseFloat(this.innerText);
+    if (isNaN(nuevaCantidad) || nuevaCantidad < 0) nuevaCantidad = 0;
+    const nuevoTotal = ((valorUnitario * nuevaCantidad) / 1000).toFixed(3);
+    tdTotal.innerText = nuevoTotal;
+    updateTotal();
+})
+
+   }
+  
+}
+ for (let a = 0; a < array[i].products.length; a++) {
+
+//////////////////////////////////////////////////////////////////////////////////
+
+cont=cont+1
+var valor=parseFloat(array[i].products[a].val_tot)
+  total=total+valor
+  //console.log(valor.toFixed(3))
+  if(a== array[i].products.length-1){
+transaction_catn.innerHTML=array[i].products.length;
+transaction_total.innerHTML="$"+(total).toFixed(3);
+transaction_item.appendChild(transaction_catn)
+transaction_item.appendChild(transaction_total)
+  //console.log("primera tanda"+(total).toFixed(3))
+  }
+
+
+  
+   
+
+
+
+ }
+ viewer_transactions.appendChild(transaction_item)
+
+  }
+
+ 
+
+
+
+
+
+
+
+ }
 
 
  
@@ -771,6 +932,7 @@ body {
 .container {
     width: 80%;
     margin: auto;
+    height: fit-content;
 }
 
 #extra_item {

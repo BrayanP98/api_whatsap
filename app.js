@@ -525,7 +525,6 @@ app.post("/cotizar", async(req, res) => {
 });
 
 
-///////////////
 ///////////////////////
 app.post("/api/enviar-datos", async(req, res) => {
  // console.log(req.body);
@@ -582,6 +581,26 @@ cotizacion.nombre=data[0].nombre;
 
 
 });
+
+app.post("/api/buscar-datos", async(req, res) => {
+
+ 
+ // var numero="brayan perafan"
+  // Aquí podrías guardar en base de datos, escribir en archivo, etc.
+ const numero=req.body.mensaje
+ try{
+   const resultado = await cotizar.findOne({
+      "documents.numero": numero
+    },{ "documents.$": 1 });
+
+    const resultado1 = await cotizar.findOne({"nombre":new RegExp(`^${numero}$`, 'i')});
+    //console.log(resultado1)
+   //console.log(resultado.documents[0].products)
+ res.json({ resultado1});
+ }catch(err){
+  console.log(err)
+}
+  });
 
 
 
