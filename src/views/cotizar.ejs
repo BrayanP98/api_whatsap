@@ -560,7 +560,7 @@ nota1.innerHTML= "<b>nota:</b>"+" "+dataTot[1]
 var footer=document.createElement("div")
 footer.id="footer_plant"
 var Pfooter=document.createElement("p")
-Pfooter.innerHTML=" <br>TRANSVERSAL 9 # 57N – 202 VIA EL BOSQUE <br>Tel: 3022456227 - 3006549863   <br>nsanjuanelectronics@gmail.com <br> Popayán - Colombia"
+Pfooter.innerHTML=" <br>TRANSVERSAL 9 # 57N – 202 VIA EL BOSQUE <br>Tel: 3006549863 - 3022456227   <br>sanjuanelectronics@gmail.com <br> Popayán - Colombia"
 footer.appendChild(Pfooter)
 header.appendChild(logo)
 plantilla.appendChild(fondo)
@@ -856,14 +856,14 @@ function generarPFD(elemento,selected,name){
               logging: true, // Para ver errores en la consola
               backgroundColor: "#ffffff" // Evitar fondo transparente
           }).then(canvas => {
-              const imgData = canvas.toDataURL("image/png");
+              const imgData = canvas.toDataURL("image/jpeg");
   
               // Definir tamaño de PDF basado en el tamaño del canvas
               const pdfWidth = 210; // A4 ancho en mm
               const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
   
               const doc = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]); // Ajusta el tamaño dinámicamente
-              doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+              doc.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
               doc.save( selected+'_'+name+'.pdf');
           }).catch(error => {
               console.error("Error generando PDF:", error);
@@ -877,15 +877,22 @@ function generarPFD(elemento,selected,name){
 }  
 
 document.getElementById("pdf").addEventListener("click", () => {
-    var name_cot=document.querySelector("#name_cot").value
+   var name_cot=document.querySelector("#name_cot")
+   if (name_cot.value.trim() === "") {
+    
+    name_cot.style="background: rgba(255, 0, 0, 0.425); border:0px"
+     name_cot.setAttribute("placeholder","nombre requerido")
+  } else {
 
-console.log(name_cot)
+ 
     const select = document.getElementById("tipoDoc");
   const valorSeleccionado = select.value;
  // document.getElementById("resultado").textContent = "Seleccionaste: " + valorSeleccionado;
-    generarPFD(submitForm(),valorSeleccionado,name_cot)
+    generarPFD(submitForm(),valorSeleccionado,name_cot.value)
+    name_cot.style="background:white; border:1px solid gra"
+      name_cot.setAttribute("placeholder","")
+  }
 });
-
 </script>
 <style>
 .buscador{

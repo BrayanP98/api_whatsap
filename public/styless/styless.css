@@ -392,11 +392,13 @@
         }
 
         #footer_plant{
+            position: relative;
           font-size: 13px;
-          top: 70px;
-          position: relative;
+          bottom:0;
+          position: absolute;
           text-align: center;
           font-family: Arial, Helvetica, sans-serif;
+          right:25%;
         }
          #transacciones{
           width: 100%;
