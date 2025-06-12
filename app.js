@@ -635,7 +635,7 @@ app.get("/blog", async(req, res) => {
 app.get("/us", async(req, res) => {
   res.render("nosotros.ejs")
 });
-app.get("/gestion", async(req, res) => {
+app.get("/transacciones", async(req, res) => {
   res.render("cotizar.ejs")
 });
 app.get("/chat", async(req, res) => {
