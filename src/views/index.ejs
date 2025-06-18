@@ -18,7 +18,7 @@
     <header>
         <div id="menu">
             <div id="desplegable">
-                <img id="logo" src="/img/logo1.png" alt="">
+                <img id="logo" src="/img/logo_sanjuan.png" alt="">
                 <a id="titulo" href=""></a><a id="sas" href=""> </a>
                 <button id="btn_desplegar"><box-icon name='chevron-down' type='solid' flip='horizontal' color='#5d5454' style="background: rgba(255, 255, 255, 0.533);"></box-icon></button>
               
@@ -39,7 +39,7 @@
             </div>
             <div class="float_message" id="float_message">
 
-                <img src="img/logo1.png"    alt="">
+                <img src="/img/logo_sanjuan.png"   alt="">
                 <div class="float_text">
                     <p>Aumenta la seguridad de tu hogar y de tu familia con un sistema CCTV de última generación.
                         Disfruta de mayor tranquilidad y reduce el riesgo de robos e intrusiones.</p>
@@ -178,24 +178,100 @@ descrip_video1.innerText=des_video1[0]
        }
       });
  </script>
+<style>h2 {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .card-desc {
+      position: absolute;
+      bottom: 3.5rem;
+      left: 1rem;
+      right: 1rem;
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background-color: #077fff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #00a4e0;}
+      </style>
 <section id="solutions">
     <h2>Soluciones personalizadas</h2>
-    <div id="cont_solutions">
-        <div class="item_solution" style="background-image: url('https://cyc-tecnologia.com/wp-content/uploads/2015/07/videoseguridad-620x420@2x.jpg');">
-        
-            <button class="button_solution"> <box-icon name='menu'  color= 'white' ></box-icon>Seguridad electronica</button>
-        </div>
-        <div class="item_solution" style="background-image: url('https://alullan.es/wp-content/uploads/2019/11/domotica-en-el-hogar-beneficios-y-ventajas-980x461.jpg');">
-            <button class="button_solution"><box-icon name='menu' color= 'white' ></box-icon>Automatizacion residencial.</button>
-        </div>
-        <div class="item_solution" style="background-image: url('https://controlaccesosysistemas.com/wp-content/uploads/2022/05/teclado-control-de-accesos.jpg');">
-            <button class="button_solution"><box-icon name='menu' color= 'white' ></box-icon>Control de acceso</button>
-        </div>
-        <div class="item_solution" style="background-image: url('https://media.istockphoto.com/id/1322507941/es/foto/smartphone-de-control-de-hogar-inteligente-concepto-de-internet-de-las-cosas-iot.jpg?s=612x612&w=0&k=20&c=kqyPevdMmifsxc6xGewJUnwAm6umGh1E-qOgUYF-lPw=');">
-            <button class="button_solution"><box-icon name='menu' color= 'white'></box-icon>Sistemas de alarma</button>
-        </div>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.ibb.co/d5mGyMs/seguridad.jpg" alt="Seguridad electrónica">
+       <button class="button">Contratar</button>
+      <div class="card-title">Seguridad electrónica</div>
     </div>
+    <div class="card">
+      <img src="https://alullan.es/wp-content/uploads/2019/11/domotica-en-el-hogar-beneficios-y-ventajas-980x461.jpg" alt="Automatización residencial">
+      <div class="card-title">Automatización residencial</div>
+      <div class="card-desc">Aumenta la seguridad de tu hogar con un sistema CCTV de última generación.</div>
+      <button class="button">Contratar</button>
+    </div>
+    <div class="card">
+      <img src="https://controlaccesosysistemas.com/wp-content/uploads/2022/05/teclado-control-de-accesos.jpg" alt="Control de acceso">
+      <div class="card-title">Control de acceso</div>
+    <button class="button">Contratar</button>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/1322507941/es/foto/smartphone-de-control-de-hogar-inteligente-concepto-de-internet-de-las-cosas-iot.jpg?s=612x612&w=0&k=20&c=kqyPevdMmifsxc6xGewJUnwAm6umGh1E-qOgUYF-lPw=" alt="Sistemas de alarma">
+      <div class="card-title">Sistemas de alarma</div>
+    <button class="button">Contratar</button>
+    </div>
+  </div>
 
     <p class="p_medio">Disfruta de la tranquilidad de saber que tu casa está protegida con la última tecnología en vigilancia. Monitorea y controla remotamente tus cámaras para una mayor seguridad y comodidad.</p>
     <div id="cotizar" style="background-image: url('https://media.istockphoto.com/id/1431874851/es/foto/ingenier%C3%ADa-trabajando-con-inspecci%C3%B3n-de-dibujos-en-computadora-port%C3%A1til-en-la-oficina-y.jpg?s=1024x1024&w=is&k=20&c=7gBMfjK5u28JY2O83IkFlFr5vXnbDbOFKg7CzbsYLMg=')">
