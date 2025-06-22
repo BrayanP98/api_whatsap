@@ -246,43 +246,137 @@ descrip_video1.innerText=des_video1[0]
 
     .button:hover {
       background-color: #00a4e0;}
+
+      .solutions{
+      position: relative;
+    display: block;
+   
+    justify-content: center;
+    
+    }
+  .div_solutions{
+    padding-top: 100px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  height: auto;
+ flex-wrap: wrap;
+  
+  }
+  .img_solutions{
+    width:30%;
+    height: auto;
+    position: relative;
+    min-width: 300px
+  }
+    .img_solutions1{
+    width:60%;
+    height: 500px;
+    position: relative;
+    min-width: 300px;
+    position: absolute;
+    left: 100px;
+    z-index: -99;
+  }
+    .img_solutions3{
+    width:60%;
+    height: 100%;
+    position: relative;
+    min-width: 300px;
+    position: absolute;
+   right:10px;
+    z-index: -99;
+  }
+  .descript_solution{
+    width: 50%;
+    height: auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+   text-align: center;
+    align-items: center;
+   
+  }
+   .descript_solution h3{
+      color:#736eaa;
+      font-size: 28px;
+          font-family: Nunito;
+   }
+  .descript_solution p{
+    position: relative;
+    width: 70%;  
+  font-family: rubik;
+  color:#696687;
+      font-size: 18px;
+    line-height: 1.5em;
+        box-sizing: border-box;
+        font-weight: 400;
+        text-align: justify;
+  }
+
+   .descript_solution button{
+    font-family: rubik;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid rgb(149, 125, 185);
+     padding: 15px;
+      color:#696687;
+          font-size: 18px;
+    font-weight: 450;
+    letter-spacing: 0.2px;
+    color: #3B3663;
+        transition: all .4s;
+       
+        margin-right: 10px;
+   }
+    .descript_solution button:hover{
+      color: white;
+          transition: all .4s;
+       background: #3B3663;
+    }
       </style>
-<section id="solutions">
-    <h2>Soluciones personalizadas</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://www.digittecnic.com/wp-content/uploads/2019/07/camara-seguridad-video-urbano_109643-54.jpg" alt="Seguridad electrónica">
-       <button class="button">Contratar</button>
-      <div class="card-title">Seguridad electrónica</div>
-      <div class="card-desc">Aumenta la seguridad de tu hogar con un sistema CCTV de última generación.</div>
+<section class="solutions">
+  <h2>Soluciones personalizadas</h2>
+  <div>
+
+<div class="div_solutions">
+  
+ <div class="descript_solution">
+   <h3>Seguridad Electronica</h3>
+  <p>La seguridad electrónica protege personas, bienes e información mediante sistemas avanzados como cámaras, alarmas, control de acceso y monitoreo remoto. Es la solución moderna para mantener tu entorno seguro las 24 horas.</p>
+ <button>Conoce mas</button> 
+</div>
+
+  <img class="img_solutions" src="https://iodistribuidora.com/wp-content/uploads/2022/03/web-io-distribuidora.png" alt="">
+  <img class="img_solutions3"  src="https://belaystudio.com/wp-content/uploads/2024/11/home-logo.svg" alt="">
+</div>
+<div class="div_solutions">
+  <img class="img_solutions1" src="https://belaystudio.com/wp-content/uploads/2024/11/home-logo.svg" alt="">
+    <img class="img_solutions" src="https://gpsglobalcolombia.com/wp-content/uploads/2024/08/Diseno-sin-titulo-46.png" alt="">
+    <div class="descript_solution">
+      <h3>Rastreo Satelital</h3>
+      <p>Nuestra plataforma de rastreo GPS te permite localizar tu vehículo en tiempo real empleando dispositivos con conectividad 3G y 4G de última tecnología que ofrecen una precisa recopilación de datos.
+
+<br><br>Ofrecemos eficiencia y seguridad de todos los activos móviles, incluso si se encuentran en ubicaciones remotas. Simplifique las operaciones manuales y tome decisiones basadas en datos.</p>
+<button>Conoce mas</button>     
+</div>
+</div>
+<div class="div_solutions">
+ 
+    <div class="descript_solution">
+      <h3>Eenergias Renovables</h3>
+      <p>Soluciones limpias y sostenibles que aprovechan fuentes naturales como el sol, el viento y el agua para generar energía eficiente, reduciendo el impacto ambiental y los costos a largo plazo.</p>
+<button>Conoce mas</button> 
     </div>
-    <div class="card">
-      <img src="https://alullan.es/wp-content/uploads/2019/11/domotica-en-el-hogar-beneficios-y-ventajas-980x461.jpg" alt="Automatización residencial">
-      <div class="card-title">Automatización residencial</div>
-      
-      <button class="button">Contratar</button>
-    </div>
-    <div class="card">
-      <img src="https://controlaccesosysistemas.com/wp-content/uploads/2022/05/teclado-control-de-accesos.jpg" alt="Control de acceso">
-      <div class="card-title">Control de acceso</div>
-    <button class="button">Contratar</button>
-    </div>
-    <div class="card">
-      <img src="https://media.istockphoto.com/id/1322507941/es/foto/smartphone-de-control-de-hogar-inteligente-concepto-de-internet-de-las-cosas-iot.jpg?s=612x612&w=0&k=20&c=kqyPevdMmifsxc6xGewJUnwAm6umGh1E-qOgUYF-lPw=" alt="Sistemas de alarma">
-      <div class="card-title">Sistemas de alarma</div>
-    <button class="button">Contratar</button>
-    </div>
+     <img class="img_solutions3" src="https://belaystudio.com/wp-content/uploads/2024/11/home-logo.svg" alt="">
+    <img  class="img_solutions" src="https://www.zenergetik.com/wp-content/uploads/2021/03/energias.png" alt="">
+</div>
+
   </div>
 
-    <p class="p_medio">Disfruta de la tranquilidad de saber que tu casa está protegida con la última tecnología en vigilancia. Monitorea y controla remotamente tus cámaras para una mayor seguridad y comodidad.</p>
-    <div id="cotizar" style="background-image: url('https://media.istockphoto.com/id/1431874851/es/foto/ingenier%C3%ADa-trabajando-con-inspecci%C3%B3n-de-dibujos-en-computadora-port%C3%A1til-en-la-oficina-y.jpg?s=1024x1024&w=is&k=20&c=7gBMfjK5u28JY2O83IkFlFr5vXnbDbOFKg7CzbsYLMg=')">
-        <h2>
-            COTIZACION PERSONALIZADA SEGUN TU NECECESIDAD
-        </h2>
-        <p>Si tiene en planificación un proyecto que incluye tecnología avanzada y no sabe por dónde empezar o cómo poder implementar en su empresa, con las mejores garantías, fiabilidad y un control sencillo y eficaz. Tenemos a su disposición nuestra entrevista de diagnóstico en la cuál le orientamos sobre las mejores opciones para su proyecto.</p>
-       <a href="https://api.whatsapp.com/send/?phone=573147459094&text=Hola+quisiera+hacer+una+cotizacion+por+favor" target="_blank"> <button><box-icon name='edit' color='#f1e7e7' ></box-icon></box-icon>Solicitar Cotizacion</button></a>
-    </div>
-   
+
 </section>
 <section id="pros"><h3>Seguridad y Proteccion</h3>
 <h2>Tranquilidad, por dentro y por fuera.</h2>

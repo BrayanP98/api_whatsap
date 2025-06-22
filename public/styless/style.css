@@ -446,32 +446,38 @@ transition: all 0.5s ease-in;
 }
 #cotizar{
     width: 98%;
-    height: 500px;
+    height: auto;
     background-repeat: no-repeat;
     background-size: 100%;
-  
+    /*clip-path: polygon(50% 0%, 81% 14%, 100% 43%, 100% 100%, 84% 100%, 68% 100%, 41% 72%, 34% 47%, 33% 1%);*/
+
+
    position: relative;
- 
+     width: 100%;  
+  font-family: rubik;
    
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    overflow: hidden;
-  
-   background-repeat: no-repeat;
+  justify-content: center;
+ 
    background-attachment: fixed;
    background-size: cover;
+   background-image: url('/img/fondo-abstracto-elegante-onda-azul.png') ;
+   background-size:100%;
+
+
  
   
 }
 #cotizar H2{
     opacity: 5;
-    width: 90%;
+    width: 50%;
     height: fit-content;
     position: relative;
-    font-family: "Raleway", sans-serif;
-    font-weight: 400;
-     color: rgb(248, 247, 247);
+      color:#736eaa;
+    font-weight: 450;
        left: 25px;
        font-size: 50px;
       top: 15px;
@@ -482,13 +488,17 @@ transition: all 0.5s ease-in;
     position: relative;
     width: 60%;
     height: fit-content;
-    font-size: 20px;
-    left: 30px;
-    top: -25px;
-    font-family: "Raleway", sans-serif;
+   
+   
+   
     font-weight: 400;
-    
-    box-shadow: 5px 5px 5px 5px rgba(130, 126, 126, 0.534);
+    color:#696687;
+      font-size: 18px;
+    line-height: 1.5em;
+        box-sizing: border-box;
+        font-weight: 400;
+        text-align: justify;
+   
 }
 #cotizar p:hover{
     background-color: rgba(128, 128, 128, 0.551);
