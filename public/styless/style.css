@@ -506,6 +506,29 @@ transition: all 0.5s ease-in;
 }
 #cotizar button{
    
+font-family: rubik;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid rgb(149, 125, 185);
+     padding: 15px;
+      color:#696687;
+          font-size: 18px;
+    font-weight: 450;
+    letter-spacing: 0.2px;
+    color: #3B3663;
+        transition: all .4s;
+       
+        margin-right: 10px;
+   font-size: 20px;
+   right: 0;
+   
+}
+#cotizar p:hover{
+    background-color: rgba(128, 128, 128, 0.551);
+
+}
+#cotizar button{
+   
 position: relative;
     width: 250px;
     height:80px;
