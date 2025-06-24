@@ -628,6 +628,9 @@ res.json({ success: true, blogsOrdenados, ultimoBlog });
 app.get("/", async(req, res) => {
   res.render("index.ejs")
 });
+app.get("/", async(req, res) => {
+  res.render("index1.ejs")
+});
 app.get("/blog", async(req, res) => {
   res.render("blogs.ejs")
 });
