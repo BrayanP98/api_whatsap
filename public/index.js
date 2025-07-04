@@ -94,7 +94,7 @@ input_number.value="";
 }
 button_sendPv.onclick=function(){
     // let mensaje= textarea.value;
-         let number= input_number.value;
+         let number= "57"+input_number.value;
        
          var  data= {
             "messaging_product": "whatsapp",
@@ -133,7 +133,8 @@ button_sendPv.onclick=function(){
    send_whatsapp(data)
    
    input_number.value="";
-   
+   nombre_to_send.value="";
+   placa_to_send.value="";
    }
 button_sendPlV.onclick=function(){
     // let mensaje= textarea.value;
