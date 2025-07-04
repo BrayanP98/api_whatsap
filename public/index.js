@@ -1,7 +1,8 @@
 //const { init } = require("");
 
 
-
+var nombre_to_send=document.getElementById("nombre_to_send")
+ var placa_to_send= document.getElementById("placa_to_send")
 const title ="Chat San Juan"
 var button_sendPaV= document.querySelector("#send_messagePaV");
 var button_sendPv= document.querySelector("#send_messagePv");
@@ -113,11 +114,11 @@ button_sendPv.onclick=function(){
                 "parameters": [
                   {
                     "type": "text",
-                    "text": "pedro"
+                    "text": nombre_to_send.value
                   },
                   {
                     "type": "text",
-                    "text": "hrtd"
+                    "text": placa_to_send.value
                   },
                  
                 
