@@ -30,7 +30,7 @@ const save = require('./functions.js');
 var cont_blog={}
 
 const apiKey = process.env.HF_API_KEY; 
-const token = "	EAAO79M2kv3MBPMsVhYEehYhD9DULGYKl0CyfQFQCEpn08qiUNhZCBLwUrN21zrMkMBekZCUb1enmgoUXkPXEcD8Koi4SZC3L26pUeVF5XVeHizMM4hdZBM6iVLa45ByooT1KNJGIhHmAeginzO8A5xdIEBKVmzFn54ZC1bLwU8ZCY4blfAkS1CgZCobeMuSbsEcQ4ovajWLRCfGogBiVMZClyxrhsgBef0MuLQs1m7gEhl45pQmi";
+const token = "EAAO79M2kv3MBPLdM1mrRseZBlf1UfHyyE0DAtwi62tsidrg3iZCDe2LE5UeUprI197GTyTZC2PZCePPV5ZAHysBj2gupMg883k6fcAvMaDPkq7jeMrugANglK8EhWxpEfieYe3BSCnZAX2XcTw1Gj2bFCtqvqSp88t7czmuZCJ2730bV1qZBwsDKMmxGMZCZC1ggIiZCpeUrmFTS2iL";
 
 //const path= require('path');
 // Imports dependencies and set up http server
@@ -329,16 +329,16 @@ app.post("/webhook", async (req, res) => {
 
 
 
-     await cargarVocabulario();  // Asegúrate de cargar el vocabulario
-  await cargarModelo();  // Cargar el modelo
+    // await cargarVocabulario();  // Asegúrate de cargar el vocabulario
+  //await cargarModelo();  // Cargar el modelo
 
   if (!modelo) {
       console.log("⚠️ El modelo no se ha cargado correctamente.");
       return;
   }
 
-  const respuesta = await responder(text, modelo);
-  console.log("Respuesta:", respuesta);
+  //const respuesta = await responder(text, modelo);
+ // console.log("Respuesta:", respuesta);
        
        return await sendOP("🤖 dice:" +respuesta,from, phone_number_id);
 
@@ -369,7 +369,7 @@ app.post("/webhook", async (req, res) => {
 
 async function sendMenuOptions(to, phone_number_id,name) {
   try {
-    await axios.post(`https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`, {
+    await axios.post(`https://graph.facebook.com/v22.0/${phone_number_id}/messages?access_token=${token}`, {
       messaging_product: "whatsapp",
       recipient_type: "individual",
       to,
@@ -444,7 +444,7 @@ function sendOP(opction,para,phone_number_id){
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
-      "https://graph.facebook.com/v12.0/" +
+      "https://graph.facebook.com/v22.0/" +
       phone_number_id +
       "/messages?access_token=" +
       token,
