@@ -203,9 +203,9 @@ button_sendPlV.onclick=function(){
     
   var botId = '426245237228457';
   // var phoneNbr = '573026055289';
-  var bearerToken = 'EAAO79M2kv3MBO8TZCRyxVRhau82TZC3UAOqkSz15Ps2ZA1DmOfmnqGP7tgqa2LVhfxZCvCkr851iiZCfLeaecCsWOZCkLRkjFl8FNt0avp0b8I7tLuQKZCYnwZBEtyLfebr6funPe5AWZAl2YxkUEeaZA9F0ZACgrmZCn8Y4CFyZA4w6fw1wNcXL6uyebPHRCOLknS81YCv7NiQK3x6sVMEe4jKP9SKaoNjYZD';
+  var bearerToken = 'EAAO79M2kv3MBPLdM1mrRseZBlf1UfHyyE0DAtwi62tsidrg3iZCDe2LE5UeUprI197GTyTZC2PZCePPV5ZAHysBj2gupMg883k6fcAvMaDPkq7jeMrugANglK8EhWxpEfieYe3BSCnZAX2XcTw1Gj2bFCtqvqSp88t7czmuZCJ2730bV1qZBwsDKMmxGMZCZC1ggIiZCpeUrmFTS2iL';
 
-  var url = 'https://graph.facebook.com/v17.0/' + botId + '/messages';
+  var url = ' https://graph.facebook.com/v22.0/' + botId + '/messages';
 
 
 
