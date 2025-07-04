@@ -376,9 +376,9 @@ async function sendMenuOptions(to, phone_number_id,name) {
       type: "interactive",
       interactive: {
         type: "list",
-        header: { type: "text", text: "Nexo Security" },
-        body: { text: "Hola"+" "+name+" "+" "+"soy *NexoBot* 🤖  de  Nexo Security ."+"\n\n💙Seguridad y Comodidad Inteligente!"+
-              "\n\nSiguenos en Facebook como: \n*Nexo Security *."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 " },
+        header: { type: "text", text: "San Juan Electronics" },
+        body: { text: "Hola"+" "+name+" "+" "+"soy *SanJuanBot* 🤖  de  San Juan Electronics ."+"\n\n💙Seguridad y Comodidad Inteligente!"+
+              "\n\nSiguenos en Facebook como: \n*San Juan Electronics *."+"\n O visita nuestra WEB https://nexosecurity.netlify.app/"+ "\n\nPara mas informacion de nuestros productos y servicios elige una opcion👇👇👇 " },
         footer: { text: "scaliwoodSoft" },
         action: {
           button: "Nuestros Servicios",
@@ -430,7 +430,7 @@ async function handleUserSelection(to, phone_number_id, selectedId) {
       responseMessage = "🎉 *PROMOCIONES*\nDescubre nuestras ofertas y descuentos especiales en seguridad.";
       break;
     case "5":
-      responseMessage = "ℹ️ *Nosotros*\nConoce más sobre Nexo Security y nuestra misión de brindarte seguridad y comodidad.";
+      responseMessage = "ℹ️ *Nosotros*\nConoce más sobre San Juan Electronics y nuestra misión de brindarte seguridad y comodidad.";
       break;
     default:
       responseMessage = "❌ Opción no válida. Por favor, elige una opción del menú.";
