@@ -30,7 +30,7 @@ const save = require('./functions.js');
 var cont_blog={}
 
 const apiKey = process.env.HF_API_KEY; 
-const token = "EAAO79M2kv3MBO52bofwZAOZALeGgZBC8vtdmcpEkZCdsGIuGttKy6YM3fkUTneWMAspA8XZA9yaMkDhxZC7Uh09qC14Ixyb1KI0wPjIX4iZBoR9cjRZBZC32Lsap5ebDCBxykTDZCMrXdTYvKl14ZCHrS6chZBt1uYyeULVlQLDfPdhq1Kg9HfYUgM9DfMJHojkYlZB5dCIfOsI3AfGbiYnHA";
+const token = "	EAAO79M2kv3MBPMsVhYEehYhD9DULGYKl0CyfQFQCEpn08qiUNhZCBLwUrN21zrMkMBekZCUb1enmgoUXkPXEcD8Koi4SZC3L26pUeVF5XVeHizMM4hdZBM6iVLa45ByooT1KNJGIhHmAeginzO8A5xdIEBKVmzFn54ZC1bLwU8ZCY4blfAkS1CgZCobeMuSbsEcQ4ovajWLRCfGogBiVMZClyxrhsgBef0MuLQs1m7gEhl45pQmi";
 
 //const path= require('path');
 // Imports dependencies and set up http server
