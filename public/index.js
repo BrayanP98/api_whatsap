@@ -113,11 +113,11 @@ button_sendPv.onclick=function(){
                 "parameters": [
                   {
                     "type": "text",
-                    "text": cta_ahorro
+                    "text": "pedro"
                   },
                   {
                     "type": "text",
-                    "text": nequi
+                    "text": "hrtd"
                   },
                  
                 
