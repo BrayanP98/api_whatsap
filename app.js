@@ -632,7 +632,7 @@ app.get("/messagges", async(req, res) => {
   res.render("index1.ejs")
 });
 app.get("/blog", async(req, res) => {
-  res.render("blogs.ejs")
+  res.render("blog.ejs")
 });
 
 app.get("/us", async(req, res) => {
