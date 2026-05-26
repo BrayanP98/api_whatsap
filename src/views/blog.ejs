@@ -16,23 +16,28 @@
                 const data = await response.json();
                 console.log(data,response,data.success)
                 
-                if (data) {
-                    const blogContainer = document.getElementById("blogContainer");
-                    blogContainer.innerHTML = "";
+               if (data.success) {
 
-                    
-                        data.forEach(blog => {
-                            const blogElement = document.createElement("div");
-                            blogElement.innerHTML = `
-                                <h2>${blog.titulo}</h2>
-                                <p>${blog.parrafo}</p>
-                                <small>📅 Fecha: ${blog.fecha}</small>
-                                <hr>
-                            `;
-                            blogContainer.appendChild(blogElement);
-                        });
-                
-                } else {
+    const blogContainer = document.getElementById("blogContainer");
+
+    blogContainer.innerHTML = "";
+
+    data.blogs.forEach(blog => {
+
+        const blogElement = document.createElement("div");
+
+        blogElement.innerHTML = `
+            <h2>${blog.titulo}</h2>
+            <p>${blog.parrafo}</p>
+            <small>📅 Fecha: ${blog.fecha}</small>
+            <hr>
+        `;
+
+        blogContainer.appendChild(blogElement);
+
+    });
+
+} else {
                     console.error("Error al obtener blogs:", data.message);
                 }
             } catch (error) {
